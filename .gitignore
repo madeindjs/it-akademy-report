@@ -1,0 +1,10 @@
+*.aux
+*.out
+*.fls
+*.bbl
+*.gz
+*.log
+*.fdb_latexmk
+*.blg
+*.toc
+dossier_validation.pdf

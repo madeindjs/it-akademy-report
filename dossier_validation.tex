@@ -6,9 +6,11 @@
 \usepackage{hyperref}
 \usepackage[utf8]{inputenc}
 \usepackage[french]{babel}
-%\usepackage{listings}
 \usepackage{appendix}
 \usepackage{pdfpages}
+\usepackage{listings}
+\usepackage{csquotes}
+\usepackage{lstautogobble}
 
 \pagestyle{headings}
 
@@ -17,6 +19,15 @@
 }
 
 \begin{document}
+
+\lstset{
+  autogobble,% remove leading space indentation
+  breaklines=true, % sets automatic line breaking
+  captionpos=b, % sets the caption-position to bottom
+  frame=single, % adds a frame around the code
+  showtabs=false, % show tabs within strings adding particular underscores
+  tabsize=2, % sets default tabsize to 2 spaces
+}
 
 \maketitle
 
@@ -224,7 +235,7 @@
 
     Les réunions d'avancements ont lieu physiquement. Elles ne sont pas périodiquement fixées, nous en organisons à la demande, lorsqu'un membre de l'équipe en ressent le besoin. Nous en faisons donc une tous les mois environ d'une heure ou deux. Afin d'être plus efficace, nous définissons un but à l'avance.
 
-    L'idée n'est donc pas de développer une "réunionite" mais bien de valider certaines étapes du développement du produit et de communiquer autour de l'avancé de la société.
+    L'idée n'est donc pas de développer une \textquote{réunionite} mais bien de valider certaines étapes du développement du produit et de communiquer autour de l'avancé de la société.
 
     Voici donc quelques réunions clés qui se sont déroulées au cours de l'élaboration de notre produit.
 
@@ -232,7 +243,7 @@
 
       Cette réunion a eu lieu le 30 mai 2017, c'est à dire quelques semaines après ma rencontre avec les cofondateurs. A ce moment là, j'avais travaillé en total autonomie sur l'élaboration d'un produit fonctionnel.
 
-      L'objectif était donc de valider les "fondations" de cette plateforme. Cette étape est réellement importante. Je devais savoir que cette première ébauche correspondait aux attentes des deux cofondateurs.
+      L'objectif était donc de valider les \textquote{fondations} de cette plateforme. Cette étape est réellement importante. Je devais savoir que cette première ébauche correspondait aux attentes des deux cofondateurs.
 
       J'ai donc effectué une démonstration. Cela a permis de renforcer la confiance que mes associés m'avaient alors accordé mais aussi de collecter des premières critiques.
 
@@ -254,7 +265,7 @@
 
     La méthode Kanban est méthode agile très utilisée dans le monde informatique. Cela permet de mettre en place une gestion du projet sous forme de tickets. Cela permet de visualiser le flux de travail, de limiter le nombre de tâches en cours et de prioriser les tâches.
 
-    Cette méthode nous était indispensable car elle permet de voir l'avancement du projet sans nous "surcharger" de réunions.
+    Cette méthode nous était indispensable car elle permet de voir l'avancement du projet sans nous \textquote{surcharger} de réunions.
 
     Dans un premier temps je n'ai pas choisi de d'utiliser la méthode AGILE et la gestion des Sprints. Pour nous, le premier livrable devait être la phase bêta. Cette phase devrait correspondre à un produit fonctionnel en se concentrant sur les fonctions basiques.
 
@@ -267,7 +278,7 @@
         \item réalisable rapidement
       \end{itemize}
 
-      \paragraph{Colonne "à faire (bêta)"}
+      \paragraph{Colonne \textquote{à faire (bêta)}}
 
         Nous avont donc très rapidement sélectionné les tâches qui devaient être réalisé obligatoirement avant le lancement de la bêta. C'est à dire:
 
@@ -278,11 +289,11 @@
           \item générique aux besoins des différents clients
         \end{itemize}
 
-      \paragraph{Colonne "à faire"}
+      \paragraph{Colonne \textquote{à faire"}}
 
         Cette colonnes réunit les tâches qui seront nécessaires après le déploiement de la bêta.
 
-      \paragraph{Colonne "idées"}
+      \paragraph{Colonne \textquote{idées}}
 
         Comme le nom l'indique, cette colonne peut réunir toutes les idées d'amélioration ou de mise en place de fonctionnalité.
 
@@ -364,18 +375,18 @@
       OVH donne les choix entre plusieurs OS et plusieurs distributions. Mon choix s’est porté sur Ubuntu 18.04 server. Une fois le serveur mis en place , la première étape est de sécuriser dès le début l’utilisation. J’ai donc créé un utilisateur spécifique qui me servira uniquement le déploiement de l’application.
 
       \begin{scriptsize}
-      \begin{verbatim}
-      $ sudo adduser isignif
-      $ passwd isignif
-      \end{verbatim}
+        \begin{lstlisting}[language=bash]
+        $ sudo adduser isignif
+        $ passwd isignif
+        \end{lstlisting}
       \end{scriptsize}
 
       Je le rajoute dans les sudoers\footnote{Groupes d’utilisateur possédants les droits administrateur} uniquement afin de simplifier la construction de l’environnement de production.
 
       \begin{scriptsize}
-      \begin{verbatim}
-      $ sudo addgroup isignif sudo
-      \end{verbatim}
+        \begin{lstlisting}[language=bash]
+        $ sudo addgroup isignif sudo
+        \end{lstlisting}
       \end{scriptsize}
 
       Une fois l’utilisateur crée, j’ai crée une clé SSH pour me connecter sans mot de passe et j’ai désactivé la possibilité de se connecter au compte root via SSH. Ainsi je limite le risque.
@@ -383,10 +394,10 @@
       Ensuite commence l’installation des paquets. des ’ai donc installé en un clin d’oeuil tous les paquets nécessaires
 
       \begin{scriptsize}
-      \begin{verbatim}
-      $ sudo apt install -y vim apache2 nodejs git wkhtmltopdf \
-                            mariadb-server libmariadb-dev
-      \end{verbatim}
+        \begin{lstlisting}[language=bash]
+        $ sudo apt install -y vim apache2 nodejs git wkhtmltopdf \
+                              mariadb-server libmariadb-dev
+        \end{lstlisting}
       \end{scriptsize}
 
       Afin de figer ma version de Ruby, j’ai choisi d’utiliser de Ruby Version Manager (RVM) . RVM possède l’avantage de pouvoir installer exactement la version de Ruby souhaitée. Mais surtout, RVM permet de cloisonner les gem (librairies Ruby) à l’utilisateur courant et non à l’administrateur root. Ceci permet de réduire les risques d’escalade de droits.
@@ -396,9 +407,9 @@
       Concernant la SGBD\footnote{todo}, Ruby on Rails ne pose pas de contrainte particulière. J’ai donc choisi MariaDB. Une fois installé, je lance directement le script de sécurisation de l’installation:
 
       \begin{scriptsize}
-      \begin{verbatim}
+      \begin{lstlisting}[language=bash]
       $ mysql_secure_installation
-      \end{verbatim}
+      \end{lstlisting}
       \end{scriptsize}
 
       Ce script me permet de:
@@ -412,11 +423,11 @@
       Toujours dans un soucis de gestion fine des droits, j’ai choisi de créer un utilisateur MariaDB spécifique à l’application:
 
       \begin{scriptsize}
-      \begin{verbatim}
-      MariaDB > CREATE DATABASE isignif DEFAULT CHARACTER set utf8   default COLLATE utf8_general_ci;
-      MariaDB > CREATE USER 'isignif'@'localhost' IDENTIFIED BY '****';
-      MariaDB > GRANT ALL PRIVILEGES ON isignif . * TO 'isignif'@'localhost';
-      \end{verbatim}
+        \begin{lstlisting}[language=sql]
+        MariaDB > CREATE DATABASE isignif DEFAULT CHARACTER set utf8   default COLLATE utf8_general_ci;
+        MariaDB > CREATE USER 'isignif'@'localhost' IDENTIFIED BY '****';
+        MariaDB > GRANT ALL PRIVILEGES ON isignif . * TO 'isignif'@'localhost';
+        \end{lstlisting}
       \end{scriptsize}
 
 \chapter{Sécurité}
@@ -452,9 +463,9 @@
         Le JavaScript est du code interprété sur le navigateur du client. Placé dans le document HTML, il sera exécuté par le navigateur. Par exemple, un petit malin peut créer un utilisateur contenant du code JavaScript comme nom de famille.
 
         \begin{scriptsize}
-        \begin{verbatim}
-        <script>alert('Pwned')</script>
-        \end{verbatim}
+          \begin{lstlisting}[language=html, caption={Un exemple d'injection SQL}]
+          <script>alert('Pwned')</script>
+          \end{lstlisting}
         \end{scriptsize}
 
         Alors sur chaque page ou son nom sera affiché, le code sera exécuté. Heureusement, Rails nous protège directement de cela en échappant les caractères.
@@ -474,16 +485,16 @@
       \href{https://github.com/rubysec/bundler-audit}{Bundler Audit} s'utilise très facilement:
 
       \begin{scriptsize}
-      \begin{verbatim}
-      $ bundle audit
-      Name: actionpack
-      Version: 3.2.10
-      Advisory: OSVDB-91452
-      Criticality: Medium
-      URL: http://www.osvdb.org/show/osvdb/91452
-      Title: XSS vulnerability in sanitize_css in Action Pack
-      Solution: upgrade to ~> 2.3.18, ~> 3.1.12, >= 3.2.13
-      \end{verbatim}
+        \begin{lstlisting}[language=bash]
+        $ bundle audit
+        Name: actionpack
+        Version: 3.2.10
+        Advisory: OSVDB-91452
+        Criticality: Medium
+        URL: http://www.osvdb.org/show/osvdb/91452
+        Title: XSS vulnerability in sanitize_css in Action Pack
+        Solution: upgrade to ~> 2.3.18, ~> 3.1.12, >= 3.2.13
+        \end{lstlisting}
       \end{scriptsize}
 
 
@@ -500,9 +511,9 @@
       J'ai donc pu l'installer très facilement avec \href{https://certbot.eff.org/}{Certbot}, un outil qui génère le certificat pour nous et s'occuppe même de mettre la configuration Apache à jour.
 
       \begin{scriptsize}
-      \begin{verbatim}
-      $ sudo certbot --apache
-      \end{verbatim}
+        \begin{lstlisting}[language=bash]
+        $ sudo certbot --apache
+        \end{lstlisting}
       \end{scriptsize}
 
       C'est donc un petit geste mais celui-ci à des répercutions sur la confiances accordée par nos utilisateur et même sur le référencement\footnote{Google à annoncé en aout 2014 que le protocole HTTPS serait pris en compte dans l'algorithme de positionnement. \href{source}{https://webmaster-fr.googleblog.com/2014/08/le-protocole-https-en-tant-que-facteur.html}}.
@@ -583,14 +594,14 @@
       ActiveRecord (l'ORM\footnote{Un ORM fait interface entre le code et la base de données, voir \href{https://fr.wikipedia.org/wiki/Mapping_objet-relationnel}{la définition complète sur Wikipedia}} de Ruby on Rails) fait ça très facilement.
 
       \begin{scriptsize}
-      \begin{verbatim}
-      class Bailiff < User
-        has_many :significations, dependent: :nullify
-        has_many :relationships, dependent: :delete_all
-        has_many :bills, dependent: :delete_all
-        # ...
-      end
-      \end{verbatim}
+        \begin{lstlisting}[language=ruby]
+        class Bailiff < User
+          has_many :significations, dependent: :nullify
+          has_many :relationships, dependent: :delete_all
+          has_many :bills, dependent: :delete_all
+          # ...
+        end
+        \end{lstlisting}
       \end{scriptsize}
 
     \subsection{Cookies}
@@ -614,14 +625,14 @@
     La librairie se met en place très facilement, voici un extrait de ma configuration
 
     \begin{scriptsize}
-    \begin{verbatim}
+    \begin{lstlisting}[language=ruby]
     # config/deploy.rb
 
     set :application, "iSignif"
     set :repo_url, "http://git.rousseau-alexandre.fr/iSignif/Website.git"
     append :linked_files, 'config/database.yml' , 'config/initializers/secret_token.rb', 'config/secrets.yml'
     append :linked_dirs, 'public/uploads'
-    \end{verbatim}
+    \end{lstlisting}
     \end{scriptsize}
 
   \section{Retours des utilisateurs}

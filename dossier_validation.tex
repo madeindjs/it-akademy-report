@@ -12,6 +12,9 @@
 \usepackage{csquotes}
 \usepackage{lstautogobble}
 
+\hbadness=99999
+\hfuzz=999pt
+
 \pagestyle{headings}
 
 \hypersetup{
@@ -60,7 +63,7 @@
 
     La société fait partie des LegalTech\footnote{Une LegalTech peut se définir comme une startup de droit en ligne qui propose aux entreprises et aux particuliers une offre numérique} créée en tant que iSignif SAS. Il s'agit donc d'une Société par actions simplifiées. Ce type de société nous a permis de rédiger un pacte d'actionnaires et ainsi de partager les droits de décision équitablement.
 
-    \begin{figure}[h!]
+    \begin{figure}
       \includegraphics[width=\linewidth]{img/logo.png}
       \caption{Le logo d'iSignif}
     \end{figure}
@@ -88,7 +91,7 @@
       \item Régime social des assimilés-salariés pour le gérant = protection accrue et cotisations au prorata de la rémunération
     \end{itemize}
 
-    L'inconvénient de ce statut est qu'il est plus difficile à mettre en place et qu'il faut rédiger tous les statuts par écrit. Dans notre cas, ce statut est parfait puisque mes associés ont les compétences pour rédiger les \"formalités\".
+    L'inconvénient de ce statut est qu'il est plus difficile à mettre en place et qu'il faut rédiger tous les statuts par écrit. Dans notre cas, ce statut est parfait puisque mes associés ont les compétences pour rédiger les \textquote{formalités}.
 
   \section{Analyse du besoin}
 
@@ -96,32 +99,36 @@
 
     Réalisée par un huissier de justice, la signification a pour but de porter les actes judiciaires\footnote{assignation en justice, jugement, sommation de payer ou de faire, congés, demandes de renouvellement du bail commercial...} à la connaissance des intéressés. 
 
-    Toutefois, les actes sont souvent adressés à plusieurs destinataires résidents dans des villes éloignées. Ceci demande un effort chronophage pour les demandeurs de signification qui doivent contacter les huissiers compétents pour chaque adresse.
-
-
+    Toutefois, les actes sont souvent adressés à plusieurs destinataires résidents dans des villes éloignées. Ceci demande un effort chronophage pour les demandeurs de signification qui doivent contacter les huissiers compétents pour chaque adresse (voir figure \ref{fig:signification_before}).
 
     \begin{figure}[h!]
       \includegraphics[width=\linewidth]{img/signification_before.png}
       \caption{Un acte doit être notifié en main propre pour chaque destinataire}
+      \label{fig:signification_before}
     \end{figure}
 
-    L'idée d'iSignif est donc de créer une plateforme afin de simplifier le processus de signification en centralisant les demandes et en les répartissant automatiquement vers un huissier compétent du réseau.
+    L'idée d'iSignif est donc de créer une plateforme afin de simplifier le processus de signification en centralisant les demandes et en les répartissant automatiquement vers un huissier compétent du réseau  (voir figure \ref{fig:signification_after}).
 
-    \begin{figure}[h!]
+    \begin{figure}
       \includegraphics[width=\linewidth]{img/signification_after.png}
       \caption{L'acte est centralisé et signifié à tous les destinataires}
+      \label{fig:signification_after}
     \end{figure}
 
   \section{Business plan}
 
-    Notre modèle économique réside sur plusieurs idées:
+    La grande problématique de notre activité est que la loi interdit toute forme de publicité pour les huissiers. Il est donc important qu'on ne favorise pas certains huissier plutôt que d'autres. Nous avons donc choisit un système qui répartie par ordre d'arrivée les demande de significations.
+
+    Notre modèle économique réside sur l'idée de facturer les huissiers en fonction du nombre d'affaire qu'on leur apporte. Pour faire cela, nous avons eu plusieurs idées:
 
     \begin{itemize}
-      \item prendre une commission sur les actes signifiés par les huissiers
-      \item demander un abonnement pour les huissier
+      \item prendre une facturation mensuelle d'une somme fixée par nombre d'affaire apportés
+      \item demander un abonnement qui donne le droit d'accéder au réseau
+      \item proposer un système de \textquote{credit} afin que les huissier pré-paye un nombre d'affaire qu'on va leur apporter
     \end{itemize}
 
-    La grande problématique du modèle économique est que la loi interdit toute forme de publicité pour les huissiers.
+    Dans un premier temps, nous avons choisis d'utiliser le système de facturation mensuel. Je vous reparlerais de l'impacte que cela a eu dans la section \ref{sec:feedback}.
+
 
   \section{Réalisation du cahier des charges}
 
@@ -179,25 +186,26 @@
           \item les huissiers qui peuvent signifier les demandes auxquelles ils sont affecté
         \end{itemize}
 
-        Ces deux types de comptes possèdent les mêmes propriétés (nom, prénom, courriel, mot de passe). J'ai donc choisi de faire un héritage avec un modèle \verb|User|. Ainsi, les deux modèles partagent les mêmes propriétés.
+        Ces deux types de comptes possèdent les mêmes propriétés (nom, prénom, courriel, mot de passe). J'ai donc choisi de faire un héritage avec un modèle \verb|User|. Ainsi, les deux modèles partagent les mêmes propriétés (voir figure \ref{fig:merise_users}).
 
-        \begin{figure}
+        \begin{figure}[h!]
           \centering
           \includegraphics[width=0.5\textwidth]{img/merise_users.png}
           \caption{Représentation de l'héritage entre les huissiers et les avocats}
+          \label{fig:merise_users}
         \end{figure}
 
         Concrètement dans une base de données relationnelles, cela se matérialisera par une \href{https://en.wikipedia.org/wiki/Single_Table_Inheritance}{Single Table Inheritance}. C'est-à-dire qu'une table contiendra les deux types de données et qu'une colonne spécifiera le type d'utilisateur (Huissier ou Avocat). Ce modèle d'héritage en architecture de base de données est assez controversé. Cependant il convient bien à mon cas car les deux entités sont quasiment identiques.
 
       \subsubsection{Les huissiers}
 
-        Contrairement à l'avocat, l'huissier aura des relations supplémentaires avec d'autres entités. Chaque huissier est affecté à une unique zone de compétence. Cette zone de compétence contient plusieurs villes matérialisées sous l'entité \verb|zip_code|. Nous arrivons donc au résultat présenté sur la figure \ref{merise_bailiffs}.
+        Contrairement à l'avocat, l'huissier aura des relations supplémentaires avec d'autres entités. Chaque huissier est affecté à une unique zone de compétence. Cette zone de compétence contient plusieurs villes matérialisées sous l'entité \verb|zip_code|. Nous arrivons donc au résultat présenté sur la figure \ref{fig:merise_bailiffs}.
 
         \begin{figure}[h!]
           \centering
           \includegraphics[width=0.8\textwidth]{img/merise_bailiffs.png}
           \caption{Représentation des huissiers}
-          \label{merise_bailiffs}
+          \label{fig:merise_bailiffs}
         \end{figure}
 
       \subsubsection{L'acte}
@@ -213,20 +221,20 @@
     \subsection{Résultats final}
 
       %% bailif here
-      J'ai donc obtenu le résultat final que l'on peut voir sur la figure \ref{merise_zoom} et le diagramme complet figure \ref{merise}.
+      J'ai donc obtenu le résultat final que l'on peut voir sur la figure \ref{fig:merise_zoom} et le diagramme complet figure \ref{fig:merise}.
 
-      \begin{figure}[h!]
+      \begin{figure}
         \includegraphics[width=\linewidth]{img/merise_zoom.png}
         \caption{ébauche de la première version du diagramme Merise réalisé avec jMerise en mai 2018}
-        \label{merise_zoom}
+        \label{fig:merise_zoom}
       \end{figure}
 
       Une fois le diagramme validé, j'ai pu commencer les spécifications techniques de l'application.
 
-      \begin{figure}[h!]
+      \begin{figure}
         \includegraphics[width=\linewidth]{img/merise.png}
         \caption{Première version du diagramme Merise réalisé avec jMerise en mai 2018}
-        \label{merise}
+        \label{fig:merise}
       \end{figure}
 
 \chapter{Planifier la réalisation du projet}
@@ -297,25 +305,25 @@
 
         Comme le nom l'indique, cette colonne peut réunir toutes les idées d'amélioration ou de mise en place de fonctionnalité.
 
-  \section{Utilisation de Trello}
+    \subsection{Utilisation de Trello}
 
-    Dans le monde du Kanban, un logiciel SAAS se démarque parmi les autre: Trello. Trello est un outil SAAS qui permet pousse la méthode Kanban plus loin. Cette application pousse la collaboration en ajoutant les discussions sur les tâches.
+      Dans le monde du Kanban, un logiciel SAAS se démarque parmi les autre: \href{http://trello.com/}{Trello}. Trello est un outil SAAS qui permet pousse la méthode Kanban plus loin. Cette application pousse la collaboration en ajoutant les discussions sur les tâches.
 
-    \begin{figure}[h!]
-      \includegraphics[width=\linewidth]{img/trello.png}
-      \caption{Capture d'écran de notre tableau Kanban en septembre 2018}
-    \end{figure}
+      \begin{figure}
+        \includegraphics[width=\linewidth]{img/trello.png}
+        \caption{Capture d'écran de notre tableau Kanban en septembre 2018}
+      \end{figure}
 
-    Première version bêta pour septembre 2018
+      Première version bêta pour septembre 2018
 
   \section{Rédiger les spécifications techniques}
 
-    Étant dans une équipe non technique, mes associés m'ont laissé carte blanche pour le choix des technologies. Les seule contraintes étaient de respecter un développement rapide et fiable. Si l'on considère la représentation figure \ref{good_cheap_fast}, je devais donc me situer entre \textit{good} et \textit{cheap}.
+    Étant dans une équipe non technique, mes associés m'ont laissé carte blanche pour le choix des technologies. Les seule contraintes étaient de respecter un développement rapide et fiable. Si l'on considère la représentation figure \ref{fig:good_cheap_fast}, je devais donc me situer entre \textit{good} et \textit{cheap}.
 
-    \begin{figure}[h!]
+    \begin{figure}
       \includegraphics[width=0.5\textwidth]{img/good_cheap_fast.png}
       \caption{Un bon résumé du choix à faire lors de l'élaboration des spécification techniques}
-      \label{good_cheap_fast}
+      \label{fig:good_cheap_fast}
     \end{figure}
 
 
@@ -334,6 +342,28 @@
     \subsection{MariaDB}
 
       %TODO
+
+  \section{Travailler à plusieurs}\label{sec:git}
+
+    Git\footnote{Git est un logiciel développé par Linux Torvals (fondateur de Linux) qui permet de versionner un projet. Ainsi il rend la collaboration beaucoup plus facile.} est énormément utilisé dans le monde du développement de logiciel. Son éfficacité n'est plus à prouver. Pour construire iSignif, j'ai immédiatement décidé d'appliquer la méthodologie \textbf{Git Flow}.
+
+    \begin{figure}
+      \includegraphics[width=\linewidth]{img/git-flow.png}
+      \caption{Schéma du \textit{workflow} de Git Flow.}
+      \label{fig:git-flow}
+    \end{figure}
+
+    Git Flow impose une convention de travail avec Git (voir figure \ref{fig:git-flow}). Sur ce schéma, on retrouve:
+
+    \begin{description}
+      \item[en vert] la branche \verb|master| correspond à l'état actuel de l'application en production.
+      \item[en rouge] la branche \verb|develop| contient tous les nouveaux développement qui seront publié lors de la prochaine mise en production.
+      \item[en bleu] cela correspond à une \verb|feature|, c'est à dire une fonctionnalité développé indépendament de l'application.
+      \item[en jaune] il s'agit d'une \verb|release|, c'est à dire une mise en publication de tous les développement validés.
+      \item[en gris] Il s'agit d'un \verb|hotfix|. Ce sont des petits correctifs fait à la fois sur la branche \verb|master| et \verb|develop|.
+    \end{description}
+
+    Cette méthodologie permet ainsi de travailler à plusieurs sans se géner puisque chaque développeur peut travailler indépendament sur une branche \verb|feature|. De plus, ceci me permet de faire des mise en production régulièrement (j'en parlerai plus en détails dans la section \ref{sec:deployments}).
 
 \chapter{Développement de la plateforme}
 
@@ -447,7 +477,7 @@
 
       \paragraph{Injection SQL}
 
-        L'injection SQL consite à injecter du code SQL\footnote{Le code SQL est utilisé pour envoyer des requêtes sur la base de données}. Comme le montre la figure \ref{sql_injection}, les injection SQL sont très faciles.
+        L'injection SQL consite à injecter du code SQL\footnote{Le code SQL est utilisé pour envoyer des requêtes sur la base de données}. Comme le montre la figure \ref{fig:sql_injection}, les injection SQL sont très faciles.
 
         Rails échappe par défaut tous les paramètres envoyés par l’utilisateur.
 
@@ -455,7 +485,7 @@
           \centering
           \includegraphics[width=0.5\textwidth]{img/sql_injection.png}
           \caption{Une tentative d'injection SQL sur un formulaire de contact}
-          \label{sql_injection}
+          \label{fig:sql_injection}
         \end{figure}
 
       \paragraph{Injection JS}
@@ -498,6 +528,64 @@
       \end{scriptsize}
 
 
+  \section{Audit de sécurité}
+
+    \subsection{Vérifier les ports ouverts}
+
+      La première étape pour un hacker est la \textbf{reconnaissance de la cible}. Cette étape consiste à obtenir le maximum d'informations sur la victime. Nous devons donc cacher le plus d'informations possible à propos de notre serveur.
+
+      Une des information facile à obtenir pour un hacker est les port ouverts sur le serveur. Les ports sont en quelques sortent des portes ouvertes sur le réseaux.
+
+      Donc, dans un premier temps, j'ai simplement effectué un scan des ports sur mon serveur\footnote{Malgré sur ce qu'on peut entendre, le scan de port est tout à fait légal. \url{http://www.infond.fr/2010/09/legalite-du-scan-de-port.html}} avec \verb|nmap|\footnote{NMAP est un scanner de port} (voir listing \ref{lst:nmap})
+
+      \begin{scriptsize}
+        \begin{lstlisting}[language=bash, caption={Un san des port sur le serveur d'iSignif en novembre 2018}, label={lst:nmap}]
+        $ sudo nmap isignif.fr -A
+
+        Starting Nmap 7.60 ( https://nmap.org ) at 2018-11-16 11:25 CET
+        Nmap scan report for isignif.fr (51.75.24.68)
+        ...
+        PORT     STATE    SERVICE      VERSION
+        21/tcp   open     tcpwrapped
+        22/tcp   open     ssh          OpenSSH 7.6p1 Ubuntu 4ubuntu0.1 (Ubuntu Linux; protocol 2.0)
+        ...
+        80/tcp   open     http         Apache httpd 2.4.29
+        ...
+        443/tcp  open     ssl/ssl      Apache httpd (SSL-only mode)
+        ...
+        Running (JUST GUESSING): Linux 3.X|4.X (86%), FreeBSD 6.X (85%)
+        ...
+        \end{lstlisting}
+      \end{scriptsize}
+
+      On voit donc que beaucoup d'informations ressortent du scan comme:
+
+      \begin{itemize}
+        \item l'utilisation d'OpenSSH port 22
+        \item l'utilisation d'Apache HTTPD port 22 / 443
+      \end{itemize}
+
+      NMAP nous fournis aussi le numéro de la version des logiciels utilisés. Cela peut servir à trouver des vulnérabilités. Je vous montrerai comment j'ai masqué certains de ses informations lors de la sous-section \ref{subsec:change_ports}.
+
+    \subsection{Réalisation d'un scan de vulnérabilité}
+
+      Afin de connaitre les vulnérabilité de mon instalation, j'ai décidé de faire un scan de vulnérabilité en utilisant \href{https://www.metasploit.com/}{Metasploit}\footnote{Metasploit Framework est un logiciel écrit en Ruby permettant le développement et l’utilisation d'exploit. Les exploits sont des vulnérabilités qui permettent d’exécuter du code sur une machine distante.} et \href{http://www.openvas.org/}{OpenVAS}\footnote{OpenVAS est un scanneur de vulnérabilités libre issu du fork de Nessus.}.
+
+      Le scan de vulnérabilité est illégal à moins que le serveur nous appartienne ou bien qu'une autorisation du propriétatire est donné. Dans mons cas, le serveur m'apaprtiens.
+
+      OpenVAS s'appuie sur les \href{https://cve.mitre.org/}{CVE (Common Vulnerabilities and Exposures)}. Il s'agit d'une base de données des vulnérabilités connues.
+
+      Plusieurs types de scan sont possibles, j'ai choisis d'utiliser le plus complet, qui est ausi le plus long. J'ai donc obtenu le résultat que l'on peu voir figure \ref{fig:openvas_report} (le rapport complet est disponnible annexe \ref{openvas_report}).
+
+      \begin{figure}
+        \includegraphics[width=\linewidth]{img/kali_openvas_report.png}
+        \caption{Capture d'écran du rapport de scan d'OpenVAS}
+        \label{fig:openvas_report}
+      \end{figure}
+
+      On peut voir que globalement mon serveur possède peu de vulnérabilités. Ceci est sement du au fait que je met à jours les paquets quotidiennement et que donc, les logiciels sont à jours.
+
+
   \section{Sécurité du serveur}
 
     Sécuriser un serveur est un travail à part entière qui nécessite beaucoup compétences. De plus, absolument personne ne peut se narguer d'être invulnérable aux tentatives d'attaques. Je n'ai pas la prétention d'être un expert en sécurité donc il s'agit ici de mettre en places les protections de base.
@@ -516,13 +604,13 @@
         \end{lstlisting}
       \end{scriptsize}
 
-      C'est donc un petit geste mais celui-ci à des répercutions sur la confiances accordée par nos utilisateur et même sur le référencement\footnote{Google à annoncé en aout 2014 que le protocole HTTPS serait pris en compte dans l'algorithme de positionnement. \href{source}{https://webmaster-fr.googleblog.com/2014/08/le-protocole-https-en-tant-que-facteur.html}}.
+      C'est donc un petit geste mais celui-ci à des répercutions sur la confiances accordée par nos utilisateur et même sur le référencement\footnote{Google à annoncé en aout 2014 que le protocole HTTPS serait pris en compte dans l'algorithme de positionnement. \url{https://webmaster-fr.googleblog.com/2014/08/le-protocole-https-en-tant-que-facteur.html}}.
 
     \subsection{Groupe sudo}
 
       Comme je l'ai évoqué plus haut, j'ai déjà crée un utilisateur spécifique pour l'application que j'ai rajouté dans le groupe des sudoers. Une des actions qui peut être mis en place facilement est de supprimer cet utilisateur du groupe sudo. Ceci permet d'éviter l’élévation des privilèges\footnote{Un des premier objectif d'un hacker va être de vouloir obtenir des privilèges plus élevé afin de pouvoir effectuer des actions ayant de plus grandes conséquences}.
 
-    \subsection{Modifier le port par défaut}
+    \subsection{Modifier le port par défaut}\label{subsec:change_ports}
 
       En regardant les logs d'un serveur, on peut remarquer une quantité importante de tentative de connexion SSH\footnote{Le protocole SSH permet de se connecter à distance à un ordinateur}. Ceci est du au fait que beaucoup de hacker ont mis au point des scripts qui tentent de se connecter en utilisant des dictionnaires de mots de passe.
 
@@ -535,14 +623,7 @@
        \href{https://www.fail2ban.org/wiki/index.php/Main_Page}{Fail2ban} est un petit utilitaire écrit en Python qui va s’occuper d'analyser les logs du serveur. Il va donc mettre sur liste noir les adresses IP qui ont tenté de se connecter plusieurs fois avec un mot de passe erroné.
 
 
-  \section{Audit de sécurité}
 
-    \begin{figure}[h!]
-      \includegraphics[width=\linewidth]{img/kali_openvas_report.png}
-      \caption{Capture d'écran du rapport de scan d'OpenVAS}
-    \end{figure}
-
-    Voir le rapport complet via annexe \ref{openvas_report}
 
 \chapter{Amélioration continue}
 
@@ -575,45 +656,90 @@
 
     \subsection{Oubliez-moi}
 
-      \href{L'article 17 de la RGPD}{https://gdpr-info.eu/art-17-gdpr/} nous oblige à implémenter une fonctionnalité "Oubliez-moi". Celle-ci doit permettre à l'utilisateur d'effacer toutes ses données immédiatement. La ou cela se complique, c'est que la RGPD nous oublige aussi à demander la suppression des données chez des fournisseurs tiers. Ainsi, si nous utilisons des services externes\footnote{Salesforce, Hubspot, Twitter, ou tout autre fournisseur de service cloud} il faut accéder à leur API afin de demander la suppression.
-
-      \subsubsection{Exemple}
+      \href{L'article 17 de la RGPD}{https://gdpr-info.eu/art-17-gdpr/} nous oblige à implémenter une fonctionnalité \textquote{Oubliez-moi}. Celle-ci doit permettre à l'utilisateur d'effacer toutes ses données immédiatement. La ou cela se complique, c'est que la RGPD nous oublige aussi à demander la suppression des données chez des fournisseurs tiers. Ainsi, si nous utilisons des services externes\footnote{Salesforce, Hubspot, Twitter, ou tout autre fournisseur de service cloud} il faut accéder à leur API afin de demander la suppression.
 
       La difficulté de cette fonctionnalité est de supprimer les données liées à l'utilisateur sans impacter les données qui sont liées aux autres utilisateurs.
 
-      Concrètement, lorsqu'un huissier de la justice décide de supprimer son compte, il faut:
+      \subsubsection{Exemple avec un huissier de justice}
 
-      \begin{itemize}
-        \item supprimer son compte et ses données (logique)
-        \item supprimer toutes ses factures
-        \item supprimer les significations\footnote{L'acte de présenter en main propre un acte de signification à quelqu'un} qu'il a effectué
-      \end{itemize}
+        Concrètement, cela signifie que lorsqu'un huissier de justice décide de supprimer son compte, il faut:
 
-      Cependant je ne peux pas supprimer les significations puisqu'elles doivent apparaître pour l'avocat qui a demandé la signification de son acte. Il faut donc supprimer uniquement la liaison existante:
+        \begin{itemize}
+          \item supprimer son compte et ses données (logique)
+          \item supprimer toutes ses factures
+          \item supprimer les significations\footnote{L'acte de présenter en main propre un acte de signification à quelqu'un} qu'il a effectué
+        \end{itemize}
 
-      ActiveRecord (l'ORM\footnote{Un ORM fait interface entre le code et la base de données, voir \href{https://fr.wikipedia.org/wiki/Mapping_objet-relationnel}{la définition complète sur Wikipedia}} de Ruby on Rails) fait ça très facilement.
+        Cependant je ne peux pas supprimer les significations puisqu'elles doivent être conservée pour l'avocat qui a demandé la signification de son acte.
 
-      \begin{scriptsize}
-        \begin{lstlisting}[language=ruby]
-        class Bailiff < User
-          has_many :significations, dependent: :nullify
-          has_many :relationships, dependent: :delete_all
-          has_many :bills, dependent: :delete_all
-          # ...
-        end
-        \end{lstlisting}
-      \end{scriptsize}
+        C'est pour cela que j'ai préféré l'\textbf{anonymization} des données.
+
+        Etant un fan de la TDD (\textit{Test Driven Development})\footnote{Le TDD (Développement Dirigé par les Test dans la langue de molière) est une méthodologie qui consiste à développer le test unitaire avant le développement de la fonctionnalité.}, j'ai donc commencé par construire le test.
+
+        \begin{scriptsize}
+          \begin{lstlisting}[language=ruby]
+          # test/models/bailiff_test.rb
+          require 'test_helper'
+
+          class BailiffTest < ActiveSupport::TestCase
+            # ...
+
+            test 'should anonymize and not destroy record' do
+              old_user = @bailiff.as_json
+
+              # on verifie que l'huissier n'est pas supprime en base
+              assert_no_difference('Bailiff.count') { @bailiff.destroy }
+
+              # on verifie que tous les champs suivants on ete modifies
+              %i[email firstname lastname siret company_name town zip_code address_2 address_1].each do |field|
+                assert_not_equal old_user[field], @bailiff.send(field)
+              end
+
+              # et pour terminer, un champ 'deleted' a dut etre passe a 'true'
+              assert @bailiff.deleted
+            end
+          end
+          \end{lstlisting}
+        \end{scriptsize}
+
+
+        ActiveRecord (l'ORM\footnote{Un ORM fait interface entre le code et la base de données, voir \href{https://fr.wikipedia.org/wiki/Mapping_objet-relationnel}{la définition complète sur Wikipedia}} de Ruby on Rails). J'ai donc simplement surchargé la méthode \verb|destroy| et utilisé la librairie \verb|Faker|\footnote{Il s'agit d'une librairie utilisée pour générer des fausse données en tout genre}:
+
+        \begin{scriptsize}
+          \begin{lstlisting}[language=ruby]
+          # app/models/user.rb
+          class User < ApplicationRecord
+
+            # ...
+
+            def destroy
+              # ...
+
+              update_attributes(
+                email: new_email,
+                firstname: Faker::Name.first_name,
+                lastname: Faker::Name.last_name,
+                siret: Faker::Company.french_siret_number,
+                # ...
+                deleted: 1
+              )
+
+              save
+            end
+          end
+          \end{lstlisting}
+        \end{scriptsize}
+
+        Et voilà, la mise en conformité est faite. L'huissier ou l'avocat pourra supprimé son compte et les données seront conservées. En revanche, il sera impossible de retrouver l'utilisateur correspondant à ces données.
 
     \subsection{Cookies}
     \subsection{Chiffrement des données}
 
-  \section{Déploiement continue}
-
-
+  \section{Déploiement continue}\label{sec:deployments}
 
     Afin d'être le plus réactif possible, j'ai voulu mettre en place un outil afin d'automatiser les mises en production. Cela est un énorme avantage car il permet de mettre en ligne un correctif ou une évolution très rapidement. De plus, automatiser permet de réduire le risque de l'erreur humaine (\href{https://www.reddit.com/r/webdev/comments/5rd79m/gitlab_employee_just_ran_rm_rf_on_their/}{et cela est vite arrivé}...).
 
-    Pour cela, j'ai utilisé la librairie \href{https://capistranorb.com}{Capistrano}. Capistrano est un outil écrit en Ruby qui permet d'automatiquement le déploiement en s'appuyant sur Git. Il va donc:
+    Pour cela, j'ai utilisé la librairie \href{https://capistranorb.com}{Capistrano}. Capistrano est un outil écrit en Ruby qui permet d'automatiquement le déploiement en s'appuyant sur Git (rappelez vous de mon utilisation de Git Flow section \ref{sec:git}). Il va donc:
 
     \begin{itemize}
       \item Cloner le répertoire Git afin de récupérer la dernière version du code source
@@ -635,7 +761,7 @@
     \end{lstlisting}
     \end{scriptsize}
 
-  \section{Retours des utilisateurs}
+  \section{Retours des utilisateurs}\label{sec:feedback}
 
     \subsection{Service après vente}
 
@@ -668,7 +794,7 @@
         \item Sponsored InMail, la publicité est envoyée directement par chat et permet donc de démarrer une discussion avec l'utilisateur s'il le souhaite
       \end{itemize}
 
-      \begin{figure}[h!]
+      \begin{figure}
         \includegraphics[width=\linewidth]{img/linkedin_sponsored_content.png}
         \caption{la publicité de type Sponsored Content propose un contenu riche}
         \label{linkedin_sponsored_content}

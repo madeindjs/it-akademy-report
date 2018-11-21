@@ -592,7 +592,7 @@
 
       OpenVAS s'appuie sur les \href{https://cve.mitre.org/}{CVE (Common Vulnerabilities and Exposures)}. Il s'agit d'une base de données des vulnérabilités connues.
 
-      Plusieurs types de scan sont possibles, j'ai choisis d'utiliser le plus complet, qui est aussi le plus long. J'ai donc obtenu le résultat que l'on peu voir figure \ref{fig:openvas_report} (le rapport complet est disponible annexe \ref{openvas_report}).
+      Plusieurs types de scan sont possibles, j'ai choisis d'utiliser le plus complet, qui est aussi le plus long. J'ai donc obtenu le résultat que l'on peu voir figure \ref{fig:openvas_report} (le rapport complet est disponible annexe \ref{apx:openvas_report}).
 
       \begin{figure}
         \includegraphics[width=\linewidth]{img/kali_openvas_report.png}
@@ -641,9 +641,6 @@
 
        \href{https://www.fail2ban.org/wiki/index.php/Main_Page}{Fail2ban} est un petit utilitaire écrit en Python qui va s’occuper d'analyser les logs du serveur. Il va donc mettre sur liste noir les adresses IP qui ont tenté de se connecter plusieurs fois avec un mot de passe erroné.
 
-
-
-
 \chapter{Amélioration continue}
 
   \section{RGPD}
@@ -660,7 +657,7 @@
       \item le droit d'accès à toutes les données de l'utilisateur
     \end{itemize}
 
-    Il faut qu'il y ait un Délégué à la Protection des Données (DPD).
+    Il faut qu'il y ait un \href{https://www.cnil.fr/fr/devenir-delegue-la-protection-des-donnees}{Délégué à la Protection des Données}. la \href{https://fr.wikipedia.org/wiki/Commission_nationale_de_l%27informatique_et_des_libert%C3%A9s_(France)}{CNIL}\footnote{La Commission nationale de l'informatique et des libertés est l'autorité française qui est chargée de veiller à ce que l’informatique.} précisie que le délégué \textquote{doit être désigné sur la base de ses qualités professionnelles et de ses connaissances spécialisées du droit en matière de protection des données}. J'ai donc choisit de me porter volontaire pour ce rôle (Voir annexe \ref{apx:dpo})
 
     % pompé sur https://bohzo.developpez.com/rgpd-guide-pratique-developpeurs
 
@@ -852,11 +849,18 @@
 
     %TODO
 
+% annexes
 
-    \begin{appendix}
-        \chapter{Rapport de scan OpenVAS}
-        \label{openvas_report}
-        \includepdf[pages=-]{annexes/openvas_report.pdf}
-    \end{appendix}
+\begin{appendix}
+    \chapter{Rapport de scan OpenVAS}\label{apx:openvas_report}
+    \includepdf[pages=-]{annexes/openvas_report.pdf}
+
+    \chapter{Désignation délégué
+à la protection des données}\label{apx:dpo}
+    \includepdf[pages=-]{annexes/dpo.pdf}
+
+    \chapter{Brocure commerciale d'iSignif}\label{apx:brochure}
+    \includepdf[pages=-]{annexes/brochure.pdf}
+\end{appendix}
 
 \end{document}

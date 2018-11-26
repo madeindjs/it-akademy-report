@@ -43,69 +43,47 @@
 
 \chapter{Préface}
 
+  \section{licence}
+
+    Cet document est mis à disposition par Alexandre Rousseau sous licence Creative Commons Attribution -  Partage dans les Mêmes Conditions 4.0 International. Pour accéder à une copie de cette licence, merci de vous rendre à l'adresse suivante \url{http://creativecommons.org/licenses/by-sa/4.0/} ou envoyez un courrier à Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA.
+
+    Tout le code source de ce document (rédigé en \LaTeX) est disponnible sur le repertoire Git suivant: \url{http://git.rousseau-alexandre.fr/madeindjs/it_report}.
+
   \section{Remerciements}
 
     %TODO
 
-  \section{Introduction}
+  \section{Introduction}\label{sec:introduction}
 
-    Dans le souhait de me former et de progresser continuellement, je me suis inscrit sur le site  \href{https://cofondateur.fr}{cofondateur.fr} . Ce réseau social met en relation des entrepreneurs qui cherchent des développeurs pour construire leurs idées. C'est ainsi que je suis rentré en contact avec une startup qui cherchait un profil technique pour la réalisation de leur projet.
+    Dans le souhait de me former et de progresser continuellement, je me suis inscrit sur le site  \href{https://cofondateur.fr}{cofondateur.fr}. Ce réseau social met en relation des entrepreneurs qui cherchent des développeurs pour construire leurs idées. C'est ainsi que je suis rentré en contact avec une startup qui cherchait un profil technique pour la réalisation de leur projet.
+
+    J'ai donc décider de construire mon mémoire uniquement sur ce projet car il met en avant la construction d'un projet de A à Z. J'ai donc fais le choix d'organiser mon mémoire de façon chronologique (dans la mesure du possible), c'est-à-dire:
+
+    \begin{itemize}
+      \item la planification du projet
+      \item le développement du projet
+      \item la mise en place du serveur de production
+      \item la collecte des retours utilisateurs
+      \item la promotion du produit
+    \end{itemize}
 
     Cette expérience  m'a permis de sortir de ma zone de confort et ainsi de construire un projet de A à Z.
 
 \chapter{Présentation du projet}
 
-  Les deux cofondateurs sont Adrien ORION et Sacha PARTENSKY, deux étudiants en droit à l’université Lyon 3 Jean Moulin. Au stade de la rencontre, ils avaient créé la société et elle était suivie par un incubateur\footnote{un incubateur est une société externe qui aide à la création d'un startup}.
-
-  \section{La société}
-
-    La société fait partie des LegalTech\footnote{Une LegalTech peut se définir comme une startup de droit en ligne qui propose aux entreprises et aux particuliers une offre numérique} créée en tant que iSignif SAS. Il s'agit donc d'une Société par actions simplifiées. Ce type de société nous a permis de rédiger un pacte d'actionnaires et ainsi de partager les droits de décision équitablement.
-
-    \begin{figure}
-      \includegraphics[width=\linewidth]{img/logo.png}
-      \caption{Le logo d'iSignif}
-    \end{figure}
-
-    Quelques semaines plus tard, nous signions ensemble le nouveau pacte d'actionnaires. Nous redéfinissions ainsi les parts et les rôles des nouveaux associés:
-
-    \begin{itemize}
-      \item Adrien ORION, cofondateur et directeur général, associé à hauteur de 31,5\%
-      \item Sacha PARTENSKY, cofondateur et Président à hauteur de 41,5\%
-      \item Alexandre ROUSSEAU, CTO, associé à hauteur de 25\%
-    \end{itemize}
-
-    J'ai donc choisi un rôle de sociétaire car c'est compatible avec mon statut de salarié chez GAC Technology.
-
-  \section{Statut juridique}
-
-    % https://www.lecoindesentrepreneurs.fr/pourquoi-creer-une-sasu/
-
-    La SASU\footnote{Société par Actions Simplifiée Unipersonnelle} est le statut privilégié. Les avantages de ce statut juridique sont:
-
-    \begin{itemize}
-      \item Responsabilité de l'associé unique limitée au montant de son apport
-      \item Possibilité de nommer un DG assistant le Président associé-unique
-      \item Montant minimal de capital social de 1 euro
-      \item Régime social des assimilés-salariés pour le gérant = protection accrue et cotisations au prorata de la rémunération
-    \end{itemize}
-
-    L'inconvénient de ce statut est qu'il est plus difficile à mettre en place et qu'il faut rédiger tous les statuts par écrit. Dans notre cas, ce statut est parfait puisque mes associés ont les compétences pour rédiger les \textquote{formalités}.
+  Comme je l'ai rapidement présenté dans de mon introduction (Section \ref{sec:introduction}), j'ai eu l'opportunité de construire un projet à partir d'une idée. Je vais donc commencer par vous présenter l'idée. L'idée de base a pour ambition de créer un société de type LegalTech\footnote{Une LegalTech peut se définir comme une startup de droit en ligne qui propose aux entreprises et aux particuliers une offre numérique}. Il s'agit donc d'un produit destiné au marché du droit.
 
   \section{Analyse du besoin}
 
-    %% pompé sur plaquette invest.docx
+    Réalisée par un huissier de justice, la signification a pour but de porter les actes judiciaires\footnote{assignation en justice, jugement, sommation de payer ou de faire, congés, demandes de renouvellement du bail commercial...} à la connaissance des intéressés. Toutefois, les actes sont souvent adressés à plusieurs destinataires résidents dans des villes éloignées. Ceci demande un effort chronophage pour les demandeurs de signification qui doivent contacter les huissiers compétents pour chaque adresse (voir figure \ref{fig:signification_before}).
 
-    Réalisée par un huissier de justice, la signification a pour but de porter les actes judiciaires\footnote{assignation en justice, jugement, sommation de payer ou de faire, congés, demandes de renouvellement du bail commercial...} à la connaissance des intéressés. 
-
-    Toutefois, les actes sont souvent adressés à plusieurs destinataires résidents dans des villes éloignées. Ceci demande un effort chronophage pour les demandeurs de signification qui doivent contacter les huissiers compétents pour chaque adresse (voir figure \ref{fig:signification_before}).
-
-    \begin{figure}[h!]
+    \begin{figure}
       \includegraphics[width=\linewidth]{img/signification_before.png}
       \caption{Un acte doit être notifié en main propre pour chaque destinataire}
       \label{fig:signification_before}
     \end{figure}
 
-    L'idée d'iSignif est donc de créer une plateforme afin de simplifier le processus de signification en centralisant les demandes et en les répartissant automatiquement vers un huissier compétent du réseau  (voir figure \ref{fig:signification_after}).
+    L'idée est donc de créer une plateforme afin de simplifier le processus de signification en centralisant les demandes et en les répartissant automatiquement vers un huissier compétent du réseau  (voir figure \ref{fig:signification_after}).
 
     \begin{figure}
       \includegraphics[width=\linewidth]{img/signification_after.png}
@@ -113,9 +91,47 @@
       \label{fig:signification_after}
     \end{figure}
 
+    Vous pouvez consulter la brochure (annexe \ref{apx:brochure}) pour en savoir plus à propos de notre activité.
+
+
+    %% pompé sur plaquette invest.docx
+
+
+
+
+  \section{La société}
+
+    Les deux cofondateurs sont Adrien ORION et Sacha PARTENSKY, deux étudiants en droit à l’université Lyon 3 Jean Moulin. Au stade de la rencontre, ils avaient créé la société en tant que iSignif SAS (voir section \ref{sec:sas}). C'est une société par actions simplifiées. Ce type de société nous a permis de rédiger un pacte d'actionnaires et ainsi de partager les droits de décision équitablement. Elle était suivie par un incubateur\footnote{un incubateur est une société externe qui aide à la création d'un startup}
+
+    \begin{figure}
+      \includegraphics[width=\linewidth]{img/logo.png}
+      \caption{Le logo d'iSignif}
+    \end{figure}
+
+    Lors de la rencontre, Sacha et Adrien m'ont présenté l'idée génrale du produit. Sentant rapidmeent le potentiel, j'ai accepté de devenir associé et j'ai ainsi signé le nouveau pacte d'actionnaires. Nous redéfinissions ainsi les parts et les rôles des nouveaux associés:
+
+    \begin{itemize}
+      \item Adrien ORION, cofondateur et directeur général, associé à hauteur de 31,5\%
+      \item Sacha PARTENSKY, cofondateur et Président à hauteur de 41,5\%
+      \item Alexandre ROUSSEAU, associé et directeur technique, associé à hauteur de 25\%
+      \item Antoinne DELETTRE, associé et designer web, associé à hauteur de 2\%
+    \end{itemize}
+
+    J'ai donc choisi un rôle de sociétaire car c'est compatible avec mon statut de salarié chez GAC Technology.
+
+  \section{Statut juridique}\label{sec:sas}
+
+    % https://www.lecoindesentrepreneurs.fr/pourquoi-creer-une-sasu/
+
+    La SASU \textit{(Société par Actions Simplifiée Unipersonnelle)} est le statut privilégié. Les avantages de ce statut juridique sont une grande liberté sur les règles définies dans le pacte d'actionnaires et une responsabilité limité aux apports.
+
+    L'inconvénient de ce statut est qu'il est plus difficile à mettre en place car il faut rédiger un pacte d'actionnaire complet. Dans notre cas, ce statut est parfait puisque mes associés ont les compétences pour rédiger documents administratifs.
+
+    Pour en savoir plus sur ce régime, je vous invite à consulter \href{https://www.lecoindesentrepreneurs.fr/pourquoi-creer-une-sasu/}{cet article}
+
   \section{Business plan}
 
-    La grande problématique de notre activité est que la loi interdit toute forme de publicité pour les huissiers. Il est donc important qu'on ne favorise pas certains huissier plutôt que d'autres. Nous avons donc choisit un système qui répartie par ordre d'arrivée les demande de significations.
+    La grande problématique de notre activité est que la loi interdit toute forme de publicité pour les huissiers. Il est donc important qu'on ne favorise pas certains huissier plutôt que d'autres. Nous avons donc choisit un système qui répartie par ordre d'arrivée les demande de significations équitablement.
 
     Notre modèle économique réside sur l'idée de facturer les huissiers en fonction du nombre d'affaire qu'on leur apporte. Pour faire cela, nous avons eu plusieurs idées:
 
@@ -130,7 +146,7 @@
 
   \section{Réalisation du cahier des charges}
 
-    L'idée est donc de construire une plateforme qui centralise toutes les demandes. Ces demandes doivent être accessibles:
+    L'idée était donc de construire une plateforme qui centralise toutes les demandes. Ces demandes doivent être accessibles:
 
     \begin{itemize}
       \item à n'importe quel moment
@@ -139,37 +155,21 @@
 
     Il était donc naturel de se tourner vers une application web qui convient à ce besoin.
 
-    Nous avons donc rédigé un premier cahier des charges. Ce premier de cahier des charges correspond à la version bêta qui sera proposée aux bêta testeurs. Cette version doit donc être fonctionnelle.
+    Nous avons donc rédigé un premier cahier des charges. Ce premier de cahier des charges correspond à la version bêta qui sera proposée aux bêta testeurs. Cette version doit donc être fonctionnelle. Voici donc quelques unes de ces fonctionnalités:
 
-    \subsection{Système de connexion}
+    \begin{description}
+      \item[Système de connexion] Comme la plupart des sites web, la plateforme doit posséder un système de connexion. Nous devons pouvoir connaître l’identité de la personne qui navigue sur le site et interdire certaines fonctionnalités à certains types de comptes. Par exemple un huissier ne pourra pas créer d'actes à signifier.
+      \item[Estimation du coût d'un acte] Il s'agit d'une des fonctionnalité les plus attractives pour l'avocat. Il doit pouvoir, en un minimum de clic, avoir une estimation du coup de son acte. Sachant que cette page sera le point d'entrée de l'application, elle doit être le plus simple possible. Cette page devra donc être en Single Page.
+      \item[Workflow de la signification] % TODO
+      \item[Workflow d'annulation] % TODO
+      \item[Création des factures] Afin d'éviter le stockage sur le serveur, nous avons pensé à stocker directement les informations des factures en base de données. Ainsi, la plateforme sera capable de générer des factures sous forme de fichier PDF directement à la demande. Cette méthode a néanmoins l'inconvénient d'utiliser plus de ressources car on peut générer plusieurs fois la même facture.
+      \item[Administration] % TODO
+    \end{description}
 
-      Comme la plupart des sites web, la plateforme doit posséder un système de connexion. Nous devons pouvoir connaître l’identité de la personne qui navigue sur le site et interdire certaines fonctionnalités à certains types de comptes. Par exemple un huissier ne pourra pas créer d'actes à signifier.
-
-    \subsection{Estimation du coût d'un acte}
-
-      Il s'agit d'une des fonctionnalité les plus attractives pour l'avocat. Il doit pouvoir, en un minimum de clic, avoir une estimation du coup de son acte. Sachant que cette page sera le point d'entrée de l'application, elle doit être le plus simple possible. Cette page devra donc être en Single Page.
-
-    \subsection{Création des factures}
-
-      Afin d'éviter le stockage sur le serveur, nous avons pensé à stocker directement les informations des factures en base de données. Ainsi, la plateforme sera capable de générer des factures sous forme de fichier PDF directement à la demande. Cette méthode a néanmoins l'inconvénient d'utiliser plus de ressources car on peut générer plusieurs fois la même facture.
-
-    \subsection{Parrainage}
-
-      Les avocats peuvent choisir de travailler avec certains huissiers qui ne font pas partie du réseau iSignif. Ainsi, il leur sera possible d'inviter des huissiers externes à rejoindre le réseau.
-
-    \subsection{Statistiques}
-
-      % TODO
-
-    \subsection{Administration}
-
-      % TODO
 
   \section{Conceptualiser et modéliser les données}
 
-    Lors de la rencontre avec les cofondateurs, nous avions échangé à propos des fonctionnalités de l'application. A la fin de la réunion, ils m'ont remis plusieurs documents dont une ébauche de cahier des charges.
-
-    A mon sens, la suite logique était de valider la conception d'un modèle de donnée. Ceci permet de valider la compréhension de logique métier et la faisabilité du projet. De plus, cette étape m'a permis d'estimer le temps que le projet allait me coûter en terme de temps.
+    Lors de la rencontre avec les cofondateurs, nous avions échangé à propos des fonctionnalités de l'application. A la fin de la réunion, ils m'ont remis plusieurs documents dont une ébauche de cahier des charges. A mon sens, la suite logique était de valider la conception d'un modèle de donnée. Ceci permet de valider la compréhension de logique métier et la faisabilité du projet. De plus, cette étape m'a permis d'estimer le temps que le projet allait me coûter en terme de temps.
 
     J'ai donc choisi la méthode Merise que j'ai eu l'occasion de découvrir en cours à l'IT-AkAdemy. Bien que moins actuelle elle permet de réaliser un graphique compréhensible par des profils non-techniques.
 
@@ -215,8 +215,6 @@
           \item les huissiers qui peuvent signifier les demandes auxquelles ils sont affectés
           % -- vérification lorène
         \end{itemize}
-
-    \subsection{Résultats final}
 
       %% bailif here
       J'ai donc obtenu le résultat final que l'on peut voir sur la figure \ref{fig:merise_zoom} et le diagramme complet figure \ref{fig:merise}.
@@ -269,13 +267,9 @@
 
     \subsection{Reunion pré-lancement}
 
-      - remontée des beugs
-      - création de la documentation
-      - pas le droit à l'erreur
+      Cette réunion a eu lieu le 22 novembre. A ce moment, le produit était prêt pour le lancement en bêta. Nous étions conscient que le lancement était un moment crucial pour notre société. Les mauvais retours se propagent vite et nous n'avions pas le droit à l'erreur.
 
-      %TODO
-
-
+      Nous avons donc choisit de tester notre produit sur quelques simulations entre nous afin de valider toutes les fonctionnalités. Ces tests nous ont permit de dénicher quelques bogues mineurs et d'analyser quelques fonctionnalités clefs manquantes. Nous avons donc pris la décision de retarder un peu le déploiement de notre produit afin d'améliorer la qualité.
 
   \section{Méthode Kanban}
 
@@ -305,7 +299,7 @@
           \item générique aux besoins des différents clients
         \end{itemize}
 
-      \paragraph{Colonne \textquote{à faire"}}
+      \paragraph{Colonne \textquote{à faire}}
 
         Cette colonnes réunit les tâches qui seront nécessaires après le déploiement de la bêta.
 
@@ -322,8 +316,6 @@
         \caption{Capture d'écran de notre tableau Kanban en septembre 2018}
         \label{fig:trello}
       \end{figure}
-
-      Première version bêta pour septembre 2018
 
   \section{Rédiger les spécifications techniques}
 
@@ -348,7 +340,9 @@
 
       J'ai néanmoins choisis de mettre en place Vue.JS, un \textit{framework front-end} pour designer les pages qui demandent le plus d’interactions. J'ai choisis Vue.JS au lieu de React ou Angular car c'est le plus simple à mettre en place.
 
-    \subsection{MariaDB}
+    \subsection{From future}
+
+      Un bon choix mais j'aurais du m'orienter vers une architecture API en découplant front et back.
 
       %TODO
 
@@ -476,6 +470,48 @@
         MariaDB > GRANT ALL PRIVILEGES ON isignif . * TO 'isignif'@'localhost';
         \end{lstlisting}
       \end{scriptsize}
+
+  \section{Sauvergarde Automatique du serveur}
+
+    En terme de sauvegarde il existe plusieurs stratégies. Pour ma part, les conditions étaient d'avoir des sauvegardes quotidienent et automatique. J'ai donc fait le choix de créer moi-même un script \verb|bash| (listing \ref{fig:backup}) de sauvegarde de mon serveur en incluant:
+
+    \begin{itemize}
+      \item la basse de donnée MariaDB
+      \item les données \textit{uploadés} apr les utilisateurs
+    \end{itemize}
+
+    Pour executer ce script tous les jours, il m'a juste fallu installer un \verb|cron|. Vous pouvez donc voir une partie de mon script sur le listing \ref{fig:backup}.
+
+     \begin{scriptsize}
+       \begin{lstlisting}[language=bash, label={fig:backup}, caption={Script de sauvegarde automatique des données du serveur}]
+       #!/bin/bash
+       # backup_server.sh
+
+       # ...
+
+       sqldump_filename="dump_${today}.sql"
+       websites=(isignif test_isignif)
+
+       # ...
+
+       mysqldump --all-databases  > $sqldump_filename
+
+       # save all shared files (valid only for RoR application deployed with Capistrano)
+       for website in ${websites[*]}
+       do
+          cp -r "/var/www/${website}/shared/{config,public,storage}" "${website}/shared/"
+       done
+
+       # ...
+
+       cd /home/isignif/save
+       chown isignif:isignif -R $folder_save
+       tar -czvf "$foldername_save.tar.gz" $folder_save
+       chown isignif:isignif -R "$folder_save.tar.gz"
+       chmod 600 -R "$folder_save.tar.gz"
+       rm -r "$folder_save"
+       \end{lstlisting}
+     \end{scriptsize}
 
 \chapter{Sécurité}
 
@@ -640,39 +676,6 @@
       Comme je l'expliquait plus haut, beaucoup de hacker tentent de se connecter au serveur via la protocole SSH. De la même manière que pour les appels téléphonique, il est possible de bloquer ces tentatives.
 
        \href{https://www.fail2ban.org/wiki/index.php/Main_Page}{Fail2ban} est un petit utilitaire écrit en Python qui va s’occuper d'analyser les logs du serveur. Il va donc mettre sur liste noir les adresses IP qui ont tenté de se connecter plusieurs fois avec un mot de passe erroné.
-
-   \subsection{Sauvergarde Automatique du serveur}
-
-     \begin{scriptsize}
-       \begin{lstlisting}[language=bash, caption={Script de sauvegarde automatique des données du serveur}]
-       #!/bin/bash
-       # backup_server.sh
-
-       # ...
-
-       sqldump_filename="dump_${today}.sql"
-       websites=(isignif test_isignif)
-
-       # ...
-
-       mysqldump --all-databases  > $sqldump_filename
-
-       # save all shared files (valid only for RoR application deployed with Capistrano)
-       for website in ${websites[*]}
-       do
-          cp -r "/var/www/${website}/shared/{config,public,storage}" "${website}/shared/"
-       done
-
-       # ...
-
-       cd /home/isignif/save
-       chown isignif:isignif -R $folder_save
-       tar -czvf "$foldername_save.tar.gz" $folder_save
-       chown isignif:isignif -R "$folder_save.tar.gz"
-       chmod 600 -R "$folder_save.tar.gz"
-       rm -r "$folder_save"
-       \end{lstlisting}
-     \end{scriptsize}
 
 \chapter{Amélioration continue}
 

@@ -11,6 +11,7 @@
 \usepackage{listings}
 \usepackage{csquotes}
 \usepackage{lstautogobble}
+\usepackage{tcolorbox}
 
 
 \newcommand\fnurl[2]{%
@@ -62,7 +63,7 @@
 
     Dans le souhait de me former et de progresser continuellement, je me suis inscrit sur le site  \fnurl{https://cofondateur.fr}{cofondateur.fr}. Ce réseau social met en relation des entrepreneurs qui cherchent des développeurs pour construire leurs idées. C'est ainsi que je suis rentré en contact avec une startup qui cherchait un profil technique pour la réalisation de leur projet.
 
-    J'ai donc décider de construire mon mémoire uniquement sur ce projet car il met en avant la construction d'un projet de A à Z. J'ai donc fais le choix d'organiser mon mémoire de façon chronologique (dans la mesure du possible), c'est-à-dire:
+    J'ai donc décider de construire mon mémoire uniquement sur ce projet car il met en avant la construction d'un projet de A à Z. J'ai donc fais le choix d'organiser mon mémoire de façon chronologique (dans la mesure du possible). C'est-à-dire:
 
     \begin{itemize}
       \item la planification du projet
@@ -72,17 +73,18 @@
       \item la promotion du produit
     \end{itemize}
 
-    Cette expérience  m'a permis de sortir de ma zone de confort et ainsi de construire un projet de A à Z.
 
 \chapter{Présentation du projet}
 
-  Comme je l'ai rapidement présenté dans de mon introduction (Section \ref{sec:introduction}), j'ai eu l'opportunité de construire un projet à partir d'une idée. Je vais donc commencer par vous présenter l'idée. L'idée de base a pour ambition de créer un société de type LegalTech\footnote{Une LegalTech peut se définir comme une startup de droit en ligne qui propose aux entreprises et aux particuliers une offre numérique}. Il s'agit donc d'un produit destiné au marché du droit.
+  Comme je l'ai rapidement présenté dans de mon introduction (Section \ref{sec:introduction}), j'ai eu l'opportunité de construire un projet à partir d'une idée. Je vais donc commencer par vous la présenter.
+
+  L'idée de base a pour ambition de créer un société de type LegalTech\footnote{Une LegalTech peut se définir comme une startup de droit en ligne qui propose aux entreprises et aux particuliers une offre numérique}. Il s'agit donc d'un produit destiné au marché du droit.
 
   \section{Analyse du besoin}
 
     Réalisée par un huissier de justice, la signification a pour but de porter les actes judiciaires\footnote{assignation en justice, jugement, sommation de payer ou de faire, congés, demandes de renouvellement du bail commercial...} à la connaissance des intéressés. Toutefois, les actes sont souvent adressés à plusieurs destinataires résidents dans des villes éloignées. Ceci demande un effort chronophage pour les demandeurs de signification qui doivent contacter les huissiers compétents pour chaque adresse (voir figure \ref{fig:signification_before}).
 
-    \begin{figure}
+    \begin{figure}[!h]
       \includegraphics[width=\linewidth]{img/signification_before.png}
       \caption{Un acte doit être notifié en main propre pour chaque destinataire}
       \label{fig:signification_before}
@@ -90,7 +92,7 @@
 
     L'idée est donc de créer une plateforme afin de simplifier le processus de signification en centralisant les demandes et en les répartissant automatiquement vers un huissier compétent du réseau  (voir figure \ref{fig:signification_after}).
 
-    \begin{figure}
+    \begin{figure}[!h]
       \includegraphics[width=\linewidth]{img/signification_after.png}
       \caption{L'acte est centralisé et signifié à tous les destinataires}
       \label{fig:signification_after}
@@ -160,23 +162,23 @@
 
     Il était donc naturel de se tourner vers une application web qui convient à ce besoin.
 
-    Nous avons donc rédigé un premier cahier des charges. Ce premier de cahier des charges correspond à la version bêta qui sera proposée aux bêta testeurs. Cette version doit donc être fonctionnelle. Voici donc quelques unes de ces fonctionnalités:
+    Nous avons donc rédigé un premier cahier des charges qui correspond à la version bêta qui sera proposée aux bêta testeurs. Cette version doit être fonctionnelle. Voici donc quelques unes de ces fonctionnalités:
 
     \begin{description}
-      \item[Système de connexion] Comme la plupart des sites web, la plateforme doit posséder un système de connexion. Nous devons pouvoir connaître l’identité de la personne qui navigue sur le site et interdire certaines fonctionnalités à certains types de comptes. Par exemple un huissier ne pourra pas créer d'actes à signifier.
-      \item[Estimation du coût d'un acte] Il s'agit d'une des fonctionnalité les plus attractives pour l'avocat. Il doit pouvoir, en un minimum de clic, avoir une estimation du coup de son acte. Sachant que cette page sera le point d'entrée de l'application, elle doit être le plus simple possible. Cette page devra donc être en Single Page.
+      \item[système de connexion] afin de connaître l’identité de la personne qui navigue sur le site et interdire certaines fonctionnalités en fonction du types de comptes. Par exemple un huissier ne pourra pas créer d'actes à signifier.
+      \item[Estimation du coût d'un acte] afin de pouvoir, en un minimum de clic, avoir une estimation du coup d'un' acte. Sachant que cette page est le point d'entrée de l'application, elle doit être le plus simple possible. Cette page devra donc être en \textit{Single Page}.
       \item[Workflow de la signification] % TODO
       \item[Workflow d'annulation] % TODO
-      \item[Création des factures] Afin d'éviter le stockage sur le serveur, nous avons pensé à stocker directement les informations des factures en base de données. Ainsi, la plateforme sera capable de générer des factures sous forme de fichier PDF directement à la demande. Cette méthode a néanmoins l'inconvénient d'utiliser plus de ressources car on peut générer plusieurs fois la même facture.
+      \item[Création des factures] Afin d'éviter le stockage sur le serveur, nous avons pensé à stocker uniquement les informations des factures en base de données. La plateforme génèrera des des factures sous forme de fichier PDF à la demande\footnote{Cette méthode a néanmoins l'inconvénient d'utiliser plus de ressources car on peut générer plusieurs fois la même facture.}
       \item[Administration] % TODO
     \end{description}
 
 
   \section{Conceptualiser et modéliser les données}
 
-    Lors de la rencontre avec les cofondateurs, nous avions échangé à propos des fonctionnalités de l'application. A la fin de la réunion, ils m'ont remis plusieurs documents dont une ébauche de cahier des charges. A mon sens, la suite logique était de valider la conception d'un modèle de donnée. Ceci permet de valider la compréhension de logique métier et la faisabilité du projet. De plus, cette étape m'a permis d'estimer le temps que le projet allait me coûter en terme de temps.
+    Lors de la rencontre avec les cofondateurs, nous avions échangé à propos des fonctionnalités de l'application. A la fin de la réunion, ils m'ont remis plusieurs documents dont une ébauche de cahier des charges. A mon sens, la suite logique était de valider la conception d'un modèle de donnée. Ceci permet de valider la compréhension de logique métier et la faisabilité du projet. De plus, cette étape m'a permis d'estimer le cout du projet en terme de temps.
 
-    J'ai donc choisi la méthode Merise que j'ai eu l'occasion de découvrir en cours à l'IT-AkAdemy. Bien que moins actuelle elle permet de réaliser un graphique compréhensible par des profils non-techniques.
+    J'ai donc choisi la méthode Merise que j'ai eu l'occasion de découvrir en cours à l'IT-Akademy. Bien que moins actuelle elle permet de réaliser un graphique compréhensible par des profils non-techniques.
 
     \subsection{Étude d'une partie du diagramme de modèle de données}
 
@@ -238,6 +240,10 @@
         \label{fig:merise}
       \end{figure}
 
+    \begin{tcolorbox}
+      Malgré quelques rectifications, il s'est avéré que mon estimation était plutôt correcte. Même s'il est impossible d'estimer le temps que cette étape m'a fait gagner, je peut affirmer que je n'aurais pas pu sortir une version stable rapidement sans celui-ci.
+    \end{tcolorbox}
+
 \chapter{Planifier la réalisation du projet}
 
   \section{Réunions d'avancements}
@@ -270,7 +276,7 @@
 
       L'huissier avait participé en tant que bêta testeur pour un de nos concurrent le plus aboutit. Cela a permit de collecter les retours qu'il avait eu et de les intégrer à notre application. Cela nous a aussi permis de valider notre produit et d'apporter quelques petites corrections avant le lancement.
 
-    \subsection{Reunion pré-lancement}
+    \subsection{Reunion pré-lancement}\label{sec:pre_start_meeting}
 
       Cette réunion a eu lieu le 22 novembre. A ce moment, le produit était prêt pour le lancement en bêta. Nous étions conscient que le lancement était un moment crucial pour notre société. Les mauvais retours se propagent vite et nous n'avions pas le droit à l'erreur.
 
@@ -327,6 +333,7 @@
     Étant dans une équipe non technique, mes associés m'ont laissé carte blanche pour le choix des technologies. Les seule contraintes étaient de respecter un développement rapide et fiable. Si l'on considère la représentation figure \ref{fig:good_cheap_fast}, je devais donc me situer entre \textit{good} et \textit{cheap}.
 
     \begin{figure}
+      \centering
       \includegraphics[width=0.5\textwidth]{img/good_cheap_fast.png}
       \caption{Un bon résumé du choix à faire lors de l'élaboration des spécification techniques}
       \label{fig:good_cheap_fast}
@@ -345,9 +352,13 @@
 
       J'ai néanmoins choisis de mettre en place Vue.JS, un \textit{framework front-end} pour designer les pages qui demandent le plus d’interactions. J'ai choisis Vue.JS au lieu de React ou Angular car c'est le plus simple à mettre en place.
 
-    \subsection{From future}
 
-      Un bon choix mais j'aurais du m'orienter vers une architecture API en découplant front et back.
+      \begin{tcolorbox}
+        Ma seule erreur lors du choix des techno que j'ai utilisé et de ne pas être parti dirrectement sur une architecture API. Il s'est avéré par la suite qu'un éditeur de progiciel était intéréssé pour connecter iSignif à un logiciel utilisé dans le millieu du droit.
+
+        De plus, le besoin s'est fait sentir de rendre notre application de plus en plus \textit{Single Page}. Il aurait ainsi plus facile de découpler notre application en une partie \textit{back} et \textit{front}.
+      \end{tcolorbox}
+
 
       %TODO
 
@@ -375,9 +386,6 @@
 
 \chapter{Développement de la plateforme}
 
-  \section{Developpement Dirigé par les test}
-
-    %TODO
 
   \section{Mise en place de l'environnement de développement}
 
@@ -520,7 +528,7 @@
 
 \chapter{Sécurité}
 
-  Aujourd'hui, la sécurité informatique est un enjeu majeur. D'autant plus pour iSignif qui manipules des données sensibles. Il faut un certains temps pour bâtir une réputation et une fuite de données peut suffire à la ruiner\footnote{Le lundi 19 mars 2017, Facebook à perdu 37 milliards de dollars suite à la révélation de la fuite des données de plus de 50 millions de leurs utilisateurs.  \fnurl{https://www.lci.fr/high-tech/affaire-cambridge-analytica-quel-est-ce-scandale-qui-plonge-facebook-dans-la-crise-mark-zuckerberg-2082228.html}{source}}.
+  Aujourd'hui, la sécurité informatique est un enjeu majeur. D'autant plus pour iSignif qui manipules des données sensibles. Il faut un certains temps pour bâtir une réputation et une fuite de données peut suffire à la ruiner\footnote{Le lundi 19 mars 2017, Facebook à perdu 37 milliards de dollars suite à la révélation de la fuite des données de plus de 50 millions de leurs utilisateurs.  \url{https://www.lci.fr/high-tech/affaire-cambridge-analytica-quel-est-ce-scandale-qui-plonge-facebook-dans-la-crise-mark-zuckerberg-2082228.html}}.
 
   \section{Sécurité de l'application}
 
@@ -684,6 +692,14 @@
 
 \chapter{Amélioration continue}
 
+  \section{Developpement Dirigé par les test}
+
+    Comme je l'évoquait lors de la reunion de pré-lancement (section \ref{sec:pre_start_meeting}), il était capital de maintenir une certaine qualité de nos services. Je me suis donc imposé le \textit{workflow} du développement dirigé par les tests.
+
+
+
+    %TODO
+
   \section{RGPD}
 
     2018 fut l'année de la mise en place de la RGPD\footnote{Règlement général sur la protection des données}. Entrée en vigueur le 25 mai, ce texte réglementaire européen couvre, entre autres, le traitement des données personnelles\footnote{Les données personnelle sont toutes les données qui permettent d'identifier quelqu'un}.
@@ -713,7 +729,7 @@
 
     \subsection{Oubliez-moi}
 
-      \fnurl{L'article 17 de la RGPD}{https://gdpr-info.eu/art-17-gdpr/} nous oblige à implémenter une fonctionnalité \textquote{Oubliez-moi}. Celle-ci doit permettre à l'utilisateur d'effacer toutes ses données immédiatement. La ou cela se complique, c'est que la RGPD nous oublige aussi à demander la suppression des données chez des fournisseurs tiers. Ainsi, si nous utilisons des services externes\footnote{Salesforce, Hubspot, Twitter, ou tout autre fournisseur de service cloud} il faut accéder à leur API afin de demander la suppression.
+      \fnurl{https://gdpr-info.eu/art-17-gdpr/}{L'article 17 de la RGPD} nous oblige à implémenter une fonctionnalité \textquote{Oubliez-moi}. Celle-ci doit permettre à l'utilisateur d'effacer toutes ses données immédiatement. La ou cela se complique, c'est que la RGPD nous oublige aussi à demander la suppression des données chez des fournisseurs tiers. Ainsi, si nous utilisons des services externes\footnote{Salesforce, Hubspot, Twitter, ou tout autre fournisseur de service cloud} il faut accéder à leur API afin de demander la suppression.
 
       La difficulté de cette fonctionnalité est de supprimer les données liées à l'utilisateur sans impacter les données qui sont liées aux autres utilisateurs.
 

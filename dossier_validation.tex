@@ -12,6 +12,11 @@
 \usepackage{csquotes}
 \usepackage{lstautogobble}
 
+
+\newcommand\fnurl[2]{%
+  \href{#1}{#2}\footnote{\url{#1}}%
+}
+
 \hbadness=99999
 \hfuzz=999pt
 
@@ -45,9 +50,9 @@
 
   \section{licence}
 
-    Cet document est mis à disposition par Alexandre Rousseau sous licence Creative Commons Attribution -  Partage dans les Mêmes Conditions 4.0 International. Pour accéder à une copie de cette licence, merci de vous rendre à l'adresse suivante \url{http://creativecommons.org/licenses/by-sa/4.0/} ou envoyez un courrier à Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA.
+    Cet document est mis à disposition par Alexandre Rousseau sous licence Creative Commons Attribution -  Partage dans les Mêmes Conditions 4.0 International. Pour accéder à une copie de cette licence, merci de vous rendre à l'\fnurl{http://creativecommons.org/licenses/by-sa/4.0/}{adresse suivante} ou envoyez un courrier à Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA.
 
-    Tout le code source de ce document (rédigé en \LaTeX) est disponnible sur le repertoire Git suivant: \url{http://git.rousseau-alexandre.fr/madeindjs/it_report}.
+    Tout le code source de ce document (rédigé en \LaTeX) est disponnible sur \fnurl{http://git.rousseau-alexandre.fr/madeindjs/it_report}{ce repertoire Git}.
 
   \section{Remerciements}
 
@@ -55,7 +60,7 @@
 
   \section{Introduction}\label{sec:introduction}
 
-    Dans le souhait de me former et de progresser continuellement, je me suis inscrit sur le site  \href{https://cofondateur.fr}{cofondateur.fr}. Ce réseau social met en relation des entrepreneurs qui cherchent des développeurs pour construire leurs idées. C'est ainsi que je suis rentré en contact avec une startup qui cherchait un profil technique pour la réalisation de leur projet.
+    Dans le souhait de me former et de progresser continuellement, je me suis inscrit sur le site  \fnurl{https://cofondateur.fr}{cofondateur.fr}. Ce réseau social met en relation des entrepreneurs qui cherchent des développeurs pour construire leurs idées. C'est ainsi que je suis rentré en contact avec une startup qui cherchait un profil technique pour la réalisation de leur projet.
 
     J'ai donc décider de construire mon mémoire uniquement sur ce projet car il met en avant la construction d'un projet de A à Z. J'ai donc fais le choix d'organiser mon mémoire de façon chronologique (dans la mesure du possible), c'est-à-dire:
 
@@ -127,7 +132,7 @@
 
     L'inconvénient de ce statut est qu'il est plus difficile à mettre en place car il faut rédiger un pacte d'actionnaire complet. Dans notre cas, ce statut est parfait puisque mes associés ont les compétences pour rédiger documents administratifs.
 
-    Pour en savoir plus sur ce régime, je vous invite à consulter \href{https://www.lecoindesentrepreneurs.fr/pourquoi-creer-une-sasu/}{cet article}
+    Pour en savoir plus sur ce régime, je vous invite à consulter \fnurl{https://www.lecoindesentrepreneurs.fr/pourquoi-creer-une-sasu/}{cet article}
 
   \section{Business plan}
 
@@ -193,7 +198,7 @@
           \label{fig:merise_users}
         \end{figure}
 
-        Concrètement dans une base de données relationnelles, cela se matérialisera par une \href{https://en.wikipedia.org/wiki/Single_Table_Inheritance}{Single Table Inheritance}. C'est-à-dire qu'une table contiendra les deux types de données et qu'une colonne spécifiera le type d'utilisateur (Huissier ou Avocat). Ce modèle d'héritage en architecture de base de données est assez controversé. Cependant il convient bien à mon cas car les deux entités sont quasiment identiques.
+        Concrètement dans une base de données relationnelles, cela se matérialisera par une \fnurl{https://en.wikipedia.org/wiki/Single_Table_Inheritance}{Single Table Inheritance}. C'est-à-dire qu'une table contiendra les deux types de données et qu'une colonne spécifiera le type d'utilisateur (Huissier ou Avocat). Ce modèle d'héritage en architecture de base de données est assez controversé. Cependant il convient bien à mon cas car les deux entités sont quasiment identiques.
 
       \subsubsection{Les huissiers}
 
@@ -255,7 +260,7 @@
 
       Cette réunion à eu lieu le 6 juin 2016 et nous a permis de rédiger le pacte des associés.
 
-      Le projet était incubé par \href{Beelys}{https://www.beelys.org/}, un grand incubateur lyonnais. Beelys nous offrait donc l'aide de deux spécialistes en startups. Ces spécialistes nous on apporté des renseignements sur le fonctionnement des levées de fond.
+      Le projet était incubé par \href{https://www.beelys.org/}{Beelys}, un grand incubateur lyonnais. Beelys nous offrait donc l'aide de deux spécialistes en startups. Ces spécialistes nous on apporté des renseignements sur le fonctionnement des levées de fond.
 
       A la suite de cette réunion, nous avons fait le choix de mettre de côté la levée de fond. En effet, une levée de fond s'accorde souvent d'une vente de part de l'entreprise. Sachant que nous n'avions pas besoin immédiatement d'argent', nous préférions garder les parts de l'entreprise et les vendre une fois que la société posséderait une certaine notoriété.
 
@@ -309,7 +314,7 @@
 
     \subsection{Utilisation de Trello}
 
-      Dans le monde du Kanban, un logiciel SAAS se démarque parmi les autre: \href{http://trello.com/}{Trello}. Trello est un outil SAAS qui permet pousse la méthode Kanban plus loin. Cette application pousse la collaboration en ajoutant les discussions sur les tâches (voir figure \ref{fig:trello}).
+      Dans le monde du Kanban, un logiciel SAAS se démarque parmi les autre: \fnurl{http://trello.com/}{Trello}. Trello est un outil SAAS qui permet pousse la méthode Kanban plus loin. Cette application pousse la collaboration en ajoutant les discussions sur les tâches (voir figure \ref{fig:trello}).
 
       \begin{figure}
         \includegraphics[width=\linewidth]{img/trello.png}
@@ -515,7 +520,7 @@
 
 \chapter{Sécurité}
 
-  Aujourd'hui, la sécurité informatique est un enjeu majeur. D'autant plus pour iSignif qui manipules des données sensibles. Il faut un certains temps pour bâtir une réputation et une fuite de données peut suffire à la ruiner\footnote{Le lundi 19 mars 2017, Facebook à perdu 37 milliards de dollars suite à la révélation de la fuite des données de plus de 50 millions de leurs utilisateurs.  \href{https://www.lci.fr/high-tech/affaire-cambridge-analytica-quel-est-ce-scandale-qui-plonge-facebook-dans-la-crise-mark-zuckerberg-2082228.html}{source}}.
+  Aujourd'hui, la sécurité informatique est un enjeu majeur. D'autant plus pour iSignif qui manipules des données sensibles. Il faut un certains temps pour bâtir une réputation et une fuite de données peut suffire à la ruiner\footnote{Le lundi 19 mars 2017, Facebook à perdu 37 milliards de dollars suite à la révélation de la fuite des données de plus de 50 millions de leurs utilisateurs.  \fnurl{https://www.lci.fr/high-tech/affaire-cambridge-analytica-quel-est-ce-scandale-qui-plonge-facebook-dans-la-crise-mark-zuckerberg-2082228.html}{source}}.
 
   \section{Sécurité de l'application}
 
@@ -626,7 +631,7 @@
 
       Le scan de vulnérabilité est illégal à moins que le serveur nous appartienne ou bien qu'une autorisation du propriétaire est donné. Dans mon cas, le serveur m’appartiens.
 
-      OpenVAS s'appuie sur les \href{https://cve.mitre.org/}{CVE (Common Vulnerabilities and Exposures)}. Il s'agit d'une base de données des vulnérabilités connues.
+      OpenVAS s'appuie sur les \fnurl{https://cve.mitre.org/}{CVE (Common Vulnerabilities and Exposures)}. Il s'agit d'une base de données des vulnérabilités connues.
 
       Plusieurs types de scan sont possibles, j'ai choisis d'utiliser le plus complet, qui est aussi le plus long. J'ai donc obtenu le résultat que l'on peu voir figure \ref{fig:openvas_report} (le rapport complet est disponible annexe \ref{apx:openvas_report}).
 
@@ -645,7 +650,7 @@
 
     \subsection{Utilisation du protocole HTTPS}
 
-      Le \href{https://fr.wikipedia.org/wiki/HyperText_Transfer_Protocol_Secure}{protocole HTTPS} permet de chiffrer les communications entre le client et le serveur. Cela garantie que les informations qui transitent ne peuvent pas être lues par un attaquant. Ainsi, on protège les identifiants qui transite lorsqu'un utilisateur connecté.
+      Le \fnurl{https://fr.wikipedia.org/wiki/HyperText_Transfer_Protocol_Secure}{protocole HTTPS} permet de chiffrer les communications entre le client et le serveur. Cela garantie que les informations qui transitent ne peuvent pas être lues par un attaquant. Ainsi, on protège les identifiants qui transite lorsqu'un utilisateur connecté.
 
       Auparavant, il fallait souvent payer une entreprise qui garantissait la validité de la clé de chiffrement. L'activer se fait  désormais très facilement grâce à \href{https://letsencrypt.org/}{Let's encrypt} qui est totalement gratuit!
 
@@ -693,14 +698,14 @@
       \item le droit d'accès à toutes les données de l'utilisateur
     \end{itemize}
 
-    Il faut qu'il y ait un \href{https://www.cnil.fr/fr/devenir-delegue-la-protection-des-donnees}{Délégué à la Protection des Données}. la \href{https://fr.wikipedia.org/wiki/Commission_nationale_de_l%27informatique_et_des_libert%C3%A9s_(France)}{CNIL}\footnote{La Commission nationale de l'informatique et des libertés est l'autorité française qui est chargée de veiller à ce que l’informatique.} précisie que le délégué \textquote{doit être désigné sur la base de ses qualités professionnelles et de ses connaissances spécialisées du droit en matière de protection des données}. J'ai donc choisit de me porter volontaire pour ce rôle (Voir annexe \ref{apx:dpo})
+    Il faut qu'il y ait un \fnurl{https://www.cnil.fr/fr/devenir-delegue-la-protection-des-donnees}{Délégué à la Protection des Données}. la \fnurl{https://www.cnil.fr/}{CNIL}\footnote{La Commission nationale de l'informatique et des libertés est l'autorité française qui est chargée de veiller à ce que l’informatique.} précisie que le délégué \textquote{doit être désigné sur la base de ses qualités professionnelles et de ses connaissances spécialisées du droit en matière de protection des données}. J'ai donc choisit de me porter volontaire pour ce rôle (Voir annexe \ref{apx:dpo})
 
     % pompé sur https://bohzo.developpez.com/rgpd-guide-pratique-developpeurs
 
     Dans mon cas, les principales obligations qui m'incombent sont les suivantes:
 
     \begin{itemize}
-      \item l'utilisateur doit pouvoir effacer toutes les données de l'application qui le concerne \href{Chapitre 3, Article 17}{https://gdpr-info.eu/art-17-gdpr/}
+      \item l'utilisateur doit pouvoir effacer toutes les données de l'application qui le concerne \fnurl{https://gdpr-info.eu/art-17-gdpr/}{Chapitre 3, Article 17}
       \item l'utilisateur doit pouvoir conn
       \item nous devons stocker le minimum de données possible
     \end{itemize}
@@ -708,7 +713,7 @@
 
     \subsection{Oubliez-moi}
 
-      \href{L'article 17 de la RGPD}{https://gdpr-info.eu/art-17-gdpr/} nous oblige à implémenter une fonctionnalité \textquote{Oubliez-moi}. Celle-ci doit permettre à l'utilisateur d'effacer toutes ses données immédiatement. La ou cela se complique, c'est que la RGPD nous oublige aussi à demander la suppression des données chez des fournisseurs tiers. Ainsi, si nous utilisons des services externes\footnote{Salesforce, Hubspot, Twitter, ou tout autre fournisseur de service cloud} il faut accéder à leur API afin de demander la suppression.
+      \fnurl{L'article 17 de la RGPD}{https://gdpr-info.eu/art-17-gdpr/} nous oblige à implémenter une fonctionnalité \textquote{Oubliez-moi}. Celle-ci doit permettre à l'utilisateur d'effacer toutes ses données immédiatement. La ou cela se complique, c'est que la RGPD nous oublige aussi à demander la suppression des données chez des fournisseurs tiers. Ainsi, si nous utilisons des services externes\footnote{Salesforce, Hubspot, Twitter, ou tout autre fournisseur de service cloud} il faut accéder à leur API afin de demander la suppression.
 
       La difficulté de cette fonctionnalité est de supprimer les données liées à l'utilisateur sans impacter les données qui sont liées aux autres utilisateurs.
 
@@ -755,7 +760,7 @@
         \end{scriptsize}
 
 
-        \textit{ActiveRecord} (l'ORM\footnote{Un ORM fait interface entre le code et la base de données, voir \href{https://fr.wikipedia.org/wiki/Mapping_objet-relationnel}{la définition complète sur Wikipedia}} de Ruby on Rails). J'ai donc simplement surchargé la méthode \verb|destroy| et utilisé la librairie \verb|Faker|\footnote{Il s'agit d'une librairie utilisée pour générer des fausse données en tout genre}:
+        \textit{ActiveRecord} (l'ORM\footnote{Un ORM fait interface entre le code et la base de données, voir \fnurl{https://fr.wikipedia.org/wiki/Mapping_objet-relationnel}{la définition complète sur Wikipedia}} de Ruby on Rails). J'ai donc simplement surchargé la méthode \verb|destroy| et utilisé la librairie \verb|Faker|\footnote{Il s'agit d'une librairie utilisée pour générer des fausse données en tout genre}:
 
         \begin{scriptsize}
           \begin{lstlisting}[language=ruby]
@@ -794,9 +799,9 @@
 
   \section{Déploiement continue}\label{sec:deployments}
 
-    Afin d'être le plus réactif possible, j'ai voulu mettre en place un outil afin d'automatiser les mises en production. Cela est un énorme avantage car il permet de mettre en ligne un correctif ou une évolution très rapidement. De plus, automatiser permet de réduire le risque de l'erreur humaine (\href{https://www.reddit.com/r/webdev/comments/5rd79m/gitlab_employee_just_ran_rm_rf_on_their/}{et cela est vite arrivé}...).
+    Afin d'être le plus réactif possible, j'ai voulu mettre en place un outil afin d'automatiser les mises en production. Cela est un énorme avantage car il permet de mettre en ligne un correctif ou une évolution très rapidement. De plus, automatiser permet de réduire le risque de l'erreur humaine (\fnurl{https://www.reddit.com/r/webdev/comments/5rd79m/gitlab_employee_just_ran_rm_rf_on_their/}{et cela est vite arrivé}...).
 
-    Pour cela, j'ai utilisé la librairie \href{https://capistranorb.com}{Capistrano}. Capistrano est un outil écrit en Ruby qui permet d'automatiquement le déploiement en s'appuyant sur Git (rappelez vous de mon utilisation de Git Flow section \ref{sec:git}). Il va donc:
+    Pour cela, j'ai utilisé la librairie \fnurl{https://capistranorb.com}{Capistrano}. Capistrano est un outil écrit en Ruby qui permet d'automatiquement le déploiement en s'appuyant sur Git (rappelez vous de mon utilisation de Git Flow section \ref{sec:git}). Il va donc:
 
     \begin{itemize}
       \item Cloner le répertoire Git afin de récupérer la dernière version du code source

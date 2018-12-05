@@ -493,7 +493,14 @@
       \item les données \textit{uploadés} apr les utilisateurs
     \end{itemize}
 
-    Pour executer ce script tous les jours, il m'a juste fallu installer un \verb|cron|. Vous pouvez donc voir une partie de mon script sur le listing \ref{fig:backup}.
+    De mon point de vue, la sauvegarde automatique doit être:
+
+    \begin{description}
+      \item[régulière], j'ai donc utilisé une \verb|cron|\footnote{il s'sagit d'un utilitaire sous Linux qui permet de lancer des commandes à intervalles définis}
+      \item[chifrée], j'ai donc utilisé \fnurl{http://www.gnupg.org/}{GNUPG}, un outil de chiffrement asymétrique\footnote{Il s'agit d'une méthode de chiffrement utilisant une paire de clés pour le cryptage: une clé publique qui crypte les données et une clé privée qui les décrypte. Ainsi, lorsque je crypte une archive avec ma clé publique, seul mon PC distant peu l'ouvrir.}.
+    \end{description}
+
+    Voici donc une partie de mon script sur le listing suivant \ref{fig:backup}.
 
      \begin{scriptsize}
        \begin{lstlisting}[language=bash, label={fig:backup}, caption={Script de sauvegarde automatique des données du serveur}]
@@ -502,14 +509,10 @@
 
        # ...
 
-       sqldump_filename="dump_${today}.sql"
-       websites=(isignif test_isignif)
-
-       # ...
-
+       # je realise un dump de toute la BDD mariadb
        mysqldump --all-databases  > $sqldump_filename
 
-       # save all shared files (valid only for RoR application deployed with Capistrano)
+       # je copie tous mes environnements d'un coup
        for website in ${websites[*]}
        do
           cp -r "/var/www/${website}/shared/{config,public,storage}" "${website}/shared/"
@@ -517,14 +520,14 @@
 
        # ...
 
-       cd /home/isignif/save
-       chown isignif:isignif -R $folder_save
-       tar -czvf "$foldername_save.tar.gz" $folder_save
-       chown isignif:isignif -R "$folder_save.tar.gz"
-       chmod 600 -R "$folder_save.tar.gz"
-       rm -r "$folder_save"
+       # je cree une archive et je la chiffre avec gpg
+       tar -czvf -  "$folder_save" | gpg --encrypt --recipient contact@rousseau-alexandre.fr -o "$folder_save.tar.gz.gpg" --always-trust
+
+       # ...
        \end{lstlisting}
      \end{scriptsize}
+
+     Ensuite, un \verb|cron| récupère régulièrement mes sauvegarde en utilisant un outil appelé \fnurl{https://fr.wikipedia.org/wiki/Rsync}{Rsync}.
 
 \chapter{Sécurité}
 

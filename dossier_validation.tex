@@ -368,6 +368,76 @@
 
 \chapter{Développement de la plateforme}
 
+  \section{Développement Dirigé par les Test}\label{sec:tdd}
+
+    Etant le seul développeur \textit{back-end}, il m'a fallut m'organiser afin d'optimiser au maximum mon temps.
+
+    De mon point de vue, une des façon d'optimiser son développement est d'assurer ses arrières afin d'éviter de corriger des bogues. Pour cela, ma solution est les tests unitaires\footnote{Les test unitaires sont du code qui permet de vérifier le comportement de certaines parties du code afin de vérifier qu'il n'y a pas de changements indésirables lorsd'un développement}. Afin d'obtenir de me sécuriser au maximum, je me suis imposé deux méthodologies:
+
+    \begin{itemize}
+      \item le \textit{Test Driven Development} (Développement Dirigé par les Test dans la langue de molière). Il s'agit de commencer par développer le test avant de développer la fonctionnalité.
+      \item couvrir d'un test chaque bogues relevé
+    \end{itemize}
+
+    Il s'agit de deux règles simples mais qui m'ont permisent d'obtenir une couverture de code de l'ordre de 90\% en moyenne.
+
+    \subsection{Exemple de test unitaires}
+
+      Vous aurez l'occasion de découvrir comment j'ai pu mettre en place un test unitaire lors de l'élaboration de la fonctionnalité de suppression d'un utilisateur section \ref{subsec:forget-me}.
+
+    \subsection{Exemple de test fonctionnels}
+
+      Exemple, pour la page qui s'occupe d'afficher un utilisateur, j'ai choisis de coder quatres tests qui vont couvrir tous les cas:
+
+      \begin{itemize}
+        \item un avocat peut accéder à son profil (Listing \ref{lst:test_connected})
+        \item un administrateur peut accéder au profil d'un avocat (Listing \ref{lst:test_admin})
+        \item un utilisateur connecté ne peut pas accéder au profil d'un autre utilisateur (Listing \ref{lst:test_other})
+        \item un utilisateur non-connecté ne peut pas accéder au profil d'un autre utilisateur (Listing \ref{lst:test_unconnected})
+      \end{itemize}
+
+      Cela peut sembler paranoïaque, mais cela m'assure qu'aucune régréssion n'est possible sur cette page
+
+      \begin{scriptsize}
+        \begin{lstlisting}[language=ruby, caption={Test qu'un avocat peut accéder à son profil}, label={lst:test_connected}]
+        test 'should show for connected user' do
+          login(@advocate)
+          get advocate_url(@advocate)
+          assert_response :success
+        end
+        \end{lstlisting}
+      \end{scriptsize}
+
+      \begin{scriptsize}
+        \begin{lstlisting}[language=ruby, caption={Test qu'un administrateur peut accéder au profil d'un avocat}, label={lst:test_admin}]
+        test 'should show for admin' do
+          login(users(:super_user))
+          get advocate_url(@advocate)
+          assert_response :success
+        end
+        \end{lstlisting}
+      \end{scriptsize}
+
+      \begin{scriptsize}
+        \begin{lstlisting}[language=ruby, caption={Test qu'un utilisateur non-connecté ne peut pas accéder au profil d'un autre utilisateur}, label={lst:test_other}]
+        test 'should forbid show user for other user' do
+          login(users(:one_other_advocate))
+          get advocate_url(@advocate)
+          assert_response :forbidden
+        end
+        \end{lstlisting}
+      \end{scriptsize}
+
+      \begin{scriptsize}
+        \begin{lstlisting}[language=ruby, caption={Test qu'un utilisateur connecté ne peut pas accéder au profil d'un autre utilisateur}, label={lst:test_unconnected}]
+        test 'should forbid show user for non-connected user' do
+          get advocate_url(@advocate)
+          assert_response :forbidden
+        end
+        \end{lstlisting}
+      \end{scriptsize}
+
+
   \section{Mise en place de l'environnement de développement}
 
     Utilisation de \href{https://rvm.io}{RVM} (Ruby Version Manager) en local afin de reproduire un environnement de développement au plus près du serveur de production et de fixer la version de Ruby utilisée .
@@ -657,7 +727,7 @@
     \end{itemize}
 
 
-    \subsection{Oubliez-moi}
+    \subsection{Oubliez-moi}\label{subsec:forget-me}
 
       \href{L'article 17 de la RGPD}{https://gdpr-info.eu/art-17-gdpr/} nous oblige à implémenter une fonctionnalité \textquote{Oubliez-moi}. Celle-ci doit permettre à l'utilisateur d'effacer toutes ses données immédiatement. La ou cela se complique, c'est que la RGPD nous oublige aussi à demander la suppression des données chez des fournisseurs tiers. Ainsi, si nous utilisons des services externes\footnote{Salesforce, Hubspot, Twitter, ou tout autre fournisseur de service cloud} il faut accéder à leur API afin de demander la suppression.
 
@@ -677,7 +747,7 @@
 
         C'est pour cela que j'ai préféré l'\textbf{anonymisation} des données.
 
-        Étant un fan de la TDD (\textit{Test Driven Development})\footnote{Le TDD (Développement Dirigé par les Test dans la langue de molière) est une méthodologie qui consiste à développer le test unitaire avant le développement de la fonctionnalité.}, j'ai donc commencé par construire le test.
+        Comme je l'expliquait section \ref{sec:tdd}, je suis un évangéliste du \textit{Test Driven Development}. J'ai donc commencé par construire le test.
 
         \begin{scriptsize}
           \begin{lstlisting}[language=ruby]

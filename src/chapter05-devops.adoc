@@ -12,7 +12,7 @@ Plusieurs solutions existent:
 * Le serveur mutualisé: Il s’agit d’un serveur que l’on partage avec d’autres client afin de réduire le coût. L’inconvénient est que nous n’avons pas le choix sur les librairies installées ni sur les logiciels.
 * Le serveur dédié: L’avantage est le contrôle total sur le serveur mais l’inconvénient est que ce n’est pas évolutif. Si on veut augmenter les performances, il faut passer sur un autre serveur dédie.
 * Un VPS footnote:[Virtual Private Serveur]: Il s’agit d’un container placé sur un serveur. L’avantage est qu’à tout moment on peut déplacer le container sur un serveur plus puissant et ainsi s’adapter à une charge élevée. L’inconvénient est que le stockage est très cher.
-* Un fournisseur PAAS footnote:[Product As A Service]. Très connu et apprécié par les rubyistesfootnote:[Les développeur Ruby utilisent beaucoup https://www.heroku.com[Heroku] qui est un des plus gros fournisseur PAAS], le déploiement se fait instantanément sans tenir compte de la partie hardware. Le fournisseur réalise l’administration du serveur. En revanche le coût est plus élevé (à partir de 25 euros / mois)
+* Un fournisseur PAAS footnote:[Product As A Service]. Très connu et apprécié par les rubyistes footnote:[Les développeur Ruby utilisent beaucoup https://www.heroku.com[Heroku] qui est un des plus gros fournisseur PAAS], le déploiement se fait instantanément sans tenir compte de la partie hardware. Le fournisseur réalise l’administration du serveur. En revanche le coût est plus élevé (à partir de 25 euros / mois)
 
 Pour mon application j’ai choisi le VPS qui me permet d’administrer mon serveur comme je le souhaite tout en réduisant le coût. Étant dans une phase de validation du concept, ce choix m’a permis de commencer avec un petit serveur à 3 euros / mois . Lors de la validation du concept, je pourrais basculer sur un serveur plus puissant très facilement.
 
@@ -48,7 +48,7 @@ Afin de figer ma version de Ruby, j’ai choisi d’utiliser de Ruby Version Man
 
 === Base de donné
 
-Concernant la SGBDfootnote:[Système de Gestion de Base de Données], Ruby on Rails ne pose pas de contrainte particulière. J’ai donc choisi MariaDB. Une fois installé, je lance directement le script de sécurisation de l’installation:
+Concernant la SGBD footnote:[Système de Gestion de Base de Données], Ruby on Rails ne pose pas de contrainte particulière. J’ai donc choisi MariaDB. Une fois installé, je lance directement le script de sécurisation de l’installation:
 
 [source,bash]
 ----
@@ -72,7 +72,7 @@ MariaDB > GRANT ALL PRIVILEGES ON isignif . * TO 'isignif'@'localhost';
 
 === Sauvergarde Automatique du serveur
 
-En terme de sauvegarde il existe plusieurs stratégies. Pour ma part, les conditions étaient d’avoir des sauvegardes quotidienent et automatique. J’ai donc fait le choix de créer moi-même un script `bash` (listing #fig:backup[[fig:backup]]) de sauvegarde de mon serveur en incluant:
+En terme de sauvegarde il existe plusieurs stratégies. Pour ma part, les conditions étaient d’avoir des sauvegardes quotidiennes et automatiques. J’ai donc fait le choix de créer moi-même un script `bash` de sauvegarde de mon serveur en incluant:
 
 * la basse de donnée MariaDB
 * les données _uploadés_ apr les utilisateurs
@@ -80,7 +80,7 @@ En terme de sauvegarde il existe plusieurs stratégies. Pour ma part, les condit
 De mon point de vue, la sauvegarde automatique doit être:
 
 * *régulière* , j’ai donc utilisé une `cron`footnote:[il s’sagit d’un utilitaire sous Linux qui permet de lancer des commandes à intervalles définis]
-* *chifrée* , j’ai donc utilisé http://www.gnupg.org/[GNUPG]footnote:[http://www.gnupg.org/] , un outil de chiffrement asymétriquefootnote:[Il s’agit d’une méthode de chiffrement utilisant une paire de clés pour le cryptage: une clé publique qui crypte les données et une clé privée qui les décrypte. Ainsi, lorsque je crypte une archive avec ma clé publique, seul mon PC distant peu l’ouvrir.].
+* *chifrée* , j’ai donc utilisé http://www.gnupg.org/[GNUPG], un outil de chiffrement asymétriquefootnote:[Il s’agit d’une méthode de chiffrement utilisant une paire de clés pour le cryptage: une clé publique qui crypte les données et une clé privée qui les décrypte. Ainsi, lorsque je crypte une archive avec ma clé publique, seul mon PC distant peu l’ouvrir.].
 
 Voici donc une partie de mon script sur le listing suivant #fig:backup[[fig:backup]].
 
@@ -107,11 +107,11 @@ tar -czvf -  "$folder_save" | gpg --encrypt --recipient contact@rousseau-alexand
 # ...
 ----
 
-Ensuite, un `cron` récupère régulièrement mes sauvegarde en utilisant un outil appelé https://fr.wikipedia.org/wiki/Rsync[Rsync]footnote:[https://fr.wikipedia.org/wiki/Rsync] .
+Ensuite, un `cron` récupère régulièrement mes sauvegarde en utilisant un outil appelé https://fr.wikipedia.org/wiki/Rsync[Rsync].
 
 == Sécurité
 
-Aujourd’hui, la sécurité informatique est un enjeu majeur. D’autant plus pour iSignif qui manipules des données sensibles. Il faut un certains temps pour bâtir une réputation et une fuite de données peut suffire à la ruinerfootnote:[Le lundi 19 mars 2017, Facebook à perdu 37 milliards de dollars suite à la révélation de la fuite des données de plus de 50 millions de leurs utilisateurs. https://www.lci.fr/high-tech/affaire-cambridge-analytica-quel-est-ce-scandale-qui-plonge-facebook-dans-la-crise-mark-zuckerberg-2082228.html].
+Aujourd’hui, la sécurité informatique est un enjeu majeur. D’autant plus pour iSignif qui manipules des données sensibles. Il faut un certains temps pour bâtir une réputation et une fuite de données peut suffire à la ruiner footnote:[Le lundi 19 mars 2017, Facebook à perdu 37 milliards de dollars suite à la révélation de la fuite des données de plus de 50 millions de leurs utilisateurs.  https://www.lci.fr/high-tech/affaire-cambridge-analytica-quel-est-ce-scandale-qui-plonge-facebook-dans-la-crise-mark-zuckerberg-2082228.html[source]].
 
 === Sécurité de l’application
 
@@ -125,13 +125,13 @@ Le _Cross-site Scripting_ est le fait de pouvoir envoyer un formulaire provenant
 
 ===== Injection SQL
 
-L’injection SQL consiste à injecter du code SQLfootnote:[Le code SQL est utilisé pour envoyer des requêtes sur la base de données]. Comme le montre la figure #fig:sql_injection[[fig:sql_injection]], les injection SQL sont très faciles.
+L’injection SQL consiste à injecter du code SQL footnote:[Le code SQL est utilisé pour envoyer des requêtes sur la base de données]. Comme le montre la figure suivante, les injection SQL sont très faciles.
 
-Rails échappe par défaut tous les paramètres envoyés par l’utilisateur.
+.Une tentative d’injection SQL sur un formulaire de contact
+image:sql_injection.png[sql_injection, 200]
 
-image:sql_injection.png[Une tentative d’injection SQL sur un formulaire de contact,scaledwidth=50.0%]
+NOTE: Rails échappe par défaut tous les paramètres envoyés par l’utilisateur.
 
-[[fig:sql_injection]][fig:sql_injection]
 
 ===== Injection JS
 
@@ -152,9 +152,9 @@ Dans mon cas, j’ai utilisé la bibliothèque https://github.com/binarylogic/au
 
 === Les failles les plus récentes
 
-Des failles de sécurités sont découvertes tous les jours. Heureusement pour nous, une organisation les répertories. Ces vulnérabilités sont identifiées par un identifiant CVEfootnote:[Common Vulnerabilities and Exposures].
+Des failles de sécurités sont découvertes tous les jours. Heureusement pour nous, une organisation les répertories. Ces vulnérabilités sont identifiées par un identifiant CVE footnote:[Common Vulnerabilities and Exposures].
 
-https://github.com/rubysec/ruby-advisory-db[Ruby Advisory Database] est une base de données communautaire qui s’appuie sur ces CVE. Elle repertorie les bibliothèques Ruby vulnérables à ces CVE. Des outils existent pour vérifier automatiquement que notre application n’utilise pas un bibliothèque vulnérable: https://github.com/rubysec/bundler-audit[Bundler Audit].
+https://github.com/rubysec/ruby-advisory-db[Ruby Advisory Database] est une base de données communautaire qui s’appuie sur ces CVE. Elle répertorie les bibliothèques Ruby vulnérables à ces CVE. Des outils existent pour vérifier automatiquement que notre application n’utilise pas un bibliothèque vulnérable: https://github.com/rubysec/bundler-audit[Bundler Audit].
 
 https://github.com/rubysec/bundler-audit[Bundler Audit] s’utilise très facilement:
 
@@ -178,7 +178,7 @@ La première étape pour un hacker est la *reconnaissance de la cible*. Cette é
 
 Une des information facile à obtenir pour un hacker est les port ouverts sur le serveur. Les ports sont en quelques sortent des portes ouvertes sur le réseaux.
 
-Donc, dans un premier temps, j’ai simplement effectué un scan des ports sur mon serveurfootnote:[Malgré sur ce qu’on peut entendre, le scan de port est tout à fait légal. http://www.infond.fr/2010/09/legalite-du-scan-de-port.html] avec `nmap`footnote:[NMAP est un scanner de port] (voir listing #lst:nmap[[lst:nmap]])
+Donc, dans un premier temps, j’ai simplement effectué un scan des ports sur mon serveur footnote:[Malgré sur ce qu’on peut entendre, le scan de port est tout à fait légal. http://www.infond.fr/2010/09/legalite-du-scan-de-port.html] avec `nmap` footnote:[NMAP est un scanner de port] (voir listing #lst:nmap[[lst:nmap]])
 
 [source,bash]
 ----
@@ -204,21 +204,21 @@ On voit donc que beaucoup d’informations ressortent du scan comme:
 * l’utilisation d’OpenSSH port 22
 * l’utilisation d’Apache HTTPD port 22 / 443
 
-NMAP nous fournis aussi le numéro de la version des logiciels utilisés. Cela peut servir à trouver des vulnérabilités. Je vous montrerai comment j’ai masqué certains de ses informations lors de la sous-section #subsec:change_ports[6.3.3].
+NMAP nous fournis aussi le numéro de la version des logiciels utilisés. Cela peut servir à trouver des vulnérabilités. Je vous montrerai comment j’ai masqué certains de ses informations plus loin.
 
 ==== Réalisation d’un scan de vulnérabilité
 
-Afin de connaître les vulnérabilité de mon installation, j’ai décidé de faire un scan de vulnérabilité en utilisant https://www.metasploit.com/[Metasploit]footnote:[Metasploit Framework est un logiciel écrit en Ruby permettant le développement et l’utilisation d’exploit. Les exploits sont des vulnérabilités qui permettent d’exécuter du code sur une machine distante.] et http://www.openvas.org/[OpenVAS]footnote:[OpenVAS est un scanner de vulnérabilités libre issu du fork de Nessus.].
+Afin de connaître les vulnérabilité de mon installation, j’ai décidé de faire un scan de vulnérabilité en utilisant https://www.metasploit.com/[Metasploit] footnote:[Metasploit Framework est un logiciel écrit en Ruby permettant le développement et l’utilisation d’exploit. Les exploits sont des vulnérabilités qui permettent d’exécuter du code sur une machine distante.] et http://www.openvas.org/[OpenVAS]footnote:[OpenVAS est un scanner de vulnérabilités libre issu du fork de Nessus.].
 
 Le scan de vulnérabilité est illégal à moins que le serveur nous appartienne ou bien qu’une autorisation du propriétaire est donné. Dans mon cas, le serveur m’appartiens.
 
-OpenVAS s’appuie sur les https://cve.mitre.org/[CVE (Common Vulnerabilities and Exposures)]footnote:[https://cve.mitre.org/] . Il s’agit d’une base de données des vulnérabilités connues.
+OpenVAS s’appuie sur les https://cve.mitre.org/[CVE (Common Vulnerabilities and Exposures)]. Il s’agit d’une base de données des vulnérabilités connues.
 
-Plusieurs types de scan sont possibles, j’ai choisis d’utiliser le plus complet, qui est aussi le plus long. J’ai donc obtenu le résultat que l’on peu voir figure #fig:openvas_report[[fig:openvas_report]] (le rapport complet est disponible annexe #apx:openvas_report[10]).
+Plusieurs types de scan sont possibles, j’ai choisis d’utiliser le plus complet, qui est aussi le plus long. J’ai donc obtenu le résultat que l’on peu voir sur la figure suivant (le rapport complet est disponible en annexe).
 
-image:kali_openvas_report.png[Capture d’écran du rapport de scan d’OpenVAS]
+.Capture d’écran du rapport de scan d’OpenVAS
+image:kali_openvas_report.png[kali_openvas_report]
 
-[[fig:openvas_report]][fig:openvas_report]
 
 On peut voir que globalement mon serveur possède peu de vulnérabilités. Ceci est sûrement du au fait que je met à jours les paquets quotidiennement et que donc, les logiciels sont à jours.
 
@@ -228,7 +228,7 @@ Sécuriser un serveur est un travail à part entière qui nécessite beaucoup co
 
 === Utilisation du protocole HTTPS
 
-Le https://fr.wikipedia.org/wiki/HyperText_Transfer_Protocol_Secure[protocole HTTPS]footnote:[https://fr.wikipedia.org/wiki/HyperText_Transfer_Protocol_Secure] permet de chiffrer les communications entre le client et le serveur. Cela garantie que les informations qui transitent ne peuvent pas être lues par un attaquant. Ainsi, on protège les identifiants qui transite lorsqu’un utilisateur connecté.
+Le https://fr.wikipedia.org/wiki/HyperText_Transfer_Protocol_Secure[protocole HTTPS] permet de chiffrer les communications entre le client et le serveur. Cela garantie que les informations qui transitent ne peuvent pas être lues par un attaquant. Ainsi, on protège les identifiants qui transite lorsqu’un utilisateur connecté.
 
 Auparavant, il fallait souvent payer une entreprise qui garantissait la validité de la clé de chiffrement. L’activer se fait désormais très facilement grâce à https://letsencrypt.org/[Let’s encrypt] qui est totalement gratuit!
 
@@ -239,20 +239,20 @@ J’ai donc pu l’installer très facilement avec https://certbot.eff.org/[Cert
 $ sudo certbot --apache
 ----
 
-C’est donc un petit geste mais celui-ci à des répercutions sur la confiances accordée par nos utilisateur et même sur le référencementfootnote:[Google à annoncé en aout 2014 que le protocole HTTPS serait pris en compte dans l’algorithme de positionnement. https://webmaster-fr.googleblog.com/2014/08/le-protocole-https-en-tant-que-facteur.html].
+C’est donc un petit geste mais celui-ci à des répercutions sur la confiances accordée par nos utilisateur et même sur le référencement footnote:[Google à annoncé en août 2014 que le protocole HTTPS serait pris en compte dans l’algorithme de positionnement. https://webmaster-fr.googleblog.com/2014/08/le-protocole-https-en-tant-que-facteur.html].
 
 === Groupe sudo
 
 Comme je l’ai évoqué plus haut, j’ai déjà crée un utilisateur spécifique pour l’application que j’ai rajouté dans le groupe des `sudoers`. Une des actions qui peut être mis en place facilement est de supprimer cet utilisateur du groupe `sudo`. Ceci permet d’éviter l’élévation des privilègesfootnote:[Un des premier objectif d’un hacker va être de vouloir obtenir des privilèges plus élevé afin de pouvoir effectuer des actions ayant de plus grandes conséquences].
 
-[[subsec:change_ports]]
 === Modifier le port par défaut
 
-En regardant les logs d’un serveur, on peut remarquer une quantité importante de tentative de connexion SSHfootnote:[Le protocole SSH permet de se connecter à distance à un ordinateur]. Ceci est du au fait que beaucoup de hacker ont mis au point des scripts qui tentent de se connecter en utilisant des dictionnaires de mots de passe.
+En regardant les logs d’un serveur, on peut remarquer une quantité importante de tentative de connexion SSH footnote:[Le protocole SSH permet de se connecter à distance à un ordinateur]. Ceci est du au fait que beaucoup de hacker ont mis au point des scripts qui tentent de se connecter en utilisant des dictionnaires de mots de passe.
 
 Par défaut, le port utilisé est le port 22.
 
 === Blacklister les tentatives de connexions
+
 Comme je l’expliquait plus haut, beaucoup de hacker tentent de se connecter au serveur via la protocole SSH. De la même manière que pour les appels téléphonique, il est possible de bloquer ces tentatives.
 
 https://www.fail2ban.org/wiki/index.php/Main_Page[Fail2ban] est un petit utilitaire écrit en Python qui va s’occuper d’analyser les logs du serveur. Il va donc mettre sur liste noir les adresses IP qui ont tenté de se connecter plusieurs fois avec un mot de passe erroné.

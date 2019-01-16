@@ -7,7 +7,7 @@
 
 == Création d’une campagne de publicité avec LinkedIn
 
-Notre produits s’adressant aux professionnels, nous avons choisi le réseau social LinkedInfootnote:[LinkedIn est un réseau social entre professionnels] pour promouvoir notre plateforme.
+Notre produits s’adressant aux professionnels, nous avons choisi le réseau social LinkedIn footnote:[LinkedIn est un réseau social entre professionnels] pour promouvoir notre plateforme.
 
 Le but était donc de toucher principalement:
 
@@ -18,12 +18,12 @@ Le but était donc de toucher principalement:
 
 LinkedIn propose trois types de publicité:
 
-* Sponsored Content, la publicité arrive directement dans le fil d’actualité de l’utilisateur
-* Text Ads, la publicité est plus discrète et ce place sur le côté de l’application
-* Sponsored InMail, la publicité est envoyée directement par chat et permet donc de démarrer une discussion avec l’utilisateur s’il le souhaite
+* _Sponsored Content_, la publicité arrive directement dans le fil d’actualité de l’utilisateur
+* _Text Ads_, la publicité est plus discrète et ce place sur le côté de l’application
+* _Sponsored InMail_, la publicité est envoyée directement par chat et permet donc de démarrer une discussion avec l’utilisateur s’il le souhaite
 
-image:linkedin_sponsored_content.png[la publicité de type Sponsored Content propose un contenu riche]
+.la publicité de type Sponsored Content propose un contenu riche
+image:linkedin_sponsored_content.png[linkedin_sponsored_content]
 
-[[linkedin_sponsored_content]][linkedin_sponsored_content]
 
 Pour la campagnes à destination des avocats, nous avons décidé d’utiliser le modèle Sponsored Content. Comme le montre la figure link:#linkedin_sponsored_content[[linkedin_sponsored_content]], ce modèle à l’avantage de proposer un contenu riche grâce à une image et à un lien qui redirige directement sur le site. De plus, LinkedIn offre la possibilité de cibler l’audience et donc d’obtenir une audience de qualité.

@@ -11,9 +11,13 @@ v1.0, 2019-01-09
 :revdate: 2019-01-16
 
 include::chapter00-before.adoc[]
-<<<
+
+// <<<
+
 include::chapter01-presentation.adoc[]
-<<<
+
+// <<<
+
 include::chapter02-planificate.adoc[]
 <<<
 include::chapter03-development.adoc[]

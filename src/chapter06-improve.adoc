@@ -1,0 +1,134 @@
+[#chapter06-improve]
+= Amélioration continue
+
+== Developpement Dirigé par les test
+
+Comme je l’évoquait lors de la réunion de pré-lancement (section #sec:pre_start_meeting[3.1.4]), il était capital de maintenir une certaine qualité de nos services. Je me suis donc imposé le _workflow_ du développement dirigé par les tests.
+
+== RGPD
+
+2018 fut l’année de la mise en place de la RGPDfootnote:[Règlement général sur la protection des données]. Entrée en vigueur le 25 mai, ce texte réglementaire européen couvre, entre autres, le traitement des données personnellesfootnote:[Les données personnelle sont toutes les données qui permettent d’identifier quelqu’un].
+
+Les principales nouveautés qu’apporte la RGPD sont:
+
+* le droit à l’oubli
+* le droit à la portabilité des données
+* le droit à l’opposition de toute opération marketing
+* le droit à la rectification des données de l’utilisateur
+* le droit d’accès à toutes les données de l’utilisateur
+
+Il faut qu’il y ait un https://www.cnil.fr/fr/devenir-delegue-la-protection-des-donnees[Délégué à la Protection des Données]footnote:[https://www.cnil.fr/fr/devenir-delegue-la-protection-des-donnees] . la https://www.cnil.fr/[CNIL]footnote:[https://www.cnil.fr/] footnote:[La Commission nationale de l’informatique et des libertés est l’autorité française qui est chargée de veiller à ce que l’informatique.] précisie que le délégué . J’ai donc choisit de me porter volontaire pour ce rôle (Voir annexe #apx:dpo[11])
+
+Dans mon cas, les principales obligations qui m’incombent sont les suivantes:
+
+* l’utilisateur doit pouvoir effacer toutes les données de l’application qui le concerne https://gdpr-info.eu/art-17-gdpr/[Chapitre 3, Article 17]footnote:[https://gdpr-info.eu/art-17-gdpr/]
+* l’utilisateur doit pouvoir conn
+* nous devons stocker le minimum de données possible
+
+[[subsec:forget-me]]
+=== Oubliez-moi
+
+https://gdpr-info.eu/art-17-gdpr/[L’article 17 de la RGPD]footnote:[https://gdpr-info.eu/art-17-gdpr/] nous oblige à implémenter une fonctionnalité . Celle-ci doit permettre à l’utilisateur d’effacer toutes ses données immédiatement. La ou cela se complique, c’est que la RGPD nous oublige aussi à demander la suppression des données chez des fournisseurs tiers. Ainsi, si nous utilisons des services externesfootnote:[Salesforce, Hubspot, Twitter, ou tout autre fournisseur de service cloud] il faut accéder à leur API afin de demander la suppression.
+
+La difficulté de cette fonctionnalité est de supprimer les données liées à l’utilisateur sans impacter les données qui sont liées aux autres utilisateurs.
+
+==== Exemple avec un huissier de justice
+
+Concrètement, cela signifie que lorsqu’un huissier de justice décide de supprimer son compte, il faut:
+
+* supprimer son compte et ses données (logique)
+* supprimer toutes ses factures
+* supprimer les significations footnote:[L’acte de présenter en main propre un acte de signification à quelqu’un] qu’il a effectué
+
+Cependant je ne peux pas supprimer les significations puisqu’elles doivent être conservée pour l’avocat qui a demandé la signification de son acte.
+
+C’est pour cela que j’ai préféré l’*anonymisation* des données.
+
+Comme je l’expliquait section #sec:tdd[4.1], je suis un évangéliste du _Test Driven Development_. J’ai donc commencé par construire le test.
+
+[source, ruby]
+.test/models/bailiff_test.rb
+----
+require 'test_helper'
+
+class BailiffTest < ActiveSupport::TestCase
+  # ...
+
+  test 'should anonymize and not destroy record' do
+    old_user = @bailiff.as_json
+
+    # on verifie que l'huissier n'est pas supprime en base
+    assert_no_difference('Bailiff.count') { @bailiff.destroy }
+
+    # on verifie que tous les champs suivants on ete modifies
+    %i[email firstname lastname siret company_name town zip_code address_2 address_1].each do |field|
+      assert_not_equal old_user[field], @bailiff.send(field)
+    end
+
+    # et pour terminer, un champ 'deleted' a dut etre passe a 'true'
+    assert @bailiff.deleted
+  end
+end
+----
+
+_ActiveRecord_ (l’ORM footnote:[Un ORM fait interface entre le code et la base de données, voir https://fr.wikipedia.org/wiki/Mapping_objet-relationnel[la définition complète sur Wikipedia]footnote:[https://fr.wikipedia.org/wiki/Mapping_objet-relationnel]] de Ruby on Rails). J’ai donc simplement surchargé la méthode `destroy` et utilisé la librairie `Faker`footnote:[Il s’agit d’une librairie utilisée pour générer des fausse données en tout genre]:
+
+[source, ruby]
+.app/models/user.rb
+----
+class User < ApplicationRecord
+  # ...
+
+  def destroy
+    # ...
+
+    update_attributes(
+      email: new_email,
+      firstname: Faker::Name.first_name,
+      lastname: Faker::Name.last_name,
+      siret: Faker::Company.french_siret_number,
+      # ...
+      deleted: 1
+    )
+
+    save
+  end
+end
+----
+
+Et voilà, la mise en conformité est faite. L’huissier ou l’avocat pourra supprimé son compte et les données seront conservées. En revanche, il sera impossible de retrouver l’utilisateur correspondant à ces données.
+
+==== Cookies
+
+==== Chiffrement des données
+
+[[sec:deployments]]
+==== Déploiement continu
+
+Afin d’être le plus réactif possible, j’ai voulu mettre en place un outil afin d’automatiser les mises en production. Cela est un énorme avantage car il permet de mettre en ligne un correctif ou une évolution très rapidement. De plus, automatiser permet de réduire le risque de l’erreur humaine ( https://www.reddit.com/r/webdev/comments/5rd79m/gitlab_employee_just_ran_rm_rf_on_their/[et cela est vite arrivé]footnote:[https://www.reddit.com/r/webdev/comments/5rd79m/gitlab_employee_just_ran_rm_rf_on_their/] ...).
+
+Pour cela, j’ai utilisé la librairie https://capistranorb.com[Capistrano]footnote:[https://capistranorb.com] . Capistrano est un outil écrit en Ruby qui permet d’automatiquement le déploiement en s’appuyant sur Git (rappelez vous de mon utilisation de Git Flow section #sec:git[3.4]). Il va donc:
+
+* Cloner le répertoire Git afin de récupérer la dernière version du code source
+* Lancer les modifications sur la base de données
+* Minifier footnote:[Il s’agit de concateiner les fichiers texte en un seul afin de réduire le nombre de requête HTTP et d’améliorer la vitesse de chargement] les fichiers Javascript et CSS
+* Faire des liens symboliques sur les documents que les utilisateurs ont envoyés sur le serveur
+
+La librairie se met en place très facilement, voici un extrait de ma configuration
+
+[source, ruby]
+.config/deploy.rb
+----
+
+set :application, "iSignif"
+set :repo_url, "http://git.rousseau-alexandre.fr/iSignif/Website.git"
+append :linked_files, 'config/database.yml' , 'config/initializers/secret_token.rb', 'config/secrets.yml'
+append :linked_dirs, 'public/uploads'
+----
+
+[[sec:feedback]]
+=== Retours des utilisateurs
+
+==== Service après vente
+
+==== Témoignages

@@ -1,0 +1,79 @@
+[#chapter03-development]
+= Développement de la plateforme
+
+[[sec:tdd]]
+== Développement Dirigé par les Test
+
+Étant le seul développeur _back-end_, il m’a fallut m’organiser afin d’optimiser au maximum mon temps.
+
+De mon point de vue, une des façon d’optimiser son développement est d’assurer ses arrières afin d’éviter de corriger des bogues. Pour cela, ma solution est les tests unitairesfootnote:[Les test unitaires sont du code qui permet de vérifier le comportement de certaines parties du code afin de vérifier qu’il n’y a pas de changements indésirables lorsd’un développement]. Afin d’obtenir de me sécuriser au maximum, je me suis imposé deux méthodologies:
+
+* le _Test Driven Development_ (Développement Dirigé par les Test dans la langue de molière). Il s’agit de commencer par développer le test avant de développer la fonctionnalité.
+* couvrir d’un test chaque bogues relevé
+
+Il s’agit de deux règles simples mais qui m’ont permisent d’obtenir une couverture de code de l’ordre de 90% en moyenne.
+
+== Exemple de test unitaires
+
+Vous aurez l’occasion de découvrir comment j’ai pu mettre en place un test unitaire lors de l’élaboration de la fonctionnalité de suppression d’un utilisateur section #subsec:forget-me[7.2.1].
+
+== Exemple de test fonctionnels
+
+Exemple, pour la page qui s’occupe d’afficher un utilisateur, j’ai choisis de coder quatres tests qui vont couvrir tous les cas:
+
+* un avocat peut accéder à son profil (Listing #lst:test_connected[[lst:test_connected]])
+* un administrateur peut accéder au profil d’un avocat (Listing #lst:test_admin[[lst:test_admin]])
+* un utilisateur connecté ne peut pas accéder au profil d’un autre utilisateur (Listing #lst:test_other[[lst:test_other]])
+* un utilisateur non-connecté ne peut pas accéder au profil d’un autre utilisateur (Listing #lst:test_unconnected[[lst:test_unconnected]])
+
+Cela peut sembler paranoïaque, mais cela m’assure qu’aucune régréssion n’est possible sur cette page
+
+
+[source, ruby]
+----
+class UsersControllerTest < ActionDispatch::IntegrationTest
+
+  # ...
+
+  test 'should show for connected user' do
+    login(@advocate)
+    get advocate_url(@advocate)
+    assert_response :success
+  end
+
+  test 'should show for admin' do
+    login(users(:super_user))
+    get advocate_url(@advocate)
+    assert_response :success
+  end
+
+  test 'should forbid show user for other user' do
+    login(users(:one_other_advocate))
+    get advocate_url(@advocate)
+    assert_response :forbidden
+  end
+
+  test 'should forbid show user for non-connected user' do
+    get advocate_url(@advocate)
+    assert_response :forbidden
+  end
+
+  # ...
+
+end
+----
+
+== Mise en place de l’environnement de développement
+
+Utilisation de https://rvm.io[RVM] (Ruby Version Manager) en local afin de reproduire un environnement de développement au plus près du serveur de production et de fixer la version de Ruby utilisée .
+
+Création d’une machine virtuelle avec https://www.vagrantup.com[Vagrant] pour le designer qui développe sous Windows.
+
+Création d’un dépôt Gitea auto-hébergé sur un Raspberry PI afin de travailler tous ensemble
+
+== Utilisation de Strip
+
+// TODO: copy / paste
+
+
+== Migration vers une architecture API

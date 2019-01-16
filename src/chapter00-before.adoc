@@ -1,0 +1,23 @@
+[#chapter00-before]
+
+= Préface
+
+== licence
+
+Cet document est mis à disposition par Alexandre Rousseau sous licence Creative Commons Attribution - Partage dans les Mêmes Conditions 4.0 International. Pour accéder à une copie de cette licence, merci de vous rendre à l’ http://creativecommons.org/licenses/by-sa/4.0/[adresse suivante]footnote:[http://creativecommons.org/licenses/by-sa/4.0/] ou envoyez un courrier à Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA.
+
+Tout le code source de ce document (rédigé en LaTeX) est disponnible sur http://git.rousseau-alexandre.fr/madeindjs/it_report[ce repertoire Git]footnote:[http://git.rousseau-alexandre.fr/madeindjs/it_report] .
+
+== Remerciements
+
+== Introduction
+
+Dans le souhait de me former et de progresser continuellement, je me suis inscrit sur le site https://cofondateur.fr[cofondateur.fr]footnote:[https://cofondateur.fr] . Ce réseau social met en relation des entrepreneurs qui cherchent des développeurs pour construire leurs idées. C’est ainsi que je suis rentré en contact avec une startup qui cherchait un profil technique pour la réalisation de leur projet.
+
+J’ai donc décider de construire mon mémoire uniquement sur ce projet car il met en avant la construction d’un projet de A à Z. J’ai donc fais le choix d’organiser mon mémoire de façon chronologique (dans la mesure du possible). C’est-à-dire:
+
+* la planification du projet
+* le développement du projet
+* la mise en place du serveur de production
+* la collecte des retours utilisateurs
+* la promotion du produit

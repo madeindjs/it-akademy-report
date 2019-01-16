@@ -1,0 +1,41 @@
+= Dossier de validation
+Alexandre Rousseau <contact@rousseau-alexandre.fr>
+v1.0, 2019-01-09
+:toc:
+:doctype: book
+:imagesdir: img
+:source-highlighter: rouge
+:copyright: CC-BY-SA 4.0
+:lang: fr
+:author: Alexandre Rousseau
+:revdate: 2019-01-16
+
+include::chapter00-before.adoc[]
+<<<
+include::chapter01-presentation.adoc[]
+<<<
+include::chapter02-planificate.adoc[]
+<<<
+include::chapter03-development.adoc[]
+<<<
+include::chapter05-devops.adoc[]
+<<<
+include::chapter06-improve.adoc[]
+<<<
+include::chapter07-marketing.adoc[]
+<<<
+include::chapter08-conclusion.adoc[]
+
+
+
+[[apx:openvas_report]]
+Rapport de scan OpenVAS
+-----------------------
+
+[[apx:dpo]]
+Désignation délégué à la protection des données
+-----------------------------------------------
+
+[[apx:brochure]]
+Brocure commerciale d’iSignif
+-----------------------------

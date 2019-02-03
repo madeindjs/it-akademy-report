@@ -8,4 +8,5 @@
 *.blg
 *.toc
 dossier_validation.pdf
-buil/*.pdf
+build/*.pdf
+build/*.html

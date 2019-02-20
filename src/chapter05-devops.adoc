@@ -3,11 +3,7 @@
 
 === Choix du serveur
 
-=== Choix de l’OS
-
-=== Sélection du type de serveur
-
-Plusieurs solutions existent:
+Le choix du serveur a beaucoup de conséquence pour l'entreprise. Plusieurs solutions existent:
 
 * Le serveur mutualisé: Il s’agit d’un serveur que l’on partage avec d’autres client afin de réduire le coût. L’inconvénient est que nous n’avons pas le choix sur les librairies installées ni sur les logiciels.
 * Le serveur dédié: L’avantage est le contrôle total sur le serveur mais l’inconvénient est que ce n’est pas évolutif. Si on veut augmenter les performances, il faut passer sur un autre serveur dédie.
@@ -70,7 +66,7 @@ MariaDB > CREATE USER 'isignif'@'localhost' IDENTIFIED BY '****';
 MariaDB > GRANT ALL PRIVILEGES ON isignif . * TO 'isignif'@'localhost';
 ----
 
-==== Sauvergarde Automatique du serveur
+==== Sauvegarde Automatique du serveur
 
 En terme de sauvegarde il existe plusieurs stratégies. Pour ma part, les conditions étaient d’avoir des sauvegardes quotidiennes et automatiques. J’ai donc fait le choix de créer moi-même un script `bash` de sauvegarde de mon serveur en incluant:
 
@@ -89,7 +85,6 @@ Voici donc une partie de mon script sur le listing suivant #fig:backup[[fig:back
 ----
 #!/bin/bash
 # ...
-
 # je realise un dump de toute la BDD mariadb
 mysqldump --all-databases  > $sqldump_filename
 
@@ -98,12 +93,10 @@ for website in ${websites[*]}
 do
   cp -r "/var/www/${website}/shared/{config,public,storage}" "${website}/shared/"
 done
-
 # ...
 
 # je cree une archive et je la chiffre avec gpg
 tar -czvf -  "$folder_save" | gpg --encrypt --recipient contact@rousseau-alexandre.fr -o "$folder_save.tar.gz.gpg" --always-trust
-
 # ...
 ----
 
@@ -117,13 +110,11 @@ Aujourd’hui, la sécurité informatique est un enjeu majeur. D’autant plus p
 
 Dans un premier temps, la sécurité passe par l’application. L’application doit être robuste et imperméables aux attaques les plus connues. Heureusement, Ruby on Rails étant un framework éprouvé, il prévient des failles de sécurité les plus connues (pour peu qu’on respecte sa façon de coder).
 
-===== Les failles les plus courantes
-
-====== _Cross-site Scripting_
+===== _Cross-site Scripting_
 
 Le _Cross-site Scripting_ est le fait de pouvoir envoyer un formulaire provenant d’un autre site vers le nôtre. Rails utilise un jeton qu’il place sur tous les formulaires et il peut identifier les formulaires qui lui sont propre.
 
-====== Injection SQL
+===== Injection SQL
 
 L’injection SQL consiste à injecter du code SQL footnote:[Le code SQL est utilisé pour envoyer des requêtes sur la base de données]. Comme le montre la figure suivante, les injection SQL sont très faciles.
 
@@ -132,8 +123,7 @@ image:sql_injection.png[sql_injection, 200]
 
 NOTE: Rails échappe par défaut tous les paramètres envoyés par l’utilisateur.
 
-
-====== Injection JS
+===== Injection JS
 
 Le JavaScript est du code interprété sur le navigateur du client. Placé dans le document HTML, il sera exécuté par le navigateur. Par exemple, un petit malin peut créer un utilisateur contenant du code JavaScript comme nom de famille.
 
@@ -144,13 +134,13 @@ Le JavaScript est du code interprété sur le navigateur du client. Placé dans 
 
 Alors sur chaque page ou son nom sera affiché, le code sera exécuté. Heureusement, Rails nous protège directement de cela en échappant les caractères.
 
-====== Attaque par force brute
+===== Attaque par force brute
 
 Il s’agit d’une attaque très facile à mettre en place. Il s’agit de tenter de se connecter plusieurs fois en utilisant un login et un dictionnaire de mots de passe.
 
 Dans mon cas, j’ai utilisé la bibliothèque https://github.com/binarylogic/authlogic[Authlogic] qui stocke le nombre de tentative de connections échouées dans la base de données. Ainsi, une fois 3 tentatives dépassées, le compte est bloqué et il n’est plus possible de se connecter avec le login.
 
-==== Les failles les plus récentes
+===== Les failles les plus récentes
 
 Des failles de sécurités sont découvertes tous les jours. Heureusement pour nous, une organisation les répertories. Ces vulnérabilités sont identifiées par un identifiant CVE footnote:[Common Vulnerabilities and Exposures].
 
@@ -171,6 +161,8 @@ Solution: upgrade to ~> 2.3.18, ~> 3.1.12, >= 3.2.13
 ----
 
 ==== Audit de sécurité
+
+Dans cette section, je vais vous détailler ma méthodologie 
 
 ===== Vérifier les ports ouverts
 

@@ -1,13 +1,11 @@
 [#chapter01-presentation]
 == Présentation du projet
 
-Comme je l’ai rapidement présenté dans de mon introduction (Section #sec:introduction[1.3]), j’ai eu l’opportunité de construire un projet à partir d’une idée. Je vais donc commencer par vous la présenter.
+Comme je l’ai rapidement présenté dans de mon introduction, j’ai eu l’opportunité de construire un projet à partir d’une idée que je vais commencer par vous présenter.
 
-L’idée de base a pour ambition de créer un société de type _LegalTech_ footnote:[Une LegalTech peut se définir comme une startup de droit en ligne qui propose aux entreprises et aux particuliers une offre numérique]. Il s’agit donc d’un produit destiné au marché du droit.
+=== Présentation de l'idée
 
-=== Analyse du besoin
-
-Réalisée par un huissier de justice, la signification a pour but de porter les actes judiciaires footnote:[assignation en justice, jugement, sommation de payer ou de faire, congés, demandes de renouvellement du bail commercial...] à la connaissance des intéressés. Toutefois, les actes sont souvent adressés à plusieurs destinataires résidents dans des villes éloignées. Ceci demande un effort chronophage pour les demandeurs de signification qui doivent contacter les huissiers compétents pour chaque adresse.
+Réalisée par un huissier de justice, la signification a pour but de porter les actes judiciaires footnote:[assignation en justice, jugement, sommation de payer ou de faire, etc...] à la connaissance des intéressés. Toutefois, les actes sont souvent adressés à plusieurs destinataires résidents dans des villes différentes. Ceci demande un effort chronophage pour les demandeurs de signification qui doivent contacter les huissiers compétents pour chaque adresse.
 
 .Un acte doit être notifié en main propre pour chaque destinataire
 image:signification_before.png[signification_before, 500]
@@ -19,30 +17,29 @@ image:signification_after.png[signification_after, 500]
 
 NOTE: Vous pouvez consulter la brochure dans les annexes pour en savoir plus à propos de notre activité.
 
-
-=== La société
-
-Les deux cofondateurs sont Adrien ORION et Sacha PARTENSKY, deux étudiants en droit à l’université Lyon 3 Jean Moulin. Au stade de la rencontre, ils avaient créé la société en tant que iSignif SAS (voir section #sec:sas[2.3]). C’est une société par actions simplifiées. Ce type de société nous a permis de rédiger un pacte d’actionnaires et ainsi de partager les droits de décision équitablement. Elle était suivie par un incubateur footnote:[un incubateur est une société externe qui aide à la création d’un startup]
-
-.Le logo d’iSignif
-image:logo.png[logo, 300]
-
-Lors de la rencontre, Sacha et Adrien m’ont présenté l’idée générale du produit. Sentant rapidement le potentiel, j’ai accepté de devenir associé et j’ai ainsi signé le nouveau pacte d’actionnaires. Nous redéfinissions ainsi les parts et les rôles des nouveaux associés:
-
-* Adrien ORION, cofondateur et directeur général, associé à hauteur de 31,5%
-* Sacha PARTENSKY, cofondateur et Président à hauteur de 41,5%
-* Alexandre ROUSSEAU, associé et directeur technique, associé à hauteur de 25%
-* Antoinne DELETTRE, associé et designer web, associé à hauteur de 2%
-
-J’ai donc choisi un rôle de sociétaire car c’est compatible avec mon statut de salarié chez GAC Technology.
-
-=== Statut juridique
-
-La SASU _(Société par Actions Simplifiée Unipersonnelle)_ est le statut privilégié. Les avantages de ce statut juridique sont une grande liberté sur les règles définies dans le pacte d’actionnaires et une responsabilité limité aux apports.
-
-L’inconvénient de ce statut est qu’il est plus difficile à mettre en place car il faut rédiger un pacte d’actionnaire complet. Dans notre cas, ce statut est parfait puisque mes associés ont les compétences pour rédiger documents administratifs.
-
-NOTE: Pour en savoir plus sur ce régime, je vous invite à consulter https://www.lecoindesentrepreneurs.fr/pourquoi-creer-une-sasu/[cet article]
+// === La société
+//
+// Les deux cofondateurs sont Adrien ORION et Sacha PARTENSKY, deux étudiants en droit à l’université Lyon 3 Jean Moulin. Au stade de la rencontre, ils avaient créé la société en tant que iSignif SAS (voir section #sec:sas[2.3]). C’est une société par actions simplifiées. Ce type de société nous a permis de rédiger un pacte d’actionnaires et ainsi de partager les droits de décision équitablement. Elle était suivie par un incubateur footnote:[un incubateur est une société externe qui aide à la création d’un startup]
+//
+// .Le logo d’iSignif
+// image:logo.png[logo, 300]
+// 
+// Lors de la rencontre, Sacha et Adrien m’ont présenté l’idée générale du produit. Sentant rapidement le potentiel, j’ai accepté de devenir associé et j’ai ainsi signé le nouveau pacte d’actionnaires. Nous redéfinissions ainsi les parts et les rôles des nouveaux associés:
+//
+// * Adrien ORION, cofondateur et directeur général, associé à hauteur de 31,5%
+// * Sacha PARTENSKY, cofondateur et Président à hauteur de 41,5%
+// * Alexandre ROUSSEAU, associé et directeur technique, associé à hauteur de 25%
+// * Antoinne DELETTRE, associé et designer web, associé à hauteur de 2%
+//
+// J’ai donc choisi un rôle de sociétaire car c’est compatible avec mon statut de salarié chez GAC Technology.
+//
+// ==== Statut juridique
+//
+// La SASU _(Société par Actions Simplifiée Unipersonnelle)_ est le statut privilégié. Les avantages de ce statut juridique sont une grande liberté sur les règles définies dans le pacte d’actionnaires et une responsabilité limité aux apports.
+//
+// L’inconvénient de ce statut est qu’il est plus difficile à mettre en place car il faut rédiger un pacte d’actionnaire complet. Dans notre cas, ce statut est parfait puisque mes associés ont les compétences pour rédiger documents administratifs.
+//
+// NOTE: Pour en savoir plus sur ce régime, je vous invite à consulter https://www.lecoindesentrepreneurs.fr/pourquoi-creer-une-sasu/[cet article]
 
 === Business plan
 
@@ -74,15 +71,15 @@ Nous avons donc rédigé un premier cahier des charges qui correspond à la vers
 * *Création des factures*: Afin d’éviter le stockage sur le serveur, nous avons pensé à stocker uniquement les informations des factures en base de données. La plateforme générera des des factures sous forme de fichier PDF à la demande footnote:[Cette méthode a néanmoins l’inconvénient d’utiliser plus de ressources car on peut générer plusieurs fois la même facture.]
 * *Administration*:
 
-=== Conceptualiser et modéliser les données
+==== Conceptualiser et modéliser les données
 
 Lors de la rencontre avec les cofondateurs, nous avions échangé à propos des fonctionnalités de l’application. A la fin de la réunion, ils m’ont remis plusieurs documents dont une ébauche de cahier des charges. A mon sens, la suite logique était de valider la conception d’un modèle de donnée. Ceci permet de valider la compréhension de logique métier et la faisabilité du projet. De plus, cette étape m’a permis d’estimer le coût du projet en terme de temps.
 
 J’ai donc choisi la méthode Merise que j’ai eu l’occasion de découvrir en cours à l’IT-Akademy. Bien que moins actuelle elle permet de réaliser un graphique compréhensible par des profils non-techniques.
 
-==== Étude d’une partie du diagramme de modèle de données
+===== Étude d’une partie du diagramme de modèle de données
 
-===== Les utilisateurs
+====== Les utilisateurs
 
 Prenons par exemple la gestion des utilisateurs. Dans l’application il existe deux principaux types de comptes:
 
@@ -96,15 +93,14 @@ image:merise_users.png[merise_users, 500]
 
 Concrètement dans une base de données relationnelles, cela se matérialisera par une https://en.wikipedia.org/wiki/Single_Table_Inheritance[Single Table Inheritance]. C’est-à-dire qu’une table contiendra les deux types de données et qu’une colonne spécifiera le type d’utilisateur (Huissier ou Avocat). Ce modèle d’héritage en architecture de base de données est assez controversé. Cependant il convient bien à mon cas car les deux entités sont quasiment identiques.
 
-===== Les huissiers
+====== Les huissiers
 
 Contrairement à l’avocat, l’huissier aura des relations supplémentaires avec d’autres entités. Chaque huissier est affecté à une unique zone de compétence. Cette zone de compétence contient plusieurs villes matérialisées sous l’entité `zip_code`. Nous arrivons donc au résultat présenté sur la figure suivant.
 
 .Représentation des huissiers
 image:merise_bailiffs.png[merise_bailiffs, 500]
 
-
-===== L’acte
+====== L’acte
 
 Nous pouvons ensuite créer une nouvelle entité `Act` qui représentera un acte qui devra être signifié par un huissier. Cet acte doit donc contenir:
 

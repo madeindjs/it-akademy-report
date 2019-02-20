@@ -3,9 +3,7 @@
 
 === Réunions d’avancements
 
-Les réunions d’avancements ont lieu physiquement. Elles ne sont pas périodiquement fixées, nous en organisons à la demande, lorsqu’un membre de l’équipe en ressent le besoin. Nous en faisons donc une tous les mois environ d’une heure ou deux. Afin d’être plus efficace, nous définissons un but à l’avance.
-
-L’idée n’est donc pas de développer une mais bien de valider certaines étapes du développement du produit et de communiquer autour de l’avancé de la société.
+Les réunions d’avancements ont lieu physiquement. Elles ne sont pas périodiquement fixées, nous en organisons à la demande, lorsqu’un membre de l’équipe en ressent le besoin. Nous en faisons donc une tous les mois environ d’une heure ou deux. Afin d’être plus efficace, nous définissons un but à l’avance. Le principe est donc de valider certaines étapes du développement du produit et de communiquer autour de l’avancée de la société.
 
 Voici donc quelques réunions clés qui se sont déroulées au cours de l’élaboration de notre produit.
 
@@ -23,7 +21,7 @@ Cette réunion à eu lieu le 6 juin 2016 et nous a permis de rédiger le pacte d
 
 Le projet était incubé par https://www.beelys.org/[Beelys], un grand incubateur lyonnais. Beelys nous offrait donc l’aide de deux spécialistes en startups. Ces spécialistes nous on apporté des renseignements sur le fonctionnement des levées de fond.
 
-A la suite de cette réunion, nous avons fait le choix de mettre de côté la levée de fond. En effet, une levée de fond s’accorde souvent d’une vente de part de l’entreprise. Sachant que nous n’avions pas besoin immédiatement d’argent’, nous préférions garder les parts de l’entreprise et les vendre une fois que la société posséderait une certaine notoriété.
+A la suite de cette réunion, nous avons fait le choix de *ne pas faire de levée de fond*. En effet, une levée de fond s’accorde souvent d’une vente de part de l’entreprise. Sachant que nous n’avions pas besoin immédiatement d’argent, nous préférions garder les parts de l’entreprise et les vendre une fois que la société posséderait une certaine notoriété.
 
 ==== Présentation de l’outil à un huissier
 
@@ -52,8 +50,6 @@ Nous avons donc fait une réunion autour de laquelle nous avons découpé toutes
 * être indivisible
 * réalisable rapidement
 
-Colonne
-
 Nous avons donc très rapidement sélectionné les tâches qui devaient être réalisé obligatoirement avant le lancement de la bêta. C’est à dire:
 
 * indispensable au _workflow_ du client
@@ -61,13 +57,6 @@ Nous avons donc très rapidement sélectionné les tâches qui devaient être r�
 * développable rapidement
 * générique aux besoins des différents clients
 
-Colonne
-
-Cette colonnes réunit les tâches qui seront nécessaires après le déploiement de la bêta.
-
-Colonne
-
-Comme le nom l’indique, cette colonne peut réunir toutes les idées d’amélioration ou de mise en place de fonctionnalité.
 
 ==== Utilisation de Trello
 

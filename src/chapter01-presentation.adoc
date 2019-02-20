@@ -3,7 +3,7 @@
 
 Comme je l’ai rapidement présenté dans de mon introduction (Section #sec:introduction[1.3]), j’ai eu l’opportunité de construire un projet à partir d’une idée. Je vais donc commencer par vous la présenter.
 
-L’idée de base a pour ambition de créer un société de type LegalTech footnote:[Une LegalTech peut se définir comme une startup de droit en ligne qui propose aux entreprises et aux particuliers une offre numérique]. Il s’agit donc d’un produit destiné au marché du droit.
+L’idée de base a pour ambition de créer un société de type _LegalTech_ footnote:[Une LegalTech peut se définir comme une startup de droit en ligne qui propose aux entreprises et aux particuliers une offre numérique]. Il s’agit donc d’un produit destiné au marché du droit.
 
 === Analyse du besoin
 
@@ -69,8 +69,8 @@ Nous avons donc rédigé un premier cahier des charges qui correspond à la vers
 
 * *système de connexion*: afin de connaître l’identité de la personne qui navigue sur le site et interdire certaines fonctionnalités en fonction du types de comptes. Par exemple un huissier ne pourra pas créer d’actes à signifier.
 * *Estimation du coût d’un acte*: afin de pouvoir, en un minimum de clic, avoir une estimation du coup d’un’ acte. Sachant que cette page est le point d’entrée de l’application, elle doit être le plus simple possible. Cette page devra donc être en _Single Page_.
-* *Workflow de la signification*:
-* *Workflow d’annulation*:
+* *__Workflow__ de la signification*:
+* *__Workflow__ d’annulation*:
 * *Création des factures*: Afin d’éviter le stockage sur le serveur, nous avons pensé à stocker uniquement les informations des factures en base de données. La plateforme générera des des factures sous forme de fichier PDF à la demande footnote:[Cette méthode a néanmoins l’inconvénient d’utiliser plus de ressources car on peut générer plusieurs fois la même facture.]
 * *Administration*:
 

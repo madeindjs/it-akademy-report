@@ -31,7 +31,7 @@ Cette réunion a eu lieu le 12 septembre. A ce moment, le produit était presque
 
 L’huissier avait participé en tant que bêta testeur pour un de nos concurrent le plus aboutit. Cela a permit de collecter les retours qu’il avait eu et de les intégrer à notre application. Cela nous a aussi permis de valider notre produit et d’apporter quelques petites corrections avant le lancement.
 
-===== Reunion pré-lancement
+===== Réunion pré-lancement
 
 Cette réunion a eu lieu le 22 novembre. A ce moment, le produit était prêt pour le lancement en bêta. Nous étions conscient que le lancement était un moment crucial pour notre société. Les mauvais retours se propagent vite et nous n’avions pas le droit à l’erreur.
 

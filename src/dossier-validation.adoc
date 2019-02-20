@@ -39,14 +39,3 @@ include::chapter07-marketing.adoc[]
 <<<
 
 include::chapter08-conclusion.adoc[]
-
-[[apx:openvas_report]]
-Rapport de scan OpenVAS
-
-[[apx:dpo]]
-Désignation délégué à la protection des données
------------------------------------------------
-
-[[apx:brochure]]
-Brocure commerciale d’iSignif
------------------------------

@@ -1,11 +1,11 @@
 [#chapter06-improve]
-= Amélioration continue
+== Amélioration continue
 
-== Développement Dirigé par les test
+=== Développement Dirigé par les test
 
 Comme je l’évoquait lors de la réunion de pré-lancement, il était capital de maintenir une certaine qualité de nos services. Je me suis donc imposé le _workflow_ du développement dirigé par les tests.
 
-== RGPD
+=== RGPD
 
 2018 fut l’année de la mise en place de la RGPD footnote:[Règlement général sur la protection des données]. Entrée en vigueur le 25 mai, ce texte réglementaire européen couvre, entre autres, le traitement des données personnelles footnote:[Les données personnelle sont toutes les données qui permettent d’identifier quelqu’un].
 
@@ -25,13 +25,13 @@ Dans mon cas, les principales obligations qui m’incombent sont les suivantes:
 * l’utilisateur doit pouvoir conn // TDOD
 * nous devons stocker le minimum de données possible
 
-=== Oubliez-moi
+==== Oubliez-moi
 
 https://gdpr-info.eu/art-17-gdpr/[L’article 17 de la RGPD] nous oblige à implémenter une fonctionnalité . Celle-ci doit permettre à l’utilisateur d’effacer toutes ses données immédiatement. La ou cela se complique, c’est que la RGPD nous oblige aussi à demander la suppression des données chez des fournisseurs tiers. Ainsi, si nous utilisons des services externes footnote:[Salesforce, Hubspot, Twitter, ou tout autre fournisseur de service cloud] il faut accéder à leur API afin de demander la suppression.
 
 La difficulté de cette fonctionnalité est de supprimer les données liées à l’utilisateur sans impacter les données qui sont liées aux autres utilisateurs.
 
-==== Exemple avec un huissier de justice
+===== Exemple avec un huissier de justice
 
 Concrètement, cela signifie que lorsqu’un huissier de justice décide de supprimer son compte, il faut:
 
@@ -97,11 +97,11 @@ end
 
 Et voilà, la mise en conformité est faite. L’huissier ou l’avocat pourra supprimé son compte et les données seront conservées. En revanche, il sera impossible de retrouver l’utilisateur correspondant à ces données.
 
-==== Cookies
+===== Cookies
 
-==== Chiffrement des données
+===== Chiffrement des données
 
-==== Déploiement continu
+===== Déploiement continu
 
 Afin d’être le plus réactif possible, j’ai voulu mettre en place un outil afin d’automatiser les mises en production. Cela est un énorme avantage car il permet de mettre en ligne un correctif ou une évolution très rapidement. De plus, automatiser permet de réduire le risque de l’erreur humaine ( https://www.reddit.com/r/webdev/comments/5rd79m/gitlab_employee_just_ran_rm_rf_on_their/[et cela est vite arrivé]...).
 
@@ -123,8 +123,8 @@ append :linked_files, 'config/database.yml' , 'config/initializers/secret_token.
 append :linked_dirs, 'public/uploads'
 ----
 
-=== Retours des utilisateurs
+==== Retours des utilisateurs
 
-==== Service après vente
+===== Service après vente
 
-==== Témoignages
+===== Témoignages

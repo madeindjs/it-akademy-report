@@ -1,7 +1,7 @@
 [#chapter02-planificate.adoc]
-= Planifier la réalisation du projet
+== Planifier la réalisation du projet
 
-== Réunions d’avancements
+=== Réunions d’avancements
 
 Les réunions d’avancements ont lieu physiquement. Elles ne sont pas périodiquement fixées, nous en organisons à la demande, lorsqu’un membre de l’équipe en ressent le besoin. Nous en faisons donc une tous les mois environ d’une heure ou deux. Afin d’être plus efficace, nous définissons un but à l’avance.
 
@@ -9,7 +9,7 @@ L’idée n’est donc pas de développer une mais bien de valider certaines ét
 
 Voici donc quelques réunions clés qui se sont déroulées au cours de l’élaboration de notre produit.
 
-=== Présentation de la première version
+==== Présentation de la première version
 
 Cette réunion a eu lieu le 30 mai 2017, c’est à dire quelques semaines après ma rencontre avec les cofondateurs. A ce moment là, j’avais travaillé en total autonomie sur l’élaboration d’un produit fonctionnel.
 
@@ -17,7 +17,7 @@ L’objectif était donc de valider les de cette plateforme. Cette étape est r�
 
 J’ai donc effectué une démonstration. Cela a permis de renforcer la confiance que mes associés m’avaient alors accordé mais aussi de collecter des premières critiques.
 
-=== Rencontre des incubateurs
+==== Rencontre des incubateurs
 
 Cette réunion à eu lieu le 6 juin 2016 et nous a permis de rédiger le pacte des associés.
 
@@ -25,19 +25,19 @@ Le projet était incubé par https://www.beelys.org/[Beelys], un grand incubateu
 
 A la suite de cette réunion, nous avons fait le choix de mettre de côté la levée de fond. En effet, une levée de fond s’accorde souvent d’une vente de part de l’entreprise. Sachant que nous n’avions pas besoin immédiatement d’argent’, nous préférions garder les parts de l’entreprise et les vendre une fois que la société posséderait une certaine notoriété.
 
-=== Présentation de l’outil à un huissier
+==== Présentation de l’outil à un huissier
 
 Cette réunion a eu lieu le 12 septembre. A ce moment, le produit était presque prêt pour le lancement en bêta.
 
 L’huissier avait participé en tant que bêta testeur pour un de nos concurrent le plus aboutit. Cela a permit de collecter les retours qu’il avait eu et de les intégrer à notre application. Cela nous a aussi permis de valider notre produit et d’apporter quelques petites corrections avant le lancement.
 
-==== Reunion pré-lancement
+===== Reunion pré-lancement
 
 Cette réunion a eu lieu le 22 novembre. A ce moment, le produit était prêt pour le lancement en bêta. Nous étions conscient que le lancement était un moment crucial pour notre société. Les mauvais retours se propagent vite et nous n’avions pas le droit à l’erreur.
 
 Nous avons donc choisit de tester notre produit sur quelques simulations entre nous afin de valider toutes les fonctionnalités. Ces tests nous ont permit de dénicher quelques bogues mineurs et d’analyser quelques fonctionnalités clefs manquantes. Nous avons donc pris la décision de retarder un peu le déploiement de notre produit afin d’améliorer la qualité.
 
-== Méthode Kanban
+=== Méthode Kanban
 
 La méthode Kanban est méthode agile très utilisée dans le monde informatique. Cela permet de mettre en place une gestion du projet sous forme de tickets. Cela permet de visualiser le flux de travail, de limiter le nombre de tâches en cours et de prioriser les tâches.
 
@@ -45,7 +45,7 @@ Cette méthode nous était indispensable car elle permet de voir l’avancement 
 
 Dans un premier temps je n’ai pas choisi de d’utiliser la méthode AGILE et la gestion des Sprints. Pour nous, le premier livrable devait être la phase bêta. Cette phase devrait correspondre à un produit fonctionnel en se concentrant sur les fonctions basiques.
 
-=== Découpage des tâches
+==== Découpage des tâches
 
 Nous avons donc fait une réunion autour de laquelle nous avons découpé toutes les tâches à réaliser. Chaque tâche doit donc:
 
@@ -69,13 +69,13 @@ Colonne
 
 Comme le nom l’indique, cette colonne peut réunir toutes les idées d’amélioration ou de mise en place de fonctionnalité.
 
-=== Utilisation de Trello
+==== Utilisation de Trello
 
 Dans le monde du Kanban, un logiciel SAAS se démarque parmi les autre: http://trello.com/[Trello]. Trello est un outil SAAS qui permet pousse la méthode Kanban plus loin. Cette application pousse la collaboration en ajoutant les discussions sur les tâches (voir figure #fig:trello[[fig:trello]]).
 
 image:trello.png[Capture d’écran de notre tableau Kanban en septembre 2018]
 
-== Rédiger les spécifications techniques
+=== Rédiger les spécifications techniques
 
 Étant dans une équipe non technique, mes associés m’ont laissé carte blanche pour le choix des technologies. Les seule contraintes étaient de respecter un développement rapide et fiable. Si l’on considère la représentation suivante, je devais donc me situer entre _good_ et _cheap_.
 
@@ -83,13 +83,13 @@ image:trello.png[Capture d’écran de notre tableau Kanban en septembre 2018]
 image:good_cheap_fast.png[good_cheap_fast, 300]
 
 
-=== Back-end
+==== Back-end
 
 Étant donné que dans un premier temps je serais le seul à développer le produit, mon objectif était de choisir un framework ou j’étais à l’aise. Mon choix c’est donc naturellement posé sur https://rubyonrails.org/[Ruby on Rails].
 
 https://rubyonrails.org/[Ruby on Rails] est un framework web écrit en https://www.ruby-lang.org/[Ruby]. Très utilisé dans le monde des startup footnote:[Ruby on Rails a été initialement utilisé pour https://github.com/[Github], https://twitter.com/[Twitter], https://airbnb.com/[Airbnb], https://soundcloud.com/[Soundcloud], etc.. .], sa grande force est une grande communauté et une très bonne maturité. Par son mantra __"Convetion over configuration"__ footnote:["Suivez les convention au lieu de configurer"], il permet un développement extrêmement rapide.
 
-=== Front-end
+==== Front-end
 
 Les nouvelles applications utilisent des interface utilisateurs de plus en plus réactive. La tendance étant aux __Signle Page Application__footnote:[Application sur une page], j’ai choisis de rester plus simple dans un premier temps.
 
@@ -99,7 +99,7 @@ Ma seule erreur lors du choix des techno que j’ai utilisé et de ne pas être 
 
 De plus, le besoin s’est fait sentir de rendre notre application de plus en plus _Single Page_. Il aurait ainsi plus facile de découpler notre application en une partie _back_ et _front_.
 
-== Travailler à plusieurs
+=== Travailler à plusieurs
 
 Git footnote:[Git est un logiciel développé par Linux Torvals (fondateur de Linux) qui permet de versionner un projet. Ainsi il rend la collaboration beaucoup plus facile.] est énormément utilisé dans le monde du développement de logiciel. Son efficacité n’est plus à prouver. Pour construire iSignif, j’ai immédiatement décidé d’appliquer la méthodologie *Git Flow*.
 

@@ -1,7 +1,7 @@
 [#chapter03-development]
-= Développement de la plateforme
+== Développement de la plateforme
 
-== Développement Dirigé par les Test
+=== Développement Dirigé par les Test
 
 Étant le seul développeur _back-end_, il m’a fallut m’organiser afin d’optimiser au maximum mon temps.
 
@@ -12,11 +12,11 @@ De mon point de vue, une des façon d’optimiser son développement est d’ass
 
 Il s’agit de deux règles simples mais elles m’ont permit d’obtenir une couverture de code de l’ordre de 90% en moyenne.
 
-== Exemple de test unitaires
+=== Exemple de test unitaires
 
 NOTE: Vous aurez l’occasion de découvrir comment j’ai pu mettre en place un test unitaire lors de l’élaboration de la fonctionnalité de suppression d’un utilisateur plus loin.
 
-== Exemple de test fonctionnels
+=== Exemple de test fonctionnels
 
 Exemple, pour la page qui s’occupe d’afficher un utilisateur, j’ai choisis de coder quatres tests qui vont couvrir tous les cas:
 
@@ -62,7 +62,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 end
 ----
 
-== Mise en place de l’environnement de développement
+=== Mise en place de l’environnement de développement
 
 Utilisation de https://rvm.io[RVM] (Ruby Version Manager) en local afin de reproduire un environnement de développement au plus près du serveur de production et de fixer la version de Ruby utilisée .
 
@@ -70,9 +70,9 @@ Création d’une machine virtuelle avec https://www.vagrantup.com[Vagrant] pour
 
 Création d’un dépôt Gitea auto-hébergé sur un Raspberry PI afin de travailler tous ensemble
 
-== Utilisation de Strip
+=== Utilisation de Strip
 
 // TODO: copy / paste
 
 
-== Migration vers une architecture API
+=== Migration vers une architecture API

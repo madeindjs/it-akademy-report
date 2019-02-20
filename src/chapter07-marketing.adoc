@@ -1,11 +1,11 @@
 [#chapter07-marketing]
-= Marketing
+== Marketing
 
-== Référencement
+=== Référencement
 
-== Vidéo de démonstration
+=== Vidéo de démonstration
 
-== Création d’une campagne de publicité avec LinkedIn
+=== Création d’une campagne de publicité avec LinkedIn
 
 Notre produits s’adressant aux professionnels, nous avons choisi le réseau social LinkedIn footnote:[LinkedIn est un réseau social entre professionnels] pour promouvoir notre plateforme.
 
@@ -14,7 +14,7 @@ Le but était donc de toucher principalement:
 * les huissiers pour qu’ils rejoignent le réseaux iSignif
 * les avocats pour qu’ils signifient des actes sur notre site
 
-=== Les types de publicité
+==== Les types de publicité
 
 LinkedIn propose trois types de publicité:
 

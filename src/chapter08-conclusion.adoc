@@ -1,7 +1,7 @@
 [#chapter08-conclusion]
-= Conclusion
+== Conclusion
 
-== Apports professionnels
+=== Apports professionnels
 
 Les apports professionnels d’une telle expérience sont évidents. Au delà de mettre en avant une expérience professionnelle de plus, j’ai énormément appris.
 
@@ -9,6 +9,6 @@ Tout d’abord, en étant le référent technique d’un projet, j’ai eu l’o
 
 Ensuite, cette expérience à été pour moi l’opportunité de découvrir un autre rôle au sein d’un société.
 
-== Apports personnels
+=== Apports personnels
 
-== Perspectives
+=== Perspectives

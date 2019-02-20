@@ -1,13 +1,24 @@
-namespace :build do
+require 'asciidoctor'
+require 'asciidoctor-pdf'
 
+MASTER_FILE = File.join __dir__, 'src', 'dossier-validation.adoc'
+OUTPUT_DIR = File.join __dir__, 'build'
+
+namespace :build do
   desc 'Build a PDF version'
   task :pdf do
-    `asciidoctor-pdf src/dossier-validation.adoc --destination-dir build --out-file dossier-validation.pdf`
+    Asciidoctor.convert_file MASTER_FILE,
+                             safe: :unsafe,
+                             backend: 'pdf',
+                             to_dir: OUTPUT_DIR,
+                             mkdirs: true
   end
 
   desc 'Build an HTML version'
   task :html do
-    `asciidoctor src/dossier-validation.adoc --destination-dir build --out-file dossier-validation.html`
+    Asciidoctor.convert_file MASTER_FILE,
+                             safe: :unsafe,
+                             to_dir: OUTPUT_DIR,
+                             mkdirs: true
   end
-
 end

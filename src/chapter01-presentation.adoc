@@ -1,10 +1,6 @@
 [#chapter01-presentation]
 == Présentation du projet
 
-Comme je l’ai rapidement présenté dans de mon introduction, j’ai eu l’opportunité de construire un projet à partir d’une idée que je vais commencer par vous présenter.
-
-=== Présentation de l'idée
-
 Réalisée par un huissier de justice, la signification a pour but de porter les actes judiciaires footnote:[assignation en justice, jugement, sommation de payer ou de faire, etc...] à la connaissance des intéressés. Toutefois, les actes sont souvent adressés à plusieurs destinataires résidents dans des villes différentes. Ceci demande un effort chronophage pour les demandeurs de signification qui doivent contacter les huissiers compétents pour chaque adresse.
 
 L’idée est donc de créer une plateforme afin de simplifier le processus de signification en centralisant les demandes et en les répartissant automatiquement vers un huissier compétent du réseau.

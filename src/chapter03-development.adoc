@@ -1,7 +1,7 @@
 [#chapter03-development]
 == Développement de la plateforme
 
-Étant le seul développeur _back-end_, il m’a fallut m’organiser afin d’optimiser au maximum mon temps.
+Étant le seul développeur _back-end_, il m’a fallut m’organiser afin d’optimiser au maximum mon temps. Dans cette partie je vais vous montrer comment j'ai pu rentabiliser au maximum mon temps afin d'être le plus productif.
 
 === Développement Dirigé par les Test
 
@@ -12,60 +12,66 @@ Selon moi, une des façon d’optimiser son développement est d’assurer ses a
 
 Il s’agit de deux règles simples mais elles m’ont permit d’obtenir une couverture de code de l’ordre de 90% en moyenne.
 
-=== Exemple de test unitaires
+image:escalade-tu.jpg[La _charge_ apparaît dans l'interface d'administration de Stripe]
 
-NOTE: Vous aurez l’occasion de découvrir comment j’ai pu mettre en place un test unitaire lors de l’élaboration de la fonctionnalité de suppression d’un utilisateur plus loin.
-
-=== Exemple de test fonctionnels
-
-Exemple, pour la page qui s’occupe d’afficher un utilisateur, j’ai choisis de coder quatres tests qui vont couvrir tous les cas:
+J'ai aussi fait le choix de faire beaucoup de tests fonctionnels qui garantissent la gestion des droits d'accès aux pages de l'application. Par exemple, pour la page qui s’occupe d’afficher un utilisateur, j’ai choisis de coder quatre tests qui vont couvrir tous les cas:
 
 * un avocat peut accéder à son profil
-* un administrateur peut accéder au profil d’un avocat
-* un utilisateur connecté ne peut pas accéder au profil d’un autre utilisateur
-* un utilisateur non-connecté ne peut pas accéder au profil d’un autre utilisateur
-
-Cela peut sembler paranoïaque, mais cela m’assure qu’aucune régression n’est possible sur cette page
 
 [source, ruby]
 ----
-class UsersControllerTest < ActionDispatch::IntegrationTest
-  # ...
-  test 'should show for connected user' do
-    login(@advocate)
-    get advocate_url(@advocate)
-    assert_response :success
-  end
-
-  test 'should show for admin' do
-    login(users(:super_user))
-    get advocate_url(@advocate)
-    assert_response :success
-  end
-
-  test 'should forbid show user for other user' do
-    login(users(:one_other_advocate))
-    get advocate_url(@advocate)
-    assert_response :forbidden
-  end
-
-  test 'should forbid show user for non-connected user' do
-    get advocate_url(@advocate)
-    assert_response :forbidden
-  end
-  # ...
+test 'should show for connected user' do
+  login(@advocate)
+  get advocate_url(@advocate)
+  assert_response :success
 end
 ----
 
-=== Mise en place de l’environnement de développement
+* un administrateur peut accéder au profil d’un avocat
 
-Utilisation de https://rvm.io[RVM] (Ruby Version Manager) en local afin de reproduire un environnement de développement au plus près du serveur de production et de fixer la version de Ruby utilisée .
+[source, ruby]
+----
+test 'should show for admin' do
+  login(users(:super_user))
+  get advocate_url(@advocate)
+  assert_response :success
+end
+----
 
-Création d’une machine virtuelle avec https://www.vagrantup.com[Vagrant] pour le designer qui développe sous Windows.
+* un utilisateur connecté ne peut pas accéder au profil d’un autre utilisateur
 
-Création d’un dépôt Gitea auto-hébergé sur un Raspberry PI afin de travailler tous ensemble
+[source, ruby]
+----
+test 'should forbid show user for other user' do
+  login(users(:one_other_advocate))
+  get advocate_url(@advocate)
+  assert_response :forbidden
+end
+----
+
+* un utilisateur non-connecté ne peut pas accéder au profil d’un autre utilisateur
+
+[source, ruby]
+----
+test 'should forbid show user for non-connected user' do
+  get advocate_url(@advocate)
+  assert_response :forbidden
+end
+----
+
+Cela peut sembler paranoïaque, mais cela m’assure qu’aucune régression n’est possible sur cette page. Vous aurez l’occasion de découvrir comment j’ai pu mettre des tests unitaires lors de la prochaine section et dans la section de l’élaboration de la fonctionnalité de suppression d’un utilisateur.
+
+// === Mise en place de l’environnement de développement
+//
+// Utilisation de https://rvm.io[RVM] (Ruby Version Manager) en local afin de reproduire un environnement de développement au plus près du serveur de production et de fixer la version de Ruby utilisée .
+//
+// Création d’une machine virtuelle avec https://www.vagrantup.com[Vagrant] pour le designer qui développe sous Windows.
+//
+// Création d’un dépôt Gitea auto-hébergé sur un Raspberry PI afin de travailler tous ensemble
+
 
 === Utilisation de l'API de Stripe
+
 
 J'ai voulu implémenter la fonctionnalité d'**accès restreint** au site uniquement si l'utilisateur bénéficie d'un **compte premium**. Le but final est que l’utilisateur doive souscrire un compte premium afin d'accéder à certaines pages.
 
@@ -75,11 +81,7 @@ Afin d'implémenter cette fonctionnalité, nous avons commencé par analyser le 
 2. une fois son _solde de jours premium_ épuisé, il reçoit un mail lui indiquant qu'il va falloir racheter des jours
 3. l'utilisateur met à jour son solde en effectuant un **paiement ponctuel** qui lui rajoute un mois à son solde premium où il souscrit un abonnement qui effectuera un **paiement automatique** au début de chaque mois
 
-Afin d'implémenter cela, j'ai rapidement fait le tour des solutions de paiement existantes (PayPal, BNP, etc..). Il s'est avéré que https://stripe.com[Stripe] était le meilleur compromis.
-
-NOTE: Stripe est une société américaine qui a pour but de simplifier les paiements en ligne. Créée en 2010, Stripe pèse maintenant plus de 10 milliards!
-
-J'ai choisi Stripe car ses avantages sont:
+Afin d'implémenter cela, j'ai rapidement fait le tour des solutions de paiement existantes (PayPal, BNP, etc..). Il s'est avéré que https://stripe.com[Stripe] était le meilleur compromis. Stripe est une société américaine qui a pour but de simplifier les paiements en ligne. Créée en 2010, Stripe pèse maintenant plus de 10 milliards! J'ai choisi Stripe car ses avantages sont:
 
 - le client peut payer sans avoir un compte ouvert chez Stripe
 - les tarifs sont assez "raisonnables" _(1,4% + 0,25€ par transaction pour les cartes européennes)_
@@ -88,8 +90,206 @@ J'ai choisi Stripe car ses avantages sont:
 
 De plus, Stripe va bien plus loin qu'une _simple_ solution de paiement puisqu'il propose tout un écosystème pour gérer des clients, des factures, des produits, etc...
 
-Dans cet article je vais donc retracer le développement de la fonctionnalité en essayant d'être le plus générique possible. Je précise aussi avant de commencer que ce n'est pas un article sponsorisé et je n'ai pas reçu d'argent de la part de Stripe (j'aurais bien voulu...).
+Dans cet section je vais donc retracer le développement de la fonctionnalité en essayant d'être le plus générique possible. Je précise aussi avant de commencer que ce n'est pas un article sponsorisé et je n'ai pas reçu d'argent de la part de Stripe (j'aurais bien voulu...).
 
-// TODO
+==== Implémentation du mode premium
 
-=== Migration vers une architecture API
+J'ai donc commencé par mettre en place un système de restriction de certaines pages aux utilisateurs _premium_. J'ai simplement ajouté un attribut `premium_until` de type https://api.rubyonrails.org/classes/DateTime.html[`DateTime`] qui contient la date de validité du compte premium. Et vu que chez https://isignif.fr[iSignif] nous sommes généreux, j'ai crée une migration afin d'offrir un mois à tous les utilisateurs existants:
+
+[source, ruby]
+.db/migrate/20190116132207_add_premium_until_to_users.rb
+----
+# ...
+def up
+  premium_until_offer = DateTime.now + 1.month
+  User.all.each { |user| user.update! premium_until: premium_until_offer }
+end
+----
+
+J'ai ensuite crée une méthode `User#increment_premium` qui est appelée à chaque fois qu'un paiement est réceptionné. Celle-ci va simplement ajouter un mois à l'attribut `premium_until`. Sachant que c'est un point crucial de l'application (puisque cela touche à l'argent), j'ai crée des tests unitaires qui définissent le comportement attendu de cette fonction. J'ai donc couvert tous les cas possibles tous les cas possibles:
+
+- lorsque l'utilisateur possède déjà un solde de jours
+
+[source, ruby]
+.test/models/user_test.rb
+----
+test 'should offer one month premium to user' do
+  user = User.create!(
+    premium_until: (Date.today + 5.days)
+    # ...
+  )
+  assert_equal (Date.today + 1.month + 5.days), user.premium_until
+end
+----
+
+- lorsque l'utilisateur ne possède pas encore de solde de jours
+
+[source, ruby]
+.test/models/user_test.rb
+----
+test 'should set correct premium_until for never premium user' do
+  user = User.new
+  user.increment_premium
+  assert_equal (Date.today + 1.month), user.premium_until
+end
+----
+
+- vérifie que l'on ajoute un mois à partir d’aujourd’hui pour un utilisateur qui vient de réactiver son compte après une inactivité
+
+[source, ruby]
+.test/models/user_test.rb
+----
+test 'should set correct premium_until for past-premium user' do
+  user = User.new(premium_until: (Date.today - 1.year))
+  user.increment_premium
+  assert_equal (Date.today + 1.month), user.premium_until
+end
+----
+
+
+==== Utilisation de l'API de Stripe
+
+===== Paiement ponctuel
+
+Une fois la logique de restriction des pages aux utilisateur premium, il est temps de connecter l'application à Stripe. J'ai donc évidement crée un compte chez Stripe qui donne ensuite accès à une clé d'API. Une fois ceci fait, l'intégration à l'application Rails est très facile car https://github.com/stripe/stripe-ruby/[Stripe propose une gemme]!
+
+Dans un premier temps, j'ai simplement mis en place un paiement ponctuel Stripe et appelé la méthode `User#increment_premium` si tout se passe bien. Dans le jargon de Stripe, un simple paiement est une _charge_. Sans trop rentrer dans le détails, j'ai ajouté créer un contrôleur `charges` qui contient deux actions:
+
+- `new` qui va simplement proposer un formulaire pour payer
+- `create` qui recevra la réponse de Stripe
+
+L'intégration avec l'API de Stripe se fait très facilement avec la gemmes qui gère les appels à l'API en utilisant des objets Ruby
+
+Par exemple, pour enregistrer l'utilisateur chez Stripe, on va simplement utiliser `Stripe::Customer.create`. Cette méthode va faire une requête à l'API et s'occuper de faire toutes les vérifications pour nous (validité de carte, informations transmises, etc...).  `Stripe::Charge.create` va créer la _charge_ en la liant au _customer_ que nous passons en paramètre.
+
+
+A titre d'information, voici une partie du code de l'action du contrôleur simplifié.
+
+[source, ruby]
+.app/controllers/charges_controller.rb
+----
+class ChargesController < ApplicationController
+  # ...
+  #  réception du formulaire de paiement et communication avec l'API de Stripe
+  def create
+    # ...
+    customer = Stripe::Customer.create email: params[:stripeEmail], source: params[:stripeToken]
+
+    begin
+      # Création d'un paiement affecté à l’utilisateur que nous venons de créer chez Stripe
+      charge = Stripe::Charge.create(
+        customer: customer.id,
+        amount: 500,
+        description: 'Rails Stripe customer',
+        currency: 'eur'
+      )
+      current_user.increment_premium!
+    rescue Stripe::CardError => e
+      # ...
+    end
+  end
+end
+----
+
+Le code final est un peu plus complexe puisque je sauvegarde l’identifiant du _customer_ afin d'éviter de le créer deux fois. Une fois le paiement effectué, la _charge_ apparaît dans l'interface d'administration de Stripe:
+
+image:stripe_first_payment.png[La _charge_ apparaît dans l'interface d'administration de Stripe]
+
+===== Abonnement
+
+J'ai aussi implémenté une autre fonctionnalité un peu plus poussée avec Stripe: la gestion des *paiement récurent*. Le paiement récurent était indispensable afin de créer la notion d'abonnement. Cela permet à l'utilisateur peut ainsi souscrire un abonnement qui enclenchera un paiement automatique au début du mois. Dans le jargon de Stripe, cela s'appelle une https://stripe.com/docs/billing/subscriptions/products-and-plans[*subscriptions*].
+
+> Chaque plan est joint à un produit qui représente (...) le service offert aux clients. Les produits peuvent avoir plus d'un plan, reflétant les variations de prix et de durée - comme les prix mensuels et annuels à des taux différents. Il existe deux types de produits: les biens et les services. (...) qui sont destinés aux abonnements.
+
+J'ai donc commencé par créer notre _plan_ en utilisant https://github.com/stripe/stripe-ruby/[la gemme Stripe]. Voici un exemple avec la console Rails.
+
+[source, ruby]
+----
+2.6.0 :001 > product= Stripe::Product.create name: 'Abonnement compte premium', type: 'service'
+ => #<Stripe::Product:0x3fe4f20a1420 id=prod_EMb13PJreiAcF2> JSON: {
+2.6.0 :002 > plan = Stripe::Plan.create amount: 5000, interval: 'month', product: product.id, currency: 'eur', id: 'premium-monthly'
+ )
+  => #<Stripe::Plan:0x2ab3e0b46d24 id=premium-monthly> JSON: {
+----
+
+Nous obtenons donc un belle instance Ruby correspondant à un _Plan_. Il faut juste noter l'``id`` et le noter dans le fichier `secret.yml`. Ensuite, j'ai crée un nouveau contrôleur nommé `subscriptions` avec deux méthodes:
+
+- `new` qui va simplement proposer un formulaire pour payer
+- `create` qui recevra la réponse de Stripe
+
+L'implémentation du `SubscriptionsController` est quasiment identique au `ChargesController` sauf que nous la méthode `Stripe::Subscription.create`. Je passe donc l'implémentation.
+
+La seule différence avec la création des _charges_, c'est qu'ici c'est Stripe qui nous enverra un signal lorsqu'il prélèvera l'utilisateur. Dans notre cas, le _workflow_ type est le suivant:
+
+1. l’utilisateur effectue une demande d'abonnement
+2. Stripe crée un abonnement pour cette utilisateur
+3. lorsque l'abonnement est renouvelé (c-à-d. lorsque Stripe facture le client et qu'il est facturé de nouveau).
+
+Stripe envoie une requête pour signaler que le paiement a été effectué par le biais du _hook_. Les  *Webhook* sont simplement des routes que nous mettons à disposition pour recevoir les requêtes de la part de Stripe. Une fois la route créée, nous devons communiquer l'URL à Stripe via l'interface d'administration de Stripe. J'ai choisi de ne recevoir que le signal `invoice.payment_succeeded` qui est envoyé lorsqu'une facture est payée.
+
+image:stripe_webhook.png[Formulaire de création d'un Webhook]
+
+
+Il suffit maintenant d'ajouter une méthode dans le contrôleur qui recevra  la requête de Stripe. C'est toujours compliqué de tester l'intégration d'un API donc j'ai simplement choisi de simuler une requête de la part de Stripe et de vérifier si notre contrôleur ajoute du crédit à l'utilisateur.
+
+pour cela,  j'ai simplement copié/collé les paramètres envoyés par Stripe via leur https://dashboard.stripe.com/test/webhooks/[interface de test des webhooks].
+
+image:stripe_webook_request.png[Visualisation de la requête envoyée par Stripe]
+
+Une fois la requête copiée, je l'ai transformée en `Hash` Ruby en ne gardant que les paramètres qui m'intéressent.
+
+[source, ruby]
+.test/controllers/hooks_controller_test.rb
+----
+class HooksControllerTest < ActionDispatch::IntegrationTest
+  STRIPE_INVOICE_SUCCEEDED_PARAMS = {
+    id: 'invoice.payment_00000000000000',
+    type: 'invoice.payment_succeeded',
+    data: { object: { customer: 'cus_00000000000000', } },
+    # ...
+  }.freeze
+  # ...
+end
+----
+
+Et ensuite, j'envoie une requête `POST` et je vérifier que notre utilisateur est incrémenté.
+
+[source, ruby]
+.test/controllers/hooks_controller_test.rb
+----
+class HooksControllerTest < ActionDispatch::IntegrationTest
+  # ...
+  test 'Stripe hook should add premium days to the given user' do
+    old = @user.premium_until
+    post hooks_stripe_url, params: STRIPE_INVOICE_SUCCEEDED_PARAMS
+    assert_response :success
+    @user.reload
+    assert_operator old, :<=, @user.premium_until
+  end
+end
+----
+
+Et voilà. L'implémentation qui n'est pas très compliqué. On récupère l'utilisateur à l'aide du _token customer_ t on ajoute du crédit à l'utilisateur.
+
+[source, ruby]
+.app/controllers/hooks_controller.rb
+----
+class HooksController < ApplicationController
+  protect_from_forgery except: [:stripe]
+
+  def stripe
+    if params[:type] == 'invoice.payment_succeeded'
+      @advocate.increment_premium! unless advocate.nil?
+    end
+
+    head :ok, content_type: 'text/html'
+  end
+
+end
+----
+
+===== Conclusion
+
+Dans cette section je vous ai démontré via cet article qu'il était très facile de mettre en place un système de paiement récurrent avec Stripe. La documentation quasi parfaite et leur gemme nous simplifient vraiment la tâche. J'ai même pu mettre en place des tests qui me protège de certaines régressions.
+
+Les fonctionnalités de Stripe ne s'arrêtent pas la. Stripe nous permet aussi de mettre en place un système de facturation (avec la génération de belles factures PDF), de remboursement ou encore de gestion de litiges. C'est aussi quelque chose que j'ai mis en place afin de déléguer toutes les tâches de paiement à Stripe. Cela me permets de me concentrer uniquement sur le business de iSignif.

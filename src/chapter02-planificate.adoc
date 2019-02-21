@@ -1,39 +1,25 @@
 [#chapter02-planificate.adoc]
 == Planifier la réalisation du projet
 
+La planification est une étape importante car elle permet
+
 === Réunions d’avancements
 
-Les réunions d’avancements ont lieu physiquement. Elles ne sont pas périodiquement fixées, nous en organisons à la demande, lorsqu’un membre de l’équipe en ressent le besoin. Nous en faisons donc une tous les mois environ d’une heure ou deux. Afin d’être plus efficace, nous définissons un but à l’avance. Le principe est donc de valider certaines étapes du développement du produit et de communiquer autour de l’avancée de la société.
+Les réunions d’avancements ont lieu *physiquement*. Elles ne sont pas périodiquement fixées, nous en organisons à la demande, lorsqu’un des associé en ressent le besoin. Nous en faisons donc une par mois environ qui dure une heure ou deux. Afin d’être plus efficace, nous définissons un but à l’avance. Le principe est donc de valider certaines étapes du développement du produit et de communiquer autour de l’avancée de la société.
 
-Voici donc quelques réunions clés qui se sont déroulées au cours de l’élaboration de notre produit.
+// Voici donc quelques réunions clés qui se sont déroulées au cours de l’élaboration de notre produit.
 
-==== Présentation de la première version
+Par exemple, nous avons fait une réunion en mai 2017 afin de valider mon avancement sur l'application. A ce moment là, j’avais travaillé en total autonomie sur l’élaboration d’un produit fonctionnel. Cette étape était réellement importante pour moi car je devais savoir que cette première ébauche correspondait aux attentes des deux cofondateurs. J’ai donc effectué une démonstration. Cela a permis de renforcer la confiance que mes associés m’avaient alors accordé mais aussi de collecter des premières critiques.
 
-Cette réunion a eu lieu le 30 mai 2017, c’est à dire quelques semaines après ma rencontre avec les cofondateurs. A ce moment là, j’avais travaillé en total autonomie sur l’élaboration d’un produit fonctionnel.
+Plus tard, début juin 2016, nous avons signé le *pacte des associés*. De plus, deux spécialistes de  https://www.beelys.org/[Beelys] (un grand incubateur lyonnais) étaient présent afin de nous apporter des renseignement sur le fonctionnement des levées de fond. A la suite de cette réunion, nous avons fait le choix de *ne pas faire de levée de fond*. En effet, une levée de fond s’accorde souvent d’une vente de part de l’entreprise. Sachant que nous n’avions pas besoin immédiatement d’argent, nous préférions garder les parts de l’entreprise et les vendre une fois que la société posséderait une certaine notoriété.
 
-L’objectif était donc de valider les de cette plateforme. Cette étape est réellement importante. Je devais savoir que cette première ébauche correspondait aux attentes des deux cofondateurs.
+Le 12 septembre. A ce moment, le produit était presque prêt pour le lancement en bêta. Nous avons donc fait cette réunion avec l’huissier qui avait participé en tant que bêta testeur. Cette huissier avait pu tester le produit d'un  de nos concurrent. Cela a permit de collecter les retours qu’il avait eu et de les intégrer à notre application. Cela nous a aussi permis de valider notre produit et d’apporter quelques petites corrections avant le lancement.
 
-J’ai donc effectué une démonstration. Cela a permis de renforcer la confiance que mes associés m’avaient alors accordé mais aussi de collecter des premières critiques.
+Le 22 novembre, notre produit était prêt pour le lancement en bêta. Nous étions conscient que le lancement était un moment crucial pour notre société. Les mauvais retours se propagent vite et nous n’avions pas le droit à l’erreur. Nous avons donc choisit de tester notre produit sur quelques simulations entre nous afin de valider toutes les fonctionnalités. Ces tests nous ont permit de dénicher quelques bogues mineurs et d’analyser quelques fonctionnalités clefs manquantes. Nous avons donc pris la décision de retarder un peu le déploiement de notre produit afin d’améliorer la qualité.
 
-==== Rencontre des incubateurs
+Le lancement c'est fait bien plus tard: le 1er mars. Ce retard s'explique par l'intégration de Stripe (que j'évoquerai plus loin dans ce mémoire).
 
-Cette réunion à eu lieu le 6 juin 2016 et nous a permis de rédiger le pacte des associés.
-
-Le projet était incubé par https://www.beelys.org/[Beelys], un grand incubateur lyonnais. Beelys nous offrait donc l’aide de deux spécialistes en startups. Ces spécialistes nous on apporté des renseignements sur le fonctionnement des levées de fond.
-
-A la suite de cette réunion, nous avons fait le choix de *ne pas faire de levée de fond*. En effet, une levée de fond s’accorde souvent d’une vente de part de l’entreprise. Sachant que nous n’avions pas besoin immédiatement d’argent, nous préférions garder les parts de l’entreprise et les vendre une fois que la société posséderait une certaine notoriété.
-
-==== Présentation de l’outil à un huissier
-
-Cette réunion a eu lieu le 12 septembre. A ce moment, le produit était presque prêt pour le lancement en bêta.
-
-L’huissier avait participé en tant que bêta testeur pour un de nos concurrent le plus aboutit. Cela a permit de collecter les retours qu’il avait eu et de les intégrer à notre application. Cela nous a aussi permis de valider notre produit et d’apporter quelques petites corrections avant le lancement.
-
-===== Réunion pré-lancement
-
-Cette réunion a eu lieu le 22 novembre. A ce moment, le produit était prêt pour le lancement en bêta. Nous étions conscient que le lancement était un moment crucial pour notre société. Les mauvais retours se propagent vite et nous n’avions pas le droit à l’erreur.
-
-Nous avons donc choisit de tester notre produit sur quelques simulations entre nous afin de valider toutes les fonctionnalités. Ces tests nous ont permit de dénicher quelques bogues mineurs et d’analyser quelques fonctionnalités clefs manquantes. Nous avons donc pris la décision de retarder un peu le déploiement de notre produit afin d’améliorer la qualité.
+// TODO
 
 === Méthode Kanban
 

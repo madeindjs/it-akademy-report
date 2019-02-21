@@ -62,12 +62,11 @@ Il était donc naturel de se tourner vers une application web qui convient à ce
 
 Nous avons donc rédigé un premier cahier des charges qui correspond à la version bêta qui sera proposée aux bêta testeurs. Cette version doit être fonctionnelle. Voici donc quelques unes de ces fonctionnalités:
 
-* *système de connexion*: afin de connaître l’identité de la personne qui navigue sur le site et interdire certaines fonctionnalités en fonction du types de comptes. Par exemple un huissier ne pourra pas créer d’actes à signifier.
 * *Estimation du coût d’un acte*: afin de pouvoir, en un minimum de clic, avoir une estimation du coup d’un’ acte. Sachant que cette page est le point d’entrée de l’application, elle doit être le plus simple possible. Cette page devra donc être en _Single Page_.
-* *__Workflow__ de la signification*:
+* *Gestion fine des permissions*: afin de connaître l’identité de la personne qui navigue sur le site et interdire certaines fonctionnalités en fonction du types de comptes. Par exemple un huissier ne pourra pas créer d’actes à signifier.
+* *__Workflow__ de la signification*: Nous devons garder une trace de toutes les étapes de signification afin de pouvoir dresser un historique. Chaque étapes possède une action spécifique qui permet de passer à celle d'après
 * *__Workflow__ d’annulation*:
-* *Création des factures*: Afin d’éviter le stockage sur le serveur, nous avons pensé à stocker uniquement les informations des factures en base de données. La plateforme générera des des factures sous forme de fichier PDF à la demande footnote:[Cette méthode a néanmoins l’inconvénient d’utiliser plus de ressources car on peut générer plusieurs fois la même facture.]
-* *Administration*:
+* *Création des factures*: sachant que notre produit possède un coût faible (environs deux euros), nous devons dresser des facture mensuelles qui regroupe plusieurs produits
 
 ==== Conceptualiser et modéliser les données
 
@@ -75,9 +74,7 @@ Lors de la rencontre avec les cofondateurs, nous avions échangé à propos des 
 
 J’ai donc choisi la méthode Merise que j’ai eu l’occasion de découvrir en cours à l’IT-Akademy. Bien que moins actuelle elle permet de réaliser un graphique compréhensible par des profils non-techniques.
 
-===== Étude d’une partie du diagramme de modèle de données
-
-====== Les utilisateurs
+===== Les utilisateurs
 
 Prenons par exemple la gestion des utilisateurs. Dans l’application il existe deux principaux types de comptes:
 
@@ -91,7 +88,7 @@ image:merise_users.png[merise_users, 500]
 
 Concrètement dans une base de données relationnelles, cela se matérialisera par une https://en.wikipedia.org/wiki/Single_Table_Inheritance[Single Table Inheritance]. C’est-à-dire qu’une table contiendra les deux types de données et qu’une colonne spécifiera le type d’utilisateur (Huissier ou Avocat). Ce modèle d’héritage en architecture de base de données est assez controversé. Cependant il convient bien à mon cas car les deux entités sont quasiment identiques.
 
-====== Les huissiers
+// ===== Les huissiers
 
 Contrairement à l’avocat, l’huissier aura des relations supplémentaires avec d’autres entités. Chaque huissier est affecté à une unique zone de compétence. Cette zone de compétence contient plusieurs villes matérialisées sous l’entité `zip_code`. Nous arrivons donc au résultat présenté sur la figure suivant.
 
@@ -100,10 +97,10 @@ image:merise_bailiffs.png[merise_bailiffs, 500]
 
 ====== L’acte
 
-Nous pouvons ensuite créer une nouvelle entité `Act` qui représentera un acte qui devra être signifié par un huissier. Cet acte doit donc contenir:
+J'ai ensuite crée une nouvelle entité `Act` qui représente un acte qui doit être signifié par un huissier. Cet acte contient:
 
-* les avocats qui peuvent faire la demande de signification d’un acte
-* les huissiers qui peuvent signifier les demandes auxquelles ils sont affectés
+* l'avocat qui fait la demande de signification d’un acte
+* l'huissier qui doit signifier les demandes auxquelles ils sont affectés
 
 J’ai donc obtenu le résultat final que l’on peut voir sur la suivante.
 
@@ -116,4 +113,4 @@ Une fois le diagramme validé, j’ai pu commencer les spécifications technique
 .Première version du diagramme Merise réalisé avec jMerise en mai 2018
 image:merise.png[merise]
 
-Malgré quelques rectifications, il s’est avéré que mon estimation était plutôt correcte. Même s’il est impossible d’estimer le temps que cette étape m’a fait gagner, je peut affirmer que je n’aurais pas pu sortir une version stable rapidement sans celui-ci.
+NOTE: Malgré quelques rectifications, il s’est avéré que mon estimation était plutôt correcte. Même s’il est impossible d’estimer le temps que cette étape m’a fait gagner, je peut affirmer que je n’aurais pas pu sortir une version stable rapidement sans celui-ci.

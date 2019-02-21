@@ -1,10 +1,6 @@
 [#chapter01-presentation]
 == Présentation du projet
 
-Comme je l’ai rapidement présenté dans de mon introduction, j’ai eu l’opportunité de construire un projet à partir d’une idée que je vais commencer par vous présenter.
-
-=== Présentation de l'idée
-
 Réalisée par un huissier de justice, la signification a pour but de porter les actes judiciaires footnote:[assignation en justice, jugement, sommation de payer ou de faire, etc...] à la connaissance des intéressés. Toutefois, les actes sont souvent adressés à plusieurs destinataires résidents dans des villes différentes. Ceci demande un effort chronophage pour les demandeurs de signification qui doivent contacter les huissiers compétents pour chaque adresse.
 
 .Un acte doit être notifié en main propre pour chaque destinataire
@@ -23,7 +19,7 @@ NOTE: Vous pouvez consulter la brochure dans les annexes pour en savoir plus à 
 //
 // .Le logo d’iSignif
 // image:logo.png[logo, 300]
-// 
+//
 // Lors de la rencontre, Sacha et Adrien m’ont présenté l’idée générale du produit. Sentant rapidement le potentiel, j’ai accepté de devenir associé et j’ai ainsi signé le nouveau pacte d’actionnaires. Nous redéfinissions ainsi les parts et les rôles des nouveaux associés:
 //
 // * Adrien ORION, cofondateur et directeur général, associé à hauteur de 31,5%

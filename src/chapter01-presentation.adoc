@@ -7,13 +7,15 @@ Comme je l’ai rapidement présenté dans de mon introduction, j’ai eu l’op
 
 Réalisée par un huissier de justice, la signification a pour but de porter les actes judiciaires footnote:[assignation en justice, jugement, sommation de payer ou de faire, etc...] à la connaissance des intéressés. Toutefois, les actes sont souvent adressés à plusieurs destinataires résidents dans des villes différentes. Ceci demande un effort chronophage pour les demandeurs de signification qui doivent contacter les huissiers compétents pour chaque adresse.
 
-.Un acte doit être notifié en main propre pour chaque destinataire
-image:signification_before.png[signification_before, 500]
-
 L’idée est donc de créer une plateforme afin de simplifier le processus de signification en centralisant les demandes et en les répartissant automatiquement vers un huissier compétent du réseau.
 
-.L’acte est centralisé et signifié à tous les destinataires
-image:signification_after.png[signification_after, 500]
+.Un acte doit être notifié en main propre pour chaque destinataire, avec iSignif l'acte est centralisé
+// image:signification_before.png[signification_before, 500]
+image:signification_after_before.png[signification_after_before]
+
+
+// .L’acte est centralisé et signifié à tous les destinataires
+// image:signification_after.png[signification_after, 500]
 
 NOTE: Vous pouvez consulter la brochure dans les annexes pour en savoir plus à propos de notre activité.
 
@@ -23,7 +25,7 @@ NOTE: Vous pouvez consulter la brochure dans les annexes pour en savoir plus à 
 //
 // .Le logo d’iSignif
 // image:logo.png[logo, 300]
-// 
+//
 // Lors de la rencontre, Sacha et Adrien m’ont présenté l’idée générale du produit. Sentant rapidement le potentiel, j’ai accepté de devenir associé et j’ai ainsi signé le nouveau pacte d’actionnaires. Nous redéfinissions ainsi les parts et les rôles des nouveaux associés:
 //
 // * Adrien ORION, cofondateur et directeur général, associé à hauteur de 31,5%

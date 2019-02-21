@@ -10,6 +10,14 @@ Tout le code source de ce document (rédigé en https://asciidoctor.org/[AsciiDo
 
 === Remerciements
 
+J'adresse mes remerciements aux personnes qui m'ont aidé dans la réalisation de ce mémoire.
+
+En premier lieu, je remercie M. Alpha, professeur à l'université de ABC. En tant que Directeur de mémoire, il m'a guidé dans mon travail et m'a aidé à trouver des solutions pour avancer.
+
+Je remercie aussi Mme Beta, directrice de l'entreprise DEF, pour sa collaboration en me fournissant des données précises sur le marché de XXX.
+
+Je souhaite particulièrement remercier Mme Gamma pour sa précieuse aide à la relecture et à la correction de mon mémoire.
+
 === Introduction
 
 Dans le souhait de me former et de progresser continuellement, je me suis inscrit sur le site https://cofondateur.fr[cofondateur.fr]. Ce réseau social met en relation des entrepreneurs qui cherchent des développeurs pour construire leurs idées. C’est ainsi que j'ai créé une _LegalTech_ :footnote:[startup dans le domaine du droit] qui a pour but de mettre en relation des avocats et des huissiers afin de simplifier le processus de signification. Cette excellente opportunité me permet d'avoir plusieurs rôles au sein d'une structure:

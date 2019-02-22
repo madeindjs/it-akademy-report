@@ -19,13 +19,11 @@ Le 22 novembre, notre produit était prêt pour le lancement en bêta. Nous éti
 
 Le lancement c'est fait bien plus tard: le 1er mars. Ce retard s'explique par l'intégration de Stripe (que j'évoquerai plus loin dans ce mémoire).
 
-// TODO
+TODO
 
 === Méthode Kanban
 
-La méthode Kanban est méthode agile très utilisée dans le monde informatique. Cela permet de mettre en place une gestion du projet sous forme de tickets. Cela permet de visualiser le flux de travail, de limiter le nombre de tâches en cours et de prioriser les tâches.
-
-Cette méthode nous était indispensable car elle permet de voir l’avancement du projet sans nous de réunions.
+La méthode Kanban est méthode agile très utilisée dans le monde informatique. Cela permet de mettre en place une gestion du projet sous forme de tickets. Cela permet de visualiser le flux de travail, de limiter le nombre de tâches en cours et de prioriser les tâches. Cette méthode nous était indispensable car elle permet de voir l’avancement du projet sans nous de réunions.
 
 Dans un premier temps je n’ai pas choisi de d’utiliser la méthode AGILE et la gestion des Sprints. Pour nous, le premier livrable devait être la phase bêta. Cette phase devrait correspondre à un produit fonctionnel en se concentrant sur les fonctions basiques.
 
@@ -70,7 +68,7 @@ Les nouvelles applications utilisent des interface utilisateurs de plus en plus 
 
 J’ai néanmoins choisis de mettre en place Vue.JS, un _framework front-end_ pour designer les pages qui demandent le plus d’interactions. J’ai choisis Vue.JS au lieu de React ou Angular car c’est le plus simple à mettre en place.
 
-Ma seule erreur lors du choix des techno que j’ai utilisé et de ne pas être parti directement sur une architecture API. Il s’est avéré par la suite qu’un éditeur de progiciel était intéresse pour connecter iSignif à un logiciel utilisé dans le milieu du droit.
+NOTE: J epense que j'ai commis l'erreur lors du choix des techno que j’ai utilisé et de ne pas être parti directement sur une architecture API. Il s’est avéré par la suite qu’un éditeur de progiciel était intéresse pour connecter iSignif à un logiciel utilisé dans le milieu du droit.
 
 De plus, le besoin s’est fait sentir de rendre notre application de plus en plus _Single Page_. Il aurait ainsi plus facile de découpler notre application en une partie _back_ et _front_.
 

@@ -5,10 +5,10 @@
 
 Le choix du serveur a beaucoup de conséquence pour l'entreprise. Plusieurs solutions existent:
 
-* Le serveur mutualisé: Il s’agit d’un serveur que l’on partage avec d’autres client afin de réduire le coût. L’inconvénient est que nous n’avons pas le choix sur les librairies installées ni sur les logiciels.
-* Le serveur dédié: L’avantage est le contrôle total sur le serveur mais l’inconvénient est que ce n’est pas évolutif. Si on veut augmenter les performances, il faut passer sur un autre serveur dédie.
-* Un VPS footnote:[Virtual Private Serveur]: Il s’agit d’un container placé sur un serveur. L’avantage est qu’à tout moment on peut déplacer le container sur un serveur plus puissant et ainsi s’adapter à une charge élevée. L’inconvénient est que le stockage est très cher.
-* Un fournisseur PAAS footnote:[Product As A Service]. Très connu et apprécié par les rubyistes footnote:[Les développeur Ruby utilisent beaucoup https://www.heroku.com[Heroku] qui est un des plus gros fournisseur PAAS], le déploiement se fait instantanément sans tenir compte de la partie hardware. Le fournisseur réalise l’administration du serveur. En revanche le coût est plus élevé (à partir de 25 euros / mois)
+* Le serveur *mutualisé*: Il s’agit d’un serveur que l’on partage avec d’autres client afin de réduire le coût. L’inconvénient est que nous n’avons pas le choix sur les librairies installées ni sur les logiciels.
+* Le serveur *dédié*: L’avantage est le contrôle total sur le serveur mais l’inconvénient est que ce n’est pas évolutif. Si on veut augmenter les performances, il faut passer sur un autre serveur dédie.
+* Un *VPS* footnote:[Virtual Private Serveur]: Il s’agit d’un container placé sur un serveur. L’avantage est qu’à tout moment on peut déplacer le container sur un serveur plus puissant et ainsi s’adapter à une charge élevée. L’inconvénient est que le stockage est très cher.
+* Un fournisseur *PAAS* footnote:[Product As A Service]. Très connu et apprécié par les rubyistes footnote:[Les développeur Ruby utilisent beaucoup https://www.heroku.com[Heroku] qui est un des plus gros fournisseur PAAS], le déploiement se fait instantanément sans tenir compte de la partie hardware. Le fournisseur réalise l’administration du serveur. En revanche le coût est plus élevé (à partir de 25 euros / mois)
 
 Pour mon application j’ai choisi le VPS qui me permet d’administrer mon serveur comme je le souhaite tout en réduisant le coût. Étant dans une phase de validation du concept, ce choix m’a permis de commencer avec un petit serveur à 3 euros / mois . Lors de la validation du concept, je pourrais basculer sur un serveur plus puissant très facilement.
 
@@ -75,10 +75,10 @@ En terme de sauvegarde il existe plusieurs stratégies. Pour ma part, les condit
 
 De mon point de vue, la sauvegarde automatique doit être:
 
-* *régulière* , j’ai donc utilisé une `cron`footnote:[il s’sagit d’un utilitaire sous Linux qui permet de lancer des commandes à intervalles définis]
-* *chifrée* , j’ai donc utilisé http://www.gnupg.org/[GNUPG], un outil de chiffrement asymétriquefootnote:[Il s’agit d’une méthode de chiffrement utilisant une paire de clés pour le cryptage: une clé publique qui crypte les données et une clé privée qui les décrypte. Ainsi, lorsque je crypte une archive avec ma clé publique, seul mon PC distant peu l’ouvrir.].
+* *régulière* , j’ai donc utilisé une `cron` footnote:[Les CRON sont un utilitaire sous Linux qui permet de lancer des commandes à intervalles définis]
+* *chifrée* , j’ai donc utilisé http://www.gnupg.org/[GNUPG], un outil de chiffrement asymétrique footnote:[Le chiffrement asymétrique est une méthode de chiffrement utilisant une paire de clés pour le cryptage: une clé publique qui crypte les données et une clé privée qui les décrypte. Ainsi, lorsque je crypte une archive avec ma clé publique, seul mon PC distant peu l’ouvrir.].
 
-Voici donc une partie de mon script sur le listing suivant #fig:backup[[fig:backup]].
+Voici donc une partie de mon script sur le listing suivant:
 
 [source,bash]
 .backup_server.sh
@@ -110,43 +110,22 @@ Aujourd’hui, la sécurité informatique est un enjeu majeur. D’autant plus p
 
 Dans un premier temps, la sécurité passe par l’application. L’application doit être robuste et imperméables aux attaques les plus connues. Heureusement, Ruby on Rails étant un framework éprouvé, il prévient des failles de sécurité les plus connues (pour peu qu’on respecte sa façon de coder).
 
-===== _Cross-site Scripting_
+Par exemple, le *Cross-site Scripting* permet d'envoyer un formulaire provenant d’un autre site vers le nôtre. Rails utilise un jeton qu’il place sur tous les formulaires et il peut identifier les formulaires qui lui sont propre.
 
-Le _Cross-site Scripting_ est le fait de pouvoir envoyer un formulaire provenant d’un autre site vers le nôtre. Rails utilise un jeton qu’il place sur tous les formulaires et il peut identifier les formulaires qui lui sont propre.
-
-===== Injection SQL
-
-L’injection SQL consiste à injecter du code SQL footnote:[Le code SQL est utilisé pour envoyer des requêtes sur la base de données]. Comme le montre la figure suivante, les injection SQL sont très faciles.
+L’*injection SQL* consiste à injecter du code SQL footnote:[Le code SQL est utilisé pour envoyer des requêtes sur la base de données]. Comme le montre la figure suivante, les injection SQL sont très faciles. Heureusement, Rails échappe par défaut tous les paramètres envoyés par l’utilisateur.
 
 .Une tentative d’injection SQL sur un formulaire de contact
-image:sql_injection.png[sql_injection, 200]
+image:sql_injection.png[sql_injection, 250]
 
-NOTE: Rails échappe par défaut tous les paramètres envoyés par l’utilisateur.
+L'**injection de code JavaScript** permet d’exécuter du code JavaScript sur le navigateur du client. Cette faille est simplissime, par exemple, un petit malin peut créer un utilisateur contenant du code JavaScript comme nom de famille `<script>alert('Pwned')</script>`. Alors sur chaque page ou son nom sera affiché, le code sera exécuté. Heureusement, Rails nous protège directement de cela en échappant les caractères.
 
-===== Injection JS
-
-Le JavaScript est du code interprété sur le navigateur du client. Placé dans le document HTML, il sera exécuté par le navigateur. Par exemple, un petit malin peut créer un utilisateur contenant du code JavaScript comme nom de famille.
-
-[source, html]
-----
-<script>alert('Pwned')</script>
-----
-
-Alors sur chaque page ou son nom sera affiché, le code sera exécuté. Heureusement, Rails nous protège directement de cela en échappant les caractères.
-
-===== Attaque par force brute
-
-Il s’agit d’une attaque très facile à mettre en place. Il s’agit de tenter de se connecter plusieurs fois en utilisant un login et un dictionnaire de mots de passe.
-
-Dans mon cas, j’ai utilisé la bibliothèque https://github.com/binarylogic/authlogic[Authlogic] qui stocke le nombre de tentative de connections échouées dans la base de données. Ainsi, une fois 3 tentatives dépassées, le compte est bloqué et il n’est plus possible de se connecter avec le login.
+En continuant sur les failles classiques, je peux évoquer l'**attaque par force brute**. Il s’agit de tenter de se connecter plusieurs fois en utilisant un login et un dictionnaire de mots de passe. Dans mon cas, j’ai utilisé la bibliothèque https://github.com/binarylogic/authlogic[Authlogic] qui stocke le nombre de tentative de connections échouées dans la base de données. Ainsi, une fois 3 tentatives dépassées, le compte est bloqué et il n’est plus possible de se connecter avec le login.
 
 ===== Les failles les plus récentes
 
 Des failles de sécurités sont découvertes tous les jours. Heureusement pour nous, une organisation les répertories. Ces vulnérabilités sont identifiées par un identifiant CVE footnote:[Common Vulnerabilities and Exposures].
 
-https://github.com/rubysec/ruby-advisory-db[Ruby Advisory Database] est une base de données communautaire qui s’appuie sur ces CVE. Elle répertorie les bibliothèques Ruby vulnérables à ces CVE. Des outils existent pour vérifier automatiquement que notre application n’utilise pas un bibliothèque vulnérable: https://github.com/rubysec/bundler-audit[Bundler Audit].
-
-https://github.com/rubysec/bundler-audit[Bundler Audit] s’utilise très facilement:
+https://github.com/rubysec/ruby-advisory-db[Ruby Advisory Database] est une base de données communautaire qui s’appuie sur ces CVE. Elle répertorie les bibliothèques Ruby vulnérables à ces CVE. Des outils existent pour vérifier automatiquement que notre application n’utilise pas un bibliothèque vulnérable: https://github.com/rubysec/bundler-audit[Bundler Audit]. Cette gemme s’utilise très facilement:
 
 [source,bash]
 ----
@@ -162,15 +141,15 @@ Solution: upgrade to ~> 2.3.18, ~> 3.1.12, >= 3.2.13
 
 ==== Audit de sécurité
 
-Dans cette section, je vais vous détailler ma méthodologie 
+Dans cette section, je vais vous détailler comment j'ai réalisé un audit complet de mon serveur moi-même en faisant des tests d'intrusion.
 
 ===== Vérifier les ports ouverts
 
 La première étape pour un hacker est la *reconnaissance de la cible*. Cette étape consiste à obtenir le maximum d’informations sur la victime. Nous devons donc cacher le plus d’informations possible à propos de notre serveur.
 
-Une des information facile à obtenir pour un hacker est les port ouverts sur le serveur. Les ports sont en quelques sortent des portes ouvertes sur le réseaux.
+Une des information facile à obtenir pour un hacker est les port ouverts sur le serveur. Les ports sont en quelques sortent des portes ouvertes sur le réseaux. Donc, dans un premier temps, j’ai simplement effectué un scan des ports sur mon serveur  footnote:[NMAP est un scanner de port] (voir listing #lst:nmap[[lst:nmap]])
 
-Donc, dans un premier temps, j’ai simplement effectué un scan des ports sur mon serveur footnote:[Malgré sur ce qu’on peut entendre, le scan de port est tout à fait légal. http://www.infond.fr/2010/09/legalite-du-scan-de-port.html] avec `nmap` footnote:[NMAP est un scanner de port] (voir listing #lst:nmap[[lst:nmap]])
+NOTE: Malgré sur ce qu’on peut entendre, le http://www.infond.fr/2010/09/legalite-du-scan-de-port.html[scan de port est tout à fait légal] avec `nmap`.
 
 [source,bash]
 ----
@@ -193,24 +172,21 @@ Running (JUST GUESSING): Linux 3.X|4.X (86%), FreeBSD 6.X (85%)
 
 On voit donc que beaucoup d’informations ressortent du scan comme:
 
-* l’utilisation d’OpenSSH port 22
-* l’utilisation d’Apache HTTPD port 22 / 443
+* l’utilisation d’OpenSSH port 22 avec la version du logiciel
+* l’utilisation d’Apache HTTPD port 22 / 443  avec la version du logiciel
 
 NMAP nous fournis aussi le numéro de la version des logiciels utilisés. Cela peut servir à trouver des vulnérabilités. Je vous montrerai comment j’ai masqué certains de ses informations plus loin.
 
 ===== Réalisation d’un scan de vulnérabilité
 
-Afin de connaître les vulnérabilité de mon installation, j’ai décidé de faire un scan de vulnérabilité en utilisant https://www.metasploit.com/[Metasploit] footnote:[Metasploit Framework est un logiciel écrit en Ruby permettant le développement et l’utilisation d’exploit. Les exploits sont des vulnérabilités qui permettent d’exécuter du code sur une machine distante.] et http://www.openvas.org/[OpenVAS]footnote:[OpenVAS est un scanner de vulnérabilités libre issu du fork de Nessus.].
+Afin de connaître les vulnérabilité de mon installation, j’ai décidé de faire un scan de vulnérabilité en utilisant https://www.metasploit.com/[Metasploit]. Metasploit Framework est un logiciel écrit en Ruby permettant le développement et l’utilisation d’exploit. Les exploits sont des vulnérabilités qui permettent d’exécuter du code sur une machine distante. J'ai aussi utilisé et http://www.openvas.org/[OpenVAS], un scanner de vulnérabilités libre issu du fork de Nessus. OpenVAS s’appuie sur les https://cve.mitre.org/[CVE (Common Vulnerabilities and Exposures)]. Il s’agit d’une base de données des vulnérabilités connues.
 
-Le scan de vulnérabilité est illégal à moins que le serveur nous appartienne ou bien qu’une autorisation du propriétaire est donné. Dans mon cas, le serveur m’appartiens.
-
-OpenVAS s’appuie sur les https://cve.mitre.org/[CVE (Common Vulnerabilities and Exposures)]. Il s’agit d’une base de données des vulnérabilités connues.
+NOTE: Le scan de vulnérabilité est illégal à moins que le serveur nous appartienne ou bien qu’une autorisation du propriétaire est donné. Dans mon cas, le serveur m’appartiens.
 
 Plusieurs types de scan sont possibles, j’ai choisis d’utiliser le plus complet, qui est aussi le plus long. J’ai donc obtenu le résultat que l’on peu voir sur la figure suivant (le rapport complet est disponible en annexe).
 
 .Capture d’écran du rapport de scan d’OpenVAS
 image:kali_openvas_report.png[kali_openvas_report]
-
 
 On peut voir que globalement mon serveur possède peu de vulnérabilités. Ceci est sûrement du au fait que je met à jours les paquets quotidiennement et que donc, les logiciels sont à jours.
 
@@ -231,11 +207,11 @@ J’ai donc pu l’installer très facilement avec https://certbot.eff.org/[Cert
 $ sudo certbot --apache
 ----
 
-C’est donc un petit geste mais celui-ci à des répercutions sur la confiances accordée par nos utilisateur et même sur le référencement footnote:[Google à annoncé en août 2014 que le protocole HTTPS serait pris en compte dans l’algorithme de positionnement. https://webmaster-fr.googleblog.com/2014/08/le-protocole-https-en-tant-que-facteur.html].
+C’est donc un petit geste mais celui-ci à des répercutions sur la confiances accordée par nos utilisateur et même sur le référencement footnote:[Google à annoncé en août 2014 que le protocole HTTPS serait pris en compte dans l’algorithme de positionnement. https://webmaster-fr.googleblog.com/2014/08/le-protocole-https-en-tant-que-facteur.html[source]].
 
 ==== Groupe sudo
 
-Comme je l’ai évoqué plus haut, j’ai déjà crée un utilisateur spécifique pour l’application que j’ai rajouté dans le groupe des `sudoers`. Une des actions qui peut être mis en place facilement est de supprimer cet utilisateur du groupe `sudo`. Ceci permet d’éviter l’élévation des privilègesfootnote:[Un des premier objectif d’un hacker va être de vouloir obtenir des privilèges plus élevé afin de pouvoir effectuer des actions ayant de plus grandes conséquences].
+Comme je l’ai évoqué plus haut, j’ai déjà crée un utilisateur spécifique pour l’application que j’ai rajouté dans le groupe des `sudoers`. Une des actions qui peut être mis en place facilement est de supprimer cet utilisateur du groupe `sudo`. Ceci permet d’éviter l’élévation des privilèges. Un des premier objectif d’un hacker va être de vouloir obtenir des privilèges plus élevé afin de pouvoir effectuer des actions ayant de plus grandes conséquences.
 
 ==== Modifier le port par défaut
 

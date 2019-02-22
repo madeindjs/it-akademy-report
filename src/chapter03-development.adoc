@@ -5,7 +5,7 @@
 
 === Développement Dirigé par les Test
 
-Selon moi, une des façon d’optimiser son développement est d’assurer ses arrières afin d’éviter de corriger des bogues. Pour cela, ma solution est les tests unitaires footnote:[Les test unitaires sont du code qui permet de vérifier le comportement de certaines parties du code afin de vérifier qu’il n’y a pas de changements indésirables lors d’un développement]. Afin de pérenniser l'application, je me suis imposé deux méthodologies:
+Selon moi, une des façon d’optimiser son développement est d’assurer ses arrières afin d’éviter de corriger des bogues. Pour cela, ma solution est les tests unitaires. Les test unitaires sont du code qui permet de vérifier le comportement de certaines parties du code afin de vérifier qu’il n’y a pas de changements indésirables lors d’un développement. Afin de pérenniser l'application, je me suis imposé deux méthodologies:
 
 * le _Test Driven Development_ (Développement Dirigé par les Test dans la langue de molière). Il s’agit de commencer par développer le test avant de développer la fonctionnalité.
 * couvrir d’un test chaque bogues relevé
@@ -73,7 +73,7 @@ Cela peut sembler paranoïaque, mais cela m’assure qu’aucune régression n�
 === Utilisation de l'API de Stripe
 
 
-J'ai voulu implémenter la fonctionnalité d'**accès restreint** au site uniquement si l'utilisateur bénéficie d'un **compte premium**. Le but final est que l’utilisateur doive souscrire un compte premium afin d'accéder à certaines pages.
+J'ai voulu implémenter la fonctionnalité d'**accès restreint** au site uniquement si l'utilisateur bénéficie d'un **compte premium**. Le but final est que l’utilisateur doit souscrire un compte premium afin d'accéder à certaines pages.
 
 Afin d'implémenter cette fonctionnalité, nous avons commencé par analyser le besoin. Le comportement attendu est le suivant:
 
@@ -84,7 +84,7 @@ Afin d'implémenter cette fonctionnalité, nous avons commencé par analyser le 
 Afin d'implémenter cela, j'ai rapidement fait le tour des solutions de paiement existantes (PayPal, BNP, etc..). Il s'est avéré que https://stripe.com[Stripe] était le meilleur compromis. Stripe est une société américaine qui a pour but de simplifier les paiements en ligne. Créée en 2010, Stripe pèse maintenant plus de 10 milliards! J'ai choisi Stripe car ses avantages sont:
 
 - le client peut payer sans avoir un compte ouvert chez Stripe
-- les tarifs sont assez "raisonnables" _(1,4% + 0,25€ par transaction pour les cartes européennes)_
+- les tarifs sont assez "raisonnables" :footnote:[1,4% + 0,25€ par transaction pour les cartes européennes]
 - la facilité de la mise en place car, en plus de proposer une belle API, Stripe propose des librairies pour les langages les plus utilisés (https://github.com/stripe/stripe-php[PHP], https://github.com/stripe/stripe-python[Pyhton], https://github.com/stripe/stripe-ruby[Ruby], https://github.com/stripe/stripe-java[Java] et même https://github.com/stripe/stripe-go[Go])
 - une https://stripe.com/docs[excellente documentation]
 
@@ -168,25 +168,20 @@ A titre d'information, voici une partie du code de l'action du contrôleur simpl
 [source, ruby]
 .app/controllers/charges_controller.rb
 ----
-class ChargesController < ApplicationController
+def create
   # ...
-  #  réception du formulaire de paiement et communication avec l'API de Stripe
-  def create
-    # ...
-    customer = Stripe::Customer.create email: params[:stripeEmail], source: params[:stripeToken]
+  customer = Stripe::Customer.create email: stripe_email, source: stripe_token
 
-    begin
-      # Création d'un paiement affecté à l’utilisateur que nous venons de créer chez Stripe
-      charge = Stripe::Charge.create(
-        customer: customer.id,
-        amount: 500,
-        description: 'Rails Stripe customer',
-        currency: 'eur'
-      )
-      current_user.increment_premium!
-    rescue Stripe::CardError => e
-      # ...
-    end
+  begin
+    charge = Stripe::Charge.create(
+      customer: customer.id,
+      amount: 500,
+      description: 'Rails Stripe customer',
+      currency: 'eur'
+    )
+    current_user.increment_premium!
+  rescue Stripe::CardError => e
+    # ...
   end
 end
 ----

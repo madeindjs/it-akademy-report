@@ -1,7 +1,7 @@
 [#chapter01-presentation]
 == Présentation du projet
 
-Réalisée par un huissier de justice, la signification a pour but de porter les actes judiciaires footnote:[assignation en justice, jugement, sommation de payer ou de faire, etc...] à la connaissance des intéressés. Toutefois, les actes sont souvent adressés à plusieurs destinataires résidents dans des villes différentes. Ceci demande un effort chronophage pour les demandeurs de signification qui doivent contacter les huissiers compétents pour chaque adresse.
+Réalisée par un huissier de justice, la signification a pour but de porter les actes judiciaires _(assignation en justice, jugement, sommation de payer, etc...)_ à la connaissance des intéressés. Toutefois, ces actes sont souvent adressés à plusieurs destinataires résidents dans des villes différentes. Ceci demande un effort chronophage pour les demandeurs de signification qui doivent contacter les huissiers compétents pour chaque adresse.
 
 L’idée est donc de créer une plateforme afin de simplifier le processus de signification en centralisant les demandes et en les répartissant automatiquement vers un huissier compétent du réseau.
 
@@ -41,7 +41,7 @@ NOTE: Vous pouvez consulter la brochure dans les annexes pour en savoir plus à 
 
 === Business plan
 
-La grande problématique de notre activité est que la loi interdit toute forme de publicité pour les huissiers. Il est donc important qu’on ne favorise pas certains huissier plutôt que d’autres. Nous avons donc choisit un système qui répartie par ordre d’arrivée les demande de significations équitablement.
+La grande problématique de notre activité est que la loi *interdit* toute forme de *publicité* pour les huissiers. Il est donc important qu’on ne favorise pas certains huissier plutôt que d’autres. Nous avons donc choisit un système qui répartie par ordre d’arrivée les demande de significations équitablement.
 
 Notre modèle économique réside sur l’idée de facturer les huissiers en fonction du nombre d’affaire qu’on leur apporte. Pour faire cela, nous avons eu plusieurs idées:
 
@@ -68,13 +68,13 @@ Nous avons donc rédigé un premier cahier des charges qui correspond à la vers
 * *__Workflow__ d’annulation*:
 * *Création des factures*: sachant que notre produit possède un coût faible (environs deux euros), nous devons dresser des facture mensuelles qui regroupe plusieurs produits
 
-==== Conceptualiser et modéliser les données
+=== Conceptualiser et modéliser les données
 
 Lors de la rencontre avec les cofondateurs, nous avions échangé à propos des fonctionnalités de l’application. A la fin de la réunion, ils m’ont remis plusieurs documents dont une ébauche de cahier des charges. A mon sens, la suite logique était de valider la conception d’un modèle de donnée. Ceci permet de valider la compréhension de logique métier et la faisabilité du projet. De plus, cette étape m’a permis d’estimer le coût du projet en terme de temps.
 
-J’ai donc choisi la méthode Merise que j’ai eu l’occasion de découvrir en cours à l’IT-Akademy. Bien que moins actuelle elle permet de réaliser un graphique compréhensible par des profils non-techniques.
+J’ai donc choisi la *méthode Merise* que j’ai eu l’occasion de découvrir en cours à l’IT-Akademy. Bien que moins actuelle elle permet de réaliser un graphique compréhensible par des profils non-techniques.
 
-===== Les utilisateurs
+==== Les utilisateurs
 
 Prenons par exemple la gestion des utilisateurs. Dans l’application il existe deux principaux types de comptes:
 
@@ -84,7 +84,7 @@ Prenons par exemple la gestion des utilisateurs. Dans l’application il existe 
 Ces deux types de comptes possèdent les mêmes propriétés (nom, prénom, courriel, mot de passe). J’ai donc choisi de faire un héritage avec un modèle `User`. Ainsi, les deux modèles partagent les mêmes propriétés.
 
 .Représentation de l’héritage entre les huissiers et les avocats
-image:merise_users.png[merise_users, 500]
+image:merise_users.png[merise_users, 300]
 
 Concrètement dans une base de données relationnelles, cela se matérialisera par une https://en.wikipedia.org/wiki/Single_Table_Inheritance[Single Table Inheritance]. C’est-à-dire qu’une table contiendra les deux types de données et qu’une colonne spécifiera le type d’utilisateur (Huissier ou Avocat). Ce modèle d’héritage en architecture de base de données est assez controversé. Cependant il convient bien à mon cas car les deux entités sont quasiment identiques.
 
@@ -95,7 +95,7 @@ Contrairement à l’avocat, l’huissier aura des relations supplémentaires av
 .Représentation des huissiers
 image:merise_bailiffs.png[merise_bailiffs, 500]
 
-====== L’acte
+==== L’acte
 
 J'ai ensuite crée une nouvelle entité `Act` qui représente un acte qui doit être signifié par un huissier. Cet acte contient:
 
@@ -113,4 +113,4 @@ Une fois le diagramme validé, j’ai pu commencer les spécifications technique
 .Première version du diagramme Merise réalisé avec jMerise en mai 2018
 image:merise.png[merise]
 
-NOTE: Malgré quelques rectifications, il s’est avéré que mon estimation était plutôt correcte. Même s’il est impossible d’estimer le temps que cette étape m’a fait gagner, je peut affirmer que je n’aurais pas pu sortir une version stable rapidement sans celui-ci.
+Malgré quelques rectifications, il s’est avéré que mon estimation était plutôt correcte. Même s’il est impossible d’estimer le temps que cette étape m’a fait gagner, je peut affirmer que je n’aurais pas pu sortir une version stable rapidement sans celui-ci.

@@ -27,13 +27,9 @@ Dans mon cas, les principales obligations qui m’incombent sont les suivantes:
 
 ==== Oubliez-moi
 
-https://gdpr-info.eu/art-17-gdpr/[L’article 17 de la RGPD] nous oblige à implémenter une fonctionnalité . Celle-ci doit permettre à l’utilisateur d’effacer toutes ses données immédiatement. La ou cela se complique, c’est que la RGPD nous oblige aussi à demander la suppression des données chez des fournisseurs tiers. Ainsi, si nous utilisons des services externes footnote:[Salesforce, Hubspot, Twitter, ou tout autre fournisseur de service cloud] il faut accéder à leur API afin de demander la suppression.
+https://gdpr-info.eu/art-17-gdpr/[L’article 17 de la RGPD] nous oblige à implémenter une fonctionnalité *Oubliez-moi*. Celle-ci doit permettre à l’utilisateur d’effacer toutes ses données immédiatement. La ou cela se complique, c’est que la RGPD nous oblige aussi à demander la suppression des données chez des fournisseurs tiers. Ainsi, si nous utilisons des services externes footnote:[Salesforce, Hubspot, Twitter, ou tout autre fournisseur de service cloud] il faut accéder à leur API afin de demander la suppression.
 
-La difficulté de cette fonctionnalité est de supprimer les données liées à l’utilisateur sans impacter les données qui sont liées aux autres utilisateurs.
-
-===== Exemple avec un huissier de justice
-
-Concrètement, cela signifie que lorsqu’un huissier de justice décide de supprimer son compte, il faut:
+La difficulté de cette fonctionnalité est de supprimer les données liées à l’utilisateur sans impacter les données qui sont liées aux autres utilisateurs. Concrètement, cela signifie que lorsqu’un huissier de justice décide de supprimer son compte, il faut:
 
 * supprimer son compte et ses données (logique)
 * supprimer toutes ses factures
@@ -48,68 +44,60 @@ Comme je l’expliquais, je suis un évangéliste du _Test Driven Development_. 
 [source, ruby]
 .test/models/bailiff_test.rb
 ----
-require 'test_helper'
+test 'should anonymize and not destroy record' do
+  old_user = @bailiff.as_json
 
-class BailiffTest < ActiveSupport::TestCase
-  # ...
+  # on verifie que l'huissier n'est pas supprime en base
+  assert_no_difference('Bailiff.count') { @bailiff.destroy }
 
-  test 'should anonymize and not destroy record' do
-    old_user = @bailiff.as_json
-
-    # on verifie que l'huissier n'est pas supprime en base
-    assert_no_difference('Bailiff.count') { @bailiff.destroy }
-
-    # on verifie que tous les champs suivants on ete modifies
-    %i[email firstname lastname siret company_name town zip_code address_2 address_1].each do |field|
-      assert_not_equal old_user[field], @bailiff.send(field)
-    end
-
-    # et pour terminer, un champ 'deleted' a dut etre passe a 'true'
-    assert @bailiff.deleted
+  # on verifie que tous les champs suivants on ete modifies
+  %i[email firstname lastname siret company_name town zip_code address_2 address_1].each do |field|
+    assert_not_equal old_user[field], @bailiff.send(field)
   end
+
+  # et pour terminer, un champ 'deleted' a dut etre passe a 'true'
+  assert @bailiff.deleted
 end
 ----
 
-_ActiveRecord_ (l’ORM footnote:[Un ORM fait interface entre le code et la base de données, voir https://fr.wikipedia.org/wiki/Mapping_objet-relationnel[la définition complète sur Wikipedia]] de Ruby on Rails). J’ai donc simplement surchargé la méthode `destroy` et utilisé la librairie `Faker` footnote:[Il s’agit d’une librairie utilisée pour générer des fausse données en tout genre]:
+J’ai donc simplement surchargé la méthode `User#destroy` et utilisé la librairie `Faker` pour générer des données factices:
 
 [source, ruby]
 .app/models/user.rb
 ----
-class User < ApplicationRecord
+def destroy
   # ...
-
-  def destroy
+  update_attributes(
+    email: new_email,
+    firstname: Faker::Name.first_name,
+    lastname: Faker::Name.last_name,
+    siret: Faker::Company.french_siret_number,
     # ...
-
-    update_attributes(
-      email: new_email,
-      firstname: Faker::Name.first_name,
-      lastname: Faker::Name.last_name,
-      siret: Faker::Company.french_siret_number,
-      # ...
-      deleted: 1
-    )
-
-    save
-  end
+    deleted: 1
+  )
+  save
 end
 ----
 
-Et voilà, la mise en conformité est faite. L’huissier ou l’avocat pourra supprimé son compte et les données seront conservées. En revanche, il sera impossible de retrouver l’utilisateur correspondant à ces données.
+Et voilà, la mise en conformité est faite. L’huissier ou l’avocat pourra supprimer son compte et les données seront conservées. En revanche, il sera impossible de retrouver l’utilisateur correspondant à ces données.
 
 ===== Cookies
 
+TODO
+
 ===== Chiffrement des données
+
+TODO
 
 ===== Déploiement continu
 
 Afin d’être le plus réactif possible, j’ai voulu mettre en place un outil afin d’automatiser les mises en production. Cela est un énorme avantage car il permet de mettre en ligne un correctif ou une évolution très rapidement. De plus, automatiser permet de réduire le risque de l’erreur humaine ( https://www.reddit.com/r/webdev/comments/5rd79m/gitlab_employee_just_ran_rm_rf_on_their/[et cela est vite arrivé]...).
 
-Pour cela, j’ai utilisé la librairie https://capistranorb.com[Capistrano]. Capistrano est un outil écrit en Ruby qui permet d’automatiquement le déploiement en s’appuyant sur Git (rappelez vous de mon utilisation de Git Flow section #sec:git[3.4]). Il va donc:
+Pour cela, j’ai utilisé la librairie https://capistranorb.com[Capistrano]. Capistrano est un outil écrit en Ruby qui permet d’automatiquement le déploiement en s’appuyant sur Git (rappelez vous de mon utilisation de Git Flow). Il va donc:
 
-* Cloner le répertoire Git afin de récupérer la dernière version du code source
-* Lancer les modifications sur la base de données
-* Minifier footnote:[Il s’agit de concateiner les fichiers texte en un seul afin de réduire le nombre de requête HTTP et d’améliorer la vitesse de chargement] les fichiers Javascript et CSS
+* *Cloner* le répertoire Git afin de récupérer la dernière version du code source
+* Lancer les *migrations* sur la base de données
+* *Minifier* footnote:[Il s’agit de concateiner les fichiers texte en un seul afin de réduire le nombre de requête HTTP et d’améliorer la vitesse de chargement] les fichiers JavaScript et CSS
 * Faire des liens symboliques sur les documents que les utilisateurs ont envoyés sur le serveur
 
 La librairie se met en place très facilement, voici un extrait de ma configuration

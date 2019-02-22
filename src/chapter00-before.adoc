@@ -22,13 +22,11 @@ Je souhaite particulièrement remercier Mme Gamma pour sa précieuse aide à la 
 
 Dans le souhait de me former et de progresser continuellement, je me suis inscrit sur le site https://cofondateur.fr[cofondateur.fr]. Ce réseau social met en relation des entrepreneurs qui cherchent des développeurs pour construire leurs idées. C’est ainsi que j'ai créé une _LegalTech_ :footnote:[startup dans le domaine du droit] qui a pour but de mettre en relation des avocats et des huissiers afin de simplifier le processus de signification. Cette excellente opportunité me permet d'avoir plusieurs rôles au sein d'une structure:
 
-- En tant qu’associé et directeur technique, je participe aux décisions stratégiques de l’entreprise
-- En tant que directeur technique, j’ai pour mission de faire des choix techniques cohérents afin d’assurer la pérennité de notre produit
-- En tant que DPO _(Délégué à la Protection des Données)_, je suis chargé de veiller au respect des données et à la mise en conformité de notre outil.En tant que développeur,
+- En tant qu’**associé**, je participe aux décisions stratégiques de l’entreprise
+- En tant que *directeur technique*, j’ai pour mission de faire des choix techniques cohérents afin d’assurer la pérennité de notre produit
+- En tant que *Délégué à la Protection des Données*, je suis chargé de veiller au respect des données et à la mise en conformité de notre outil.En tant que développeur,
 
-J’ai donc décider de construire mon mémoire uniquement sur ce projet car il met en avant la construction d’un projet de A à Z. Au sein de ce projet, j'ai eu le rôle de référent technique et j'ai donc eu "carte blanche" pour la réalisation du produit.
-
-J’ai fais le choix d’organiser mon mémoire de façon chronologique (dans la mesure du possible). C’est-à-dire:
+J’ai donc décider de construire mon mémoire uniquement sur ce projet car il met en avant la construction d’un projet de A à Z que j'ai réalisé en total autonomie. J’ai fais le choix d’organiser mon mémoire de façon chronologique (dans la mesure du possible). C’est-à-dire:
 
 * la planification du projet
 * le développement du projet

@@ -26,4 +26,4 @@ LinkedIn propose trois types de publicité:
 image:linkedin_sponsored_content.png[linkedin_sponsored_content]
 
 
-Pour la campagnes à destination des avocats, nous avons décidé d’utiliser le modèle Sponsored Content. Comme le montre la figure link:#linkedin_sponsored_content[[linkedin_sponsored_content]], ce modèle à l’avantage de proposer un contenu riche grâce à une image et à un lien qui redirige directement sur le site. De plus, LinkedIn offre la possibilité de cibler l’audience et donc d’obtenir une audience de qualité.
+Pour la campagnes à destination des avocats, nous avons décidé d’utiliser le modèle _Sponsored Content_. Comme le montre l'image précédente, ce modèle à l’avantage de proposer un contenu riche grâce à une image et à un lien qui redirige directement sur le site. De plus, LinkedIn offre la possibilité de cibler l’audience et donc d’obtenir une audience de qualité.

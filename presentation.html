@@ -1,0 +1,163 @@
+<html>
+
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/css/reveal.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/css/theme/white.min.css">
+  <meta charset="utf-8">
+  <style>
+    .reveal section img {
+      border: none;
+      box-shadow: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section>
+        <h1>Mémoire</h1>
+      </section>
+      <section>
+        <h2>Sommaire</h2>
+        <ul>
+          <li>A propos de moi</li>
+          <li>Présentation de iSignif</li>
+          <li>Planification</li>
+          <li>Développement</li>
+        </ul>
+      </section>
+
+
+      <!-- A propos de moi -->
+      <section>
+        <h2>A propos de moi</h2>
+
+        <section>
+          <p><a href="http://rousseau-alexandre.fr">rousseau-alexandre.fr</a></p>
+          <p>Développeur Ruby / PHP Passionné et autodidacte</p>
+          <p>Travaille actuellement chez <a href="https://www.gac-technology.com/">Gac Technology</a></p>
+        </section>
+
+        <section>
+          <p>A côté de ça je suis:</p>
+          <ul>
+            <li>Associé chez <a href="https://isignif.fr/">iSignif SAS</a></li>
+            <li>Proffesseur particulier chez <a href="https://www.superprof.fr/developpeur-web-experimente-rails-lyon-debutant-perfectionner.html">Superprof</a></li>
+            <li>Autheur du livre <a href="https://github.com/madeindjs/api_on_rails">API on Rails 5</a> publié sur <a href="https://leanpub.com/apionrails5">LeanPub</a> <small>(traduit en russe et vendu en 10 examplaires!!)</small></li>
+          </ul>
+        </section>
+
+        <section>
+          <p>et d'autres trucs sur <a href="https://github.com/madeindjs">github.com/madeindjs</a> et <a href="https://rubygems.org/profiles/madeindjs">rubygems.org</a></p>
+        </section>
+
+      </section>
+
+      <!-- Présentation de iSignif -->
+      <section>
+
+        <section>
+          <h2>Présentation de iSignif</h2>
+          <img src="src/img/logo.svg" alt="">
+          <p>SAS créée en décembre 2017</p>
+        </section>
+
+        <section>
+          <h3>L'équipe</h3>
+          <table>
+            <tr>
+              <th>Adrien ORION</th>
+              <td>cofondateur et directeur général</td>
+            </tr>
+            <tr>
+              <th>Sacha PARTENSKY</th>
+              <td>cofondateur et Président</td>
+            </tr>
+            <tr>
+              <th>Antoinne DELETTRE</th>
+              <td>associé et designer web</td>
+            </tr>
+            <tr>
+              <th>Alexandre ROUSSEAU</th>
+              <td>associé et directeur technique</td>
+            </tr>
+          </table>
+        </section>
+
+        <section>
+          <p>LegalTech qui a pour but de simplifier le processus de signification</p>
+          <img src="src/img/signification_after_before.png" alt="">
+        </section>
+
+        <section>
+          <p>Le Workflow de la signification</p>
+          <img src="src/img/workflow.png" alt="">
+        </section>
+
+        <section>
+          <h3>Stack technique</h3>
+          <ul>
+            <li><strike>Wordpress</strike></li>
+            <li>Ruby On Rails</li>
+            <li>Vue.JS</li>
+            <li>MariaDB</li>
+          </ul>
+          <p></p>
+        </section>
+
+      </section>
+
+      <!-- Planification -->
+      <section>
+        <h2>Planification</h2>
+
+        <section>
+          <h3>Méthode Kanban</h3>
+          <img src="src/img/trello.png" alt="">
+        </section>
+
+      </section>
+
+      <!-- Développement de la plateforme -->
+      <section>
+
+        <section>
+          <h2>Développement</h2>
+        </section>
+
+        <section>
+          <h3>Test Driven Development</h3>
+          <img src="src/img/escalade-tu.jpg" alt="">
+        </section>
+
+        <section>
+          <pre><code data-trim data-noescape>
+test 'should show for connected user' do
+  login(@advocate)
+  get advocate_url(@advocate)
+  assert_response :success
+end
+
+test 'should forbid show user for other user' do
+  login(users(:one_other_advocate))
+  get advocate_url(@advocate)
+  assert_response :forbidden
+end
+          </code></pre>
+        </section>
+      </section>
+
+
+    </div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/js/reveal.min.js"></script>
+  <script>
+    Reveal.initialize({
+      slideNumber: true,
+      history: true,
+    });
+  </script>
+</body>
+
+</html>

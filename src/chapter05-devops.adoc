@@ -7,8 +7,8 @@ Le choix du serveur a beaucoup de conséquence pour l'entreprise. Plusieurs solu
 
 * Le serveur *mutualisé*: Il s’agit d’un serveur que l’on partage avec d’autres client afin de réduire le coût. L’inconvénient est que nous n’avons pas le choix sur les librairies installées ni sur les logiciels.
 * Le serveur *dédié*: L’avantage est le contrôle total sur le serveur mais l’inconvénient est que ce n’est pas évolutif. Si on veut augmenter les performances, il faut passer sur un autre serveur dédie.
-* Un *VPS* footnote:[Virtual Private Serveur]: Il s’agit d’un container placé sur un serveur. L’avantage est qu’à tout moment on peut déplacer le container sur un serveur plus puissant et ainsi s’adapter à une charge élevée. L’inconvénient est que le stockage est très cher.
-* Un fournisseur *PAAS* footnote:[Product As A Service]. Très connu et apprécié par les rubyistes footnote:[Les développeur Ruby utilisent beaucoup https://www.heroku.com[Heroku] qui est un des plus gros fournisseur PAAS], le déploiement se fait instantanément sans tenir compte de la partie hardware. Le fournisseur réalise l’administration du serveur. En revanche le coût est plus élevé (à partir de 25 euros / mois)
+* Un *VPS* _(Virtual Private Serveur)_: Il s’agit d’un container placé sur un serveur. L’avantage est qu’à tout moment on peut déplacer le container sur un serveur plus puissant et ainsi s’adapter à une charge élevée. L’inconvénient est que le stockage est très cher.
+* Un fournisseur *PAAS* _(Product As A Service)_, le déploiement se fait instantanément sans tenir compte de la partie hardware. Le fournisseur réalise l’administration du serveur. En revanche le coût est plus élevé (à partir de 25 euros / mois)
 
 Pour mon application j’ai choisi le VPS qui me permet d’administrer mon serveur comme je le souhaite tout en réduisant le coût. Étant dans une phase de validation du concept, ce choix m’a permis de commencer avec un petit serveur à 3 euros / mois . Lors de la validation du concept, je pourrais basculer sur un serveur plus puissant très facilement.
 
@@ -16,7 +16,7 @@ Pour mon application j’ai choisi le VPS qui me permet d’administrer mon serv
 
 ==== Serveur
 
-OVH donne les choix entre plusieurs OS et plusieurs distributions. Mon choix s’est porté sur Ubuntu 18.04 server. Une fois le serveur mis en place , la première étape est de sécuriser dès le début l’utilisation. J’ai donc créé un utilisateur spécifique qui me servira uniquement le déploiement de l’application.
+OVH donne les choix entre plusieurs OS et plusieurs distributions. Mon choix s’est porté sur Ubuntu 18.04 server. Une fois le serveur mis en place, la première étape est de sécuriser dès le début l’utilisation. J’ai donc créé un utilisateur spécifique qui me servira uniquement le déploiement de l’application.
 
 [source,bash]
 ----
@@ -44,7 +44,7 @@ Afin de figer ma version de Ruby, j’ai choisi d’utiliser de Ruby Version Man
 
 ==== Base de donné
 
-Concernant la SGBD footnote:[Système de Gestion de Base de Données], Ruby on Rails ne pose pas de contrainte particulière. J’ai donc choisi MariaDB. Une fois installé, je lance directement le script de sécurisation de l’installation:
+Concernant la SGBD _(Système de Gestion de Base de Données)_, Ruby on Rails ne pose pas de contrainte particulière. J’ai donc choisi MariaDB. Une fois installé, je lance directement le script de sécurisation de l’installation:
 
 [source,bash]
 ----
@@ -75,8 +75,8 @@ En terme de sauvegarde il existe plusieurs stratégies. Pour ma part, les condit
 
 De mon point de vue, la sauvegarde automatique doit être:
 
-* *régulière* , j’ai donc utilisé une `cron` footnote:[Les CRON sont un utilitaire sous Linux qui permet de lancer des commandes à intervalles définis]
-* *chifrée* , j’ai donc utilisé http://www.gnupg.org/[GNUPG], un outil de chiffrement asymétrique footnote:[Le chiffrement asymétrique est une méthode de chiffrement utilisant une paire de clés pour le cryptage: une clé publique qui crypte les données et une clé privée qui les décrypte. Ainsi, lorsque je crypte une archive avec ma clé publique, seul mon PC distant peu l’ouvrir.].
+* *régulière* , j’ai donc utilisé une `crontab` qui est un utilitaire sous Linux qui permet de lancer des commandes à intervalles définis
+* *chiffrée* , j’ai donc utilisé http://www.gnupg.org/[GNUPG] qui est un outil de chiffrement asymétrique. Le chiffrement asymétrique est une méthode de chiffrement utilisant une paire de clés pour le cryptage: une clé publique qui crypte les données et une clé privée qui les décrypte. Ainsi, lorsque je crypte une archive avec ma clé publique, seul mon PC distant peu l’ouvrir.
 
 Voici donc une partie de mon script sur le listing suivant:
 
@@ -104,7 +104,7 @@ Ensuite, un `cron` récupère régulièrement mes sauvegarde en utilisant un out
 
 === Sécurité
 
-Aujourd’hui, la sécurité informatique est un enjeu majeur. D’autant plus pour iSignif qui manipules des données sensibles. Il faut un certains temps pour bâtir une réputation et une fuite de données peut suffire à la ruiner footnote:[Le lundi 19 mars 2017, Facebook à perdu 37 milliards de dollars suite à la révélation de la fuite des données de plus de 50 millions de leurs utilisateurs.  https://www.lci.fr/high-tech/affaire-cambridge-analytica-quel-est-ce-scandale-qui-plonge-facebook-dans-la-crise-mark-zuckerberg-2082228.html[source]].
+Aujourd’hui, la sécurité informatique est un enjeu majeur. D’autant plus pour iSignif qui manipules des données sensibles. Il faut un certains temps pour bâtir une réputation et une fuite de données peut suffire à la ruiner footnote:[Le lundi 19 mars 2017, Facebook à perdu 37 milliards de dollars suite à la révélation de la fuite des données de plus de 50 millions de leurs utilisateurs.  https://www.lci.fr/high-tech/affaire-cambridge-analytica-quel-est-ce-scandale-qui-plonge-facebook-dans-la-crise-mark-zuckerberg-2082228.html[source - LCI]].
 
 ==== Sécurité de l’application
 

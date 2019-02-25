@@ -10,3 +10,4 @@
 dossier_validation.pdf
 build/*.pdf
 build/*.html
+.rake_tasks~

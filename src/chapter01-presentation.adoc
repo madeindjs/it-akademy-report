@@ -84,7 +84,7 @@ Prenons par exemple la gestion des utilisateurs. Dans l’application il existe 
 Ces deux types de comptes possèdent les mêmes propriétés (nom, prénom, courriel, mot de passe). J’ai donc choisi de faire un héritage avec un modèle `User`. Ainsi, les deux modèles partagent les mêmes propriétés.
 
 .Représentation de l’héritage entre les huissiers et les avocats
-image:merise_users.png[merise_users, 300]
+image:merise_users.png[merise_users, 400]
 
 Concrètement dans une base de données relationnelles, cela se matérialisera par une https://en.wikipedia.org/wiki/Single_Table_Inheritance[Single Table Inheritance]. C’est-à-dire qu’une table contiendra les deux types de données et qu’une colonne spécifiera le type d’utilisateur (Huissier ou Avocat). Ce modèle d’héritage en architecture de base de données est assez controversé. Cependant il convient bien à mon cas car les deux entités sont quasiment identiques.
 
@@ -105,12 +105,12 @@ J'ai ensuite crée une nouvelle entité `Act` qui représente un acte qui doit �
 J’ai donc obtenu le résultat final que l’on peut voir sur la suivante.
 
 .ébauche de la première version du diagramme Merise réalisé avec jMerise en mai 2018
-image:merise_zoom.png[merise_zoom, 500]
+image:merise_zoom.png[merise_zoom]
 
 
 Une fois le diagramme validé, j’ai pu commencer les spécifications techniques de l’application.
 
-.Première version du diagramme Merise réalisé avec jMerise en mai 2018
-image:merise.png[merise]
+// .Première version du diagramme Merise réalisé avec jMerise en mai 2018
+// image:merise.png[merise]
 
 Malgré quelques rectifications, il s’est avéré que mon estimation était plutôt correcte. Même s’il est impossible d’estimer le temps que cette étape m’a fait gagner, je peut affirmer que je n’aurais pas pu sortir une version stable rapidement sans celui-ci.

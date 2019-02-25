@@ -27,7 +27,7 @@ Dans mon cas, les principales obligations qui m’incombent sont les suivantes:
 
 ==== Oubliez-moi
 
-https://gdpr-info.eu/art-17-gdpr/[L’article 17 de la RGPD] nous oblige à implémenter une fonctionnalité *Oubliez-moi*. Celle-ci doit permettre à l’utilisateur d’effacer toutes ses données immédiatement. La ou cela se complique, c’est que la RGPD nous oblige aussi à demander la suppression des données chez des fournisseurs tiers. Ainsi, si nous utilisons des services externes footnote:[Salesforce, Hubspot, Twitter, ou tout autre fournisseur de service cloud] il faut accéder à leur API afin de demander la suppression.
+https://gdpr-info.eu/art-17-gdpr/[L’article 17 de la RGPD] nous oblige à implémenter une fonctionnalité *Oubliez-moi*. Celle-ci doit permettre à l’utilisateur d’effacer toutes ses données immédiatement. La ou cela se complique, c’est que la RGPD nous oblige aussi à demander la suppression des données chez des fournisseurs tiers. Ainsi, si nous utilisons des services externes (comme Stripe dans mon cas) il faut accéder à leur API afin de demander la suppression.
 
 La difficulté de cette fonctionnalité est de supprimer les données liées à l’utilisateur sans impacter les données qui sont liées aux autres utilisateurs. Concrètement, cela signifie que lorsqu’un huissier de justice décide de supprimer son compte, il faut:
 

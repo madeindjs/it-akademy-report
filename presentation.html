@@ -3,6 +3,7 @@
 <head>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/css/reveal.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/css/theme/white.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/atom-one-light.min.css">
   <meta charset="utf-8">
   <style>
     .reveal section img {
@@ -164,30 +165,69 @@
         </section>
 
         <section>
-          <pre><code data-trim data-noescape>
-test 'should show for connected user' do
-  login(@advocate)
-  get advocate_url(@advocate)
-  assert_response :success
-end
+          <h4>Tests unitaires</h4>
+          <pre><code data-trim data-noescape class="ruby">
+            # tests/models/advocate_test.rb
+            test 'should anonymize and not destroy record' do
+              old_user = @advocate.as_json
+              assert_no_difference('Advocate.count') do
+                @advocate.destroy
+              end
 
-test 'should forbid show user for other user' do
-  login(users(:one_other_advocate))
-  get advocate_url(@advocate)
-  assert_response :forbidden
-end
+              %i[email firstname lastname siret ...].each do |field|
+                assert_not_equal old_user[field], @advocate.send(field)
+              end
+
+              assert @advocate.deleted
+            end
           </code></pre>
+        </section>
+
+        <section>
+          <h4>Tests fonctionnels</h4>
+          <pre><code data-trim data-noescape class="ruby">
+            test 'should show for connected user' do
+              login(@advocate)
+              get advocate_url(@advocate)
+              assert_response :success
+            end
+
+            test 'should forbid show user for other user' do
+              login(users(:one_other_advocate))
+              get advocate_url(@advocate)
+              assert_response :forbidden
+            end
+          </code></pre>
+        </section>
+
+        <section>
+          <h4>Avantages</h4>
+          <ul>
+            <li>gain de temps</li>
+            <li>limitation des régréssions</li>
+            <li>factorisation plus facile</li>
+            <li><a href="https://www.ideematic.com/actualites/2017/10/garantir-la-maitrise-du-code-ruby-avec-les-tests-unitaires-rspec/">et bien d'autres...</a></li>
+          </ul>
         </section>
       </section>
 
 
     </div>
   </div>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/js/reveal.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.7.0/js/reveal.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.7.0/lib/js/head.min.js"></script>
   <script>
     Reveal.initialize({
       slideNumber: true,
       history: true,
+      // More info https://github.com/hakimel/reveal.js#dependencies
+      dependencies: [{
+        src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.7.0/plugin/highlight/highlight.min.js',
+        async: true,
+        callback: function() {
+          hljs.initHighlightingOnLoad();
+        }
+      }, ]
     });
   </script>
 </body>

@@ -3,15 +3,11 @@
 
 Réalisée par un huissier de justice, la signification a pour but de porter les actes judiciaires _(assignation en justice, jugement, sommation de payer, etc...)_ à la connaissance des intéressés. Toutefois, ces actes sont souvent adressés à plusieurs destinataires résidents dans des villes différentes. Ceci demande un effort chronophage pour les demandeurs de signification qui doivent contacter les huissiers compétents pour chaque adresse.
 
-L’idée est donc de créer une plateforme afin de simplifier le processus de signification en centralisant les demandes et en les répartissant automatiquement vers un huissier compétent du réseau.
+L’idée est de simplifier le processus de signification en centralisant les demandes via une plateforme qui redirige la demande vers un huissier compétent du réseau iSignif.
 
 .Un acte doit être notifié en main propre pour chaque destinataire, avec iSignif l'acte est centralisé
 // image:signification_before.png[signification_before, 500]
 image:signification_after_before.png[signification_after_before]
-
-
-// .L’acte est centralisé et signifié à tous les destinataires
-// image:signification_after.png[signification_after, 500]
 
 NOTE: Vous pouvez consulter la brochure dans les annexes pour en savoir plus à propos de notre activité.
 
@@ -41,7 +37,7 @@ NOTE: Vous pouvez consulter la brochure dans les annexes pour en savoir plus à 
 
 === Business plan
 
-La grande problématique de notre activité est que la loi *interdit* toute forme de *publicité* pour les huissiers. Il est donc important qu’on ne favorise pas certains huissier plutôt que d’autres. Nous avons donc choisit un système qui répartie par ordre d’arrivée les demande de significations équitablement.
+La grande problématique de notre activité est que la loi *interdit* toute forme de *publicité* a destination des huissiers. En se plaçant comme *apporteur d'affaires* nous sommes donc dans l’illégalité. Il est donc important qu’on ne favorise pas certains huissier plutôt que d’autres. Nous avons donc choisit un système qui répartie par ordre d’arrivée les demande de significations équitablement (_First-in, First-out_).
 
 Notre modèle économique réside sur l’idée de facturer les huissiers en fonction du nombre d’affaire qu’on leur apporte. Pour faire cela, nous avons eu plusieurs idées:
 
@@ -53,24 +49,19 @@ Dans un premier temps, nous avons choisis d’utiliser le système de facturatio
 
 === Réalisation du cahier des charges
 
-L’idée était donc de construire une plateforme qui centralise toutes les demandes. Ces demandes doivent être accessibles:
-
-* à n’importe quel moment
-* sur tout type de support (ordinateur, smartphone, tablette, etc..).
-
-Il était donc naturel de se tourner vers une application web qui convient à ce besoin.
+Les principales contraintes de notre plateforme sont que les demandes doivent être accessibles à n’importe quel moment et sur tout type de support (ordinateur, smartphone, tablette, etc..). Il était donc naturel de se tourner vers une application web qui convient à ce besoin.
 
 Nous avons donc rédigé un premier cahier des charges qui correspond à la version bêta qui sera proposée aux bêta testeurs. Cette version doit être fonctionnelle. Voici donc quelques unes de ces fonctionnalités:
 
-* *Estimation du coût d’un acte*: afin de pouvoir, en un minimum de clic, avoir une estimation du coup d’un’ acte. Sachant que cette page est le point d’entrée de l’application, elle doit être le plus simple possible. Cette page devra donc être en _Single Page_.
-* *Gestion fine des permissions*: afin de connaître l’identité de la personne qui navigue sur le site et interdire certaines fonctionnalités en fonction du types de comptes. Par exemple un huissier ne pourra pas créer d’actes à signifier.
+* *Estimation du coût d’un acte*: afin de pouvoir avoir une estimation du coût d’un acte. Étant le point d’entrée de l’application, cette page doit être le plus ergonomique possible.
+* *Gestion fine des permissions* en interdisant certaines fonctionnalités en fonction du rôle de l'utilisateur connecté.
 * *__Workflow__ de la signification*: Nous devons garder une trace de toutes les étapes de signification afin de pouvoir dresser un historique. Chaque étapes possède une action spécifique qui permet de passer à celle d'après
-* *__Workflow__ d’annulation*:
+* *__Workflow__ d’annulation*: L'annulation d'acte doit être demandé par le correspondant et accepté par l'huissier sous certaines conditions.
 * *Création des factures*: sachant que notre produit possède un coût faible (environs deux euros), nous devons dresser des facture mensuelles qui regroupe plusieurs produits
 
 === Conceptualiser et modéliser les données
 
-Lors de la rencontre avec les cofondateurs, nous avions échangé à propos des fonctionnalités de l’application. A la fin de la réunion, ils m’ont remis plusieurs documents dont une ébauche de cahier des charges. A mon sens, la suite logique était de valider la conception d’un modèle de donnée. Ceci permet de valider la compréhension de logique métier et la faisabilité du projet. De plus, cette étape m’a permis d’estimer le coût du projet en terme de temps.
+Lors de la rencontre avec les cofondateurs, nous avions échangé à propos des fonctionnalités de l’application. A la fin de la réunion, ils m’ont remis plusieurs documents dont une ébauche de cahier des charges. A mon sens, la suite logique était de valider la conception d’un modèle de donnée. Ceci permet de valider la compréhension de logique métier et la faisabilité du projet. De plus, cette étape m’a permis d’*estimer le coût du projet* en terme de temps.
 
 J’ai donc choisi la *méthode Merise* que j’ai eu l’occasion de découvrir en cours à l’IT-Akademy. Bien que moins actuelle elle permet de réaliser un graphique compréhensible par des profils non-techniques.
 
@@ -78,39 +69,32 @@ J’ai donc choisi la *méthode Merise* que j’ai eu l’occasion de découvrir
 
 Prenons par exemple la gestion des utilisateurs. Dans l’application il existe deux principaux types de comptes:
 
-* les avocats qui peuvent faire la demande de signification d’un acte
-* les huissiers qui peuvent signifier les demandes auxquelles ils sont affecté
+* les *avocats* qui peuvent faire la demande de signification d’un acte
+* les *huissiers* qui peuvent signifier les demandes auxquelles ils sont affecté
 
 Ces deux types de comptes possèdent les mêmes propriétés (nom, prénom, courriel, mot de passe). J’ai donc choisi de faire un héritage avec un modèle `User`. Ainsi, les deux modèles partagent les mêmes propriétés.
 
 .Représentation de l’héritage entre les huissiers et les avocats
 image:merise_users.png[merise_users, 400]
 
-Concrètement dans une base de données relationnelles, cela se matérialisera par une https://en.wikipedia.org/wiki/Single_Table_Inheritance[Single Table Inheritance]. C’est-à-dire qu’une table contiendra les deux types de données et qu’une colonne spécifiera le type d’utilisateur (Huissier ou Avocat). Ce modèle d’héritage en architecture de base de données est assez controversé. Cependant il convient bien à mon cas car les deux entités sont quasiment identiques.
+Dans une base de données relationnelles, cela se matérialisera par une https://en.wikipedia.org/wiki/Single_Table_Inheritance[Single Table Inheritance]. C’est-à-dire qu’une table contiendra les deux types de données et qu’une colonne spécifiera le type d’utilisateur (`Bailiff` ou `Advocate`). Ce modèle d’héritage en architecture de base de données est assez controversé mais il convient bien à mon cas car les deux entités sont identiques.
 
 // ===== Les huissiers
 
-Contrairement à l’avocat, l’huissier aura des relations supplémentaires avec d’autres entités. Chaque huissier est affecté à une unique zone de compétence. Cette zone de compétence contient plusieurs villes matérialisées sous l’entité `zip_code`. Nous arrivons donc au résultat présenté sur la figure suivant.
+Contrairement à l’avocat, l’huissier a une relation supplémentaire avec une zone de compétence. Cette zone de compétence contient plusieurs villes matérialisées sous l’entité `zip_code`. Nous arrivons donc au résultat présenté sur la figure suivant:
 
 .Représentation des huissiers
 image:merise_bailiffs.png[merise_bailiffs, 500]
 
 ==== L’acte
 
-J'ai ensuite crée une nouvelle entité `Act` qui représente un acte qui doit être signifié par un huissier. Cet acte contient:
-
-* l'avocat qui fait la demande de signification d’un acte
-* l'huissier qui doit signifier les demandes auxquelles ils sont affectés
-
-J’ai donc obtenu le résultat final que l’on peut voir sur la suivante.
+J'ai ensuite crée une nouvelle entité `Act` qui représente un acte qui doit être signifié par un huissier. Cet acte possède un avocat qui fait la demande de signification et un huissier qui doit le signifier. J’ai donc obtenu le résultat final que l’on peut voir sur la suivante.
 
 .ébauche de la première version du diagramme Merise réalisé avec jMerise en mai 2018
 image:merise_zoom.png[merise_zoom]
 
+==== Conclusion
 
-Une fois le diagramme validé, j’ai pu commencer les spécifications techniques de l’application.
+Avec du recul, il s’est avéré que mon premier schéma était plutôt correcte. Nous avons simplement changé le schéma en cours de routes car nous nous sommes rendu compte qu'un acte pouvait être signifié sur plusieurs villes et donc par plusieurs huissiers.
 
-// .Première version du diagramme Merise réalisé avec jMerise en mai 2018
-// image:merise.png[merise]
-
-Malgré quelques rectifications, il s’est avéré que mon estimation était plutôt correcte. Même s’il est impossible d’estimer le temps que cette étape m’a fait gagner, je peut affirmer que je n’aurais pas pu sortir une version stable rapidement sans celui-ci.
+Il est impossible d'estimer le temps que cette étape m'a fait gagner mais je peut affirmer quelle a été vraiment bénéfique au projet. Au delà du gain en terme de temps, cela m'a aussi permit de poser des bases saines lors de l'élaboration du produit.

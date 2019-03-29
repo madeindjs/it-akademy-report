@@ -2,7 +2,8 @@
 
 <head>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/css/reveal.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/css/theme/white.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.7.0/css/theme/white.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/atom-one-light.min.css">
   <meta charset="utf-8">
   <style>
     .reveal section img {
@@ -17,6 +18,7 @@
     <div class="slides">
       <section>
         <h1>Mémoire</h1>
+        <p>Alexandre Rousseau <br> <a href="mailto:contact@rousseau-alexandre.fr">contact@rousseau-alexandre.fr</a> </p>
       </section>
       <section>
         <h2>Sommaire</h2>
@@ -31,9 +33,9 @@
 
       <!-- A propos de moi -->
       <section>
-        <h2>A propos de moi</h2>
 
         <section>
+          <h2>A propos de moi</h2>
           <p><a href="http://rousseau-alexandre.fr">rousseau-alexandre.fr</a></p>
           <p>Développeur Ruby / PHP Passionné et autodidacte</p>
           <p>Travaille actuellement chez <a href="https://www.gac-technology.com/">Gac Technology</a></p>
@@ -43,13 +45,13 @@
           <p>A côté de ça je suis:</p>
           <ul>
             <li>Associé chez <a href="https://isignif.fr/">iSignif SAS</a></li>
-            <li>Proffesseur particulier chez <a href="https://www.superprof.fr/developpeur-web-experimente-rails-lyon-debutant-perfectionner.html">Superprof</a></li>
-            <li>Autheur du livre <a href="https://github.com/madeindjs/api_on_rails">API on Rails 5</a> publié sur <a href="https://leanpub.com/apionrails5">LeanPub</a> <small>(traduit en russe et vendu en 10 examplaires!!)</small></li>
+            <li>Professeur particulier chez <a href="https://www.superprof.fr/developpeur-web-experimente-rails-lyon-debutant-perfectionner.html">Superprof</a></li>
+            <li>Auteur du livre <a href="https://github.com/madeindjs/api_on_rails">API on Rails 5</a> publié sur <a href="https://leanpub.com/apionrails5">LeanPub</a> <small>(traduit en russe et vendu en 10 exemplaires!)</small></li>
           </ul>
         </section>
 
         <section>
-          <p>et d'autres trucs sur <a href="https://github.com/madeindjs">github.com/madeindjs</a> et <a href="https://rubygems.org/profiles/madeindjs">rubygems.org</a></p>
+          <p>et d'autres choses sur <a href="https://github.com/madeindjs">github.com/madeindjs</a> et <a href="https://rubygems.org/profiles/madeindjs">rubygems.org</a></p>
         </section>
 
       </section>
@@ -59,34 +61,33 @@
 
         <section>
           <h2>Présentation de iSignif</h2>
-          <img src="src/img/logo.svg" alt="">
+          <img src="src/img/logo.svg" height="200">
           <p>SAS créée en décembre 2017</p>
         </section>
 
         <section>
-          <h3>L'équipe</h3>
           <table>
             <tr>
-              <th>Adrien ORION</th>
-              <td>cofondateur et directeur général</td>
-            </tr>
-            <tr>
               <th>Sacha PARTENSKY</th>
-              <td>cofondateur et Président</td>
+              <td>Président</td>
             </tr>
             <tr>
-              <th>Antoinne DELETTRE</th>
-              <td>associé et designer web</td>
+              <th>Adrien ORION</th>
+              <td>Directeur général</td>
+            </tr>
+            <tr>
+              <th>Antoine DELETTRE</th>
+              <td>Designer Web</td>
             </tr>
             <tr>
               <th>Alexandre ROUSSEAU</th>
-              <td>associé et directeur technique</td>
+              <td>Directeur Technique / DPO</td>
             </tr>
           </table>
         </section>
 
         <section>
-          <p>LegalTech qui a pour but de simplifier le processus de signification</p>
+          <p>Simplifier le processus de signification</p>
           <img src="src/img/signification_after_before.png" alt="">
         </section>
 
@@ -107,39 +108,80 @@
         </section>
 
         <section>
-          <h3>Stack technique</h3>
-          <ul>
-            <li><strike>Wordpress</strike></li>
-            <li>Ruby On Rails</li>
-            <li>Vue.JS</li>
-            <li>MariaDB</li>
-          </ul>
+          <img src="src/img/mariadb.svg" alt="" height="200">
+          <img src="src/img/ubuntu.svg" alt="" height="200">
+          <img src="src/img/rails.svg" alt="" height="200">
+          <img src="src/img/vuejs.svg" alt="" height="200">
         </section>
 
       </section>
 
       <!-- Planification -->
       <section>
-        <h2>Planification</h2>
 
         <section>
-          <h3>Méthode Kanban</h3>
+          <h2>Planification</h2>
+          <ul>
+            <li>Estimation</li>
+            <li>Méthode Kanban</li>
+            <li>Git-Flow</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Estimation du temps</h3>
+          <p>Diagramme <strong>MCD</strong> <i>(Modèle conceptuel des données)</i></p>
+          <ul>
+            <li><strong>compréhension</strong> de la logique métier</li>
+            <li><strong>validation</strong> du cahier des charges</li>
+            <li><strong>estimation</strong> de la charge de travail</li>
+          </ul>
+        </section>
+
+        <section>
+          <img src="src/img/merise_bailiffs.png" height="100%">
+        </section>
+
+
+        <section>
+          <h3>Découpage des tâches</h3>
+          <p>Méthode <strong>Kanban</strong> avec <a href="https://trello.com">Trello</a>. Tâches <strong>indivisibles</strong> et <strong>rapides</strong>.</p>
+          <img src="src/img/trello_task.png" alt="">
+          <!-- <p>A faire > en cours > terminé</p> -->
+        </section>
+
+        <section>
+          <h3>Workflow Kanban rapide</h3>
+          <p>Utilisé pour sortir un MVP rapidement.</p>
           <img src="src/img/trello.png" alt="">
         </section>
 
         <section>
-          <h3>Git et Git Flow</h3>
-          <img src="src/img/trello.png" alt="">
+          <h3>Workflow Kanban complet</h3>
+          <p>Utilisé afin de tester et communiquer les évolutions.</p>
+          <img src="src/img/trello_now.png" alt="">
         </section>
+
+        <section>
+          <h3>Git-Flow</h3>
+          <p>Organisation du travail avec Git</p>
+          <img src="src/img/git-flow.png" alt="">
+        </section>
+
 
       </section>
 
       <!-- Développement de la plateforme -->
       <section>
 
-        <section>
-          <h2>Développement</h2>
-        </section>
+        <h2>Développement</h2>
+        <ul>
+          <li>Développement Dirigé par les Test</li>
+          <li>Intégration avec Stripe</li>
+        </ul>
+      </section>
+
+      <section>
 
         <section>
           <h3>Test Driven Development</h3>
@@ -147,20 +189,66 @@
         </section>
 
         <section>
-          <p>Beaucoup de <strong>tests fonctionnels</strong> pour la gestion des droits</p>
-          <pre><code data-trim data-noescape>
-test 'should show for connected user' do
-  login(@advocate)
-  get advocate_url(@advocate)
-  assert_response :success
-end
+          <h4>Objectifs</h4>
+          <p>
+            <input type="checkbox" checked> Test Driven Development</br>
+            <input type="checkbox" checked> Découverte d'un bug
+          </p>
+        </section>
 
-test 'should forbid show user for other user' do
-  login(users(:one_other_advocate))
-  get advocate_url(@advocate)
-  assert_response :forbidden
-end
+        <section>
+          <h4>Tests unitaires</h4>
+          <pre><code data-trim data-noescape class="ruby">
+            # tests/models/advocate_test.rb
+            test 'should anonymize and not destroy record' do
+              old_user = @advocate.as_json
+              assert_no_difference('Advocate.count') do
+                @advocate.destroy
+              end
+
+              %i[email firstname lastname siret ...].each do |field|
+                assert_not_equal old_user[field], @advocate.send(field)
+              end
+
+              assert @advocate.deleted
+            end
           </code></pre>
+        </section>
+
+        <section>
+          <h4>Tests fonctionnels</h4>
+          <pre><code data-trim data-noescape class="ruby">
+            test 'should show for connected user' do
+              login(@advocate)
+              get advocate_url(@advocate)
+              assert_response :success
+              assert_select 'h2', 'Actions'
+            end
+
+            test 'should forbid show user for other user' do
+              login(users(:one_other_advocate))
+              get advocate_url(@advocate)
+              assert_response :forbidden
+            end
+          </code></pre>
+        </section>
+
+        <section>
+          <h4>Avantages</h4>
+          <ul>
+            <li>gain de temps</li>
+            <li>limitation des régressions</li>
+            <li>factorisation plus facile</li>
+            <li><a href="https://www.ideematic.com/actualites/2017/10/garantir-la-maitrise-du-code-ruby-avec-les-tests-unitaires-rspec/">et bien d'autres...</a></li>
+          </ul>
+        </section>
+
+        <section data-background-image="http://media4.onsugar.com/files/2014/11/06/318/n/1922283/dfaef7b86468ce44_tumblr_l4bjroq9501qaoju6TOtJsU.xxxlarge.gif">
+          <h4>Aller plus loin</h4>
+          <ul>
+            <li>tests d'intégration</li>
+            <li>mutation testing avec <a href="https://github.com/mbj/mutant">Mutant</a></li>
+          </ul>
         </section>
       </section>
 
@@ -176,11 +264,20 @@ end
 
     </div>
   </div>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/js/reveal.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.7.0/js/reveal.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.7.0/lib/js/head.min.js"></script>
   <script>
     Reveal.initialize({
       slideNumber: true,
       history: true,
+      // More info https://github.com/hakimel/reveal.js#dependencies
+      dependencies: [{
+        src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.7.0/plugin/highlight/highlight.min.js',
+        async: true,
+        callback: function() {
+          hljs.initHighlightingOnLoad();
+        }
+      }, ]
     });
   </script>
 </body>

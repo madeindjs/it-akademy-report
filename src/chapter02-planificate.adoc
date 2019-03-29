@@ -1,7 +1,7 @@
 [#chapter02-planificate.adoc]
 == Planifier la réalisation du projet
 
-La planification est une étape importante car elle permet
+La planification est une étape importante car elle permet de tracer l'évolution du produit. En temps que développeur principal, elle est
 
 === Réunions d’avancements
 
@@ -9,48 +9,40 @@ Les réunions d’avancements ont lieu *physiquement*. Elles ne sont pas périod
 
 // Voici donc quelques réunions clés qui se sont déroulées au cours de l’élaboration de notre produit.
 
-Par exemple, nous avons fait une réunion en mai 2017 afin de valider mon avancement sur l'application. A ce moment là, j’avais travaillé en total autonomie sur l’élaboration d’un produit fonctionnel. Cette étape était réellement importante pour moi car je devais savoir que cette première ébauche correspondait aux attentes des deux cofondateurs. J’ai donc effectué une démonstration. Cela a permis de renforcer la confiance que mes associés m’avaient alors accordé mais aussi de collecter des premières critiques.
+Par exemple, nous avons fait une réunion en mai 2017 afin de valider mon avancement sur l'application. A ce moment là, j’avais travaillé en total autonomie sur l’élaboration d’une première ébauche fonctionnelle. Cette étape était réellement importante car je devais savoir que cette première ébauche correspondait aux attentes des deux cofondateurs. J’ai donc effectué une démonstration. Cela a permis de renforcer la confiance que mes associés m’avaient alors accordé mais aussi de collecter des premières critiques.
 
-Plus tard, début juin 2016, nous avons signé le *pacte des associés*. De plus, deux spécialistes de  https://www.beelys.org/[Beelys] (un grand incubateur lyonnais) étaient présent afin de nous apporter des renseignement sur le fonctionnement des levées de fond. A la suite de cette réunion, nous avons fait le choix de *ne pas faire de levée de fond*. En effet, une levée de fond s’accorde souvent d’une vente de part de l’entreprise. Sachant que nous n’avions pas besoin immédiatement d’argent, nous préférions garder les parts de l’entreprise et les vendre une fois que la société posséderait une certaine notoriété.
+Début juin 2016, nous avons signé le *pacte des associés*. Deux spécialistes de  https://www.beelys.org/[Beelys] (un grand incubateur lyonnais) étaient présent afin de nous apporter des renseignement sur le fonctionnement des levées de fond. A la suite de cette réunion, nous avons fait le choix de *ne pas faire de levée de fond* car elle s’accorde d’une vente de part de l’entreprise. Sachant que nous n’avions pas besoin immédiatement de fonds, nous préférions garder les parts de l’entreprise et les vendre une fois que la société posséderait une certaine notoriété.
 
-Le 12 septembre. A ce moment, le produit était presque prêt pour le lancement en bêta. Nous avons donc fait cette réunion avec l’huissier qui avait participé en tant que bêta testeur. Cette huissier avait pu tester le produit d'un  de nos concurrent. Cela a permit de collecter les retours qu’il avait eu et de les intégrer à notre application. Cela nous a aussi permis de valider notre produit et d’apporter quelques petites corrections avant le lancement.
+Le 12 septembre, le produit était presque prêt pour le lancement en bêta. Nous avons donc fait cette réunion avec l’huissier bêta-testeur. Cette huissier avait pu tester le produit d'un  de nos concurrent et c'était don un avantage concurrentiel énorme. Cela a permit de **collecter des retours utilisateur** et de les intégrer à notre application. Nous avons aussi put valider notre produit et apporter quelques petites corrections avant le lancement.
 
-Le 22 novembre, notre produit était prêt pour le lancement en bêta. Nous étions conscient que le lancement était un moment crucial pour notre société. Les mauvais retours se propagent vite et nous n’avions pas le droit à l’erreur. Nous avons donc choisit de tester notre produit sur quelques simulations entre nous afin de valider toutes les fonctionnalités. Ces tests nous ont permit de dénicher quelques bogues mineurs et d’analyser quelques fonctionnalités clefs manquantes. Nous avons donc pris la décision de retarder un peu le déploiement de notre produit afin d’améliorer la qualité.
+Le 22 novembre, notre produit était prêt pour le lancement en bêta. Nous étions conscient que le lancement était un moment crucial pour notre société. Les mauvais retours se propagent vite et nous n’avions pas le droit à l’erreur. Nous avons donc choisit de tester notre produit sur quelques simulations entre nous afin de valider toutes les fonctionnalités. Nous avons déniché quelques bogues mineurs et analyser quelques fonctionnalités clefs manquantes. Nous avons donc pris la *décision de retarder* le déploiement de notre produit afin d’améliorer la qualité.
 
-Le lancement c'est fait bien plus tard: le 1er mars. Ce retard s'explique par l'intégration de Stripe (que j'évoquerai plus loin dans ce mémoire).
+// Le lancement c'est fait bien plus tard: le 1er mars. Ce retard s'explique par l'**intégration de Stripe** (que j'évoquerai plus loin dans ce mémoire). Nous avons donc limité ce lancements uniquement aux huissiers. Nous avons donc effectué XX significations et généré XX bénéfices.
 
-TODO
+// TODO
 
 === Méthode Kanban
 
-La méthode Kanban est méthode agile très utilisée dans le monde informatique. Cela permet de mettre en place une gestion du projet sous forme de tickets. Cela permet de visualiser le flux de travail, de limiter le nombre de tâches en cours et de prioriser les tâches. Cette méthode nous était indispensable car elle permet de voir l’avancement du projet sans nous de réunions.
+La méthode Kanban est méthode agile très utilisée dans le monde informatique. Cela permet de mettre en place une gestion du projet sous forme de tickets, de visualiser le flux de travail et de prioriser les tâches. Cette méthode nous était indispensable car elle permet de voir l’avancement du projet en évitant d'innombrables réunions.
 
 Dans un premier temps je n’ai pas choisi de d’utiliser la méthode AGILE et la gestion des Sprints. Pour nous, le premier livrable devait être la phase bêta. Cette phase devrait correspondre à un produit fonctionnel en se concentrant sur les fonctions basiques.
 
 ==== Découpage des tâches
 
-Nous avons donc fait une réunion autour de laquelle nous avons découpé toutes les tâches à réaliser. Chaque tâche doit donc:
-
-* être indivisible
-* réalisable rapidement
-
-Nous avons donc très rapidement sélectionné les tâches qui devaient être réalisé obligatoirement avant le lancement de la bêta. C’est à dire:
+Nous avons donc fait une réunion pour découper toutes les tâches à réaliser. Une tâche est quelque chose d'*indivisible* et réalisable rapidement. Nous avons sélectionné celles nécessaires pour la bêta. C’est à dire celles:
 
 * indispensable au _workflow_ du client
-* à fore valeur ajoutée en terme de marketing
+* à forte valeur ajoutée en terme de marketing
 * développable rapidement
 * générique aux besoins des différents clients
 
-
-==== Utilisation de Trello
-
-Dans le monde du Kanban, un logiciel SAAS se démarque parmi les autre: http://trello.com/[Trello]. Trello est un outil SAAS qui permet pousse la méthode Kanban plus loin. Cette application pousse la collaboration en ajoutant les discussions sur les tâches (voir figure #fig:trello[[fig:trello]]).
+Dans le monde du Kanban, un logiciel SAAS se démarque parmi les autre: http://trello.com/[Trello]. Trello est un outil SAAS qui permet pousse la méthode Kanban plus loin. Cette application pousse la collaboration en ajoutant les discussions sur les tâches.
 
 image:trello.png[Capture d’écran de notre tableau Kanban en septembre 2018]
 
 === Rédiger les spécifications techniques
 
-Étant dans une équipe non technique, mes associés m’ont laissé carte blanche pour le choix des technologies. Les seule contraintes étaient de respecter un développement rapide et fiable. Si l’on considère la représentation suivante, je devais donc me situer entre _good_ et _cheap_.
+Notre société étant composé d'une équipe non technique, mes associés m’ont laissé carte blanche pour le choix des technologies. Les seule contraintes étaient de respecter un développement *rapide et fiable*. Si l’on considère la représentation suivante, je devais donc me situer entre _good_ et _cheap_.
 
 .Un bon résumé du choix à faire lors de l’élaboration des spécification techniques
 image:good_cheap_fast.png[good_cheap_fast, 300]
@@ -58,33 +50,38 @@ image:good_cheap_fast.png[good_cheap_fast, 300]
 
 ==== Back-end
 
-Étant donné que dans un premier temps je serais le seul à développer le produit, mon objectif était de choisir un framework ou j’étais à l’aise. Mon choix c’est donc naturellement posé sur https://rubyonrails.org/[Ruby on Rails].
-
-https://rubyonrails.org/[Ruby on Rails] est un framework web écrit en https://www.ruby-lang.org/[Ruby]. Très utilisé dans le monde des startup footnote:[Ruby on Rails a été initialement utilisé pour https://github.com/[Github], https://twitter.com/[Twitter], https://airbnb.com/[Airbnb], https://soundcloud.com/[Soundcloud], etc.. .], sa grande force est une grande communauté et une très bonne maturité. Par son mantra __"Convetion over configuration"__ footnote:["Suivez les convention au lieu de configurer"], il permet un développement extrêmement rapide.
+Étant donné que dans un premier temps je serais le seul à développer le produit, mon objectif était de choisir un framework ou j’étais à l’aise. Mon choix c’est posé sur https://rubyonrails.org/[Ruby on Rails], un framework web écrit en https://www.ruby-lang.org/[Ruby]. Très utilisé dans le monde des startup mais aussi par de grands noms comme https://github.com/[Github], https://twitter.com/[Twitter], https://airbnb.com/[Airbnb] et https://soundcloud.com/[Soundcloud]. Sa grande force est une grande communauté et une très bonne maturité. Par son mantra __"Convetion over configuration"__ ("Suivez les convention au lieu de configurer"), il permet un développement extrêmement rapide.
 
 ==== Front-end
 
-Les nouvelles applications utilisent des interface utilisateurs de plus en plus réactive. La tendance étant aux __Signle Page Application__footnote:[Application sur une page], j’ai choisis de rester plus simple dans un premier temps.
+Les nouvelles applications utilisent des interface utilisateurs de plus en plus réactive. La tendance étant aux _Single Page Application_ (Application sur une page), j’ai choisis de rester plus simple dans un premier temps.
 
-J’ai néanmoins choisis de mettre en place Vue.JS, un _framework front-end_ pour designer les pages qui demandent le plus d’interactions. J’ai choisis Vue.JS au lieu de React ou Angular car c’est le plus simple à mettre en place.
+J’ai néanmoins mis en place _Vue.JS_ (une librairie JavaScript) pour certaines pages qui demandent plus d’interactions. J’ai choisis Vue.JS au détriment de React ou Angular car c’est le plus simple à mettre en place.
 
-NOTE: Je pense que j'ai commis l'erreur lors du choix des techno que j’ai utilisé et de ne pas être parti directement sur une architecture API. Il s’est avéré par la suite qu’un éditeur de progiciel était intéresse pour connecter iSignif à un logiciel utilisé dans le milieu du droit.
-
-De plus, le besoin s’est fait sentir de rendre notre application de plus en plus _Single Page_. Il aurait ainsi plus facile de découpler notre application en une partie _back_ et _front_.
 
 === Travailler à plusieurs
 
-Git footnote:[Git est un logiciel développé par Linux Torvals (fondateur de Linux) qui permet de versionner un projet. Ainsi il rend la collaboration beaucoup plus facile.] est énormément utilisé dans le monde du développement de logiciel. Son efficacité n’est plus à prouver. Pour construire iSignif, j’ai immédiatement décidé d’appliquer la méthodologie *Git Flow*.
+Git est un logiciel développé par Linux Torvals (fondateur de Linux) qui permet de *versionner* un projet. Il rend la collaboration beaucoup plus facile. Je l'ai donc naturellement choisit en le couplant à la méthodologie *Git Flow*.
 
 .Schéma du _workflow_ de Git Flow.
 image:git-flow.png[git-flow]
 
 Git Flow impose une convention de travail avec Git. Sur ce schéma, on retrouve:
 
-* *en vert* la branche `master` correspond à l’état actuel de l’application en production.
-* *en rouge* la branche `develop` contient tous les nouveaux développement qui seront publié lors de la prochaine mise en production.
-* *en bleu* cela correspond à une `feature`, c’est à dire une fonctionnalité développé indépendamment de l’application.
-* *en jaune* il s’agit d’une `release`, c’est à dire une mise en publication de tous les développement validés.
-* *en gris* Il s’agit d’un `hotfix`. Ce sont des petits correctifs fait à la fois sur la branche `master` et `develop`.
+* *vert*: la branche `master` qui correspond à l’état de l’application en production.
+* *rouge*: la branche `develop` qui contient les nouveaux développements qui seront publiés lors de la prochaine mise en production
+* *bleu*: une `feature`, c’est à dire une fonctionnalité développé indépendamment de l’application.
+* *jaune*: une `release`, c’est à dire une mise en publication de tous les développement validés.
+* *gris* un `hotfix`. Ce sont des petits correctifs fait à la fois sur la branche `master` et `develop`.
 
 Cette méthodologie permet ainsi de travailler à plusieurs sans se gêner puisque chaque développeur peut travailler indépendamment sur une branche `feature`. De plus, ceci me permet de faire des mise en production régulièrement (j’en parlerai plus en détails dans la section "déploiement").
+
+De plus, je renseigne chaque _feature_ dans une fichier de mis a jour publié au seins de l'application. Cela permet de communiquer avec le client sur les évolutions du produit.
+
+=== Conclusion
+
+Avec du recul je pense que j'ai commis l'erreur de ne pas être avoir choisi directement sur une architecture API. Il s’est avéré par la suite qu’un éditeur de progiciel était intéressé pour connecter notre produit à leur solution déjà implanté dans le milieu du droit.
+
+De plus, le besoin s’est fait sentir de rendre notre application de plus en plus _Single Page_. On aurait ainsi pu découpler notre application en une partie _back_ et _front_.
+
+Malgré cette erreur, notre méthodologie c'est révélé très efficace car elle nous permet de communiquer et de tester nos évolutions. Notre méthodologie n'a pas beaucoup évolué dans le temps.

@@ -1,6 +1,8 @@
 [#chapter08-conclusion]
 == Conclusion
 
+Le plus dur a été de gérer les retours utilisateurs rapidement. Ayant un travail à côté, 
+
 === Apports professionnels
 
 Les apports professionnels d’une telle expérience sont évidents. Au delà de mettre en avant une expérience professionnelle de plus, j’ai énormément appris.

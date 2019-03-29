@@ -2,11 +2,7 @@
 
 == Préface
 
-=== licence
-
-Cet document est mis à disposition par Alexandre Rousseau sous licence Creative Commons Attribution - Partage dans les Mêmes Conditions 4.0 International. Pour accéder à une copie de cette licence, merci de vous rendre à l’ http://creativecommons.org/licenses/by-sa/4.0/[adresse suivante] ou envoyez un courrier à Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA.
-
-Tout le code source de ce document (rédigé en https://asciidoctor.org/[AsciiDoctor]) est disponible sur http://git.rousseau-alexandre.fr/madeindjs/it_report[ce répertoire Git].
+Cet document est mis à disposition par Alexandre Rousseau sous licence Creative Commons Attribution - Partage dans les Mêmes Conditions 4.0 International. Pour accéder à une copie de cette licence, merci de vous rendre à l’ http://creativecommons.org/licenses/by-sa/4.0/[adresse suivante] ou envoyez un courrier à Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA. Tout le code source de ce document (rédigé en https://asciidoctor.org/[AsciiDoctor]) est disponible sur http://git.rousseau-alexandre.fr/madeindjs/it_report[ce répertoire Git].
 
 === Remerciements
 
@@ -20,20 +16,20 @@ Je souhaite particulièrement remercier Mme Gamma pour sa précieuse aide à la 
 
 === Introduction
 
-Dans le souhait de me former et de progresser continuellement, je me suis inscrit sur le site https://cofondateur.fr[cofondateur.fr]qui met en relation des entrepreneurs à la recherche de développeurs pour construire leur projet. C’est ainsi que j'ai créé une _LegalTech_ :footnote:[startup dans le domaine du droit] qui a pour but de mettre en relation des avocats et des huissiers. Cette excellente opportunité me permet d'avoir plusieurs rôles au sein d'une structure:
+Passionné et autodidacte, mon implication personnelle m'a permis d'évoluer en tant que développeur. Issue d'une reconversion professionnelle, je peux aujourd'hui dire que ma passion me permet de m'épanouir et me spécialiser.
 
-- En tant qu’**associé**, je participe aux décisions stratégiques de l’entreprise
-- En tant que *directeur technique*, j’ai pour mission de faire des choix techniques cohérents afin d’assurer la pérennité de notre produit
-- En tant que *Délégué à la Protection des Données*, je suis chargé de veiller au respect des données et à la mise en conformité de notre outil.
+Je participe à quelques projets projets Open Source comme:
 
-J’ai donc décider de construire mon mémoire uniquement sur ce projet car il met en avant la construction d’un projet de A à Z en total autonomie. J’ai fais le choix d’organiser mon mémoire de façon chronologique (dans la mesure du possible). C’est-à-dire:
+- API on Rails 5, un livre que j'ai traduis et adapté à partir de _"APIs on Rails - Building REST APIs with Rails"_ qui traite des meilleurs pratiques pour construire une API en utilisant Rails
+- Crystagiri qui est un parseur de document HTML écrit en Crystal et suivi par presque 100 personnes sur Github
+- Raspberry Cook Ce projet m'a permis de découvrir et m'auto-former sur Ruby on Rails et de créer un serveur sur un Raspberry PI.
+- et bien d'autres choses disponibles sur https://github.com/madeindjs[github.com/madeindjs]
+Pour voir la liste complète de mes projets en OpenSource, jettez un œil à mon profil Github
 
-* la planification du projet
-* le développement du projet
-* la mise en place du serveur de production
-* la collecte des retours utilisateurs
-* la promotion du produit
+Je suis actuellement salarié chez Gac Technology, une startup lyonnaise créée en 2010 et qui compte maintenant presque 50 salarié. Gac Technology vend une plusieurs produits web (SAAS) qui permettent la gestion de moyen à grands parcs automobiles, téléphonique  et immobilier.
 
-J'aborderai aussi les difficultés que j'ai pu rencontrer dans l'élaboration du projet de tel envergure.
+image:gac.svg[logo, 200]
 
-J'aborderai ainsi la problématique de comment gérer un projet de tel envergure à coté de la vie professionnel, personnelle et étudiante.
+J'ai découvert le développement informatique un peu par hasard lors de
+
+Issue d'un reconversion professionnelle

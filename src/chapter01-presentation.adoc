@@ -1,5 +1,50 @@
 [#chapter01-presentation]
-== Présentation du projet
+== Présentation
+
+Dans le souhait de me former et de progresser continuellement, je me suis inscrit sur le site https://cofondateur.fr[cofondateur.fr] qui met en relation des entrepreneurs à la recherche de développeurs pour construire leur projet. C’est ainsi que j'ai créé une _LegalTech_ (startup dans le domaine du droit) qui a pour but de mettre en relation des avocats et des huissiers. Cette excellente opportunité me permet d'avoir plusieurs rôles au sein d'une structure:
+
+- En tant qu’**associé**, je participe aux décisions stratégiques de l’entreprise
+- En tant que *directeur technique*, j’ai pour mission de faire des choix techniques cohérents afin d’assurer la pérennité de notre produit
+- En tant que *Délégué à la Protection des Données*, je suis chargé de veiller au respect des données et à la mise en conformité de notre outil.
+
+J’ai donc choisis de mettre en avant cette expérience dans mon dossier de validation car il met en exergue la construction d’un projet complet en totale autonomie. J’ai fais le choix d’organiser mon mémoire de façon chronologique (dans la mesure du possible). C’est-à-dire:
+
+* la planification du projet
+* le développement
+* la mise en place de l'architecture
+* la collecte des retours utilisateurs
+* la promotion du produit
+
+J'aborderai ainsi la problématique de comment gérer un projet de tel envergure à coté d'une vie professionnel, personnelle et étudiante.
+
+=== La société
+
+Comme je le disait plus haut, j'ai participé à la création d'une entreprise: iSignif. Dans cette structure
+
+
+---
+
+Les deux cofondateurs sont Adrien ORION et Sacha PARTENSKY, deux étudiants en droit à l’université Lyon 3 Jean Moulin. Au stade de la rencontre, ils avaient créé la société en tant que iSignif SAS (voir section #sec:sas[2.3]). C’est une société par actions simplifiées. Ce type de société nous a permis de rédiger un pacte d’actionnaires et ainsi de partager les droits de décision équitablement. Elle était suivie par un incubateur footnote:[un incubateur est une société externe qui aide à la création d’un startup]
+
+.Le logo d’iSignif
+image:logo.png[logo, 300]
+
+Lors de la rencontre, Sacha et Adrien m’ont présenté l’idée générale du produit. Sentant rapidement le potentiel, j’ai accepté de devenir associé et j’ai ainsi signé le nouveau pacte d’actionnaires. Nous redéfinissions ainsi les parts et les rôles des nouveaux associés:
+
+* Adrien ORION, cofondateur et directeur général, associé à hauteur de 31,5%
+* Sacha PARTENSKY, cofondateur et Président à hauteur de 41,5%
+* Alexandre ROUSSEAU, associé et directeur technique, associé à hauteur de 25%
+* Antoinne DELETTRE, associé et designer web, associé à hauteur de 2%
+
+J’ai donc choisi un rôle de sociétaire car c’est compatible avec mon statut de salarié chez GAC Technology.
+
+==== Statut juridique
+
+La SASU _(Société par Actions Simplifiée Unipersonnelle)_ est le statut privilégié. Les avantages de ce statut juridique sont une grande liberté sur les règles définies dans le pacte d’actionnaires et une responsabilité limité aux apports.
+
+L’inconvénient de ce statut est qu’il est plus difficile à mettre en place car il faut rédiger un pacte d’actionnaire complet. Dans notre cas, ce statut est parfait puisque mes associés ont les compétences pour rédiger documents administratifs.
+
+NOTE: Pour en savoir plus sur ce régime, je vous invite à consulter https://www.lecoindesentrepreneurs.fr/pourquoi-creer-une-sasu/[cet article]
 
 Réalisée par un huissier de justice, la signification a pour but de porter les actes judiciaires _(assignation en justice, jugement, sommation de payer, etc...)_ à la connaissance des intéressés. Toutefois, ces actes sont souvent adressés à plusieurs destinataires résidents dans des villes différentes. Ceci demande un effort chronophage pour les demandeurs de signification qui doivent contacter les huissiers compétents pour chaque adresse.
 
@@ -11,29 +56,7 @@ image:signification_after_before.png[signification_after_before]
 
 NOTE: Vous pouvez consulter la brochure dans les annexes pour en savoir plus à propos de notre activité.
 
-// === La société
-//
-// Les deux cofondateurs sont Adrien ORION et Sacha PARTENSKY, deux étudiants en droit à l’université Lyon 3 Jean Moulin. Au stade de la rencontre, ils avaient créé la société en tant que iSignif SAS (voir section #sec:sas[2.3]). C’est une société par actions simplifiées. Ce type de société nous a permis de rédiger un pacte d’actionnaires et ainsi de partager les droits de décision équitablement. Elle était suivie par un incubateur footnote:[un incubateur est une société externe qui aide à la création d’un startup]
-//
-// .Le logo d’iSignif
-// image:logo.png[logo, 300]
-//
-// Lors de la rencontre, Sacha et Adrien m’ont présenté l’idée générale du produit. Sentant rapidement le potentiel, j’ai accepté de devenir associé et j’ai ainsi signé le nouveau pacte d’actionnaires. Nous redéfinissions ainsi les parts et les rôles des nouveaux associés:
-//
-// * Adrien ORION, cofondateur et directeur général, associé à hauteur de 31,5%
-// * Sacha PARTENSKY, cofondateur et Président à hauteur de 41,5%
-// * Alexandre ROUSSEAU, associé et directeur technique, associé à hauteur de 25%
-// * Antoinne DELETTRE, associé et designer web, associé à hauteur de 2%
-//
-// J’ai donc choisi un rôle de sociétaire car c’est compatible avec mon statut de salarié chez GAC Technology.
-//
-// ==== Statut juridique
-//
-// La SASU _(Société par Actions Simplifiée Unipersonnelle)_ est le statut privilégié. Les avantages de ce statut juridique sont une grande liberté sur les règles définies dans le pacte d’actionnaires et une responsabilité limité aux apports.
-//
-// L’inconvénient de ce statut est qu’il est plus difficile à mettre en place car il faut rédiger un pacte d’actionnaire complet. Dans notre cas, ce statut est parfait puisque mes associés ont les compétences pour rédiger documents administratifs.
-//
-// NOTE: Pour en savoir plus sur ce régime, je vous invite à consulter https://www.lecoindesentrepreneurs.fr/pourquoi-creer-une-sasu/[cet article]
+=== Le projet
 
 === Business plan
 

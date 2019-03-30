@@ -24,7 +24,7 @@ Comme je le disait plus haut, j'ai participé à la création d'une entreprise: 
 
 ---
 
-Les deux cofondateurs sont Adrien ORION et Sacha PARTENSKY, deux étudiants en droit à l’université Lyon 3 Jean Moulin. Au stade de la rencontre, ils avaient créé la société en tant que iSignif SAS (voir section #sec:sas[2.3]). C’est une société par actions simplifiées. Ce type de société nous a permis de rédiger un pacte d’actionnaires et ainsi de partager les droits de décision équitablement. Elle était suivie par un incubateur footnote:[un incubateur est une société externe qui aide à la création d’un startup]
+Les deux cofondateurs sont Adrien ORION et Sacha PARTENSKY, deux étudiants en droit à l’université Lyon 3 Jean Moulin. Au stade de la rencontre, ils avaient créé la société en tant que iSignif SAS. C’est une société par actions simplifiées. Ce type de société nous a permis de rédiger un pacte d’actionnaires et ainsi de partager les droits de décision équitablement. Elle était suivie par un incubateur footnote:[un incubateur est une société externe qui aide à la création d’un startup]
 
 .Le logo d’iSignif
 image:logo.png[logo, 300]

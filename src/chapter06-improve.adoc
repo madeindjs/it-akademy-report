@@ -1,13 +1,14 @@
 [#chapter06-improve]
 == Amélioration continue
+// QUESTION: Est-ce que le titre est juste?
 
-=== Développement Dirigé par les test
+// === Développement Dirigé par les test
 
-Comme je l’évoquait lors de la réunion de pré-lancement, il était capital de maintenir une certaine qualité de nos services. Je me suis donc imposé le _workflow_ du développement dirigé par les tests.
+// Comme je l’évoquait lors de la réunion de pré-lancement, il était capital de maintenir une certaine qualité de nos services. Je me suis donc imposé le _workflow_ du développement dirigé par les tests.
 
 === RGPD
 
-2018 fut l’année de la mise en place de la RGPD footnote:[Règlement général sur la protection des données]. Entrée en vigueur le 25 mai, ce texte réglementaire européen couvre, entre autres, le traitement des données personnelles footnote:[Les données personnelle sont toutes les données qui permettent d’identifier quelqu’un].
+2018 fut l’année de la mise en place du Règlement général sur la protection des données (RGPD). Entrée en vigueur le 25 mai, ce texte réglementaire européen couvre, entre autres, le traitement des données personnelles footnote:[Les données personnelle sont toutes les données qui permettent d’identifier quelqu’un].
 
 Les principales nouveautés qu’apporte la RGPD sont:
 
@@ -25,21 +26,20 @@ Dans mon cas, les principales obligations qui m’incombent sont les suivantes:
 * l’utilisateur doit pouvoir conn // TDOD
 * nous devons stocker le minimum de données possible
 
-==== Oubliez-moi
+=== Le droit à l’oubli
 
-https://gdpr-info.eu/art-17-gdpr/[L’article 17 de la RGPD] nous oblige à implémenter une fonctionnalité *Oubliez-moi*. Celle-ci doit permettre à l’utilisateur d’effacer toutes ses données immédiatement. La ou cela se complique, c’est que la RGPD nous oblige aussi à demander la suppression des données chez des fournisseurs tiers. Ainsi, si nous utilisons des services externes (comme Stripe dans mon cas) il faut accéder à leur API afin de demander la suppression.
+Le droit à l'oubli est l'une des plus grosse fonctionnalité demandée par la CNIL. https://gdpr-info.eu/art-17-gdpr/[L’article 17 de la RGPD] nous oblige à implémenter une fonctionnalité qui doit permettre à l’utilisateur d’effacer toutes ses données rapidement. La ou cela se complique, c’est que la RGPD nous oblige aussi à demander la suppression des données chez des fournisseurs tiers (comme Stripe dans mon cas).
 
 La difficulté de cette fonctionnalité est de supprimer les données liées à l’utilisateur sans impacter les données qui sont liées aux autres utilisateurs. Concrètement, cela signifie que lorsqu’un huissier de justice décide de supprimer son compte, il faut:
 
 * supprimer son compte et ses données (logique)
 * supprimer toutes ses factures
-* supprimer les significations footnote:[L’acte de présenter en main propre un acte de signification à quelqu’un] qu’il a effectué
+* supprimer les significations qu’il a effectué
+* supprimer ses données chez Stripe
 
-Cependant je ne peux pas supprimer les significations puisqu’elles doivent être conservée pour l’avocat qui a demandé la signification de son acte.
+Cependant je ne peux pas supprimer les significations puisqu’elles doivent être conservée pour l’avocat qui a demandé la signification de son acte. C’est pour cela que j’ai préféré l’*anonymisation* des données.
 
-C’est pour cela que j’ai préféré l’*anonymisation* des données.
-
-Comme je l’expliquais, je suis un évangéliste du _Test Driven Development_. J’ai donc commencé par construire le test.
+Etant un fan du _Test Driven Development_. J’ai donc commencé par construire le test.
 
 [source, ruby]
 .test/models/bailiff_test.rb
@@ -81,15 +81,22 @@ end
 
 Et voilà, la mise en conformité est faite. L’huissier ou l’avocat pourra supprimer son compte et les données seront conservées. En revanche, il sera impossible de retrouver l’utilisateur correspondant à ces données.
 
-===== Cookies
+En plus de cela, j'ai aussi utilisé l'API de Stripe en faisant un appel à leur API pour supprimer leur données lors de la suppression mais je ne le détaillerai pas ici.
 
-TODO
+==== Le droit à la portabilité et à l'accès des données de l’utilisateur
 
-===== Chiffrement des données
+Afin de respecter cette norme, j'ai tout simplement choisis de proposer d'afficher la page d'accès aux information de l'utilsateur au format JSON. En utilisant la https://github.com/Netflix/fast_jsonapi[librairie de serialization des données de Netflix], j'ai ainsi convertit le model `User` au format JSON en incluant toutes ses liaison. Ainsi, en un clic, l'utilisateur peut obtenir toutes ses donnéesen incluant ses actes, ses messages et les significations qu'il a effectué.
 
-TODO
+==== Le droit à la rectification des données de l’utilisateur
 
-===== Déploiement continu
+// TODO
+
+==== Le droit d’accès à toutes les données
+
+// TODO
+
+
+=== Déploiement continu
 
 Afin d’être le plus réactif possible, j’ai voulu mettre en place un outil afin d’automatiser les mises en production. Cela est un énorme avantage car il permet de mettre en ligne un correctif ou une évolution très rapidement. De plus, automatiser permet de réduire le risque de l’erreur humaine ( https://www.reddit.com/r/webdev/comments/5rd79m/gitlab_employee_just_ran_rm_rf_on_their/[et cela est vite arrivé]...).
 
@@ -111,8 +118,6 @@ append :linked_files, 'config/database.yml' , 'config/initializers/secret_token.
 append :linked_dirs, 'public/uploads'
 ----
 
-==== Retours des utilisateurs
+=== Retours des utilisateurs
 
-===== Service après vente
-
-===== Témoignages
+// TODO

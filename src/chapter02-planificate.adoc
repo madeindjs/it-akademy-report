@@ -1,7 +1,7 @@
 [#chapter02-planificate.adoc]
 == Planifier la réalisation du projet
 
-La planification est une étape importante car elle permet de tracer l'évolution du produit. En temps que développeur principal, elle est
+La planification est une étape importante car elle permet de tracer l'évolution du produit. En temps que développeur principal, elle est indispensable afin de voir sont propre avancement ans un projet d'une grande envergure. C'est est très important car cela m'a permit de ne pas me décourager dans un projet d'une telle envergure.
 
 === Réunions d’avancements
 
@@ -9,25 +9,27 @@ Les réunions d’avancements ont lieu *physiquement*. Elles ne sont pas périod
 
 // Voici donc quelques réunions clés qui se sont déroulées au cours de l’élaboration de notre produit.
 
-Par exemple, nous avons fait une réunion en mai 2017 afin de valider mon avancement sur l'application. A ce moment là, j’avais travaillé en total autonomie sur l’élaboration d’une première ébauche fonctionnelle. Cette étape était réellement importante car je devais savoir que cette première ébauche correspondait aux attentes des deux cofondateurs. J’ai donc effectué une démonstration. Cela a permis de renforcer la confiance que mes associés m’avaient alors accordé mais aussi de collecter des premières critiques.
+Par exemple, nous avons fait une réunion en mai 2018 afin de valider mon avancement sur l'application. A ce moment là, j’avais travaillé en total autonomie sur l’élaboration d’une *première ébauche* fonctionnelle. Cette étape était réellement importante car je devais savoir que cette première ébauche correspondait aux attentes des deux cofondateurs. J’ai donc effectué une démonstration. Cela a permis de renforcer la confiance que mes associés m’avaient alors accordé mais aussi de collecter des premières critiques.
 
-Début juin 2016, nous avons signé le *pacte des associés*. Deux spécialistes de  https://www.beelys.org/[Beelys] (un grand incubateur lyonnais) étaient présent afin de nous apporter des renseignement sur le fonctionnement des levées de fond. A la suite de cette réunion, nous avons fait le choix de *ne pas faire de levée de fond* car elle s’accorde d’une vente de part de l’entreprise. Sachant que nous n’avions pas besoin immédiatement de fonds, nous préférions garder les parts de l’entreprise et les vendre une fois que la société posséderait une certaine notoriété.
+Début juin 2018, nous avons signé le *pacte des associés*. Deux spécialistes de  https://www.beelys.org/[Beelys] (un grand incubateur lyonnais) étaient présent afin de nous apporter des renseignement sur le fonctionnement des levées de fond. A la suite de cette réunion, nous avons fait le choix de *ne pas faire de levée de fond* car elle s’accorde d’une vente de part de l’entreprise. Sachant que nous n’avions pas besoin immédiatement de fonds, nous préférions garder les parts de l’entreprise et les vendre une fois que la société posséderait une certaine notoriété.
 
-Le 12 septembre, le produit était presque prêt pour le lancement en bêta. Nous avons donc fait cette réunion avec l’huissier bêta-testeur. Cette huissier avait pu tester le produit d'un  de nos concurrent et c'était don un avantage concurrentiel énorme. Cela a permit de **collecter des retours utilisateur** et de les intégrer à notre application. Nous avons aussi put valider notre produit et apporter quelques petites corrections avant le lancement.
+Le septembre 2018, le produit était presque prêt pour le lancement en bêta. Nous avons donc fait cette réunion avec l’huissier bêta-testeur. Cette huissier avait pu tester le produit d'un  de nos concurrent et c'était don un avantage concurrentiel énorme. Cela a permit de **collecter des retours utilisateur** et de les intégrer à notre application. Nous avons aussi put valider notre produit et apporter quelques petites corrections avant le lancement.
 
-Le 22 novembre, notre produit était prêt pour le lancement en bêta. Nous étions conscient que le lancement était un moment crucial pour notre société. Les mauvais retours se propagent vite et nous n’avions pas le droit à l’erreur. Nous avons donc choisit de tester notre produit sur quelques simulations entre nous afin de valider toutes les fonctionnalités. Nous avons déniché quelques bogues mineurs et analyser quelques fonctionnalités clefs manquantes. Nous avons donc pris la *décision de retarder* le déploiement de notre produit afin d’améliorer la qualité.
+Le novembre 2018, notre produit était prêt pour le lancement en bêta. Nous étions conscient que le lancement était un moment crucial pour notre société. Les mauvais retours se propagent vite et nous n’avions pas le droit à l’erreur. Nous avons donc choisit de tester notre produit sur quelques simulations entre nous afin de valider toutes les fonctionnalités. Nous avons déniché quelques bogues mineurs et analyser quelques fonctionnalités clefs manquantes. Nous avons donc pris la *décision de retarder* le déploiement de notre produit afin d’améliorer la qualité.
 
-// Le lancement c'est fait bien plus tard: le 1er mars. Ce retard s'explique par l'**intégration de Stripe** (que j'évoquerai plus loin dans ce mémoire). Nous avons donc limité ce lancements uniquement aux huissiers. Nous avons donc effectué XX significations et généré XX bénéfices.
+Le lancement c'est fait en mars 2019. Ce retard s'explique par l'**intégration de Stripe** (que j'évoquerai plus loin dans ce mémoire). Nous avons donc limité ce lancements uniquement aux huissiers. Nous avons donc effectué 67 significations et généré presque 70 euros.
+
+// QUESTION: à garder?
 
 // TODO
 
 === Méthode Kanban
 
-La méthode Kanban est méthode agile très utilisée dans le monde informatique. Cela permet de mettre en place une gestion du projet sous forme de tickets, de visualiser le flux de travail et de prioriser les tâches. Cette méthode nous était indispensable car elle permet de voir l’avancement du projet en évitant d'innombrables réunions.
+La méthode Kanban est méthode très utilisée dans le monde informatique. Cela permet de mettre en place une gestion du projet sous forme de tickets, de visualiser le flux de travail et de prioriser les tâches. Cette méthode nous était indispensable car elle permet de voir l’avancement du projet en évitant d'innombrables réunions.
 
-Dans un premier temps je n’ai pas choisi de d’utiliser la méthode AGILE et la gestion des Sprints. Pour nous, le premier livrable devait être la phase bêta. Cette phase devrait correspondre à un produit fonctionnel en se concentrant sur les fonctions basiques.
+Dans un premier temps je n’ai pas choisi de d’utiliser la méthode AGILE et la gestion des Sprints. Dans notre cas, notre client attendait toutes es fonctionnalités que nous avions listé. Le premier livrable devait être la première version bêta.
 
-==== Découpage des tâches
+// ==== Découpage des tâches
 
 Nous avons donc fait une réunion pour découper toutes les tâches à réaliser. Une tâche est quelque chose d'*indivisible* et réalisable rapidement. Nous avons sélectionné celles nécessaires pour la bêta. C’est à dire celles:
 
@@ -36,7 +38,7 @@ Nous avons donc fait une réunion pour découper toutes les tâches à réaliser
 * développable rapidement
 * générique aux besoins des différents clients
 
-Dans le monde du Kanban, un logiciel SAAS se démarque parmi les autre: http://trello.com/[Trello]. Trello est un outil SAAS qui permet pousse la méthode Kanban plus loin. Cette application pousse la collaboration en ajoutant les discussions sur les tâches.
+Afin de gérer les tâche et de communiquer autour d'elles, j'ai choisit http://trello.com/[Trello]. C'est un outil SAAS qui permet pousse la méthode Kanban plus loin. Cette application pousse la collaboration en ajoutant les discussions sur les tâches.
 
 image:trello.png[Capture d’écran de notre tableau Kanban en septembre 2018]
 
@@ -50,13 +52,13 @@ image:good_cheap_fast.png[good_cheap_fast, 300]
 
 ==== Back-end
 
-Étant donné que dans un premier temps je serais le seul à développer le produit, mon objectif était de choisir un framework ou j’étais à l’aise. Mon choix c’est posé sur https://rubyonrails.org/[Ruby on Rails], un framework web écrit en https://www.ruby-lang.org/[Ruby]. Très utilisé dans le monde des startup mais aussi par de grands noms comme https://github.com/[Github], https://twitter.com/[Twitter], https://airbnb.com/[Airbnb] et https://soundcloud.com/[Soundcloud]. Sa grande force est une grande communauté et une très bonne maturité. Par son mantra __"Convetion over configuration"__ ("Suivez les convention au lieu de configurer"), il permet un développement extrêmement rapide.
+Étant donné que j'était le seul à développer le back-end du produit, mon objectif était de choisir un framework ou j’étais vraiment à l’aise. Mon choix c’est posé sur https://rubyonrails.org/[Ruby on Rails], un framework web écrit en https://www.ruby-lang.org/[Ruby]. Très utilisé dans le monde des startup mais aussi par de grands noms comme https://github.com/[Github], https://twitter.com/[Twitter], https://airbnb.com/[Airbnb] et https://soundcloud.com/[Soundcloud]. Sa grande force est une grande communauté et une très bonne maturité. Par son mantra __"Convetion over configuration"__ ("Suivez les convention au lieu de configurer"), il permet un développement extrêmement rapide.
 
 ==== Front-end
 
 Les nouvelles applications utilisent des interface utilisateurs de plus en plus réactive. La tendance étant aux _Single Page Application_ (Application sur une page), j’ai choisis de rester plus simple dans un premier temps.
 
-J’ai néanmoins mis en place _Vue.JS_ (une librairie JavaScript) pour certaines pages qui demandent plus d’interactions. J’ai choisis Vue.JS au détriment de React ou Angular car c’est le plus simple à mettre en place.
+J’ai néanmoins mis en place _Vue.JS_ (une librairie JavaScript) pour certaines pages qui demandent plus d’interactions. J’ai choisis Vue.JS au détriment de React ou Angular car c’est le plus simple à mettre en place pour des applications non orienté API.
 
 
 === Travailler à plusieurs
@@ -80,8 +82,8 @@ De plus, je renseigne chaque _feature_ dans une fichier de mis a jour publié au
 
 === Conclusion
 
-Avec du recul je pense que j'ai commis l'erreur de ne pas être avoir choisi directement sur une architecture API. Il s’est avéré par la suite qu’un éditeur de progiciel était intéressé pour connecter notre produit à leur solution déjà implanté dans le milieu du droit.
+Avec du recul, j'aurais peut être fais les choses différement. Tout d'abord, je pense que j'aurais du réduire le périmètre de fonctionnalités nécessaire pour la béta. J'ai donc du fournir une quantité de travail conséquente avant de voir le lancement du produit. C'est un risque que j'ai pris puisqu'on n'est jamais sûr que ntre produit allais séduire des clients.
 
-De plus, le besoin s’est fait sentir de rendre notre application de plus en plus _Single Page_. On aurait ainsi pu découpler notre application en une partie _back_ et _front_.
+J'ai aussi commis l'erreur de ne pas avoir choisi une architecture API. Il s’est avéré par la suite qu’un éditeur de progiciel était intéressé pour connecter notre produit à leur solution déjà implanté dans le milieu du droit. De plus, le besoin s’est fait sentir de rendre notre application de plus en plus _Single Page_. On aurait ainsi pu découpler notre application en une partie _back_ et _front_.
 
-Malgré cette erreur, notre méthodologie c'est révélé très efficace car elle nous permet de communiquer et de tester nos évolutions. Notre méthodologie n'a pas beaucoup évolué dans le temps.
+Malgré ces erreurs, notre méthodologie c'est révélé très efficace. Elle nous a permis de communiquer et de tester nos évolutions. Notre méthodologie n'a d'ailleur pas beaucoup évolué dans le temps.

@@ -1,7 +1,7 @@
 [#chapter01-presentation]
 == Présentation
 
-Dans le souhait de me former et de progresser continuellement, je me suis inscrit sur le site https://cofondateur.fr[cofondateur.fr] qui met en relation des entrepreneurs à la recherche de développeurs pour construire leur projet. C’est ainsi que j'ai créé une _LegalTech_ (startup dans le domaine du droit) qui a pour but de mettre en relation des avocats et des huissiers. Cette excellente opportunité me permet d'avoir plusieurs rôles au sein d'une structure:
+En quête de challenge, je me suis inscrit sur le site https://cofondateur.fr[cofondateur.fr] qui met en relation des entrepreneurs à la recherche de développeurs pour construire leur projet. C’est ainsi que j'ai créé une _LegalTech_ (startup dans le domaine du droit) qui a pour but de mettre en relation des avocats et des huissiers. Cette excellente opportunité me permet d'avoir plusieurs rôles au sein d'une structure:
 
 - En tant qu’**associé**, je participe aux décisions stratégiques de l’entreprise
 - En tant que *directeur technique*, j’ai pour mission de faire des choix techniques cohérents afin d’assurer la pérennité de notre produit
@@ -19,32 +19,29 @@ J'aborderai ainsi la problématique de comment gérer un projet de tel envergure
 
 === La société
 
-Comme je le disait plus haut, j'ai participé à la création d'une entreprise: iSignif. Dans cette structure
+Comme je le disait plus haut, j'ai participé à la création d'une entreprise avec les deux cofondateurs: Adrien ORION et Sacha PARTENSKY (étudiants en droit à l’université Lyon 3 Jean Moulin).
 
+C’est une société par actions simplifiées. Les avantages de ce statut juridique sont une grande liberté sur les règles définies dans le pacte d’actionnaires et une responsabilité limité aux apports. L’inconvénient de ce statut est qu’il est plus difficile à mettre en place car il faut rédiger un pacte d’actionnaire complet. Dans notre cas, ce statut est parfait puisque mes associés ont les compétences pour rédiger les documents nécessaires.
 
----
+NOTE: Pour en savoir plus sur ce régime, je vous invite à consulter https://www.lecoindesentrepreneurs.fr/pourquoi-creer-une-sasu/[cet article]
 
-Les deux cofondateurs sont Adrien ORION et Sacha PARTENSKY, deux étudiants en droit à l’université Lyon 3 Jean Moulin. Au stade de la rencontre, ils avaient créé la société en tant que iSignif SAS. C’est une société par actions simplifiées. Ce type de société nous a permis de rédiger un pacte d’actionnaires et ainsi de partager les droits de décision équitablement. Elle était suivie par un incubateur footnote:[un incubateur est une société externe qui aide à la création d’un startup]
+// Elle était suivie par un incubateur footnote:[un incubateur est une société externe qui aide à la création d’un startup]
 
 .Le logo d’iSignif
 image:logo.png[logo, 300]
 
-Lors de la rencontre, Sacha et Adrien m’ont présenté l’idée générale du produit. Sentant rapidement le potentiel, j’ai accepté de devenir associé et j’ai ainsi signé le nouveau pacte d’actionnaires. Nous redéfinissions ainsi les parts et les rôles des nouveaux associés:
+Lors de notre rencontre, Sacha et Adrien m’ont présenté leur idée. Sentant rapidement le potentiel, j’ai accepté de devenir associé et j’ai ainsi signé un *pacte d’actionnaires*. Nous redéfinissions ainsi les parts et les rôles des nouveaux associés:
 
 * Adrien ORION, cofondateur et directeur général, associé à hauteur de 31,5%
 * Sacha PARTENSKY, cofondateur et Président à hauteur de 41,5%
 * Alexandre ROUSSEAU, associé et directeur technique, associé à hauteur de 25%
 * Antoinne DELETTRE, associé et designer web, associé à hauteur de 2%
 
-J’ai donc choisi un rôle de sociétaire car c’est compatible avec mon statut de salarié chez GAC Technology.
+// J’ai choisi un rôle d'associé car c’est compatible avec mon statut de salarié chez GAC Technology.
 
-==== Statut juridique
+En échange de cette part dans la société, j'étais donc en charge de livrer un produit fonctionnel.
 
-La SASU _(Société par Actions Simplifiée Unipersonnelle)_ est le statut privilégié. Les avantages de ce statut juridique sont une grande liberté sur les règles définies dans le pacte d’actionnaires et une responsabilité limité aux apports.
-
-L’inconvénient de ce statut est qu’il est plus difficile à mettre en place car il faut rédiger un pacte d’actionnaire complet. Dans notre cas, ce statut est parfait puisque mes associés ont les compétences pour rédiger documents administratifs.
-
-NOTE: Pour en savoir plus sur ce régime, je vous invite à consulter https://www.lecoindesentrepreneurs.fr/pourquoi-creer-une-sasu/[cet article]
+=== Le projet
 
 Réalisée par un huissier de justice, la signification a pour but de porter les actes judiciaires _(assignation en justice, jugement, sommation de payer, etc...)_ à la connaissance des intéressés. Toutefois, ces actes sont souvent adressés à plusieurs destinataires résidents dans des villes différentes. Ceci demande un effort chronophage pour les demandeurs de signification qui doivent contacter les huissiers compétents pour chaque adresse.
 
@@ -56,11 +53,9 @@ image:signification_after_before.png[signification_after_before]
 
 NOTE: Vous pouvez consulter la brochure dans les annexes pour en savoir plus à propos de notre activité.
 
-=== Le projet
+==== Business plan
 
-=== Business plan
-
-La grande problématique de notre activité est que la loi *interdit* toute forme de *publicité* a destination des huissiers. En se plaçant comme *apporteur d'affaires* nous sommes donc dans l’illégalité. Il est donc important qu’on ne favorise pas certains huissier plutôt que d’autres. Nous avons donc choisit un système qui répartie par ordre d’arrivée les demande de significations équitablement (_First-in, First-out_).
+La grande problématique de notre activité est que la loi *interdit* toute forme de *publicité* a destination des huissiers. En se plaçant comme *apporteur d'affaires* nous sommes donc dans l’illégalité. Il est donc important de ne pas favoriser certains huissier plutôt que d’autres. Nous avons donc choisit un système qui répartit par ordre d’arrivée les demande de significations équitablement (_First-in, First-out_).
 
 Notre modèle économique réside sur l’idée de facturer les huissiers en fonction du nombre d’affaire qu’on leur apporte. Pour faire cela, nous avons eu plusieurs idées:
 
@@ -68,11 +63,11 @@ Notre modèle économique réside sur l’idée de facturer les huissiers en fon
 * demander un abonnement qui donne le droit d’accéder au réseau
 * proposer un système de afin que les huissier pré-paye un nombre d’affaire qu’on va leur apporter
 
-Dans un premier temps, nous avons choisis d’utiliser le système de facturation mensuel. Je vous reparlerais de l’impacte que cela a eu plus loin.
+Dans un premier temps, nous avons choisis d’utiliser le système de facturation mensuel. Je vous reparlerais de l’impact que cela a eu plus loin.
 
 === Réalisation du cahier des charges
 
-Les principales contraintes de notre plateforme sont que les demandes doivent être accessibles à n’importe quel moment et sur tout type de support (ordinateur, smartphone, tablette, etc..). Il était donc naturel de se tourner vers une application web qui convient à ce besoin.
+Les principales contraintes de notre plateforme sont que les demandes doivent être accessibles à n’importe quel moment et sur tout type de support (ordinateur, smartphone, tablette, etc..). Il était donc naturel de se tourner vers une *application web* qui convient à ce besoin.
 
 Nous avons donc rédigé un premier cahier des charges qui correspond à la version bêta qui sera proposée aux bêta testeurs. Cette version doit être fonctionnelle. Voici donc quelques unes de ces fonctionnalités:
 
@@ -88,7 +83,7 @@ Lors de la rencontre avec les cofondateurs, nous avions échangé à propos des 
 
 J’ai donc choisi la *méthode Merise* que j’ai eu l’occasion de découvrir en cours à l’IT-Akademy. Bien que moins actuelle elle permet de réaliser un graphique compréhensible par des profils non-techniques.
 
-==== Les utilisateurs
+==== Modélisation des utilisateurs
 
 Prenons par exemple la gestion des utilisateurs. Dans l’application il existe deux principaux types de comptes:
 
@@ -109,7 +104,7 @@ Contrairement à l’avocat, l’huissier a une relation supplémentaire avec un
 .Représentation des huissiers
 image:merise_bailiffs.png[merise_bailiffs, 500]
 
-==== L’acte
+==== Modélisation de l'acte
 
 J'ai ensuite crée une nouvelle entité `Act` qui représente un acte qui doit être signifié par un huissier. Cet acte possède un avocat qui fait la demande de signification et un huissier qui doit le signifier. J’ai donc obtenu le résultat final que l’on peut voir sur la suivante.
 

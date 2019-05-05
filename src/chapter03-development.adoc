@@ -72,7 +72,6 @@ Cela peut sembler paranoïaque, mais cela m’assure qu’aucune régression n�
 
 === Intégration du paiement avec Stripe
 
-
 J'ai voulu implémenter la fonctionnalité d'**accès restreint** au site uniquement si l'utilisateur bénéficie d'un **compte premium**. Le but final est que l’utilisateur doit souscrire un compte premium afin d'accéder à certaines pages.
 
 Afin d'implémenter cette fonctionnalité, nous avons commencé par analyser le besoin. Le comportement attendu est le suivant:
@@ -145,7 +144,6 @@ test 'should set correct premium_until for past-premium user' do
   assert_equal (Date.today + 1.month), user.premium_until
 end
 ----
-
 
 ==== Paiement ponctuel
 

@@ -1,13 +1,15 @@
 [#chapter08-conclusion]
 == Conclusion
 
-Le plus dur a été de gérer les retours utilisateurs rapidement. Ayant un travail à côté, 
+Le plus dur a été de gérer les retours utilisateurs rapidement. Ayant un travail à côté, il faut savoir priotiser les demandes
+
+=== Quelques chiffres
 
 === Apports professionnels
 
-Les apports professionnels d’une telle expérience sont évidents. Au delà de mettre en avant une expérience professionnelle de plus, j’ai énormément appris.
+Les apports professionnels d’une telle expérience sont évidents. Au delà de mettre en avant une expérience professionnelle de plus, j'ai pu expérimenter au sein d'un projet personnel.
 
-J'ai ainsi pu m'épanouir au sein d'un projet personnel et avoir des responsabilités sur un projet qui m'intéressais.
+Cela a aussi été l'ocasion d'avoir des responsabilités sur un projet d'une certaine envergure.
 
 Tout d’abord, en étant le référent technique d’un projet, j’ai eu l’occasion de choisir les technologies que je voulais utiliser. J’ai donc pu mettre en place un environnement ou je me sentais à l’aise et ou je prenais du plaisir à travailler.
 

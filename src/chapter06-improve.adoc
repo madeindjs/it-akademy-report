@@ -8,9 +8,11 @@
 
 === RGPD
 
-2018 fut l’année de la mise en place du Règlement général sur la protection des données (RGPD). Entrée en vigueur le 25 mai, ce texte réglementaire européen couvre, entre autres, le traitement des données personnelles footnote:[Les données personnelle sont toutes les données qui permettent d’identifier quelqu’un].
+2018 fut l’année de la mise en place du Règlement général sur la protection des données (RGPD). Entrée en vigueur le 25 mai, ce texte réglementaire européen couvre, entre autres, le traitement des données personnelles, c'est à dire toutes les données qui permettent d’identifier quelqu’un.
 
-Les principales nouveautés qu’apporte la RGPD sont:
+La réglementation impose qu’il y ait un https://www.cnil.fr/fr/devenir-delegue-la-protection-des-donnees[Délégué à la Protection des Données]. La https://www.cnil.fr/[La Commission nationale de l’informatique et des Libertés (CNIL)] précise que le délégué doit s'assurer que la société respecte bien la réglementation applicable à leur protection. J’ai donc choisit de me porter volontaire pour ce rôle :footnote:[Voir annexe "Désignation d'un délégué à la protection des données"]
+
+En me renseignant, j'ai donc noté que les principales nouveautés qu’apporte la RGPD sont:
 
 * le droit à l’oubli
 * le droit à la portabilité des données
@@ -18,15 +20,13 @@ Les principales nouveautés qu’apporte la RGPD sont:
 * le droit à la rectification des données de l’utilisateur
 * le droit d’accès à toutes les données de l’utilisateur
 
-Il faut qu’il y ait un https://www.cnil.fr/fr/devenir-delegue-la-protection-des-donnees[Délégué à la Protection des Données]. la https://www.cnil.fr/[CNIL] footnote:[La Commission nationale de l’informatique et des libertés est l’autorité française qui est chargée de veiller à ce que l’informatique.] précise que le délégué . J’ai donc choisit de me porter volontaire pour ce rôle (Voir annexe)
+Dans mon cas, les principales obligations qui m’incombent sont que l'utilisateur doit pouvoir:
 
-Dans mon cas, les principales obligations qui m’incombent sont les suivantes:
+* effacer toutes ses données
+* rectifier ses données
+* exporter ses données
 
-* l’utilisateur doit pouvoir effacer toutes les données de l’application qui le concerne https://gdpr-info.eu/art-17-gdpr/[Chapitre 3, Article 17]
-* l’utilisateur doit pouvoir conn // TDOD
-* nous devons stocker le minimum de données possible
-
-=== Le droit à l’oubli
+==== Le droit à l’oubli
 
 Le droit à l'oubli est l'une des plus grosse fonctionnalité demandée par la CNIL. https://gdpr-info.eu/art-17-gdpr/[L’article 17 de la RGPD] nous oblige à implémenter une fonctionnalité qui doit permettre à l’utilisateur d’effacer toutes ses données rapidement. La ou cela se complique, c’est que la RGPD nous oblige aussi à demander la suppression des données chez des fournisseurs tiers (comme Stripe dans mon cas).
 
@@ -39,7 +39,7 @@ La difficulté de cette fonctionnalité est de supprimer les données liées à 
 
 Cependant je ne peux pas supprimer les significations puisqu’elles doivent être conservée pour l’avocat qui a demandé la signification de son acte. C’est pour cela que j’ai préféré l’*anonymisation* des données.
 
-Etant un fan du _Test Driven Development_. J’ai donc commencé par construire le test.
+Étant un fan du _Test Driven Development_. J’ai donc commencé par construire le test.
 
 [source, ruby]
 .test/models/bailiff_test.rb
@@ -85,15 +85,14 @@ En plus de cela, j'ai aussi utilisé l'API de Stripe en faisant un appel à leur
 
 ==== Le droit à la portabilité et à l'accès des données de l’utilisateur
 
-Afin de respecter cette norme, j'ai tout simplement choisis de proposer d'afficher la page d'accès aux information de l'utilsateur au format JSON. En utilisant la https://github.com/Netflix/fast_jsonapi[librairie de serialization des données de Netflix], j'ai ainsi convertit le model `User` au format JSON en incluant toutes ses liaison. Ainsi, en un clic, l'utilisateur peut obtenir toutes ses donnéesen incluant ses actes, ses messages et les significations qu'il a effectué.
+Afin d'avoir un format normalisé et simple, j'ai choisi d'utiliser le format JSON et plus particulièrement la spécification https://jsonapi.org/[JSON:API] qui impose une structure du JSON.
+
+En utilisant la https://github.com/Netflix/fast_jsonapi[librairie de serialization des données de Netflix], j'ai ainsi convertis le modèle `User` au format JSON en incluant toutes ses liaisons. Ainsi, en un clic, l'utilisateur peut obtenir toutes ses données en incluant ses actes, ses messages et les significations qu'il a effectué.
 
 ==== Le droit à la rectification des données de l’utilisateur
 
-// TODO
+Concernant la rectification des données, je n'ai pas eu besoin d'implémenter une fonctionnalité spéciale.
 
-==== Le droit d’accès à toutes les données
-
-// TODO
 
 
 === Déploiement continu
@@ -121,3 +120,5 @@ append :linked_dirs, 'public/uploads'
 === Retours des utilisateurs
 
 // TODO
+
+=== Conclusion

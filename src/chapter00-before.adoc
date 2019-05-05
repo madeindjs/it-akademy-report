@@ -8,15 +8,11 @@ Cet document est mis à disposition par Alexandre Rousseau sous licence Creative
 
 J'adresse mes remerciements aux personnes qui m'ont aidé dans la réalisation de ce mémoire.
 
-En premier lieu, je remercie M. Alpha, professeur à l'université de ABC. En tant que Directeur de mémoire, il m'a guidé dans mon travail et m'a aidé à trouver des solutions pour avancer.
-
-Je remercie aussi Mme Beta, directrice de l'entreprise DEF, pour sa collaboration en me fournissant des données précises sur le marché de XXX.
-
-Je souhaite particulièrement remercier Mme Gamma pour sa précieuse aide à la relecture et à la correction de mon mémoire.
+Je remercie l'IT-Akademy pour tous les apports de leur formation. Je remercie mon entreprise, Gac Technology, qui m'a donné l'opportunité de réaliser cette formation. Je remercie aussi l'équipe d'iSignif sans laquelle tout ce travail n'aurait pas été possible. Et pour terminer, je remercie ma conjointe, Lorène Odet, qui m'a soutenue et encouragé tout au long de la rédaction de ce mémoire.
 
 === Introduction
 
-Passionné et autodidacte, mon implication personnelle m'a permis d'évoluer en tant que développeur. Issue d'une reconversion professionnelle, je suis actuellement en CDI chez Gac Technology. Gac est une startup lyonnaise créée en 2010 et qui compte maintenant presque 50 salariés. Elle vend plusieurs produits en mode SAAS (_Software As A Service_) qui permettent la gestion de moyen à grands parcs automobile, téléphonique  et immobilier.
+Passionné et autodidacte, mon implication personnelle m'a permis d'évoluer en tant que développeur. Issue d'une reconversion professionnelle, je suis actuellement en CDI chez Gac Technology. Gac est une _startup_ lyonnaise créée en 2010 et qui compte maintenant presque 50 salariés. Elle vend plusieurs produits en mode SAAS (_Software As A Service_) qui permettent la gestion de moyen à grands parcs automobile, téléphonique  et immobilier.
 
 image:gac.svg[logo, 200]
 

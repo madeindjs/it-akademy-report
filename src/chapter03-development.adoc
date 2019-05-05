@@ -298,3 +298,7 @@ En faisant cela, un appel à l'API de Stripe est effectué pour lui spécifier q
 image:stripe_invoice.png[Formulaire de création d'un Webhook]
 
 Suivant la configuration du compte, Stripe va s'occuper de générer une facture PDF, contacter le client, le relancer et le prélever. Vous pouvez retrouver dans les annexes un exemple de facture générée par Stripe. Pour moi cette fonctionnalité est très importante car elle réduit très largement la *responsabilité* de mon application. La facturation n'est pas mon *cœeur* de métier et cela me permet de me concentrer uniquement sur le processus de la signification.
+
+=== Conclusion
+
+// TODO

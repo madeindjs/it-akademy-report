@@ -1,5 +1,7 @@
 [#chapter05-devops]
-== Mise en place de l’environnement de production
+== Mise en production
+
+Etant dans une startup, mon travail ne s'est pas cantonné à du developpement logiciel mais aussi à l'administration d'un serveur Linux. Dans cette section je vais retracer les actions que j'ai effectué afin d'installer et de sécuriser mon serveur.
 
 === Choix du serveur
 
@@ -71,12 +73,12 @@ MariaDB > GRANT ALL PRIVILEGES ON isignif . * TO 'isignif'@'localhost';
 En terme de sauvegarde il existe plusieurs stratégies. Pour ma part, les conditions étaient d’avoir des sauvegardes quotidiennes et automatiques. J’ai donc fait le choix de créer moi-même un script `bash` de sauvegarde de mon serveur en incluant:
 
 * la basse de donnée MariaDB
-* les données _uploadés_ apr les utilisateurs
+* les données _uploadés_ par les utilisateurs
 
 De mon point de vue, la sauvegarde automatique doit être:
 
 * *régulière* , j’ai donc utilisé une `crontab` qui est un utilitaire sous Linux qui permet de lancer des commandes à intervalles définis
-* *chiffrée* , j’ai donc utilisé http://www.gnupg.org/[GNUPG] qui est un outil de chiffrement asymétrique. Le chiffrement asymétrique est une méthode de chiffrement utilisant une paire de clés pour le cryptage: une clé publique qui crypte les données et une clé privée qui les décrypte. Ainsi, lorsque je crypte une archive avec ma clé publique, seul mon PC distant peu l’ouvrir.
+* *chiffrée* , j’ai donc utilisé http://www.gnupg.org/[GNUPG] qui est un outil de chiffrement asymétrique. Le chiffrement asymétrique est une méthode de chiffrement utilisant une paire de clés pour le cryptage: une clé publique qui crypte les données et une clé privée qui les décrypte. Ainsi, lorsque je chiffre une archive avec ma clé publique, seul mon PC distant peu l’ouvrir.
 
 Voici donc une partie de mon script sur le listing suivant:
 
@@ -101,6 +103,8 @@ tar -czvf -  "$folder_save" | gpg --encrypt --recipient contact@rousseau-alexand
 ----
 
 Ensuite, un `cron` récupère régulièrement mes sauvegarde en utilisant un outil appelé https://fr.wikipedia.org/wiki/Rsync[Rsync].
+
+Il s'est avéré bien plus tard qu'une sauvegarde nous a permit de retrouver les données supprimées par accident par un de mes associé. Il avait supprimé une catégorie d'acte qui avait provoqué la suppression de plus de trente actes avec toutes les données liées (messages, fichiers, etc..).
 
 === Sécurité
 
@@ -190,11 +194,11 @@ image:kali_openvas_report.png[kali_openvas_report]
 
 On peut voir que globalement mon serveur possède peu de vulnérabilités. Ceci est sûrement du au fait que je met à jours les paquets quotidiennement et que donc, les logiciels sont à jours.
 
-=== Sécurité du serveur
+==== Sécurité du serveur
 
 Sécuriser un serveur est un travail à part entière qui nécessite beaucoup compétences. De plus, absolument personne ne peut se narguer d’être invulnérable aux tentatives d’attaques. Je n’ai pas la prétention d’être un expert en sécurité donc il s’agit ici de mettre en places les protections de base.
 
-==== Utilisation du protocole HTTPS
+===== Utilisation du protocole HTTPS
 
 Le https://fr.wikipedia.org/wiki/HyperText_Transfer_Protocol_Secure[protocole HTTPS] permet de chiffrer les communications entre le client et le serveur. Cela garantie que les informations qui transitent ne peuvent pas être lues par un attaquant. Ainsi, on protège les identifiants qui transite lorsqu’un utilisateur connecté.
 
@@ -209,18 +213,22 @@ $ sudo certbot --apache
 
 C’est donc un petit geste mais celui-ci à des répercutions sur la confiances accordée par nos utilisateur et même sur le référencement footnote:[Google à annoncé en août 2014 que le protocole HTTPS serait pris en compte dans l’algorithme de positionnement. https://webmaster-fr.googleblog.com/2014/08/le-protocole-https-en-tant-que-facteur.html[source]].
 
-==== Groupe sudo
+===== Groupe sudo
 
 Comme je l’ai évoqué plus haut, j’ai déjà crée un utilisateur spécifique pour l’application que j’ai rajouté dans le groupe des `sudoers`. Une des actions qui peut être mis en place facilement est de supprimer cet utilisateur du groupe `sudo`. Ceci permet d’éviter l’élévation des privilèges. Un des premier objectif d’un hacker va être de vouloir obtenir des privilèges plus élevé afin de pouvoir effectuer des actions ayant de plus grandes conséquences.
 
-==== Modifier le port par défaut
+===== Modifier le port par défaut
 
 En regardant les logs d’un serveur, on peut remarquer une quantité importante de tentative de connexion SSH footnote:[Le protocole SSH permet de se connecter à distance à un ordinateur]. Ceci est du au fait que beaucoup de hacker ont mis au point des scripts qui tentent de se connecter en utilisant des dictionnaires de mots de passe.
 
 Par défaut, le port utilisé est le port 22.
 
-==== Blacklister les tentatives de connexions
+===== Blacklister les tentatives de connexions
 
 Comme je l’expliquait plus haut, beaucoup de hacker tentent de se connecter au serveur via la protocole SSH. De la même manière que pour les appels téléphonique, il est possible de bloquer ces tentatives.
 
 https://www.fail2ban.org/wiki/index.php/Main_Page[Fail2ban] est un petit utilitaire écrit en Python qui va s’occuper d’analyser les logs du serveur. Il va donc mettre sur liste noir les adresses IP qui ont tenté de se connecter plusieurs fois avec un mot de passe erroné.
+
+=== Conclusion
+
+// TODO

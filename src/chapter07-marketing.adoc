@@ -1,29 +1,24 @@
 [#chapter07-marketing]
 == Marketing
 
+// TODO
+
 === Référencement
+
+// TODO
 
 === Vidéo de démonstration
 
-=== Création d’une campagne de publicité avec LinkedIn
+// TODO
 
-Notre produits s’adressant aux professionnels, nous avons choisi le réseau social LinkedIn footnote:[LinkedIn est un réseau social entre professionnels] pour promouvoir notre plateforme.
+=== Création d’une campagne d'__emailing__
 
-Le but était donc de toucher principalement:
+// TODO
 
-* les huissiers pour qu’ils rejoignent le réseaux iSignif
-* les avocats pour qu’ils signifient des actes sur notre site
+=== Embauche d'un commercial
 
-==== Les types de publicité
+// TODO
 
-LinkedIn propose trois types de publicité:
+=== Conclusion
 
-* _Sponsored Content_, la publicité arrive directement dans le fil d’actualité de l’utilisateur
-* _Text Ads_, la publicité est plus discrète et ce place sur le côté de l’application
-* _Sponsored InMail_, la publicité est envoyée directement par chat et permet donc de démarrer une discussion avec l’utilisateur s’il le souhaite
-
-.la publicité de type Sponsored Content propose un contenu riche
-image:linkedin_sponsored_content.png[linkedin_sponsored_content]
-
-
-Pour la campagnes à destination des avocats, nous avons décidé d’utiliser le modèle _Sponsored Content_. Comme le montre l'image précédente, ce modèle à l’avantage de proposer un contenu riche grâce à une image et à un lien qui redirige directement sur le site. De plus, LinkedIn offre la possibilité de cibler l’audience et donc d’obtenir une audience de qualité.
+// TODO

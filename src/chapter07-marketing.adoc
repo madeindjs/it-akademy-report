@@ -3,7 +3,7 @@
 
 // TODO
 
-=== Référencement
+=== Référencement (SEO)
 
 // TODO
 
@@ -13,11 +13,16 @@
 
 === Création d’une campagne d'__emailing__
 
-// TODO
+Afin de communiquer autour de notre application, nous avons choisit d'utiliser https://mailchimp.com/[mailchimp], une solution d'emailing qui propose un
+
+
+Cette approche n'a au final pas eu d'effet positif car nous n'avons pas
 
 === Embauche d'un commercial
 
-// TODO
+Afin d'améliorer notre activité, nous avons choisit de travailler avec un commercial à son compte. Afin d'éviter des frais de gestion de salarié, nous avons choisit de ne pas l'embaucher mais de travailler avec lui en tant que commercial à son compte.
+
+Nous avons donc décider de lui accorder certains 
 
 === Conclusion
 

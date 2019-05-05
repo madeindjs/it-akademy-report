@@ -1,7 +1,7 @@
 [#chapter01-presentation]
 == Présentation
 
-En quête de challenge, je me suis inscrit sur le site https://cofondateur.fr[cofondateur.fr] qui met en relation des entrepreneurs à la recherche de développeurs pour construire leur projet. C’est ainsi que j'ai créé une _LegalTech_ (startup dans le domaine du droit) qui a pour but de mettre en relation des avocats et des huissiers. Cette excellente opportunité me permet d'avoir plusieurs rôles au sein d'une structure:
+En quête de challenge, je me suis inscrit sur le site https://cofondateur.fr[cofondateur.fr] qui met en relation des entrepreneurs à la recherche de développeurs pour construire leur projet. C’est ainsi que j'ai créé une _LegalTech_ footnote:[startup dans le domaine du droit] qui a pour but de mettre en relation des avocats et des huissiers. Cette excellente opportunité me permet d'avoir plusieurs rôles au sein d'une structure:
 
 - En tant qu’**associé**, je participe aux décisions stratégiques de l’entreprise
 - En tant que *directeur technique*, j’ai pour mission de faire des choix techniques cohérents afin d’assurer la pérennité de notre produit

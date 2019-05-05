@@ -1,5 +1,5 @@
 [#chapter06-improve]
-== Amélioration continue
+== Amélioration de l'application
 // QUESTION: Est-ce que le titre est juste?
 
 // === Développement Dirigé par les test

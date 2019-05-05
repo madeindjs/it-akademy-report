@@ -11,7 +11,7 @@ Les réunions d’avancements ont lieu *physiquement*. Elles ne sont pas périod
 
 Par exemple, nous avons fait une réunion en mai 2018 afin de valider mon avancement sur l'application. A ce moment là, j’avais travaillé en total autonomie sur l’élaboration d’une *première ébauche* fonctionnelle. Cette étape était réellement importante car je devais savoir que cette première ébauche correspondait aux attentes des deux cofondateurs. J’ai donc effectué une démonstration. Cela a permis de renforcer la confiance que mes associés m’avaient alors accordé mais aussi de collecter des premières critiques.
 
-Début juin 2018, nous avons signé le *pacte des associés*. Deux spécialistes de  https://www.beelys.org/[Beelys] (un grand incubateur lyonnais) étaient présent afin de nous apporter des renseignement sur le fonctionnement des levées de fond. A la suite de cette réunion, nous avons fait le choix de *ne pas faire de levée de fond* car elle s’accorde d’une vente de part de l’entreprise. Sachant que nous n’avions pas besoin immédiatement de fonds, nous préférions garder les parts de l’entreprise et les vendre une fois que la société posséderait une certaine notoriété.
+Début juin 2018, nous avons signé le *pacte des associés*. Deux spécialistes de  https://www.beelys.org/[Beelys], incubateur lyonnais, étaient présent afin de nous apporter des renseignement sur le fonctionnement des levées de fond. A la suite de cette réunion, nous avons fait le choix de *ne pas faire de levée de fond* car elle s’accorde d’une vente de part de l’entreprise. Sachant que nous n’avions pas besoin immédiatement de fonds, nous préférions garder les parts de l’entreprise et les vendre une fois que la société posséderait une certaine notoriété.
 
 Le septembre 2018, le produit était presque prêt pour le lancement en bêta. Nous avons donc fait cette réunion avec l’huissier bêta-testeur. Cette huissier avait pu tester le produit d'un  de nos concurrent et c'était don un avantage concurrentiel énorme. Cela a permit de **collecter des retours utilisateur** et de les intégrer à notre application. Nous avons aussi put valider notre produit et apporter quelques petites corrections avant le lancement.
 
@@ -63,7 +63,7 @@ J’ai néanmoins mis en place _Vue.JS_ (une librairie JavaScript) pour certaine
 
 === Travailler à plusieurs
 
-Git est un logiciel développé par Linux Torvals (fondateur de Linux) qui permet de *versionner* un projet. Il rend la collaboration beaucoup plus facile. Je l'ai donc naturellement choisit en le couplant à la méthodologie *Git Flow*.
+Git est un logiciel développé par Linux Torvals footnote:[Linux Torvals est le fondateur de Linux] qui permet de *versionner* un projet. Il rend la collaboration beaucoup plus facile. Je l'ai donc naturellement choisit en le couplant à la méthodologie *Git Flow*.
 
 .Schéma du _workflow_ de Git Flow.
 image:git-flow.png[git-flow]
@@ -76,7 +76,7 @@ Git Flow impose une convention de travail avec Git. Sur ce schéma, on retrouve:
 * *jaune*: une `release`, c’est à dire une mise en publication de tous les développement validés.
 * *gris* un `hotfix`. Ce sont des petits correctifs fait à la fois sur la branche `master` et `develop`.
 
-Cette méthodologie permet ainsi de travailler à plusieurs sans se gêner puisque chaque développeur peut travailler indépendamment sur une branche `feature`. De plus, ceci me permet de faire des mise en production régulièrement (j’en parlerai plus en détails dans la section "déploiement").
+Cette méthodologie permet ainsi de travailler à plusieurs sans se gêner puisque chaque développeur peut travailler indépendamment sur une branche `feature`. De plus, ceci me permet de faire des mise en production régulièrement, j’en parlerai plus en détails dans la section "déploiement".
 
 De plus, je renseigne chaque _feature_ dans une fichier de mis a jour publié au seins de l'application. Cela permet de communiquer avec le client sur les évolutions du produit.
 

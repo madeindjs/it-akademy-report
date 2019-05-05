@@ -267,12 +267,6 @@ def stripe
 end
 ----
 
-===== Conclusion
-
-Dans cette section je vous ai démontré via cet article qu'il était très facile de mettre en place un système de paiement récurrent avec Stripe. La documentation quasi parfaite et leur gemme nous simplifient vraiment la tâche. J'ai même pu mettre en place des tests qui me protège de certaines régressions.
-
-Les fonctionnalités de Stripe ne s'arrêtent pas la. Stripe nous permet aussi de mettre en place un système de facturation (avec la génération de belles factures PDF), de remboursement ou encore de gestion de litiges que je vais vous montrer dans la prochaine section.
-
 === Utilisation de l'API Stripe pour la facturation
 
 Jusqu'ici je vous ai montré comment j'ai intégré une plateforme de paiement assez "classique". Mais Stripe ne s'arrête pas là et il propose tout un *éco-système* pour gérer les paiements. J'ai fais le choix de l'utiliser car cela me permets de me concentrer uniquement sur le business. Dans cette section je vais vous montrer comment j'ai utilisé la puissance de Stripe afin de déléguer toutes les tâches de paiement à Stripe.
@@ -301,4 +295,8 @@ Suivant la configuration du compte, Stripe va s'occuper de générer une facture
 
 === Conclusion
 
-// TODO
+Dans cette section je vous ai montré qu'il était très facile de mettre en place un système de paiement récurrent avec Stripe. La documentation quasi parfaite et leur gemme m'a vraiment simplifié la tâche. J'ai même pu mettre en place des tests qui me protège de certaines régressions.
+
+Les fonctionnalités de Stripe ne s'arrêtent pas la car il m'a permis de mettre en place un système de facturation (avec la génération de belles factures PDF), de remboursement ou encore de gestion de litiges.
+
+Toutes ses fonctionnalités m'ont permis de me concentrer sur la valeur ajoutée de notre produit et non pas sur la facturation des clients.

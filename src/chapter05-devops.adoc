@@ -1,7 +1,7 @@
 [#chapter05-devops]
 == Mise en production
 
-Etant dans une startup, mon travail ne s'est pas cantonné à du developpement logiciel mais aussi à l'administration d'un serveur Linux. Dans cette section je vais retracer les actions que j'ai effectué afin d'installer et de sécuriser mon serveur.
+Étant dans une startup, mon travail ne s'est pas cantonné à du développement logiciel mais aussi à l'administration d'un serveur Linux. Dans cette section je vais retracer les actions que j'ai effectué afin d'installer et de sécuriser mon serveur.
 
 === Choix du serveur
 
@@ -78,7 +78,7 @@ En terme de sauvegarde il existe plusieurs stratégies. Pour ma part, les condit
 De mon point de vue, la sauvegarde automatique doit être:
 
 * *régulière* , j’ai donc utilisé une `crontab` qui est un utilitaire sous Linux qui permet de lancer des commandes à intervalles définis
-* *chiffrée* , j’ai donc utilisé http://www.gnupg.org/[GNUPG] qui est un outil de chiffrement asymétrique. Le chiffrement asymétrique est une méthode de chiffrement utilisant une paire de clés pour le cryptage: une clé publique qui crypte les données et une clé privée qui les décrypte. Ainsi, lorsque je chiffre une archive avec ma clé publique, seul mon PC distant peu l’ouvrir.
+* *chiffrée* , j’ai donc utilisé http://www.gnupg.org/[GNUPG] qui est un outil de chiffrement asymétrique footnote:[Le chiffrement asymétrique est une méthode de chiffrement utilisant une paire de clés pour le cryptage: une clé publique qui crypte les données et une clé privée qui les décrypte]. Ainsi, lorsque je chiffre une archive avec ma clé publique, seul mon PC distant peu l’ouvrir.
 
 Voici donc une partie de mon script sur le listing suivant:
 
@@ -151,7 +151,7 @@ Dans cette section, je vais vous détailler comment j'ai réalisé un audit comp
 
 La première étape pour un hacker est la *reconnaissance de la cible*. Cette étape consiste à obtenir le maximum d’informations sur la victime. Nous devons donc cacher le plus d’informations possible à propos de notre serveur.
 
-Une des information facile à obtenir pour un hacker est les port ouverts sur le serveur. Les ports sont en quelques sortent des portes ouvertes sur le réseaux. Donc, dans un premier temps, j’ai simplement effectué un scan des ports sur mon serveur  footnote:[NMAP est un scanner de port] (voir listing #lst:nmap[[lst:nmap]])
+Une des information facile à obtenir pour un hacker est les port ouverts sur le serveur. Les ports sont en quelques sortent des portes ouvertes sur le réseaux. Donc, dans un premier temps, j’ai simplement effectué un scan des ports sur mon serveur  footnote:[NMAP est un scanner de port].
 
 NOTE: Malgré sur ce qu’on peut entendre, le http://www.infond.fr/2010/09/legalite-du-scan-de-port.html[scan de port est tout à fait légal] avec `nmap`.
 
@@ -183,9 +183,7 @@ NMAP nous fournis aussi le numéro de la version des logiciels utilisés. Cela p
 
 ===== Réalisation d’un scan de vulnérabilité
 
-Afin de connaître les vulnérabilité de mon installation, j’ai décidé de faire un scan de vulnérabilité en utilisant https://www.metasploit.com/[Metasploit]. Metasploit Framework est un logiciel écrit en Ruby permettant le développement et l’utilisation d’exploit. Les exploits sont des vulnérabilités qui permettent d’exécuter du code sur une machine distante. J'ai aussi utilisé et http://www.openvas.org/[OpenVAS], un scanner de vulnérabilités libre issu du fork de Nessus. OpenVAS s’appuie sur les https://cve.mitre.org/[CVE (Common Vulnerabilities and Exposures)]. Il s’agit d’une base de données des vulnérabilités connues.
-
-NOTE: Le scan de vulnérabilité est illégal à moins que le serveur nous appartienne ou bien qu’une autorisation du propriétaire est donné. Dans mon cas, le serveur m’appartiens.
+Afin de connaître les vulnérabilité de mon installation, j’ai décidé de faire un scan de vulnérabilité en utilisant https://www.metasploit.com/[Metasploit]. Metasploit Framework est un logiciel écrit en Ruby permettant le développement et l’utilisation d’exploit. Les exploits sont des vulnérabilités qui permettent d’exécuter du code sur une machine distante. J'ai aussi utilisé et http://www.openvas.org/[OpenVAS], un scanner de vulnérabilités libre issu du fork de Nessus footnote:[Le scan de vulnérabilité est illégal à moins que le serveur nous appartienne ou bien qu’une autorisation du propriétaire est donné. Dans mon cas, le serveur m’appartiens]. OpenVAS s’appuie sur les https://cve.mitre.org/[CVE (Common Vulnerabilities and Exposures)]. Il s’agit d’une base de données des vulnérabilités connues.
 
 Plusieurs types de scan sont possibles, j’ai choisis d’utiliser le plus complet, qui est aussi le plus long. J’ai donc obtenu le résultat que l’on peu voir sur la figure suivant (le rapport complet est disponible en annexe).
 
@@ -231,4 +229,6 @@ https://www.fail2ban.org/wiki/index.php/Main_Page[Fail2ban] est un petit utilita
 
 === Conclusion
 
-// TODO
+Administrer un serveur Linux est un métier à par entière. Je n'estime pas avoir fait tout le travail d'un administrateur système. Entre autre, je n'ai pas utilisé de logiciel de monitoring du serveur Linux et je ne suis donc pas en mesure d'annoncer un temps de disponibilité de l'application. En revanche, je pense que je peux affirmer que j'ai appliqué les pratiques de base dans la sécurisation d'un serveur Linux.
+
+Étant un Linuxien convaincu, cette expérience m'a permis de monter en compétence sur l'administration et la gestion d'un serveur sous Linux. Même si ce n'est pas le cœur de métier de développeur, ce sont réellement des compétences utilise au développeur.

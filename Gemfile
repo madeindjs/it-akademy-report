@@ -8,7 +8,7 @@ git_source(:github) { |repo_name| "https://github.com/#{repo_name}" }
 
 gem 'asciidoctor', '~> 1.5'
 
-gem "asciidoctor-pdf", "~> 1.5.alpha.16"
+gem "asciidoctor-pdf", "~> 1.5.alpha.17"
 
 gem "concurrent-ruby", "~> 1.1"
 

@@ -10,7 +10,7 @@
 
 2018 fut l’année de la mise en place du Règlement général sur la protection des données (RGPD). Entrée en vigueur le 25 mai, ce texte réglementaire européen couvre, entre autres, le traitement des données personnelles, c'est à dire toutes les données qui permettent d’identifier quelqu’un.
 
-La réglementation impose qu’il y ait un https://www.cnil.fr/fr/devenir-delegue-la-protection-des-donnees[Délégué à la Protection des Données]. La https://www.cnil.fr/[La Commission nationale de l’informatique et des Libertés (CNIL)] précise que le délégué doit s'assurer que la société respecte bien la réglementation applicable à leur protection. J’ai donc choisit de me porter volontaire pour ce rôle :footnote:[Voir annexe "Désignation d'un délégué à la protection des données"]
+La réglementation impose qu’il y ait un https://www.cnil.fr/fr/devenir-delegue-la-protection-des-donnees[Délégué à la Protection des Données]. La https://www.cnil.fr/[La Commission nationale de l’informatique et des Libertés (CNIL)] précise que le délégué doit s'assurer que la société respecte bien la réglementation applicable à leur protection. J’ai donc choisit de me porter volontaire pour ce rôle (Voir annexe "Désignation d'un délégué à la protection des données")
 
 En me renseignant, j'ai donc noté que les principales nouveautés qu’apporte la RGPD sont:
 

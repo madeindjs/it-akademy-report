@@ -1,7 +1,9 @@
 [#chapter08-conclusion]
 == Conclusion
 
-Le plus dur a été de gérer les retours utilisateurs rapidement. Ayant un travail à côté, il faut savoir prioriser les demandes
+Le plus dur a été de gérer les retours utilisateurs rapidement. Ayant un travail à côté, il faut vraiment savoir s’organiser.
+
+Le plus gros risque dans un projet personnel d'une telle ampleur est de s'épuiser et donc de se démotiver jusqu'à abandonner le projet. J'ai donc essayer de prendre un maximum de plaisir dans les fonctionnalité que je développais, même si elle n'avaient pas une grande valeur ajoutée pour le business.
 
 === Quelques chiffres
 
@@ -9,12 +11,17 @@ Le plus dur a été de gérer les retours utilisateurs rapidement. Ayant un trav
 
 Les apports professionnels d’une telle expérience sont évidents. Au delà de mettre en avant une expérience professionnelle de plus, j'ai pu expérimenter au sein d'un projet personnel.
 
+En étant le référent technique d’un projet, j’ai eu l’occasion de choisir les technologies que je voulais utiliser. J’ai donc pu mettre en place un environnement ou je me sentais à l’aise et avec lequel je prenais du plaisir à travailler.
+
 Cela a aussi été l’occasion d'avoir des responsabilités sur un projet d'une certaine envergure.
 
-Tout d’abord, en étant le référent technique d’un projet, j’ai eu l’occasion de choisir les technologies que je voulais utiliser. J’ai donc pu mettre en place un environnement ou je me sentais à l’aise et ou je prenais du plaisir à travailler.
 
 Ensuite, cette expérience à été pour moi l’opportunité de découvrir un autre rôle au sein d’un société.
 
 === Apports personnels
 
 === Perspectives
+
+Dans une perspective optimiste, je pense que je vais continuer de suivre le projet tout en déléguant une partie de plus en plus importante à des développeur externe et gérer uniquement les choix stratégiques de l'entreprise.
+
+Dans une perspective pessimiste, c'est à dire le cas ou l'entreprise ne trouve pas de client, je pense que je me permettrait d'expi

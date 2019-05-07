@@ -35,7 +35,7 @@ $ sudo addgroup isignif sudo
 
 Une fois l’utilisateur crée, j’ai crée une clé SSH pour me connecter sans mot de passe et j’ai désactivé la possibilité de se connecter au compte `root` via SSH. Ainsi je limite le risque.
 
-Ensuite commence l’installation des paquets. des ’ai donc installé en un clin d’oeuil tous les paquets nécessaires
+Ensuite commence l’installation des paquets. des ’ai donc installé en un clin d’œil tous les paquets nécessaires
 
 [source,bash]
 ----
@@ -127,7 +127,7 @@ En continuant sur les failles classiques, je peux évoquer l'**attaque par force
 
 ===== Les failles les plus récentes
 
-Des failles de sécurités sont découvertes tous les jours. Heureusement pour nous, une organisation les répertories. Ces vulnérabilités sont identifiées par un identifiant CVE footnote:[Common Vulnerabilities and Exposures].
+Des failles de sécurités sont découvertes tous les jours. Heureusement pour nous, une organisation les répertories. Ces vulnérabilités sont identifiées par un identifiant CVE (Common Vulnerabilities and Exposures).
 
 https://github.com/rubysec/ruby-advisory-db[Ruby Advisory Database] est une base de données communautaire qui s’appuie sur ces CVE. Elle répertorie les bibliothèques Ruby vulnérables à ces CVE. Des outils existent pour vérifier automatiquement que notre application n’utilise pas un bibliothèque vulnérable: https://github.com/rubysec/bundler-audit[Bundler Audit]. Cette gemme s’utilise très facilement:
 

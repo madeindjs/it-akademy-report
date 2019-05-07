@@ -52,7 +52,7 @@ image:good_cheap_fast.png[good_cheap_fast, 300]
 
 ==== Back-end
 
-Étant donné que j'était le seul à développer le back-end du produit, mon objectif était de choisir un framework ou j’étais vraiment à l’aise. Mon choix c’est posé sur https://rubyonrails.org/[Ruby on Rails], un framework web écrit en https://www.ruby-lang.org/[Ruby]. Très utilisé dans le monde des startup mais aussi par de grands noms comme https://github.com/[Github], https://twitter.com/[Twitter], https://airbnb.com/[Airbnb] et https://soundcloud.com/[Soundcloud]. Sa grande force est une grande communauté et une très bonne maturité. Par son mantra __"Convetion over configuration"__ ("Suivez les convention au lieu de configurer"), il permet un développement extrêmement rapide.
+Étant donné que j’étais le seul à développer le back-end du produit, mon objectif était de choisir un framework ou j’étais vraiment à l’aise. Mon choix c’est posé sur https://rubyonrails.org/[Ruby on Rails], un framework web écrit en https://www.ruby-lang.org/[Ruby]. Très utilisé dans le monde des startup mais aussi par de grands noms comme https://github.com/[Github], https://twitter.com/[Twitter], https://airbnb.com/[Airbnb] et https://soundcloud.com/[Soundcloud]. Sa grande force est une grande communauté et une très bonne maturité. Par son mantra __"Convetion over configuration"__ ("Suivez les convention au lieu de configurer"), il permet un développement extrêmement rapide.
 
 ==== Front-end
 
@@ -82,8 +82,8 @@ De plus, je renseigne chaque _feature_ dans une fichier de mis a jour publié au
 
 === Conclusion
 
-Avec du recul, j'aurais peut être fais les choses différement. Tout d'abord, je pense que j'aurais du réduire le périmètre de fonctionnalités nécessaire pour la béta. J'ai donc du fournir une quantité de travail conséquente avant de voir le lancement du produit. C'est un risque que j'ai pris puisqu'on n'est jamais sûr que ntre produit allais séduire des clients.
+Avec du recul, j'aurais peut être fais les choses différemment. Tout d'abord, je pense que j'aurais du réduire le périmètre de fonctionnalités nécessaire pour la béta. J'ai donc du fournir une quantité de travail conséquente avant de voir le lancement du produit. C'est un risque que j'ai pris puisqu'on n'est jamais sûr que nôtre produit allais séduire des clients.
 
 J'ai aussi commis l'erreur de ne pas avoir choisi une architecture API. Il s’est avéré par la suite qu’un éditeur de progiciel était intéressé pour connecter notre produit à leur solution déjà implanté dans le milieu du droit. De plus, le besoin s’est fait sentir de rendre notre application de plus en plus _Single Page_. On aurait ainsi pu découpler notre application en une partie _back_ et _front_.
 
-Malgré ces erreurs, notre méthodologie c'est révélé très efficace. Elle nous a permis de communiquer et de tester nos évolutions. Notre méthodologie n'a d'ailleur pas beaucoup évolué dans le temps.
+Malgré ces erreurs, notre méthodologie c'est révélé très efficace. Elle nous a permis de communiquer et de tester nos évolutions. Notre méthodologie n'a d’ailleurs pas beaucoup évolué dans le temps.

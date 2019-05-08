@@ -1,19 +1,58 @@
 [#chapter07-marketing]
 == Marketing
 
-// TODO
+L'étape de marketing est très importante car elle consiste à construire une réputation pour notre produit.
 
 === Référencement (SEO)
 
-// TODO
+Le SEO n'a pas été une de nos plus grande préoccupation. Notre cible principale sont les avocats que nous voulons accompagner et *fidéliser* dans l'utilisation de notre plateforme. Nous avons donc privilégié une expansion contrôlée.
+
+Bien évidement, cela ne pas ma empêché de faire le minimum recommandé par Google.
+
+image:speedinsight.png[Capture d'écran du résultat du scan de l'outil PageSpeed Insights de Google]
+
+Ainsi, j'ai donc bien fait attention de:
+
+- maintenir des performances acceptables afin de garder un temps de réponse correct
+- minifier et réduire au maximum les
+
+Ces paramètre sont très important dans la note que le moteur de recherche donne au site.
+
+En revanche, nous n'avons pas effectué d'étude des mots clés auquel notre site devait être associé car, comme je le disais plus haut, cela n'était pas dans nos priorités footnote:[C'est aussi très certainement lié à mon manque appétence pour le SEO].
 
 === Vidéo de démonstration
 
-// TODO
+Étant donné que nous avions une cible
+
+=== Utilisation de LinkedIn
+
+LinkedIn est un puissant réseau social à destination des professionnel. Très utilisé dans le milieu du droit, c'est un bon moyen de se faire connaître et de communiquer avec sa cible.
+
+Initialement, nous voulions utiliser leur campagne de publicité afin de proposer afin de toucher directement notre potentielle clientèle. Nous avions analysé que nous devions cibler les avocats résidents dans de grandes villes, utilisant déjà certains produits issue de LegalTech, et ayant entre 25 et 35 ans car ce sont ceux les plus à l'aise avec l'informatique.
+
+Malheureusement, notre budget ne nous a pas permis de le faire mais nous avons tout de même alimenté une page de société avec des articles récurrents, clairs et concis:
+
+image:linkedin_post.png[Capture d'écran du résultat du scan de l'outil PageSpeed Insights de Google]
+
+Même si c'est difficilement mesurable, cela nous a permit de nous faire une petite renommée dans le milieu.
 
 === Création d’une campagne d'__emailing__
 
-Afin de communiquer autour de notre application, nous avons choisit d'utiliser https://mailchimp.com/[mailchimp], une solution d'emailing qui propose un
+Afin de communiquer autour de notre application, nous avons choisit d'utiliser https://mailchimp.com/[mailchimp], une solution SAAS qui propose un service de mailing facile et permet d'avoir un retour comme:
+
+- le taux d'ouverture de mails
+- le taux d'ouverture du lien du mail
+
+Cet outil permet aussi de proposer un lien de désinscription à la newsletter que l'utilisateur peut utiliser afin de ne plus recevoir de mail. Cette fonctionnalité est très importante car la lois nous oblige à donner un moyen de se désinscrire.
+
+Mon associé, Saca Partensky, a ainsi sélectionné un peu plus de mille destinataires et nous avons préparé le premier email de lancement:
+
+image:mailchimp_mail.png[Capture d'écran du Dashboard de la campagne effectuée sur Mailchimp]
+
+
+Ces
+
+image:mailchimp_dashboard.png[Capture d'écran du Dashboard de la campagne effectuée sur Mailchimp]
 
 
 Cette approche n'a au final pas eu d'effet positif car nous n'avons pas
@@ -22,8 +61,9 @@ Cette approche n'a au final pas eu d'effet positif car nous n'avons pas
 
 Afin d'améliorer notre activité, nous avons choisit de travailler avec un commercial à son compte. Afin d'éviter des frais de gestion de salarié, nous avons choisit de ne pas l'embaucher mais de travailler avec lui en tant que commercial à son compte.
 
-Nous avons donc décider de lui accorder certains 
+Nous avons donc décider de lui accorder certains
 
 === Conclusion
 
+Le
 // TODO

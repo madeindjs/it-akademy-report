@@ -103,7 +103,7 @@ Pour cela, j’ai utilisé la librairie https://capistranorb.com[Capistrano]. Ca
 
 * *Cloner* le répertoire Git afin de récupérer la dernière version du code source
 * Lancer les *migrations* sur la base de données
-* *Minifier* footnote:[Il s’agit de concateiner les fichiers texte en un seul afin de réduire le nombre de requête HTTP et d’améliorer la vitesse de chargement] les fichiers JavaScript et CSS
+* *Minifier* , c'est à dire concaténer les fichiers texte en un seul afin de réduire le nombre de requête HTTP et d’améliorer la vitesse de chargement] les fichiers JavaScript et CSS
 * Faire des liens symboliques sur les documents que les utilisateurs ont envoyés sur le serveur
 
 La librairie se met en place très facilement, voici un extrait de ma configuration
@@ -116,6 +116,8 @@ set :repo_url, "http://git.rousseau-alexandre.fr/iSignif/Website.git"
 append :linked_files, 'config/database.yml' , 'config/initializers/secret_token.rb', 'config/secrets.yml'
 append :linked_dirs, 'public/uploads'
 ----
+
+Une fois la librairie mise en place, il suffit d'utiliser la commande `cap production deploy` qui va s'occuper de mettre à jour l'application sur le serveur.
 
 === Retours des utilisateurs
 

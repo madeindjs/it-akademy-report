@@ -45,12 +45,12 @@ Afin de communiquer autour de notre application, nous avons choisit d'utiliser h
 
 Cet outil permet aussi de proposer un lien de désinscription à la newsletter que l'utilisateur peut utiliser afin de ne plus recevoir de mail. Cette fonctionnalité est très importante car la lois nous oblige à donner un moyen de se désinscrire.
 
-Mon associé, Saca Partensky, a ainsi sélectionné un peu plus de mille destinataires et nous avons préparé le premier email de lancement:
+Mon associé, Sacha Partensky, a ainsi sélectionné un peu plus de mille destinataires que nous avons découpé en quatre campagnes de courriel afin d'adapter le contenu du mail au fur et à mesure. Voici donc la version finale:
 
 image:mailchimp_mail.png[Capture d'écran du Dashboard de la campagne effectuée sur Mailchimp]
 
 
-Ces
+Ces // TODO
 
 image:mailchimp_dashboard.png[Capture d'écran du Dashboard de la campagne effectuée sur Mailchimp]
 
@@ -62,6 +62,8 @@ Cette approche n'a au final pas eu d'effet positif car nous n'avons pas
 Afin d'améliorer notre activité, nous avons choisit de travailler avec un commercial à son compte. Afin d'éviter des frais de gestion de salarié, nous avons choisit de ne pas l'embaucher mais de travailler avec lui en tant que commercial à son compte.
 
 Nous avons donc décider de lui accorder certains
+
+// TODO
 
 === Conclusion
 

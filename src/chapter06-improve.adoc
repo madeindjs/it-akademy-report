@@ -1,10 +1,7 @@
 [#chapter06-improve]
 == Pérennisation de l’application
-// QUESTION: Est-ce que le titre est juste?
 
-// === Développement Dirigé par les test
-
-// Comme je l’évoquait lors de la réunion de pré-lancement, il était capital de maintenir une certaine qualité de nos services. Je me suis donc imposé le _workflow_ du développement dirigé par les tests.
+Il est capital de maintenir une certaine qualité de nos services. Ainsi
 
 === RGPD
 
@@ -124,10 +121,80 @@ Une fois la librairie mise en place, il suffit d'utiliser la commande `cap produ
 
 Cette approche m'a permis de faire des mise à jour de l'application plusieurs fois par semaines.
 
-=== Retours des utilisateurs
+=== Sauvegarde Automatique du serveur
 
-// TODO
+En terme de sauvegarde il existe plusieurs stratégies. Pour ma part, les conditions étaient d’avoir des sauvegardes quotidiennes et automatiques. J’ai donc fait le choix de créer moi-même un script `bash` de sauvegarde de mon serveur en incluant:
+
+* la basse de donnée MariaDB
+* les données _uploadés_ par les utilisateurs
+
+De mon point de vue, la sauvegarde automatique doit être:
+
+* *régulière* , j’ai donc utilisé une `crontab` qui est un utilitaire sous Linux qui permet de lancer des commandes à intervalles définis
+* *chiffrée* , j’ai donc utilisé http://www.gnupg.org/[GNUPG] qui est un outil de chiffrement asymétrique (Méthode de chiffrement utilisant une paire de clés pour le cryptage). Ainsi, lorsque je chiffre une archive avec ma clé publique, seul mon PC distant peu l’ouvrir.
+
+Voici donc une partie de mon script sur le listing suivant:
+
+[source,bash]
+.backup_server.sh
+----
+#!/bin/bash
+# ...
+# je realise un dump de toute la BDD mariadb
+mysqldump --all-databases  > $sqldump_filename
+
+# je copie tous mes environnements d'un coup
+for website in ${websites[*]}
+do
+  cp -r "/var/www/${website}/shared/{config,public,storage}" "${website}/shared/"
+done
+# ...
+
+# je cree une archive et je la chiffre avec gpg
+tar -czvf -  "$folder_save" | gpg --encrypt --recipient contact@rousseau-alexandre.fr -o "$folder_save.tar.gz.gpg" --always-trust
+# ...
+----
+
+Ensuite, un `cron` récupère régulièrement mes sauvegarde en utilisant un outil appelé https://fr.wikipedia.org/wiki/Rsync[Rsync].
+
+NOTE: Il s'est avéré bien plus tard qu'une sauvegarde nous a permit de retrouver les données supprimées par accident par un de mes associé. Il avait supprimé une catégorie d'acte qui avait provoqué la suppression de plus de trente actes avec toutes les données liées (messages, fichiers, etc..).
+
+=== Gestion des rôles pour les utilisateurs
+
+Un commercial a rejoint notre équipe. La problématique est qu'il devait avoir accès aux données de ses clients afin de les aider mais nous ne voulions pas qu'il puisse supprimer ces données.
+
+J'ai  donc choisis de définir des rôles afin de limiter les actions possibles sur l'application. Voici la liste des rôles que j'ai défini:
+
+- `user`: utilisateur classique
+- `support`: a accès aux entités des autres utilisateurs (actes, messagerie, etc..) et à leurs tableaux de bord
+- `admin`: peut clôturer des actes et supprimer des éléments à faible impact
+- `god` : peut tout faire
+
+J'ai ainsi choisi d'utiliser la libraire https://github.com/varvet/pundit[Pundit] qui permet la mise en place de _policies_ qui sont en quelque sorte des règles d'accès à toutes les actions définies par les contrôleurs.
+
+[source,ruby]
+.app/policies/act_family_policy.rb
+----
+class ActFamilyPolicy < ApplicationPolicy
+  def index?
+    logged? && @user.can_read_everything?
+  end
+
+  def show?
+    logged? && @user.can_read_everything?
+  end
+
+  def destroy?
+    logged? && @user.god?
+  end
+
+  # ...
+----
+
+J'ai ensuite réduis au minimum les rôles des utilisateurs de l'application. Ainsi, je sais que ceux-ci ne peuvent plus avoir de
 
 === Conclusion
 
-L'amélioration du produit est une étape importante car elle permet de *fiabiliser* le produit.
+L'amélioration du produit est une étape importante car elle permet de *fiabiliser* le produit. Cette fiabilisation fidélise le client qui est donc rassuré par cette qualité.
+
+Si j'avais privilégié le développement d'un fonctionnalité pluôt que de mettre en place une sauvegarde automatique, nous aurions été décridibilsé

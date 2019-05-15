@@ -68,43 +68,6 @@ MariaDB > CREATE USER 'isignif'@'localhost' IDENTIFIED BY '****';
 MariaDB > GRANT ALL PRIVILEGES ON isignif . * TO 'isignif'@'localhost';
 ----
 
-==== Sauvegarde Automatique du serveur
-
-En terme de sauvegarde il existe plusieurs stratégies. Pour ma part, les conditions étaient d’avoir des sauvegardes quotidiennes et automatiques. J’ai donc fait le choix de créer moi-même un script `bash` de sauvegarde de mon serveur en incluant:
-
-* la basse de donnée MariaDB
-* les données _uploadés_ par les utilisateurs
-
-De mon point de vue, la sauvegarde automatique doit être:
-
-* *régulière* , j’ai donc utilisé une `crontab` qui est un utilitaire sous Linux qui permet de lancer des commandes à intervalles définis
-* *chiffrée* , j’ai donc utilisé http://www.gnupg.org/[GNUPG] qui est un outil de chiffrement asymétrique (Méthode de chiffrement utilisant une paire de clés pour le cryptage). Ainsi, lorsque je chiffre une archive avec ma clé publique, seul mon PC distant peu l’ouvrir.
-
-Voici donc une partie de mon script sur le listing suivant:
-
-[source,bash]
-.backup_server.sh
-----
-#!/bin/bash
-# ...
-# je realise un dump de toute la BDD mariadb
-mysqldump --all-databases  > $sqldump_filename
-
-# je copie tous mes environnements d'un coup
-for website in ${websites[*]}
-do
-  cp -r "/var/www/${website}/shared/{config,public,storage}" "${website}/shared/"
-done
-# ...
-
-# je cree une archive et je la chiffre avec gpg
-tar -czvf -  "$folder_save" | gpg --encrypt --recipient contact@rousseau-alexandre.fr -o "$folder_save.tar.gz.gpg" --always-trust
-# ...
-----
-
-Ensuite, un `cron` récupère régulièrement mes sauvegarde en utilisant un outil appelé https://fr.wikipedia.org/wiki/Rsync[Rsync].
-
-Il s'est avéré bien plus tard qu'une sauvegarde nous a permit de retrouver les données supprimées par accident par un de mes associé. Il avait supprimé une catégorie d'acte qui avait provoqué la suppression de plus de trente actes avec toutes les données liées (messages, fichiers, etc..).
 
 === Sécurité
 

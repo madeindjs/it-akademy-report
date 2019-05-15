@@ -17,3 +17,5 @@ gem "rouge", "~> 3.3"
 gem "asciidoctor-epub3", "~> 1.5.alpha.8"
 
 # gem "kindlegen", "~> 3.0"
+
+gem "combine_pdf", "~> 1.0"

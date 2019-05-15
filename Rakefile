@@ -1,8 +1,11 @@
 require 'asciidoctor'
 require 'asciidoctor-pdf'
+require 'asciidoctor-pdf'
+require 'combine_pdf'
 
 MASTER_FILE = File.join __dir__, 'src', 'dossier-validation.adoc'
 OUTPUT_DIR = File.join __dir__, 'build'
+ANNEXES_DIR = File.join __dir__, 'annexes'
 THEMES_DIR = File.join __dir__, 'themes'
 
 namespace :build do
@@ -17,6 +20,13 @@ namespace :build do
                                'pdf-stylesdir' => THEMES_DIR,
                                'pdf-style' => 'my'
                              }
+     pdf = CombinePDF.load File.join(OUTPUT_DIR, 'dossier-validation.pdf')
+
+     Dir.glob(File.join(ANNEXES_DIR, '*.pdf')).each do |f|
+       pdf << CombinePDF.load(f)
+     end
+
+     pdf.save File.join(OUTPUT_DIR, 'dossier-validation-with-annexes.pdf')
   end
 
   desc 'Build an HTML version'

@@ -5,23 +5,26 @@ La planification est une étape importante car elle permet de tracer l'évolutio
 
 === Réunions d’avancements
 
-Les réunions d’avancements ont lieu *physiquement*. Elles ne sont pas périodiquement fixées, nous en organisons à la demande, lorsqu’un des associé en ressent le besoin. Nous en faisons donc une par mois environ qui dure une heure ou deux. Afin d’être plus efficace, nous définissons un but à l’avance. Le principe est donc de valider certaines étapes du développement du produit et de communiquer autour de l’avancée de la société.
+Les réunions d’avancements ont lieu *physiquement*. Elles ne sont pas périodiquement fixées, nous en organisons à la demande, lorsqu’un des associé en ressent le besoin. Nous en faisons donc une par mois environ qui dure une heure ou deux. Afin d’être plus efficace, nous définissons un but à l’avance. Le principe est donc de *valider certaines étapes* du développement du produit et de communiquer autour de l’avancée de la société.
 
 // Voici donc quelques réunions clés qui se sont déroulées au cours de l’élaboration de notre produit.
 
-Par exemple, nous avons fait une réunion en mai 2018 afin de valider mon avancement sur l'application. A ce moment là, j’avais travaillé en total autonomie sur l’élaboration d’une *première ébauche* fonctionnelle. Cette étape était réellement importante car je devais savoir que cette première ébauche correspondait aux attentes des deux cofondateurs. J’ai donc effectué une démonstration. Cela a permis de renforcer la confiance que mes associés m’avaient alors accordé mais aussi de collecter des premières critiques.
+Par exemple, nous avons fait une réunion en mai 2018 afin de valider mon avancement sur l'application. A ce moment là, j’avais travaillé en total autonomie sur l’élaboration d’une *première ébauche* fonctionnelle. J’ai donc effectué une démonstration.
 
-Début juin 2018, nous avons signé le *pacte des associés*. Deux spécialistes de  https://www.beelys.org/[Beelys], incubateur lyonnais, étaient présent afin de nous apporter des renseignement sur le fonctionnement des levées de fond. A la suite de cette réunion, nous avons fait le choix de *ne pas faire de levée de fond* car elle s’accorde d’une vente de part de l’entreprise. Sachant que nous n’avions pas besoin immédiatement de fonds, nous préférions garder les parts de l’entreprise et les vendre une fois que la société posséderait une certaine notoriété.
+// Par exemple, nous avons fait une réunion en mai 2018 afin de valider mon avancement sur l'application. A ce moment là, j’avais travaillé en total autonomie sur l’élaboration d’une *première ébauche* fonctionnelle. Cette étape était réellement importante car je devais savoir que cette première ébauche correspondait aux attentes des deux cofondateurs. J’ai donc effectué une démonstration. Cela a permis de renforcer la confiance que mes associés m’avaient alors accordé mais aussi de collecter des premières critiques.
 
-Le septembre 2018, le produit était presque prêt pour le lancement en bêta. Nous avons donc fait cette réunion avec l’huissier bêta-testeur. Cette huissier avait pu tester le produit d'un  de nos concurrent et c'était don un avantage concurrentiel énorme. Cela a permit de **collecter des retours utilisateur** et de les intégrer à notre application. Nous avons aussi put valider notre produit et apporter quelques petites corrections avant le lancement.
+Début juin 2018, nous avons signé le *pacte des associés*. Deux spécialistes de  https://www.beelys.org/[Beelys], incubateur lyonnais, étaient présent afin de nous apporter des renseignement sur le fonctionnement des levées de fond. A la suite de cette réunion, nous avons fait le choix de *ne pas faire de levée de fond* car elle s’accorde d’une vente de part de l’entreprise.
 
-Le novembre 2018, notre produit était prêt pour le lancement en bêta. Nous étions conscient que le lancement était un moment crucial pour notre société. Les mauvais retours se propagent vite et nous n’avions pas le droit à l’erreur. Nous avons donc choisit de tester notre produit sur quelques simulations entre nous afin de valider toutes les fonctionnalités. Nous avons déniché quelques bogues mineurs et analyser quelques fonctionnalités clefs manquantes. Nous avons donc pris la *décision de retarder* le déploiement de notre produit afin d’améliorer la qualité.
+//  Début juin 2018, nous avons signé le *pacte des associés*. Deux spécialistes de  https://www.beelys.org/[Beelys], incubateur lyonnais, étaient présent afin de nous apporter des renseignement sur le fonctionnement des levées de fond. A la suite de cette réunion, nous avons fait le choix de *ne pas faire de levée de fond* car elle s’accorde d’une vente de part de l’entreprise. Sachant que nous n’avions pas besoin immédiatement de fonds, nous préférions garder les parts de l’entreprise et les vendre une fois que la société posséderait une certaine notoriété.
 
-Le lancement c'est fait en mars 2019. Ce retard s'explique par l'**intégration de Stripe** (que j'évoquerai plus loin dans ce mémoire). Nous avons donc limité ce lancements uniquement aux huissiers. Nous avons donc effectué 67 significations et généré presque 70 euros.
+// Le septembre 2018, le produit était presque prêt pour le lancement en bêta. Nous avons donc fait cette réunion avec l’huissier bêta-testeur. Cette huissier avait pu tester le produit d'un  de nos concurrent et c'était don un avantage concurrentiel énorme. Cela a permit de **collecter des retours utilisateur** et de les intégrer à notre application. Nous avons aussi put valider notre produit et apporter quelques petites corrections avant le lancement.
+//
+// Le novembre 2018, notre produit était prêt pour le lancement en bêta. Nous étions conscient que le lancement était un moment crucial pour notre société. Les mauvais retours se propagent vite et nous n’avions pas le droit à l’erreur. Nous avons donc choisit de tester notre produit sur quelques simulations entre nous afin de valider toutes les fonctionnalités. Nous avons déniché quelques bogues mineurs et analyser quelques fonctionnalités clefs manquantes. Nous avons donc pris la *décision de retarder* le déploiement de notre produit afin d’améliorer la qualité.
+//
+// Le lancement c'est fait en mars 2019. Ce retard s'explique par l'**intégration de Stripe** (que j'évoquerai plus loin dans ce mémoire). Nous avons donc limité ce lancements uniquement aux huissiers. Nous avons donc effectué 67 significations et généré presque 70 euros.
 
-// QUESTION: à garder?
+Nous avons aussi fait quelques réunions afin de faire des *rétrospectives* de ce qui avait bien et moins bien fonctionné dans le mois en cours. Cela nous permet d'avoir un regard critique sur le mode de fonctionnement de iSignif et de se remettre en question facilement.
 
-// TODO
 
 === Méthode Kanban
 
@@ -40,7 +43,8 @@ Nous avons donc fait une réunion pour découper toutes les tâches à réaliser
 
 Afin de gérer les tâche et de communiquer autour d'elles, j'ai choisit http://trello.com/[Trello]. C'est un outil SAAS qui permet pousse la méthode Kanban plus loin. Cette application pousse la collaboration en ajoutant les discussions sur les tâches.
 
-image:trello.png[Capture d’écran de notre tableau Kanban en septembre 2018]
+.Capture d’écran de notre tableau Kanban en septembre 2018
+image:trello.png[]
 
 === Rédiger les spécifications techniques
 
@@ -61,9 +65,10 @@ Les nouvelles applications utilisent des interface utilisateurs de plus en plus 
 J’ai néanmoins mis en place _Vue.JS_ (une librairie JavaScript) pour certaines pages qui demandent plus d’interactions. J’ai choisis Vue.JS au détriment de React ou Angular car c’est le plus simple à mettre en place pour des applications non orienté API.
 
 
+[#gitflow]
 === Travailler à plusieurs
 
-Git est un logiciel développé par Linux Torvals footnote:[Linux Torvals est le fondateur de Linux] qui permet de *versionner* un projet. Il rend la collaboration beaucoup plus facile. Je l'ai donc naturellement choisit en le couplant à la méthodologie *Git Flow*.
+Git est un logiciel développé par Linux Torvals (fondateur de Linux) qui permet de *versionner* un projet. Il rend la collaboration beaucoup plus facile. Je l'ai donc naturellement choisit en le couplant à la méthodologie *Git Flow*.
 
 .Schéma du _workflow_ de Git Flow.
 image:git-flow.png[git-flow]

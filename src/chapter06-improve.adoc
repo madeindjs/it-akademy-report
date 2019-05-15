@@ -1,5 +1,5 @@
 [#chapter06-improve]
-== Amélioration de l'application
+== Pérennisation de l’application
 // QUESTION: Est-ce que le titre est juste?
 
 // === Développement Dirigé par les test
@@ -25,6 +25,16 @@ Dans mon cas, les principales obligations qui m’incombent sont que l'utilisate
 * effacer toutes ses données
 * rectifier ses données
 * exporter ses données
+
+==== Le droit à la portabilité et à l'accès des données de l’utilisateur
+
+Afin d'avoir un format normalisé et simple, j'ai choisi d'utiliser le format JSON et plus particulièrement la spécification https://jsonapi.org/[JSON:API] qui impose une structure du JSON.
+
+En utilisant la https://github.com/Netflix/fast_jsonapi[librairie de serialization des données de Netflix], j'ai ainsi convertis le modèle `User` au format JSON en incluant toutes ses liaisons. Ainsi, en un clic, l'utilisateur peut obtenir toutes ses données en incluant ses actes, ses messages et les significations qu'il a effectué.
+
+==== Le droit à la rectification des données de l’utilisateur
+
+Concernant la rectification des données, je n'ai pas eu besoin d'implémenter une fonctionnalité spéciale.
 
 ==== Le droit à l’oubli
 
@@ -83,23 +93,16 @@ Et voilà, la mise en conformité est faite. L’huissier ou l’avocat pourra s
 
 En plus de cela, j'ai aussi utilisé l'API de Stripe en faisant un appel à leur API pour supprimer leur données lors de la suppression mais je ne le détaillerai pas ici.
 
-==== Le droit à la portabilité et à l'accès des données de l’utilisateur
-
-Afin d'avoir un format normalisé et simple, j'ai choisi d'utiliser le format JSON et plus particulièrement la spécification https://jsonapi.org/[JSON:API] qui impose une structure du JSON.
-
-En utilisant la https://github.com/Netflix/fast_jsonapi[librairie de serialization des données de Netflix], j'ai ainsi convertis le modèle `User` au format JSON en incluant toutes ses liaisons. Ainsi, en un clic, l'utilisateur peut obtenir toutes ses données en incluant ses actes, ses messages et les significations qu'il a effectué.
-
-==== Le droit à la rectification des données de l’utilisateur
-
-Concernant la rectification des données, je n'ai pas eu besoin d'implémenter une fonctionnalité spéciale.
-
-
 
 === Déploiement continu
 
-Afin d’être le plus réactif possible, j’ai voulu mettre en place un outil afin d’automatiser les mises en production. Cela est un énorme avantage car il permet de mettre en ligne un correctif ou une évolution très rapidement. De plus, automatiser permet de réduire le risque de l’erreur humaine ( https://www.reddit.com/r/webdev/comments/5rd79m/gitlab_employee_just_ran_rm_rf_on_their/[et cela est vite arrivé]...).
+Afin d’être le plus réactif possible, j’ai voulu mettre en place un outil afin d’automatiser les mises en production. Cela est un énorme avantage car il permet de mettre en ligne un correctif ou une évolution très rapidement. De plus, automatiser permet de *réduire les risque* d’erreurs humaines.
 
-Pour cela, j’ai utilisé la librairie https://capistranorb.com[Capistrano]. Capistrano est un outil écrit en Ruby qui permet d’automatiquement le déploiement en s’appuyant sur Git (rappelez vous de mon utilisation de Git Flow). Il va donc:
+.Un exemple d'erreur humaine qui peut coûter cher
+image:reddit_rm_rf.png[]
+
+
+J’ai donc utilisé la librairie https://capistranorb.com[Capistrano]. Il s'agit d'un outil écrit en Ruby qui permet d’automatiser le déploiement en s’appuyant sur Git (section <<gitflow>>). Il va donc:
 
 * *Cloner* le répertoire Git afin de récupérer la dernière version du code source
 * Lancer les *migrations* sur la base de données
@@ -119,8 +122,12 @@ append :linked_dirs, 'public/uploads'
 
 Une fois la librairie mise en place, il suffit d'utiliser la commande `cap production deploy` qui va s'occuper de mettre à jour l'application sur le serveur.
 
+Cette approche m'a permis de faire des mise à jour de l'application plusieurs fois par semaines.
+
 === Retours des utilisateurs
 
 // TODO
 
 === Conclusion
+
+L'amélioration du produit est une étape importante car elle permet de *fiabiliser* le produit.

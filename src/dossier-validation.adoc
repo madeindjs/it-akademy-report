@@ -2,6 +2,7 @@
 Alexandre Rousseau <contact@rousseau-alexandre.fr>
 v0.2, 2019-05-02
 :toc:
+:toc-title: Table des matières
 :doctype: book
 :imagesdir: img
 :source-highlighter: rouge

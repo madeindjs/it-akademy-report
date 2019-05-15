@@ -9,7 +9,8 @@ Le SEO n'a pas été une de nos plus grande préoccupation. Notre cible principa
 
 Bien évidement, cela ne pas ma empêché de faire le minimum recommandé par Google.
 
-image:speedinsight.png[Capture d'écran du résultat du scan de l'outil PageSpeed Insights de Google]
+.Capture d'écran du résultat du scan de l'outil PageSpeed Insights de Google
+image:speedinsight.png[]
 
 Ainsi, j'ai donc bien fait attention de:
 
@@ -18,11 +19,7 @@ Ainsi, j'ai donc bien fait attention de:
 
 Ces paramètre sont très important dans la note que le moteur de recherche donne au site.
 
-En revanche, nous n'avons pas effectué d'étude des mots clés auquel notre site devait être associé car, comme je le disais plus haut, cela n'était pas dans nos priorités footnote:[C'est aussi très certainement lié à mon manque appétence pour le SEO].
-
-=== Vidéo de démonstration
-
-Étant donné que nous avions une cible
+En revanche, nous n'avons pas effectué d'étude des mots clés auquel notre site devait être associé car, comme je le disais plus haut, cela n'était pas dans nos priorités (C'est aussi très certainement lié à mon manque appétence pour le SEO).
 
 === Utilisation de LinkedIn
 
@@ -32,9 +29,10 @@ Initialement, nous voulions utiliser leur campagne de publicité afin de propose
 
 Malheureusement, notre budget ne nous a pas permis de le faire mais nous avons tout de même alimenté une page de société avec des articles récurrents, clairs et concis:
 
-image:linkedin_post.png[Capture d'écran du résultat du scan de l'outil PageSpeed Insights de Google]
+.Capture d'écran du résultat du scan de l'outil PageSpeed Insights de Google
+image:linkedin_post.png[]
 
-Même si c'est difficilement mesurable, cela nous a permit de nous faire une petite renommée dans le milieu.
+Même si c'est difficilement mesurable, cela nous a permit de nous faire une *petite renommée* dans le milieu.
 
 === Création d’une campagne d'__emailing__
 
@@ -45,17 +43,30 @@ Afin de communiquer autour de notre application, nous avons choisit d'utiliser h
 
 Cet outil permet aussi de proposer un lien de désinscription à la newsletter que l'utilisateur peut utiliser afin de ne plus recevoir de mail. Cette fonctionnalité est très importante car la lois nous oblige à donner un moyen de se désinscrire.
 
-Mon associé, Sacha Partensky, a ainsi sélectionné un peu plus de mille destinataires que nous avons découpé en quatre campagnes de courriel afin d'adapter le contenu du mail au fur et à mesure. Voici donc la version finale:
+Mon associé, Sacha Partensky, a ainsi sélectionné un peu plus de mille destinataires que nous avons découpé en quatre campagnes de courriel afin d'adapter le contenu du mail au fur et à mesure.
 
-image:mailchimp_mail.png[Capture d'écran du Dashboard de la campagne effectuée sur Mailchimp]
+Une fois ces campagnes réalisées, Mailchimp propose un tableau de bord récapitulant les résultats:
 
+.Capture d'écran du tableau de bord des campagnes effectuées sur Mailchimp
+image:mailchimp_dashboard.png[]
 
-Ces // TODO
+En analysant un peu ces résultats, on se rend compte que nous sommes bien situé comparé au secteur des campagnes de mailing à destination de service professionnels:
 
-image:mailchimp_dashboard.png[Capture d'écran du Dashboard de la campagne effectuée sur Mailchimp]
+.Statistiques moyennes des campagnes d'emailing des clients de Mailchimp () comparé à iSignif (source https://mailchimp.com/resources/email-marketing-benchmarks/)
+|===
+|Industrie | Taux d'ouverture | Click Rate
 
+| Services professionnels
+| 20.8%
+| 2.4%
 
-Cette approche n'a au final pas eu d'effet positif car nous n'avons pas
+| *iSignif*
+| 27.3% (+6.5)
+| 3% (+0.6)
+
+|===
+
+En revanche, en terme de business, ces campagnes n'ont pas eu beaucoup de retombées puisque nous n'avons pas eu de nouvelles inscriptions sur notre plateforme.
 
 === Embauche d'un commercial
 
@@ -65,7 +76,9 @@ Nous avons donc décider de lui accorder certains
 
 // TODO
 
+=== Etude de la concurrence
+
 === Conclusion
 
-Le
+Le marketing est une activité indispensable lorsqu'on souhaite faire connaître notre produit.
 // TODO

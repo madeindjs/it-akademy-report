@@ -1,36 +1,32 @@
 [#chapter01-presentation]
 == Présentation
 
-En quête de challenge, je me suis inscrit sur le site https://cofondateur.fr[cofondateur.fr] qui met en relation des entrepreneurs à la recherche de développeurs pour construire leur projet. C’est ainsi que j'ai créé une _LegalTech_ footnote:[startup dans le domaine du droit] qui a pour but de mettre en relation des avocats et des huissiers. Cette excellente opportunité me permet d'avoir plusieurs rôles au sein d'une structure:
+En quête de challenge, je me suis inscrit sur le site https://cofondateur.fr[cofondateur.fr] qui met en relation des entrepreneurs à la recherche de développeurs pour construire leur projet. C’est ainsi que j'ai créé une _LegalTech_ (startup dans le domaine du droit) qui a pour but de mettre en relation des avocats et des huissiers. Cette excellente opportunité me permet d'avoir plusieurs rôles au sein d'une structure:
 
 - En tant qu’**associé**, je participe aux décisions stratégiques de l’entreprise
 - En tant que *directeur technique*, j’ai pour mission de faire des choix techniques cohérents afin d’assurer la pérennité de notre produit
 - En tant que *Délégué à la Protection des Données*, je suis chargé de veiller au respect des données et à la mise en conformité de notre outil.
 
-J’ai donc choisis de mettre en avant cette expérience dans mon dossier de validation car il met en exergue la construction d’un projet complet en totale autonomie. J’ai fais le choix d’organiser mon mémoire de façon chronologique (dans la mesure du possible). C’est-à-dire:
+J’ai donc choisis de mettre en avant cette expérience dans mon dossier de validation car il met en exergue la construction d’un projet complet de A à Z et me permet d'avoir un regard critique sur celui-ci. J’ai fais le choix d’organiser mon mémoire de façon *chronologique*. C’est-à-dire:
 
-* la planification du projet
-* le développement
-* la mise en place de l'architecture
-* la collecte des retours utilisateurs
-* la promotion du produit
+1. la planification du projet
+2. le développement
+3. la mise en place de l'architecture
+4. la collecte des retours utilisateurs
+5. la promotion du produit
 
-J'aborderai ainsi la problématique de comment gérer un projet de tel envergure à coté d'une vie professionnel, personnelle et étudiante.
+J'aborderai ainsi ma problématique: Comment gérer un projet de tel envergure à coté d'une vie professionnel, personnelle et étudiante?
 
 === La société
 
 Comme je le disait plus haut, j'ai participé à la création d'une entreprise avec les deux cofondateurs: Adrien ORION et Sacha PARTENSKY (étudiants en droit à l’université Lyon 3 Jean Moulin).
 
-C’est une société par actions simplifiées. Les avantages de ce statut juridique sont une grande liberté sur les règles définies dans le pacte d’actionnaires et une responsabilité limité aux apports. L’inconvénient de ce statut est qu’il est plus difficile à mettre en place car il faut rédiger un pacte d’actionnaire complet. Dans notre cas, ce statut est parfait puisque mes associés ont les compétences pour rédiger les documents nécessaires.
-
-NOTE: Pour en savoir plus sur ce régime, je vous invite à consulter https://www.lecoindesentrepreneurs.fr/pourquoi-creer-une-sasu/[cet article]
-
-// Elle était suivie par un incubateur footnote:[un incubateur est une société externe qui aide à la création d’un startup]
+Lorsque j'ai rejoins la société (j'en parlerai plus tard), la société était déjà créée sous la formation d'une *société par actions simplifiées*. L' avantage principal de ce statut juridique est la grande liberté sur les règles définies dans le *pacte d’actionnaires*. L’inconvénient qui en découle est qu’il est plus difficile à mettre en place car il nécessite justement la rédaction d'un pacte d’actionnaire complet. Dans notre cas, ce statut est parfait puisque mes associés ont les compétences pour le rédiger.
 
 .Le logo d’iSignif
 image:logo.png[logo, 300]
 
-Lors de notre rencontre, Sacha et Adrien m’ont présenté leur idée. Sentant rapidement le potentiel, j’ai accepté de devenir associé et j’ai ainsi signé un *pacte d’actionnaires*. Nous redéfinissions ainsi les parts et les rôles des nouveaux associés:
+Lors de notre rencontre, Sacha et Adrien m’ont présenté leur idée. Séduis par l'idée, j’ai accepté de devenir associé et j’ai ainsi signé un *nouveau* pacte d’actionnaires. Nous redéfinissions ainsi les parts et les rôles des nouveaux associés:
 
 * Adrien ORION, cofondateur et directeur général, associé à hauteur de 31,5%
 * Sacha PARTENSKY, cofondateur et Président à hauteur de 41,5%
@@ -43,15 +39,17 @@ En échange de cette part dans la société, j'étais donc en charge de livrer u
 
 === Le projet
 
+L'idée du projet est simplifier le *processus de signification*.
+
 Réalisée par un huissier de justice, la signification a pour but de porter les actes judiciaires _(assignation en justice, jugement, sommation de payer, etc...)_ à la connaissance des intéressés. Toutefois, ces actes sont souvent adressés à plusieurs destinataires résidents dans des villes différentes. Ceci demande un effort chronophage pour les demandeurs de signification qui doivent contacter les huissiers compétents pour chaque adresse.
 
-L’idée est de simplifier le processus de signification en centralisant les demandes via une plateforme qui redirige la demande vers un huissier compétent du réseau iSignif.
+iSignif à pour but de simplifier le processus de signification en centralisant les demandes via une plateforme qui redirige la demande vers un huissier compétent de notre réseau.
 
 .Un acte doit être notifié en main propre pour chaque destinataire, avec iSignif l'acte est centralisé
 // image:signification_before.png[signification_before, 500]
 image:signification_after_before.png[signification_after_before]
 
-NOTE: Vous pouvez consulter la brochure dans les annexes pour en savoir plus à propos de notre activité.
+NOTE: La brochure commerciale est disponible dans les annexes.
 
 ==== Business plan
 

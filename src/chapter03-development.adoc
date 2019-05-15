@@ -83,7 +83,7 @@ Afin d'implémenter cette fonctionnalité, nous avons commencé par analyser le 
 Afin d'implémenter cela, j'ai rapidement fait le tour des solutions de paiement existantes (PayPal, BNP, etc..). Il s'est avéré que https://stripe.com[Stripe] était le meilleur compromis. Stripe est une société américaine qui a pour but de simplifier les paiements en ligne. Créée en 2010, Stripe pèse maintenant plus de 10 milliards! J'ai choisi Stripe car ses avantages sont:
 
 - le client peut payer sans avoir un compte ouvert chez Stripe
-- les tarifs sont assez "raisonnables" :footnote:[1,4% + 0,25€ par transaction pour les cartes européennes]
+- les tarifs sont assez "raisonnables"
 - la facilité de la mise en place car, en plus de proposer une belle API, Stripe propose des librairies pour les langages les plus utilisés (https://github.com/stripe/stripe-php[PHP], https://github.com/stripe/stripe-python[Pyhton], https://github.com/stripe/stripe-ruby[Ruby], https://github.com/stripe/stripe-java[Java] et même https://github.com/stripe/stripe-go[Go])
 - une https://stripe.com/docs[excellente documentation]
 
@@ -184,7 +184,8 @@ end
 
 Le code final est un peu plus complexe puisque je sauvegarde l’identifiant du _customer_ afin d'éviter de le créer deux fois. Une fois le paiement effectué, la _charge_ apparaît dans l'interface d'administration de Stripe:
 
-image:stripe_first_payment.png[La _charge_ apparaît dans l'interface d'administration de Stripe]
+.La _charge_ apparaît dans l'interface d'administration de Stripe
+image:stripe_first_payment.png[]
 
 ==== Abonnement
 
@@ -218,13 +219,15 @@ La seule différence avec la création des _charges_, c'est qu'ici c'est Stripe 
 
 Stripe envoie une requête pour signaler que le paiement a été effectué par le biais du _hook_. Les  *Webhook* sont simplement des routes que nous mettons à disposition pour recevoir les requêtes de la part de Stripe. Une fois la route créée, nous devons communiquer l'URL à Stripe via l'interface d'administration de Stripe. J'ai choisi de ne recevoir que le signal `invoice.payment_succeeded` qui est envoyé lorsqu'une facture est payée.
 
-image:stripe_webhook.png[Formulaire de création d'un Webhook]
+.Formulaire de création d'un Webhook
+image:stripe_webhook.png[]
 
 Il suffit maintenant d'ajouter une méthode dans le contrôleur qui recevra  la requête de Stripe. C'est toujours compliqué de tester l'intégration d'un API donc j'ai simplement choisi de simuler une requête de la part de Stripe et de vérifier si notre contrôleur ajoute du crédit à l'utilisateur.
 
 pour cela,  j'ai simplement copié/collé les paramètres envoyés par Stripe via leur https://dashboard.stripe.com/test/webhooks/[interface de test des webhooks].
 
-image:stripe_webook_request.png[Visualisation de la requête envoyée par Stripe]
+.Visualisation de la requête envoyée par Stripe
+image:stripe_webook_request.png[]
 
 Une fois la requête copiée, je l'ai transformée en `Hash` Ruby en ne gardant que les paramètres qui m'intéressent.
 
@@ -289,7 +292,8 @@ end
 
 En faisant cela, un appel à l'API de Stripe est effectué pour lui spécifier que l'huissier vient d'acheter une signification et qu'il faut lui facturer sur la facturer que nous venons de créer. Nous pouvons retrouver cette facture dans le _dashboard_ de Stripe:
 
-image:stripe_invoice.png[Formulaire de création d'un Webhook]
+.Formulaire de création d'un Webhook
+image:stripe_invoice.png[]
 
 Suivant la configuration du compte, Stripe va s'occuper de générer une facture PDF, contacter le client, le relancer et le prélever. Vous pouvez retrouver dans les annexes un exemple de facture générée par Stripe. Pour moi cette fonctionnalité est très importante car elle réduit très largement la *responsabilité* de mon application. La facturation n'est pas mon *cœeur* de métier et cela me permet de me concentrer uniquement sur le processus de la signification.
 

@@ -26,7 +26,7 @@ $ sudo adduser isignif
 $ passwd isignif
 ----
 
-Je le rajoute dans les `sudoers` footnote:[Groupes d’utilisateur possédants les droits administrateur] uniquement afin de simplifier la construction de l’environnement de production.
+Je le rajoute dans les `sudoers` (Groupes d’utilisateur possédants les droits administrateur) uniquement afin de simplifier la construction de l’environnement de production.
 
 [source,bash]
 ----
@@ -55,7 +55,7 @@ $ mysql_secure_installation
 
 Ce script me permet de:
 
-* mettre un mot de passe pour l’utilisateur `root` footnote:[Administrateur]
+* mettre un mot de passe pour l’utilisateur `root` (Administrateur)
 * supprimer les utilisateur anonymes
 * désactiver la possibilité aux utilisateur `root` de pouvoir se connecter
 
@@ -78,7 +78,7 @@ En terme de sauvegarde il existe plusieurs stratégies. Pour ma part, les condit
 De mon point de vue, la sauvegarde automatique doit être:
 
 * *régulière* , j’ai donc utilisé une `crontab` qui est un utilitaire sous Linux qui permet de lancer des commandes à intervalles définis
-* *chiffrée* , j’ai donc utilisé http://www.gnupg.org/[GNUPG] qui est un outil de chiffrement asymétrique footnote:[Le chiffrement asymétrique est une méthode de chiffrement utilisant une paire de clés pour le cryptage: une clé publique qui crypte les données et une clé privée qui les décrypte]. Ainsi, lorsque je chiffre une archive avec ma clé publique, seul mon PC distant peu l’ouvrir.
+* *chiffrée* , j’ai donc utilisé http://www.gnupg.org/[GNUPG] qui est un outil de chiffrement asymétrique (Méthode de chiffrement utilisant une paire de clés pour le cryptage). Ainsi, lorsque je chiffre une archive avec ma clé publique, seul mon PC distant peu l’ouvrir.
 
 Voici donc une partie de mon script sur le listing suivant:
 
@@ -108,7 +108,7 @@ Il s'est avéré bien plus tard qu'une sauvegarde nous a permit de retrouver les
 
 === Sécurité
 
-Aujourd’hui, la sécurité informatique est un enjeu majeur. D’autant plus pour iSignif qui manipules des données sensibles. Il faut un certains temps pour bâtir une réputation et une fuite de données peut suffire à la ruiner footnote:[Le lundi 19 mars 2017, Facebook à perdu 37 milliards de dollars suite à la révélation de la fuite des données de plus de 50 millions de leurs utilisateurs.  https://www.lci.fr/high-tech/affaire-cambridge-analytica-quel-est-ce-scandale-qui-plonge-facebook-dans-la-crise-mark-zuckerberg-2082228.html[source - LCI]].
+Aujourd’hui, la sécurité informatique est un enjeu majeur. D’autant plus pour iSignif qui manipules des données sensibles. Il faut un certains temps pour bâtir une réputation et une fuite de données peut suffire à la ruiner (Mars 2017, Facebook à perdu 37 milliards de dollars suite à la révélation de la fuite des données de plus de 50 millions de leurs utilisateurs https://www.lci.fr/high-tech/affaire-cambridge-analytica-quel-est-ce-scandale-qui-plonge-facebook-dans-la-crise-mark-zuckerberg-2082228.html[selon LCI]].
 
 ==== Sécurité de l’application
 
@@ -116,7 +116,7 @@ Dans un premier temps, la sécurité passe par l’application. L’application 
 
 Par exemple, le *Cross-site Scripting* permet d'envoyer un formulaire provenant d’un autre site vers le nôtre. Rails utilise un jeton qu’il place sur tous les formulaires et il peut identifier les formulaires qui lui sont propre.
 
-L’*injection SQL* consiste à injecter du code SQL footnote:[Le code SQL est utilisé pour envoyer des requêtes sur la base de données]. Comme le montre la figure suivante, les injection SQL sont très faciles. Heureusement, Rails échappe par défaut tous les paramètres envoyés par l’utilisateur.
+L’*injection SQL* consiste à injecter du code SQL (utilisé pour envoyer des requêtes sur la base de données). Comme le montre la figure suivante, les injection SQL sont très faciles. Heureusement, Rails échappe par défaut tous les paramètres envoyés par l’utilisateur.
 
 .Une tentative d’injection SQL sur un formulaire de contact
 image:sql_injection.png[sql_injection, 250]
@@ -151,9 +151,9 @@ Dans cette section, je vais vous détailler comment j'ai réalisé un audit comp
 
 La première étape pour un hacker est la *reconnaissance de la cible*. Cette étape consiste à obtenir le maximum d’informations sur la victime. Nous devons donc cacher le plus d’informations possible à propos de notre serveur.
 
-Une des information facile à obtenir pour un hacker est les port ouverts sur le serveur. Les ports sont en quelques sortent des portes ouvertes sur le réseaux. Donc, dans un premier temps, j’ai simplement effectué un scan des ports sur mon serveur  footnote:[NMAP est un scanner de port].
+Une des information facile à obtenir pour un hacker est les port ouverts sur le serveur. Les ports sont en quelques sortent des portes ouvertes sur le réseaux. Donc, dans un premier temps, j’ai simplement effectué un scan des ports sur mon serveur.
 
-NOTE: Malgré sur ce qu’on peut entendre, le http://www.infond.fr/2010/09/legalite-du-scan-de-port.html[scan de port est tout à fait légal] avec `nmap`.
+NOTE: Malgré sur ce qu’on peut entendre, le scan de port est tout à fait légal car il permet simplement de récupérer des informations publiques.
 
 [source,bash]
 ----
@@ -183,7 +183,9 @@ NMAP nous fournis aussi le numéro de la version des logiciels utilisés. Cela p
 
 ===== Réalisation d’un scan de vulnérabilité
 
-Afin de connaître les vulnérabilité de mon installation, j’ai décidé de faire un scan de vulnérabilité en utilisant https://www.metasploit.com/[Metasploit]. Metasploit Framework est un logiciel écrit en Ruby permettant le développement et l’utilisation d’exploit. Les exploits sont des vulnérabilités qui permettent d’exécuter du code sur une machine distante. J'ai aussi utilisé et http://www.openvas.org/[OpenVAS], un scanner de vulnérabilités libre issu du fork de Nessus footnote:[Le scan de vulnérabilité est illégal à moins que le serveur nous appartienne ou bien qu’une autorisation du propriétaire est donné. Dans mon cas, le serveur m’appartiens]. OpenVAS s’appuie sur les https://cve.mitre.org/[CVE (Common Vulnerabilities and Exposures)]. Il s’agit d’une base de données des vulnérabilités connues.
+Afin de connaître les vulnérabilité de mon installation, j’ai décidé de faire un scan de vulnérabilité en utilisant https://www.metasploit.com/[Metasploit]. Metasploit Framework est un logiciel écrit en Ruby permettant le développement et l’utilisation d’exploit. Les exploits sont des vulnérabilités qui permettent d’exécuter du code sur une machine distante. J'ai aussi utilisé et http://www.openvas.org/[OpenVAS], un scanner de vulnérabilités libre issu du fork de Nessus. OpenVAS s’appuie sur les https://cve.mitre.org/[CVE (Common Vulnerabilities and Exposures)]. Il s’agit d’une base de données des vulnérabilités connues.
+
+NOTE: Le scan de vulnérabilité est illégal à moins que le serveur nous appartienne ou bien qu’une autorisation du propriétaire est donné. Dans mon cas, le serveur m’appartiens.
 
 Plusieurs types de scan sont possibles, j’ai choisis d’utiliser le plus complet, qui est aussi le plus long. J’ai donc obtenu le résultat que l’on peu voir sur la figure suivant (le rapport complet est disponible en annexe).
 
@@ -209,7 +211,7 @@ J’ai donc pu l’installer très facilement avec https://certbot.eff.org/[Cert
 $ sudo certbot --apache
 ----
 
-C’est donc un petit geste mais celui-ci à des répercutions sur la confiances accordée par nos utilisateur et même sur le référencement footnote:[Google à annoncé en août 2014 que le protocole HTTPS serait pris en compte dans l’algorithme de positionnement. https://webmaster-fr.googleblog.com/2014/08/le-protocole-https-en-tant-que-facteur.html[source]].
+C’est donc un petit geste mais celui-ci à des répercutions sur la confiances accordée par nos utilisateur et même sur le référencement. Google à d’ailleurs annoncé en août 2014 que le protocole HTTPS serait pris en compte dans l’algorithme de positionnement.
 
 ===== Groupe sudo
 
@@ -217,7 +219,7 @@ Comme je l’ai évoqué plus haut, j’ai déjà crée un utilisateur spécifiq
 
 ===== Modifier le port par défaut
 
-En regardant les logs d’un serveur, on peut remarquer une quantité importante de tentative de connexion SSH footnote:[Le protocole SSH permet de se connecter à distance à un ordinateur]. Ceci est du au fait que beaucoup de hacker ont mis au point des scripts qui tentent de se connecter en utilisant des dictionnaires de mots de passe.
+En regardant les logs d’un serveur, on peut remarquer une quantité importante de tentative de connexion SSH (Le protocole qui permet de se connecter à distance à un ordinateur). Ceci est du au fait que beaucoup de hacker ont mis au point des scripts qui tentent de se connecter en utilisant des dictionnaires de mots de passe.
 
 Par défaut, le port utilisé est le port 22.
 

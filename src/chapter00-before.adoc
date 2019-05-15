@@ -16,13 +16,13 @@ Passionné et autodidacte, mon implication personnelle m'a permis d'évoluer en 
 
 image:gac.svg[logo, 200]
 
-Gac Technology possède beaucoup de clients renommés comme Bouygues, SNCF, Véolia ou encore l'Olympique Lyonnais. La base de données de Gac est constituée de plus de 200 tables dont la plus grosse contient plus de cent millions d'entrées. Cela est donc pour moi une formidable opportunité de me perfectionner sur la construction de requêtes SQL performante et d'un code optimisé.
+Gac Technology possède beaucoup de clients renommés comme Bouygues, SNCF, Véolia ou encore l'Olympique Lyonnais. La base de données de Gac est donc importante. Elle constituée de plus de 200 tables dont la plus grosse contient plus de cent millions d'entrées. Cela est donc pour moi une formidable opportunité de me perfectionner sur la construction de requêtes SQL performantes et d'un code optimisé.
 
 A dehors de mon travail je participe aussi à quelques projets projets Open Source comme:
 
 - API on Rails 5, un livre que j'ai traduis et adapté à partir de _"APIs on Rails - Building REST APIs with Rails"_ qui traite des meilleurs pratiques pour construire une API en utilisant Rails
-- Crystagiri, un parseur de document HTML écrit en Crystal et suivi par presque 100 personnes sur Github
+- Crystagiri, un parseur de document HTML écrit en Crystal et suivi par plus de 100 personnes sur Github
 - http://raspberry-cook.fr[Raspberry-Cook.fr], une plateforme de partage de recettes de cuisine qui m'a permis de m'auto-former sur Ruby on Rails et l'auto-hébergement d'une application sur Linux
 - et bien d'autres choses disponibles sur https://github.com/madeindjs[github.com/madeindjs]
 
-Je donnes aussi des cours à propos de Ruby On Rails sur https://superprof.fr[superprof.fr]. Aujourd'hui, je peux donc affirmer que ma passion me permet de m'épanouir et me spécialiser.
+Je donne aussi des cours à propos de Ruby On Rails sur https://superprof.fr[superprof.fr]. Aujourd'hui, je peux donc dire que ma passion me permet de m'épanouir et me spécialiser.

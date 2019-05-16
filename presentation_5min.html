@@ -10,14 +10,22 @@
       border: none;
       box-shadow: none;
     }
-    span.mark {
-      color: blue;
-    }
-    .good {
-      color: green;
-    }
-    .bad {
+
+    strong {color: GoldenRod ;}
+    mark {background-color: GoldenRod ;}
+
+    i{color: darkgray;}
+
+    .reveal ul { list-style-type: none; margin-left: 0;}
+    .reveal ul li.bad:before {
+      content: '- ';
       color: red;
+      font-weight: bold;
+    }
+    .reveal ul li.good:before {
+      content: '+ ';
+      color: green;
+      font-weight: bold;
     }
   </style>
 </head>
@@ -48,49 +56,43 @@
         </section>
 
         <section>
-          <h2>SAS</h2>
-          <p><span class="mark">S</span>ociété par <span class="mark">A</span>ction <span class="mark">S</span>implifié</p>
+          <h3>SAS</h3>
+          <p><strong>S</strong>ociété par <strong>A</strong>ction <strong>S</strong>implifié</p>
           <ul>
-            <li><strong class="good">+</strong> Statut de <del>salarié</del> associé </li>
-            <li><strong class="bad">-</strong> <del>salaire</del> Dividende</li>
-            <li><strong class="good">+</strong> Souplesses sur les régles</li>
-            <li><strong class="bad">-</strong> Pacte d'actionnaire</li>
+            <li class="good">Statut de <del>salarié</del> associé </li>
+            <li class="bad"><del>salaire</del> Dividende</li>
+            <li class="good">Souplesses sur les régles</li>
+            <li class="bad">Pacte d'actionnaire</li>
           </ul>
         </section>
 
         <section>
-          <table>
-            <tr>
-              <th>Sacha PARTENSKY</th>
-              <td>Président</td>
-            </tr>
-            <tr>
-              <th>Adrien ORION</th>
-              <td>Directeur général</td>
-            </tr>
-            <tr>
-              <th>Antoine DELETTRE</th>
-              <td>Designer Web</td>
-            </tr>
-            <tr>
-              <th>Alexandre ROUSSEAU</th>
-              <td>Directeur Technique / DPO</td>
-            </tr>
-          </table>
-        </section>
 
-        <section>
-          <p>Mon rôle</p>
+          <h3>Associés</h3>
 
           <ul>
-            <li><strong>associé</strong> décisions stratégiques de l’entreprise</li>
-            <li><strong>directeur technique</strong> choix techniques et développement</li>
-            <li><strong>DPO</strong> respect des données / mise en conformité</li>
+            <li> <strong>Sacha</strong> président <i>41.5%</i></li>
+            <li> <strong>Adrien</strong> directeur général <i>31.5%</i></li>
+            <li> <strong>Alexandre</strong> directeur Technique <i>25%</i></li>
+            <li> <strong>Antoine</strong> designer Web <i>2%</i></li>
+          </ul>
+
+        </section>
+
+
+        <section>
+          <h3>Mon rôle</h3>
+
+          <ul>
+            <li><strong>associé</strong> décisions stratégiques</li>
+            <li><strong>directeur technique</strong> choix techniques & dév.</li>
+            <li><strong>dpo</strong> mise en conformité</li>
           </ul>
         </section>
 
         <section>
-          <p>Simplifier le processus de signification</p>
+          <h3>Principe</h3>
+          <p>Simplifier le processus de <strong>signification</strong></p>
           <img src="src/img/signification_after_before.png" alt="">
         </section>
 
@@ -99,7 +101,11 @@
           <img src="src/img/workflow.png" alt="">
         </section>
 
-
+        <section>
+          <img src="src/img/workflow_money.png" alt="">
+          <p> <strong class="good">8€ / mois</strong> pours les avocats</p>
+          <p> <strong class="good">2€ / actes</strong> pours les huissiers</p>
+        </section>
 
       </section>
 
@@ -107,10 +113,125 @@
 
       <section>
 
+        <img src="src/img/stripe.svg" alt="">
         <section>
-          <img src="src/img/stripe.svg" alt="">
+          <ul>
+            <li class="good">API oufissime</li>
+            <li class="good">Gestion clients, factures, relances</li>
+            <li class="good">Protection fraude</li>
+            <li class="bad">1,4% + 0,25€ par transaction</li>
+          </ul>
         </section>
 
+        <section>
+          <img src="src/img/stripe_customers.png" alt="">
+        </section>
+
+        <section>
+          <h3>Paiement mensuel</h3>
+          <h3>Génération des factures</h3>
+        </section>
+
+      </section>
+
+      <section>
+
+        <h3>Paiement mensuel</h3>
+
+        <section>
+          <ol>
+            <li>Création d'un produit</li>
+            <li>Intégration application</li>
+            <li>Webhook</li>
+          </ol>
+        </section>
+
+
+        <section>
+          <p>Création d'un produit en Ruby</p>
+          <pre><code data-trim data-noescape class="ruby">
+            product = Stripe::Product.create(
+              name: 'Abonnement compte premium',
+              type: 'service'
+            )
+
+            Stripe::<mark>Plan</mark>.create(
+              id:       'premium-monthly'
+              interval: :month, amount:  8000,
+              currency: :eur,   product: product.id,
+            )
+          </code></pre>
+        </section>
+
+        <section>
+          <h3>Front-end</h3>
+          <p>Intégration d'un bouton</p>
+          <pre><code data-trim data-noescape class="html">
+            < script
+              src="https://checkout.stripe.com/checkout.js"
+              data-key="my_public_stripe_token"
+              data-email="<%= current_user.email %>" >
+          </code></pre>
+        </section>
+
+        <section>
+          <h3>Côté back-end</h3>
+          <p>Envoie d'une inscription à Stripe</p>
+          <pre><code data-trim data-noescape class="ruby">
+            # app/controllers/subscriptions_controller.rb
+            Stripe::Subscription.create(
+              customer: @stripe_customer_id,
+              items: [{ plan: 'premium-monthly' }]
+            ) rescue Stripe::CardError
+          </code></pre>
+        </section>
+
+        <section>
+          <h3>Webhook</h3>
+          <p>Réception du signal que de Stripe</p>
+          <pre><code data-trim data-noescape class="ruby">
+            # app/controllers/hooks_controller.rb
+            def stripe
+              if params[:type] == 'invoice.payment_succeeded'
+                # magic happen here
+              end
+            end
+          </code></pre>
+        </section>
+      </section>
+
+      <section>
+        <h2>Facturation</h2>
+        <section>
+          <ol>
+            <li><strong style="color: green">ISIGNIF</strong> Ouverture d'une <i>Invoice</i></li>
+            <li><strong style="color: green">ISIGNIF</strong> Affectation <i>InvoiceItem</i> à un <i>Customer</i></li>
+            <li><strong style="color: blue">STRIPE</strong> Conversion de l' <i>Invoice</i> en PDF</li>
+            <li><strong style="color: blue">STRIPE</strong> Collecte / Relance du <i>Customer</i> </li>
+          </ol>
+
+        </section>
+
+        <section>
+          <p>Création d'un <i>InvoiceItem</i></p>
+
+          <pre><code data-trim data-noescape class="ruby">
+            # app/services/invoice_service.rb
+            def invoice! signification
+              Stripe::InvoiceItem.create #  ...
+              @signification.update! invoiced: true
+            end
+          </code></pre>
+        </section>
+
+        <section>
+          <img src="src/img/isignif_pay_web.png">
+        </section>
+
+      </section>
+
+      <section>
+        <h2>Merci</h2>
       </section>
 
 

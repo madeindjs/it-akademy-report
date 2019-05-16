@@ -1,0 +1,137 @@
+<html>
+
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/css/reveal.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.7.0/css/theme/white.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/atom-one-light.min.css">
+  <meta charset="utf-8">
+  <style>
+    .reveal section img {
+      border: none;
+      box-shadow: none;
+    }
+    span.mark {
+      color: blue;
+    }
+    .good {
+      color: green;
+    }
+    .bad {
+      color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section>
+        <section>
+          <h1>Intégration Stripe</h1>
+        </section>
+        <section>
+          <h2>Sommaire</h2>
+          <ul>
+            <li>Présentation de iSignif</li>
+            <li>Intégration Stripe</li>
+          </ul>
+        </section>
+      </section>
+
+
+      <!-- Présentation de iSignif -->
+      <section>
+
+        <section>
+          <img src="src/img/logo.svg" height="200">
+          <p>SAS - LegalTech - 2017</p>
+        </section>
+
+        <section>
+          <h2>SAS</h2>
+          <p><span class="mark">S</span>ociété par <span class="mark">A</span>ction <span class="mark">S</span>implifié</p>
+          <ul>
+            <li><strong class="good">+</strong> Statut de <del>salarié</del> associé </li>
+            <li><strong class="bad">-</strong> <del>salaire</del> Dividende</li>
+            <li><strong class="good">+</strong> Souplesses sur les régles</li>
+            <li><strong class="bad">-</strong> Pacte d'actionnaire</li>
+          </ul>
+        </section>
+
+        <section>
+          <table>
+            <tr>
+              <th>Sacha PARTENSKY</th>
+              <td>Président</td>
+            </tr>
+            <tr>
+              <th>Adrien ORION</th>
+              <td>Directeur général</td>
+            </tr>
+            <tr>
+              <th>Antoine DELETTRE</th>
+              <td>Designer Web</td>
+            </tr>
+            <tr>
+              <th>Alexandre ROUSSEAU</th>
+              <td>Directeur Technique / DPO</td>
+            </tr>
+          </table>
+        </section>
+
+        <section>
+          <p>Mon rôle</p>
+
+          <ul>
+            <li><strong>associé</strong> décisions stratégiques de l’entreprise</li>
+            <li><strong>directeur technique</strong> choix techniques et développement</li>
+            <li><strong>DPO</strong> respect des données / mise en conformité</li>
+          </ul>
+        </section>
+
+        <section>
+          <p>Simplifier le processus de signification</p>
+          <img src="src/img/signification_after_before.png" alt="">
+        </section>
+
+        <section>
+          <p>Le Workflow de la signification</p>
+          <img src="src/img/workflow.png" alt="">
+        </section>
+
+
+
+      </section>
+
+      <!-- Présentation du projet -->
+
+      <section>
+
+        <section>
+          <img src="src/img/stripe.svg" alt="">
+        </section>
+
+      </section>
+
+
+    </div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.7.0/js/reveal.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.7.0/lib/js/head.min.js"></script>
+  <script>
+    Reveal.initialize({
+      slideNumber: true,
+      history: true,
+      // More info https://github.com/hakimel/reveal.js#dependencies
+      dependencies: [{
+        src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.7.0/plugin/highlight/highlight.min.js',
+        async: true,
+        callback: function() {
+          hljs.initHighlightingOnLoad();
+        }
+      }, ]
+    });
+  </script>
+</body>
+
+</html>

@@ -270,7 +270,7 @@ def stripe
 end
 ----
 
-=== Utilisation de l'API Stripe pour la facturation
+=== Utilisation de l'API Stripe
 
 Jusqu'ici je vous ai montré comment j'ai intégré une plateforme de paiement assez "classique". Mais Stripe ne s'arrête pas là et il propose tout un *éco-système* pour gérer les paiements. J'ai fais le choix de l'utiliser car cela me permets de me concentrer uniquement sur le business. Dans cette section je vais vous montrer comment j'ai utilisé la puissance de Stripe afin de déléguer toutes les tâches de paiement à Stripe.
 

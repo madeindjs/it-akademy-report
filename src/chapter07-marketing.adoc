@@ -3,7 +3,9 @@
 
 L'étape de marketing est très importante car elle consiste à construire une réputation pour notre produit.
 
-=== Référencement (SEO)
+// TODO
+
+=== Référencement
 
 Le SEO n'a pas été une de nos plus grande préoccupation. Notre cible principale sont les avocats que nous voulons accompagner et *fidéliser* dans l'utilisation de notre plateforme. Nous avons donc privilégié une expansion contrôlée.
 

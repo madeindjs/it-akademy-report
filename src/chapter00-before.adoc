@@ -2,7 +2,7 @@
 
 == Préface
 
-Cet document est mis à disposition par Alexandre Rousseau sous licence Creative Commons Attribution - Partage dans les Mêmes Conditions 4.0 International. Pour accéder à une copie de cette licence, merci de vous rendre à l’ http://creativecommons.org/licenses/by-sa/4.0/[adresse suivante] ou envoyez un courrier à Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA. Tout le code source de ce document (rédigé en https://asciidoctor.org/[AsciiDoctor]) est disponible sur http://git.rousseau-alexandre.fr/madeindjs/it_report[ce répertoire Git].
+Cet document est mis à disposition par Alexandre Rousseau sous licence Creative Commons Attribution - Partage dans les Mêmes Conditions 4.0 International. Pour accéder à une copie de cette licence, merci de vous rendre à l’adresse suivante (http://creativecommons.org/licenses/by-sa/4.0/) ou envoyez un courrier à Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA. Tout le code source de ce document (rédigé avec https://asciidoctor.org/[AsciiDoctor]) est disponible sur le répertoire Git suivant: http://git.rousseau-alexandre.fr/madeindjs/it_report .
 
 === Remerciements
 

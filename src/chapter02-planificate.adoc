@@ -46,7 +46,7 @@ Afin de gérer les tâche et de communiquer autour d'elles, j'ai choisit http://
 .Capture d’écran de notre tableau Kanban en septembre 2018
 image:trello.png[]
 
-=== Rédiger les spécifications techniques
+=== Les spécifications techniques
 
 Notre société étant composé d'une équipe non technique, mes associés m’ont laissé carte blanche pour le choix des technologies. Les seule contraintes étaient de respecter un développement *rapide et fiable*. Si l’on considère la représentation suivante, je devais donc me situer entre _good_ et _cheap_.
 

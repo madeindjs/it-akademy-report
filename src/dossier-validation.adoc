@@ -1,6 +1,5 @@
 = Dossier de validation
 Alexandre Rousseau <contact@rousseau-alexandre.fr>
-v0.2, 2019-05-02
 :toc:
 :toc-title: Table des matières
 :doctype: book
@@ -9,7 +8,6 @@ v0.2, 2019-05-02
 :copyright: CC-BY-SA 4.0
 :lang: fr-FR
 :author: Alexandre Rousseau
-:revdate: 2019-05-02
 
 include::chapter00-before.adoc[]
 

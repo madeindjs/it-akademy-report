@@ -1,27 +1,35 @@
 [#chapter08-conclusion]
-== Conclusion
+== Conclusion finale
 
-Le plus dur a été de gérer les retours utilisateurs rapidement. Ayant un travail à côté, il faut vraiment savoir s’organiser.
-
-Le plus gros risque dans un projet personnel d'une telle ampleur est de s'épuiser et donc de se démotiver jusqu'à abandonner le projet. J'ai donc essayer de prendre un maximum de plaisir dans les fonctionnalité que je développais, même si elle n'avaient pas une grande valeur ajoutée pour le business.
+Afin de clôturer ce mémoire, je vais dresser un bilan de mon expérience au sein d'iSignif.
 
 === Quelques chiffres
 
-=== Apports professionnels
-
-Les apports professionnels d’une telle expérience sont évidents. Au delà de mettre en avant une expérience professionnelle de plus, j'ai pu expérimenter au sein d'un projet personnel.
-
-En étant le référent technique d’un projet, j’ai eu l’occasion de choisir les technologies que je voulais utiliser. J’ai donc pu mettre en place un environnement ou je me sentais à l’aise et avec lequel je prenais du plaisir à travailler.
-
-Cela a aussi été l’occasion d'avoir des responsabilités sur un projet d'une certaine envergure.
 
 
-Ensuite, cette expérience à été pour moi l’opportunité de découvrir un autre rôle au sein d’un société.
+=== L’organisation
 
-=== Apports personnels
+Je pense que le plus gros risque dans un projet personnel d'une telle ampleur est l'*épuisement*. Cet épuisement risque de mener à une démotivation et peut mener à l'abandon du projet.
+
+Afin d'éviter cette démotivation, j'ai fait en sorte de prendre un maximum de plaisir dans les fonctionnalités que je développais. Mon but principal n'était pas de servir un business mais bien de me faire plaisir.
+
+Ma plus grande difficulté à été de gérer les retours utilisateurs rapidement à côté de mon statut de salarié chez Gac Technology. Ayant un travail à côté, il faut vraiment *savoir s’organiser*.
+
+
+=== Les apports
+
+
+Les apports professionnels d’une telle expérience sont évidents. Au delà de mettre en avant une expérience professionnelle de plus, j'ai pu expérimenter des technologies au sein d'un projet personnel. Ces expérimentation m'ont permis de mettre en place des choses dans mon travail en tant que développeur.
+
+Cela a aussi été l’occasion d'avoir des responsabilités sur un projet d'une certaine envergure qui donne un tout autre sens au métier de développeur. J'ai ainsi pris conscience qu'une fonctionnalité doit servir en terme de *business*.
+
+Personnellement iSignif m'a permis de *sortir de ma zone de confort* et de découvrir l’*entrepreneuriat* sans prendre trop de risque puisqu'il n'y avait pas d'enjeu financer.
+
+// Ensuite, cette expérience à été pour moi l’opportunité de découvrir un autre rôle au sein d’un société.
+=== Ce que j'aurais pu mieux faire
 
 === Perspectives
 
-Dans une perspective optimiste, je pense que je vais continuer de suivre le projet tout en déléguant une partie de plus en plus importante à des développeur externe et gérer uniquement les choix stratégiques de l'entreprise.
+Dans une perspective optimiste, je pense que je vais continuer de suivre le projet tout en déléguant une partie de plus en plus importante à des développeur externe. Je me concentrerai donc uniquement sur les choix stratégiques de l'entreprise.
 
-Dans une perspective pessimiste, c'est à dire le cas ou l'entreprise ne trouve pas de client, je pense que je me permettrait d'expi
+// Dans une perspective pessimiste, c'est à dire le cas ou l'entreprise ne trouve pas de client, je pense que je me permettrait d'expérimenter de nouvelles technologies et de marquer un tournant dans l'application

@@ -7,19 +7,57 @@ L'étape de marketing est très importante car elle consiste à construire une r
 
 Le SEO n'a pas été une de nos plus grande préoccupation. Notre cible principale sont les avocats que nous voulons accompagner et *fidéliser* dans l'utilisation de notre plateforme. Nous avons donc privilégié une expansion contrôlée.
 
-Bien évidement, cela ne pas ma empêché de faire le minimum recommandé par Google.
+Bien évidement, cela ne pas ma empêché de faire le minimum recommandé par Google comme utiliser des balises adaptés (comme `<article>` au lieu de `<div>`). Nous incluons aussi des attributs respectant les normes d'accessibilités.
+
+[source, html]
+.les balises images inclut des textes alternatifs pour les mal-voyants
+----
+<img alt="Le logo d'iSignif" src="isignif.png" />
+----
+
+Une bonne optimisation consiste aussi à maintenir des performances acceptables afin de garder un temps de réponse correct.
+
+J'ai donc fait des efforts au niveau de la mise en cache des images et des feuilles de style via la configuration du serveur Apache:
+
+[source, xml]
+.Configuration Apache de la mise en cache des images et des feuilles de style
+----
+<Location /assets  />
+  <IfModule mod_header.c>
+    Header append Cache-Control public
+  </IfModule>
+  <IfModule mod_expires.c>
+    ExpiresActive on
+    ExpiresDefault A3600
+  </IfModule>
+</Location>
+----
+
+On peut facilement constater cette amélioration en ouvrant l'inspecteur des requêtes HTTP avec le navigateur qui affiche la mention _cached_.
+
+.Les images sont mises en cache par le navigateur
+image:seo_cache_asset.png[]
+
+J'ai aussi mis en place une compression des fichiers textes par Apache qui permet de *réduire la bande passante*:
+
+
+[source, xml]
+.Configuration Apache de la compression des fichiers textes
+----
+<IfModule mod_deflate.c>
+  SetOutputFilter DEFLATE
+  DeflateCompressionLevel 9
+  AddOutputFilterByType DEFLATE text/html
+  AddOutputFilterByType DEFLATE text/css
+</IfModule>
+----
+
+Pour terminer j'ai le protocole HTTP2 qui apporte de nombreuses améliorations comme, entre autre, optimiser le nombre de requêtes TCP faites et réduire la taille des en-têtes des requêtes HTTP.
+
+Et voilà. Afin de valider ses éléments, j'ai utilisé l'outil PageSpeed Insights de Google qui m'a attribué un excellent résultat:
 
 .Capture d'écran du résultat du scan de l'outil PageSpeed Insights de Google
 image:speedinsight.png[]
-
-Ainsi, j'ai donc bien fait attention de:
-
-- maintenir des performances acceptables afin de garder un temps de réponse correct
-- minifier et réduire au maximum les
-
-Ces paramètre sont très important dans la note que le moteur de recherche donne au site.
-
-En revanche, nous n'avons pas effectué d'étude des mots clés auquel notre site devait être associé car, comme je le disais plus haut, cela n'était pas dans nos priorités (C'est aussi très certainement lié à mon manque appétence pour le SEO).
 
 === Utilisation de LinkedIn
 
@@ -52,7 +90,7 @@ image:mailchimp_dashboard.png[]
 
 En analysant un peu ces résultats, on se rend compte que nous sommes bien situé comparé au secteur des campagnes de mailing à destination de service professionnels:
 
-.Statistiques moyennes des campagnes d'emailing des clients de Mailchimp () comparé à iSignif (source https://mailchimp.com/resources/email-marketing-benchmarks/)
+.Statistiques moyennes des campagnes d'emailing des clients de Mailchimp comparé à iSignif (source: https://mailchimp.com/resources/email-marketing-benchmarks/)
 |===
 |Industrie | Taux d'ouverture | Click Rate
 
@@ -61,24 +99,17 @@ En analysant un peu ces résultats, on se rend compte que nous sommes bien situ�
 | 2.4%
 
 | *iSignif*
-| 27.3% (+6.5)
-| 3% (+0.6)
+| 27.3% (*+6.5*)
+| 3% (*+0.6*)
 
 |===
 
 En revanche, en terme de business, ces campagnes n'ont pas eu beaucoup de retombées puisque nous n'avons pas eu de nouvelles inscriptions sur notre plateforme.
 
-=== Embauche d'un commercial
-
-Afin d'améliorer notre activité, nous avons choisit de travailler avec un commercial à son compte. Afin d'éviter des frais de gestion de salarié, nous avons choisit de ne pas l'embaucher mais de travailler avec lui en tant que commercial à son compte.
-
-Nous avons donc décider de lui accorder certains
-
-// TODO
-
-=== Etude de la concurrence
 
 === Conclusion
+
+Avec du recul je pense que, pour notre activité, il vaut mieux privilégier une approche ciblée
 
 Le marketing est une activité indispensable lorsqu'on souhaite faire connaître notre produit.
 // TODO

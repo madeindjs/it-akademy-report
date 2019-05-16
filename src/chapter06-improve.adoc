@@ -170,18 +170,18 @@ J'ai  donc choisis de définir des rôles afin de limiter les actions possibles 
 - `admin`: peut clôturer des actes et supprimer des éléments à faible impact
 - `god` : peut tout faire
 
-J'ai ainsi choisi d'utiliser la libraire https://github.com/varvet/pundit[Pundit] qui permet la mise en place de _policies_ qui sont en quelque sorte des règles d'accès à toutes les actions définies par les contrôleurs.
+J'ai ainsi choisi d'utiliser la libraire https://github.com/varvet/pundit[Pundit] qui permet la mise en place de _policies_. Les _policies_ sont des règles d'accès aux actions définies par les contrôleurs. Voici un exemple:
 
 [source,ruby]
 .app/policies/act_family_policy.rb
 ----
 class ActFamilyPolicy < ApplicationPolicy
   def index?
-    logged? && @user.can_read_everything?
+    logged? && (@user.support? || @user.god?)
   end
 
   def show?
-    logged? && @user.can_read_everything?
+    logged? && (@user.support? || @user.god?)
   end
 
   def destroy?
@@ -191,10 +191,16 @@ class ActFamilyPolicy < ApplicationPolicy
   # ...
 ----
 
-J'ai ensuite réduis au minimum les rôles des utilisateurs de l'application. Ainsi, je sais que ceux-ci ne peuvent plus avoir de
+Cette _policie_ définis que:
+
+- seul les utilisateurs de type `support` ou `god` peuvent consulter les `ActFamily`
+- seul les utilisateurs de type `god` peuvent supprimer les `ActFamily`
+
+
+En faisant cela je m'assure de restreindre les "accès dangereux" aux utilisateur qui en on vraiment besoin.
 
 === Conclusion
 
-L'amélioration du produit est une étape importante car elle permet de *fiabiliser* le produit. Cette fiabilisation fidélise le client qui est donc rassuré par cette qualité.
+L'amélioration du produit est une étape importante car elle permet de *fiabiliser* le produit. Cette fiabilisation fidélise le client qui est rassuré par cette qualité.
 
-Si j'avais privilégié le développement d'un fonctionnalité pluôt que de mettre en place une sauvegarde automatique, nous aurions été décridibilsé
+Si j'avais omis cette étape en privilégiant le développement d'une nouvelle fonctionnalité, nous aurions été décrédibilisé lors de notre première perte des données. Je peux donc affirmer que cette étape a été une *étape clé* de iSignif.

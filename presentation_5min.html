@@ -13,6 +13,7 @@
 
     strong {color: GoldenRod ;}
     mark {background-color: GoldenRod ;}
+    del{color: lightgray}
 
     i{color: darkgray;}
 
@@ -52,31 +53,18 @@
 
         <section>
           <img src="src/img/logo.svg" height="200">
-          <p>SAS - LegalTech - 2017</p>
+          <p>SAS - LegalTech - 2017 - 4 associés</p>
         </section>
 
         <section>
           <h3>SAS</h3>
-          <p><strong>S</strong>ociété par <strong>A</strong>ction <strong>S</strong>implifié</p>
+          <p><strong>S</strong>ociété par <strong>A</strong>ctions <strong>S</strong>implifiée</p>
           <ul>
-            <li class="good">Statut de <del>salarié</del> associé </li>
-            <li class="bad"><del>salaire</del> Dividende</li>
-            <li class="good">Souplesses sur les régles</li>
-            <li class="bad">Pacte d'actionnaire</li>
+            <li class="good">statut de <del>salarié</del> associé </li>
+            <li class="bad"><del>salaire</del> dividende</li>
+            <li class="good">souplesse sur les règles</li>
+            <li class="bad">pacte d'actionnaire</li>
           </ul>
-        </section>
-
-        <section>
-
-          <h3>Associés</h3>
-
-          <ul>
-            <li> <strong>Sacha</strong> président <i>41.5%</i></li>
-            <li> <strong>Adrien</strong> directeur général <i>31.5%</i></li>
-            <li> <strong>Alexandre</strong> directeur Technique <i>25%</i></li>
-            <li> <strong>Antoine</strong> designer Web <i>2%</i></li>
-          </ul>
-
         </section>
 
 
@@ -86,7 +74,7 @@
           <ul>
             <li><strong>associé</strong> décisions stratégiques</li>
             <li><strong>directeur technique</strong> choix techniques & dév.</li>
-            <li><strong>dpo</strong> mise en conformité</li>
+            <li><strong>dpo</strong> mise en conformité RGPD</li>
           </ul>
         </section>
 
@@ -96,15 +84,11 @@
           <img src="src/img/signification_after_before.png" alt="">
         </section>
 
-        <section>
-          <p>Le Workflow de la signification</p>
-          <img src="src/img/workflow.png" alt="">
-        </section>
 
         <section>
           <img src="src/img/workflow_money.png" alt="">
-          <p> <strong class="good">8€ / mois</strong> pours les avocats</p>
-          <p> <strong class="good">2€ / actes</strong> pours les huissiers</p>
+          <p> <strong class="good">8€ / mois</strong> pour les avocats</p>
+          <p> <strong class="good">2€ / acte</strong> pour les huissiers</p>
         </section>
 
       </section>
@@ -116,7 +100,7 @@
         <img src="src/img/stripe.svg" alt="">
         <section>
           <ul>
-            <li class="good">API oufissime</li>
+            <li class="good">API très pratique</li>
             <li class="good">Gestion clients, factures, relances</li>
             <li class="good">Protection fraude</li>
             <li class="bad">1,4% + 0,25€ par transaction</li>
@@ -128,7 +112,7 @@
         </section>
 
         <section>
-          <h3>Paiement mensuel</h3>
+          <h3>Abonnement</h3>
           <h3>Génération des factures</h3>
         </section>
 
@@ -136,7 +120,7 @@
 
       <section>
 
-        <h3>Paiement mensuel</h3>
+        <h3>Abonnement</h3>
 
         <section>
           <ol>
@@ -176,7 +160,7 @@
 
         <section>
           <h3>Côté back-end</h3>
-          <p>Envoie d'une inscription à Stripe</p>
+          <p>Envoi d'une inscription à Stripe</p>
           <pre><code data-trim data-noescape class="ruby">
             # app/controllers/subscriptions_controller.rb
             Stripe::Subscription.create(

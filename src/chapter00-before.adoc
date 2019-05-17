@@ -12,13 +12,13 @@ Je remercie l'IT-Akademy pour tous les apports de leur formation. Je remercie mo
 
 === Introduction
 
-Passionné et autodidacte, mon implication personnelle m'a permis d'évoluer en tant que développeur. Issue d'une reconversion professionnelle, je suis actuellement en CDI chez Gac Technology. Gac est une _startup_ lyonnaise créée en 2010 et qui compte maintenant presque 50 salariés. Elle vend plusieurs produits en mode SAAS (_Software As A Service_) qui permettent la gestion de moyen à grands parcs automobile, téléphonique  et immobilier.
+Passionné et autodidacte, mon implication personnelle m'a permis d'évoluer en tant que développeur. Issue d'une reconversion professionnelle, je suis actuellement en CDI chez Gac Technology. Gac est une _startup_ lyonnaise créée en 2010 et qui compte maintenant presque 50 salariés. Elle vend plusieurs produits en mode SAAS (_Software As A Service_) qui permettent la gestion de parcs automobile, téléphonique  et immobilier. Gac Technology possède beaucoup de clients renommés comme Bouygues, SNCF, Véolia ou encore l'Olympique Lyonnais.
 
 image:gac.svg[logo, 200]
 
-Gac Technology possède beaucoup de clients renommés comme Bouygues, SNCF, Véolia ou encore l'Olympique Lyonnais. La base de données de Gac est donc importante. Elle constituée de plus de 200 tables dont la plus grosse contient plus de cent millions d'entrées. Cela est donc pour moi une formidable opportunité de me perfectionner sur la construction de requêtes SQL performantes et d'un code optimisé.
+ La base de données de Gac est donc importante. Elle constituée de plus de 200 tables dont la plus grosse contient plus de cent millions d'entrées. Cela est donc pour moi une formidable opportunité de me perfectionner sur la construction de requêtes SQL performantes et d'un code optimisé.
 
-A dehors de mon travail je participe aussi à quelques projets projets Open Source comme:
+A dehors de mon travail je participe aussi à quelques projets projets *Open Source* comme:
 
 - API on Rails 5, un livre que j'ai traduis et adapté à partir de _"APIs on Rails - Building REST APIs with Rails"_ qui traite des meilleurs pratiques pour construire une API en utilisant Rails
 - Crystagiri, un parseur de document HTML écrit en Crystal et suivi par plus de 100 personnes sur Github

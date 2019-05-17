@@ -1,0 +1,15 @@
+- Fondamentaux réseaux: 85%
+- JavaScript: 85%
+- PHP 1: -
+- Wordpress: -
+- Linux 1: -
+- PHP 2: 80%
+- Node.js: 65%
+- MySQL: 80%
+- SGBD: 94%
+- Gestion projet: 83%
+- Droit: 95%
+- Node.JS 2: 75%
+- PHP Security: 83%
+- PHP Qualité / Industrialisation: 100%
+- Python: 90%

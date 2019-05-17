@@ -1,11 +1,11 @@
 [#chapter08-conclusion]
-== Conclusion finale
+== Conclusion générale
 
 Afin de clôturer ce mémoire, je vais dresser un bilan de mon expérience au sein d'iSignif.
 
 === Quelques chiffres
 
-
+// TODO
 
 === L’organisation
 
@@ -26,7 +26,17 @@ Cela a aussi été l’occasion d'avoir des responsabilités sur un projet d'une
 Personnellement iSignif m'a permis de *sortir de ma zone de confort* et de découvrir l’*entrepreneuriat* sans prendre trop de risque puisqu'il n'y avait pas d'enjeu financer.
 
 // Ensuite, cette expérience à été pour moi l’opportunité de découvrir un autre rôle au sein d’un société.
-=== Ce que j'aurais pu mieux faire
+=== Critique de mon expérience
+
+Avec un peu de recul, je sais que j'ai commis quelques erreurs. Cette section a donc pour but d'être une auto-critique de mon expérience.
+
+Tout d'abord, je pense que j'ai fournie une première version trop complète. Dans l'entreprenariat, une citation connue est:
+
+> Fake it until you make it. ()
+
+Cette phrase, qui peut se traduire par "Fais semblant tant que tu ne l'as pas réalisé.". Elle s'illustre parfaitement par l'exemple de la création de la société Dropbox (fournisseur de stockage dans le cloud) qui est née suite à la création d'une vidéo promotionnelle simulée avec deux machines virtuelles. Dropbox a crée son produit une fois qu'il avait testé la validité de son idée sans développement.
+
+Ainsi j'ai pris trop de risque car nous n'avions pas confronté notre idée sur "le terrain".
 
 === Perspectives
 

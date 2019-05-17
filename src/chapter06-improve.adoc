@@ -199,6 +199,11 @@ Cette _policie_ définis que:
 
 En faisant cela je m'assure de restreindre les "accès dangereux" aux utilisateur qui en on vraiment besoin.
 
+=== Suivis des améliorations
+
+// TODO: set YAML
+
+
 === Conclusion
 
 L'amélioration du produit est une étape importante car elle permet de *fiabiliser* le produit. Cette fiabilisation fidélise le client qui est rassuré par cette qualité.

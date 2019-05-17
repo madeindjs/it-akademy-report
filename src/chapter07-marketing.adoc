@@ -1,5 +1,7 @@
 [#chapter07-marketing]
-== Marketing
+== Contextualisation du projet
+
+// TODO change title
 
 L'étape de marketing est très importante car elle consiste à construire une réputation pour notre produit.
 

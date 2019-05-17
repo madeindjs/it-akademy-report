@@ -1,11 +1,7 @@
 [#chapter07-marketing]
-== Contextualisation du projet
+== Promotion du produit
 
-// TODO change title
-
-L'étape de marketing est très importante car elle consiste à construire une réputation pour notre produit.
-
-// TODO
+Dans ce chapitre je vais évoquer comment j'ai amélioré notre référencement (malgré que ce n'étais pas nôtre priorité) et comment nous avons utilisé les réseaux sociaux afin de promouvoir notre produit. Enfin comment je terminerai par la réalisation d'une campagne de courriel et terminerai par dresser un bilan.
 
 === Référencement
 

@@ -1,7 +1,9 @@
 [#chapter05-devops]
 == Mise en production
 
-Étant dans une startup, mon travail ne s'est pas cantonné à du développement logiciel mais aussi à l'administration d'un serveur Linux. Dans cette section je vais retracer les actions que j'ai effectué afin d'installer et de sécuriser mon serveur.
+Étant dans une startup, mon travail ne s'est pas cantonné à du développement logiciel mais aussi à l'administration d'un serveur Linux. Dans ce chapitre je vais retracer certaines actions que j'ai effectué afin d'installer et de sécuriser mon serveur.
+
+Néanmoins, mon travail au seins de iSignif ne se résume pas à celle -ci car je m'occupe aussi de la maintenant de celui-ci.
 
 === Choix du serveur
 
@@ -18,49 +20,48 @@ Pour mon application j’ai choisi le VPS qui me permet d’administrer mon serv
 
 ==== Serveur
 
-OVH donne les choix entre plusieurs OS et plusieurs distributions. Mon choix s’est porté sur Ubuntu 18.04 server. Une fois le serveur mis en place, la première étape est de sécuriser dès le début l’utilisation. J’ai donc créé un utilisateur spécifique qui me servira uniquement le déploiement de l’application.
+OVH donne les choix entre plusieurs OS et plusieurs distributions. Mon choix s’est porté sur *Ubuntu 18.04 server*. Une fois le serveur mis en place, la première étape est de sécuriser dès le début l’utilisation. J’ai donc créé un utilisateur spécifique qui me servira uniquement le déploiement de l’application.
 
+Je le rajoute dans les `sudoers` (Groupes d’utilisateur possédants les droits administrateur) uniquement afin de simplifier la construction de l’environnement de production.
+
+.Création d'un utilisateur spécifique sur le serveur
 [source,bash]
 ----
 $ sudo adduser isignif
 $ passwd isignif
-----
-
-Je le rajoute dans les `sudoers` (Groupes d’utilisateur possédants les droits administrateur) uniquement afin de simplifier la construction de l’environnement de production.
-
-[source,bash]
-----
 $ sudo addgroup isignif sudo
 ----
 
-Une fois l’utilisateur crée, j’ai crée une clé SSH pour me connecter sans mot de passe et j’ai désactivé la possibilité de se connecter au compte `root` via SSH. Ainsi je limite le risque.
+Une fois l’utilisateur crée, j’ai crée une clé SSH pour me connecter sans mot de passe et j’ai désactivé la possibilité de se connecter au compte `root` via SSH. Ainsi il est est impossible de réaliser une attaque par tentative de bibliothèque de mot de passe (_bruteforce_).
 
-Ensuite commence l’installation des paquets. des ’ai donc installé en un clin d’œil tous les paquets nécessaires
+Concernant les paquets à installer, tout est déjà présent dans les repertoires officiels de Ubuntu. J'ai donc choisis d'installer:
 
-[source,bash]
-----
-$ sudo apt install -y vim apache2 nodejs git wkhtmltopdf mariadb-server libmariadb-dev
-----
+- `apache2` pour le serveur web
+- `nodejs` pour la minification des fichiers JavaScript
+- `git` pour la mise en production
+- `mariadb-server libmariadb-dev`
 
-Afin de figer ma version de Ruby, j’ai choisi d’utiliser de Ruby Version Manager (RVM) . RVM possède l’avantage de pouvoir installer exactement la version de Ruby souhaitée. Mais surtout, RVM permet de cloisonner les gem (librairies Ruby) à l’utilisateur courant et non à l’administrateur `root`. Ceci permet de réduire les risques d’escalade de droits.
+Je n'ai pas installé le paquet `ruby`. J’ai choisi d’utiliser *Ruby Version Manager* (RVM) . RVM possède l’avantage de pouvoir installer exactement la version de Ruby souhaitée. Mais surtout, RVM permet de cloisonner les gemmes (librairies Ruby) à l’utilisateur courant et non à l’administrateur `root`. Ceci permet de réduire les risques d’escalade de droits.
 
 ==== Base de donné
 
 Concernant la SGBD _(Système de Gestion de Base de Données)_, Ruby on Rails ne pose pas de contrainte particulière. J’ai donc choisi MariaDB. Une fois installé, je lance directement le script de sécurisation de l’installation:
 
+.Script de sécurisation d'un serveur MariaDB
 [source,bash]
 ----
 $ mysql_secure_installation
 ----
 
-Ce script me permet de:
+Ce script permet de:
 
 * mettre un mot de passe pour l’utilisateur `root` (Administrateur)
 * supprimer les utilisateur anonymes
 * désactiver la possibilité aux utilisateur `root` de pouvoir se connecter
 
-Toujours dans un soucis de gestion fine des droits, j’ai choisi de créer un utilisateur MariaDB spécifique à l’application:
+Toujours dans un soucis de gestion fine des droits, j’ai choisi de créer un utilisateur MariaDB spécifique à l’application. Cela permet
 
+.Création d'une base de données et d'un utilisateur spécifique
 [source,sql]
 ----
 MariaDB > CREATE DATABASE isignif DEFAULT CHARACTER set utf8   default COLLATE utf8_general_ci;
@@ -94,6 +95,7 @@ Des failles de sécurités sont découvertes tous les jours. Heureusement pour n
 
 https://github.com/rubysec/ruby-advisory-db[Ruby Advisory Database] est une base de données communautaire qui s’appuie sur ces CVE. Elle répertorie les bibliothèques Ruby vulnérables à ces CVE. Des outils existent pour vérifier automatiquement que notre application n’utilise pas un bibliothèque vulnérable: https://github.com/rubysec/bundler-audit[Bundler Audit]. Cette gemme s’utilise très facilement:
 
+.Exemple d'utilisation de Bundler Audit
 [source,bash]
 ----
 $ bundle audit
@@ -118,6 +120,7 @@ Une des information facile à obtenir pour un hacker est les port ouverts sur le
 
 NOTE: Malgré sur ce qu’on peut entendre, le scan de port est tout à fait légal car il permet simplement de récupérer des informations publiques.
 
+.Exemple d'utilisation de NMAP pour vérifier les ports ouverts
 [source,bash]
 ----
 $ sudo nmap isignif.fr -A
@@ -169,6 +172,7 @@ Auparavant, il fallait souvent payer une entreprise qui garantissait la validit�
 
 J’ai donc pu l’installer très facilement avec https://certbot.eff.org/[Certbot], un outil qui génère le certificat pour nous et s’occupe même de mettre la configuration Apache à jour.
 
+.Instalation d'un nouveau certificat HTTP pour Apache
 [source,bash]
 ----
 $ sudo certbot --apache

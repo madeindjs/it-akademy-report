@@ -106,7 +106,7 @@ image:merise_bailiffs.png[merise_bailiffs, 500]
 
 J'ai ensuite crée une nouvelle entité `Act` qui représente un acte qui doit être signifié par un huissier. Cet acte possède un avocat qui fait la demande de signification et un huissier qui doit le signifier. J’ai donc obtenu le résultat final que l’on peut voir sur la suivante.
 
-.ébauche de la première version du diagramme Merise réalisé avec jMerise en mai 2018
+.Ébauche de la première version du diagramme Merise réalisé avec jMerise en mai 2018
 image:merise_zoom.png[merise_zoom]
 
 ==== Conclusion

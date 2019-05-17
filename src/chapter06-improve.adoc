@@ -1,7 +1,7 @@
 [#chapter06-improve]
 == Pérennisation de l’application
 
-Il est capital de maintenir une certaine qualité de nos services. Ainsi
+Il est capital de maintenir une certaine qualité de nos services. Ainsi dans ce chapitre je vais évoquer les actions que j'ai effectué afin de mettre l'action en conformités avec les lois autour de la régulation des données. Je vais aussi parler de certaines actions que nous avons mené afin d'améliorer notre application.
 
 === RGPD
 
@@ -201,7 +201,16 @@ En faisant cela je m'assure de restreindre les "accès dangereux" aux utilisateu
 
 === Suivis des améliorations
 
-// TODO: set YAML
+Afin de suivre les amélioration des fonctionnalités, je met à jour un fichier YAML qui note pour chaque version:
+
+- la date de mise en production
+- les nouveautés
+- les corrections
+
+Ce fichier, versionné avec le code source de l'application, permet à mes associé de savoir en temps réel et de communiquer autour des modifications faite sur l'application.
+
+.Capture d'écran des notes de version sur isignif.fr
+image:changelog.png[]
 
 
 === Conclusion
@@ -209,3 +218,5 @@ En faisant cela je m'assure de restreindre les "accès dangereux" aux utilisateu
 L'amélioration du produit est une étape importante car elle permet de *fiabiliser* le produit. Cette fiabilisation fidélise le client qui est rassuré par cette qualité.
 
 Si j'avais omis cette étape en privilégiant le développement d'une nouvelle fonctionnalité, nous aurions été décrédibilisé lors de notre première perte des données. Je peux donc affirmer que cette étape a été une *étape clé* de iSignif.
+
+Je regrette simplement de ne pas avoir mis en place un serveur d'intégration continue qui lance les test unitaires et scanne le code. En effet, cette étape est faite manuellement et, comme je l'ai expliqué plus haut, une action manuelle laisse place à l'erreur.

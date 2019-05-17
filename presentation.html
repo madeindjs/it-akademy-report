@@ -10,6 +10,23 @@
       border: none;
       box-shadow: none;
     }
+    strong {color: GoldenRod ;}
+    mark {background-color: GoldenRod ;}
+    del{color: lightgray}
+
+    i{color: darkgray;}
+
+    .reveal ul { list-style-type: none; margin-left: 0;}
+    .reveal ul li.bad:before {
+      content: '- ';
+      color: red;
+      font-weight: bold;
+    }
+    .reveal ul li.good:before {
+      content: '+ ';
+      color: green;
+      font-weight: bold;
+    }
   </style>
 </head>
 
@@ -37,21 +54,20 @@
         <section>
           <h2>A propos de moi</h2>
           <p><a href="http://rousseau-alexandre.fr">rousseau-alexandre.fr</a></p>
-          <p>Développeur passionné autodidacte</p>
-          <p>Travaille actuellement chez <a href="https://www.gac-technology.com/">Gac Technology</a></p>
+          <p>Développeur <strong>passionné</strong> autodidacte. Travaille actuellement chez <a href="https://www.gac-technology.com/">Gac Technology</a></p>
         </section>
 
         <section>
           <p>A côté:</p>
           <ul>
-            <li>Associé chez <a href="https://isignif.fr/">iSignif SAS</a></li>
-            <li>Professeur particulier chez <a href="https://www.superprof.fr/developpeur-web-experimente-rails-lyon-debutant-perfectionner.html">Superprof</a></li>
-            <li>Auteur du livre <a href="https://github.com/madeindjs/api_on_rails">API on Rails 5</a> publié sur <a href="https://leanpub.com/apionrails5">LeanPub</a> <small>(traduit en russe et vendu en +10 exemplaires!)</small></li>
+            <li><strong>Associé</strong> chez <a href="https://isignif.fr/">iSignif SAS</a></li>
+            <li><strong>Professeur particulier</strong> Ruby chez <a href="https://www.superprof.fr/developpeur-web-experimente-rails-lyon-debutant-perfectionner.html">Superprof</a></li>
+            <li><strong>Auteur</strong>  du livre <a href="https://github.com/madeindjs/api_on_rails">API on Rails 5</a> publié sur <a href="https://leanpub.com/apionrails5">LeanPub</a> <small>(traduit en russe et vendu en +10 exemplaires!)</small></li>
           </ul>
+          <small>et d'autres choses sur <a href="https://github.com/madeindjs">github.com/madeindjs</a> et <a href="https://rubygems.org/profiles/madeindjs">rubygems.org</a></small>
         </section>
 
         <section>
-          <p>et d'autres choses sur <a href="https://github.com/madeindjs">github.com/madeindjs</a> et <a href="https://rubygems.org/profiles/madeindjs">rubygems.org</a></p>
         </section>
 
       </section>
@@ -60,54 +76,55 @@
       <section>
 
         <section>
-          <h2>Présentation de iSignif</h2>
           <img src="src/img/logo.svg" height="200">
-          <p>SAS créée en décembre 2017</p>
+          <p>SAS - LegalTech - 2017 - 4 associés</p>
         </section>
 
         <section>
-          <table>
-            <tr>
-              <th>Sacha PARTENSKY</th>
-              <td>Président</td>
-            </tr>
-            <tr>
-              <th>Adrien ORION</th>
-              <td>Directeur général</td>
-            </tr>
-            <tr>
-              <th>Antoine DELETTRE</th>
-              <td>Designer Web</td>
-            </tr>
-            <tr>
-              <th>Alexandre ROUSSEAU</th>
-              <td>Directeur Technique / DPO</td>
-            </tr>
-          </table>
+          <h3>SAS</h3>
+          <p><strong>S</strong>ociété par <strong>A</strong>ctions <strong>S</strong>implifiée</p>
+          <ul>
+            <li class="good">statut de <del>salarié</del> associé </li>
+            <li class="bad"><del>salaire</del> dividende</li>
+            <li class="good">souplesse sur les règles</li>
+            <li class="bad">pacte d'actionnaire</li>
+          </ul>
         </section>
 
         <section>
-          <p>Simplifier le processus de signification</p>
+          <h3>Associés</h3>
+          <ul>
+            <li> <strong>Sacha</strong> président <i>41.5%</i></li>
+            <li> <strong>Adrien</strong> directeur général <i>31.5%</i></li>
+            <li> <strong>Alexandre</strong> directeur Technique <i>25%</i></li>
+            <li> <strong>Antoine</strong> designer Web <i>2%</i></li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Mon rôle</h3>
+          <ul>
+            <li><strong>associé</strong> décisions stratégiques</li>
+            <li><strong>directeur technique</strong> choix techniques & dév.</li>
+            <li><strong>dpo</strong> mise en conformité RGPD</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Principe</h3>
+          <p>Simplifier le processus de <strong>signification</strong></p>
           <img src="src/img/signification_after_before.png" alt="">
         </section>
 
         <section>
-          <p>Le Workflow de la signification</p>
-          <img src="src/img/workflow.png" alt="">
+          <img src="src/img/workflow_money.png" alt="">
+          <p> <strong class="good">8€ / mois</strong> pour les avocats</p>
+          <p> <strong class="good">2€ / acte</strong> pour les huissiers</p>
         </section>
 
 
-
-      </section>
-
-      <!-- Présentation du projet -->
-      <section>
-
         <section>
-          <img src="src/img/good_cheap_fast.png">
-        </section>
-
-        <section>
+          <h2>Stack</h2>
           <img src="src/img/mariadb.svg" alt="" height="200">
           <img src="src/img/ubuntu.svg" alt="" height="200">
           <img src="src/img/rails.svg" alt="" height="200">
@@ -115,6 +132,113 @@
         </section>
 
       </section>
+
+
+      <section>
+
+        <section>
+          <h2>Développement</h2>
+          <ul>
+            <li>Intégration Stripe</li>
+          </ul>
+        </section>
+
+
+        <section>
+          <img src="src/img/stripe.svg" alt="">
+          <ul>
+            <li class="good">API très pratique</li>
+            <li class="good">Gestion clients, factures, relances</li>
+            <li class="bad">1,4% + 0,25€ par transaction</li>
+          </ul>
+          <img src="src/img/stripe_customers.png" alt="">
+        </section>
+
+
+
+        <section>
+          <h3>Stripe - Abonnement</h3>
+          <ol>
+            <li>Création d'un produit</li>
+            <li>Intégration application</li>
+            <li>Webhook</li>
+          </ol>
+        </section>
+
+
+        <section>
+          <p>Création d'un produit en Ruby</p>
+          <pre><code data-trim data-noescape class="ruby">
+            # send API request to create product
+            product = Stripe::Product.create(
+              name: 'Abonnement compte premium',
+              type: 'service'
+            )
+            # send API request to create plan
+            Stripe::Plan.create(
+              id:       'premium-monthly'
+              interval: :month, amount:  8000,
+              currency: :eur,   product: product.id,
+            )
+          </code></pre>
+        </section>
+
+        <section>
+          <p><strong>Front</strong>, intégration d'un bouton</p>
+          <pre><code data-trim data-noescape class="html">
+            < script
+              src="https://checkout.stripe.com/checkout.js"
+              data-key="my_public_stripe_token"  >
+          </code></pre>
+
+
+          <p><strong>Back</strong>, communication avec Stripe Stripe</p>
+          <pre><code data-trim data-noescape class="ruby">
+            # subscriptions_controller.rb
+            def create
+              Stripe::Subscription.create(
+                # ...
+              ) rescue Stripe::CardError
+            end
+
+            # hooks_controller.rb
+            def stripe
+              if params[:type] == 'invoice.payment_succeeded'
+                # ...
+              end
+            end
+          </code></pre>
+        </section>
+
+        <section>
+          <h3>Facturation</h3>
+          <ol>
+            <li><strong style="color: green">ISIGNIF</strong> Ouverture d'une <i>Invoice</i></li>
+            <li><strong style="color: green">ISIGNIF</strong> Affectation <i>InvoiceItem</i> à un <i>Customer</i></li>
+            <li><strong style="color: blue">STRIPE</strong> Conversion de l' <i>Invoice</i> en PDF</li>
+            <li><strong style="color: blue">STRIPE</strong> Collecte / Relance du <i>Customer</i> </li>
+          </ol>
+
+        </section>
+
+        <section>
+          <p>Création d'un <i>InvoiceItem</i></p>
+
+          <pre><code data-trim data-noescape class="ruby">
+            # app/services/invoice_service.rb
+            def invoice! signification
+              Stripe::InvoiceItem.create #  ...
+              @signification.update! invoiced: true
+            end
+          </code></pre>
+        </section>
+
+        <section>
+          <img src="src/img/isignif_pay_web.png">
+        </section>
+
+      </section>
+
 
       <!-- Planification -->
       <section>
@@ -250,15 +374,6 @@
             <li>mutation testing avec <a href="https://github.com/mbj/mutant">Mutant</a></li>
           </ul>
         </section>
-      </section>
-
-      <section>
-        <h2>Intégration de Stripe</h2>
-
-        <section>
-          <img src="src/img/stripe.svg" alt="">
-        </section>
-
       </section>
 
 

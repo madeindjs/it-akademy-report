@@ -1,17 +1,15 @@
 [#chapter02-planificate.adoc]
 == Planifier la réalisation du projet
 
-La planification est une étape importante car elle permet de tracer l'évolution du produit. En temps que développeur principal, elle est indispensable afin de voir sont propre avancement ans un projet d'une grande envergure. C'est est très important car cela m'a permit de ne pas me décourager dans un projet d'une telle envergure.
+La planification est une étape importante car elle permet de tracer l'évolution du produit. En temps que développeur principal, elle est indispensable afin de voir sont propre avancement ans un projet d'une grande envergure. Cela permet de garder le cap et de ne pas me décourager dans un projet d'une telle envergure.
 
 === Réunions d’avancements
 
-Les réunions d’avancements ont lieu *physiquement*. Elles ne sont pas périodiquement fixées, nous en organisons à la demande, lorsqu’un des associé en ressent le besoin. Nous en faisons donc une par mois environ qui dure une heure ou deux. Afin d’être plus efficace, nous définissons un but à l’avance. Le principe est donc de *valider certaines étapes* du développement du produit et de communiquer autour de l’avancée de la société.
+Afin de *valider certaines étapes* du développement du produit, nous organisons des *réunions d'avancement*. Elles nous permettent aussi de communiquer autour de l’avancée de la société.
 
-// Voici donc quelques réunions clés qui se sont déroulées au cours de l’élaboration de notre produit.
+Ces réunions d’avancements ont lieu *physiquement*. Elles ne sont pas périodiquement fixées, nous en organisons à la demande, lorsqu’un des associé en ressent le besoin. Nous en faisons donc une par mois environ qui dure une heure ou deux. Afin d’être plus efficace, nous définissons un but à l’avance.
 
-Par exemple, nous avons fait une réunion en mai 2018 afin de valider mon avancement sur l'application. A ce moment là, j’avais travaillé en total autonomie sur l’élaboration d’une *première ébauche* fonctionnelle. J’ai donc effectué une démonstration.
-
-// Par exemple, nous avons fait une réunion en mai 2018 afin de valider mon avancement sur l'application. A ce moment là, j’avais travaillé en total autonomie sur l’élaboration d’une *première ébauche* fonctionnelle. Cette étape était réellement importante car je devais savoir que cette première ébauche correspondait aux attentes des deux cofondateurs. J’ai donc effectué une démonstration. Cela a permis de renforcer la confiance que mes associés m’avaient alors accordé mais aussi de collecter des premières critiques.
+Par exemple, nous avons fait une réunion en mai 2018 afin de valider mon avancement sur l'application. A ce moment là, j’avais travaillé en total autonomie sur l’élaboration d’une *première ébauche* fonctionnelle. J’ai donc effectué une démonstration. Cette réunion a permis de *renforcer la confiance* que mes associés m’avaient alors accordé mais aussi de collecter des premières critiques.
 
 Début juin 2018, nous avons signé le *pacte des associés*. Deux spécialistes de  https://www.beelys.org/[Beelys], incubateur lyonnais, étaient présent afin de nous apporter des renseignement sur le fonctionnement des levées de fond. A la suite de cette réunion, nous avons fait le choix de *ne pas faire de levée de fond* car elle s’accorde d’une vente de part de l’entreprise.
 
@@ -23,10 +21,12 @@ Début juin 2018, nous avons signé le *pacte des associés*. Deux spécialistes
 //
 // Le lancement c'est fait en mars 2019. Ce retard s'explique par l'**intégration de Stripe** (que j'évoquerai plus loin dans ce mémoire). Nous avons donc limité ce lancements uniquement aux huissiers. Nous avons donc effectué 67 significations et généré presque 70 euros.
 
-Nous avons aussi fait quelques réunions afin de faire des *rétrospectives* de ce qui avait bien et moins bien fonctionné dans le mois en cours. Cela nous permet d'avoir un regard critique sur le mode de fonctionnement de iSignif et de se remettre en question facilement.
+
 
 
 === Méthode Kanban
+
+J'ai choisit d'appliquer la méthode Kanban au sein de notre organisation.
 
 La méthode Kanban est méthode très utilisée dans le monde informatique. Cela permet de mettre en place une gestion du projet sous forme de tickets, de visualiser le flux de travail et de prioriser les tâches. Cette méthode nous était indispensable car elle permet de voir l’avancement du projet en évitant d'innombrables réunions.
 
@@ -34,7 +34,7 @@ Dans un premier temps je n’ai pas choisi de d’utiliser la méthode AGILE et 
 
 // ==== Découpage des tâches
 
-Nous avons donc fait une réunion pour découper toutes les tâches à réaliser. Une tâche est quelque chose d'*indivisible* et réalisable rapidement. Nous avons sélectionné celles nécessaires pour la bêta. C’est à dire celles:
+Nous avons donc découpé toutes les tâches à réaliser. Une tâche est quelque chose d'*indivisible* et réalisable rapidement. Nous avons sélectionné celles nécessaires pour la bêta. C’est à dire celles:
 
 * indispensable au _workflow_ du client
 * à forte valeur ajoutée en terme de marketing
@@ -46,6 +46,19 @@ Afin de gérer les tâche et de communiquer autour d'elles, j'ai choisit http://
 .Capture d’écran de notre tableau Kanban en septembre 2018
 image:trello.png[]
 
+Comme on peut le voir sur la capture d'écran précédente, j'utilise les colonnes suivantes:
+
+* _à faire_, qui retrace les tickets en attente de traitement
+* _en cours_, cela nous permet de savoir qui travail sur quoi
+* _terminé (non publié)_ permet de savoir ce qui va être publié lors de la prochaine mise en production
+* _terminé_, permet de voir ce qui a été fait
+* _idée_, ce qui sera discuté lors de la prochaine réunion
+* _pas urgent_, ce qui pourra éventuellement dans la colonne _à faire_
+
+La colonne _terminé_ nous permet aussi de faire des *rétrospectives*. Ainsi, nous discutons de ce qui a bien et moins bien fonctionné. Nous avons donc un regard critique sur le mode de fonctionnement de iSignif et on peut se remettre en question facilement. Une fois la rétrospective faite, nous archivons les tâches et vidons la colonne _terminé_.
+
+NOTE: Avec du recul je pense que la colonne _pas urgent_ n'est pas pertinente. car, par définition, ce qui n'est pas urgent n'est pas à faire.
+
 === Les spécifications techniques
 
 Notre société étant composé d'une équipe non technique, mes associés m’ont laissé carte blanche pour le choix des technologies. Les seule contraintes étaient de respecter un développement *rapide et fiable*. Si l’on considère la représentation suivante, je devais donc me situer entre _good_ et _cheap_.
@@ -56,13 +69,29 @@ image:good_cheap_fast.png[good_cheap_fast, 300]
 
 ==== Back-end
 
+image:rails.png[rails, 100]
+image:mariadb.svg[mariadb, 100]
+
 Étant donné que j’étais le seul à développer le back-end du produit, mon objectif était de choisir un framework ou j’étais vraiment à l’aise. Mon choix c’est posé sur https://rubyonrails.org/[Ruby on Rails], un framework web écrit en https://www.ruby-lang.org/[Ruby]. Très utilisé dans le monde des startup mais aussi par de grands noms comme https://github.com/[Github], https://twitter.com/[Twitter], https://airbnb.com/[Airbnb] et https://soundcloud.com/[Soundcloud]. Sa grande force est une grande communauté et une très bonne maturité. Par son mantra __"Convetion over configuration"__ ("Suivez les convention au lieu de configurer"), il permet un développement extrêmement rapide.
 
+J'ai choisis de coupler Ruby on Rails au gestionnaire de base de données *MariaDB* puisque c'est l'un des plus utilisé et il est très robuste.
+
 ==== Front-end
+
+image:vuejs.svg[vuejs, 100]
+image:js.svg[js, 100]
+image:bootstrap.png[bootstrap, 100]
+image:sass.png[sass, 100]
+
+Concernant le front-end, j'ai utilisé les technologies du Web telles que le HTML / CSS / JavaScript.
 
 Les nouvelles applications utilisent des interface utilisateurs de plus en plus réactive. La tendance étant aux _Single Page Application_ (Application sur une page), j’ai choisis de rester plus simple dans un premier temps.
 
 J’ai néanmoins mis en place _Vue.JS_ (une librairie JavaScript) pour certaines pages qui demandent plus d’interactions. J’ai choisis Vue.JS au détriment de React ou Angular car c’est le plus simple à mettre en place pour des applications non orienté API.
+
+Comme framework CSS, j'ai choisi d'utiliser le standard: Twitter Bootsrtap. Il permet de faire des pages _responsives_, c'est à dire des pages qui s'adaptent très bien sur des écrans plus petit telle qu'on le vois sur mobile.
+
+Pour terminer, afin d'organiser un mieux mon code CSS, j'ai utilisé le transpilateur SASS qui est proposé par défaut avec Ruby on Rails.
 
 
 [#gitflow]
@@ -87,8 +116,6 @@ De plus, je renseigne chaque _feature_ dans une fichier de mis a jour publié au
 
 === Conclusion
 
-Avec du recul, j'aurais peut être fais les choses différemment. Tout d'abord, je pense que j'aurais du réduire le périmètre de fonctionnalités nécessaire pour la béta. J'ai donc du fournir une quantité de travail conséquente avant de voir le lancement du produit. C'est un risque que j'ai pris puisqu'on n'est jamais sûr que nôtre produit allais séduire des clients.
-
-J'ai aussi commis l'erreur de ne pas avoir choisi une architecture API. Il s’est avéré par la suite qu’un éditeur de progiciel était intéressé pour connecter notre produit à leur solution déjà implanté dans le milieu du droit. De plus, le besoin s’est fait sentir de rendre notre application de plus en plus _Single Page_. On aurait ainsi pu découpler notre application en une partie _back_ et _front_.
+Avec du recul, je sais que j'ai aussi commis l'erreur de ne pas avoir choisi une architecture API. Il s’est avéré par la suite qu’un éditeur de progiciel était intéressé pour connecter notre produit à leur solution déjà implanté dans le milieu du droit. De plus, le besoin s’est fait sentir de rendre notre application de plus en plus _Single Page_. On aurait ainsi pu découpler notre application en une partie _back_ et _front_.
 
 Malgré ces erreurs, notre méthodologie c'est révélé très efficace. Elle nous a permis de communiquer et de tester nos évolutions. Notre méthodologie n'a d’ailleurs pas beaucoup évolué dans le temps.

@@ -15,29 +15,33 @@ J’ai donc choisis de mettre en avant cette expérience dans mon dossier de val
 4. la collecte des retours utilisateurs
 5. la promotion du produit
 
-J'aborderai ainsi ma problématique: Comment gérer un projet de tel envergure à coté d'une vie professionnel, personnelle et étudiante?
+J'aborderai ainsi ma problématique:
 
-=== La société
+*Comment gérer un projet de tel envergure à coté d'une vie professionnel, personnelle et étudiante?*
+
+=== Le projet
+
+==== La société
 
 Comme je le disait plus haut, j'ai participé à la création d'une entreprise avec les deux cofondateurs: Adrien ORION et Sacha PARTENSKY (étudiants en droit à l’université Lyon 3 Jean Moulin).
 
-Lorsque j'ai rejoins la société (j'en parlerai plus tard), la société était déjà créée sous la formation d'une *société par actions simplifiées*. L' avantage principal de ce statut juridique est la grande liberté sur les règles définies dans le *pacte d’actionnaires*. L’inconvénient qui en découle est qu’il est plus difficile à mettre en place car il nécessite justement la rédaction d'un pacte d’actionnaire complet. Dans notre cas, ce statut est parfait puisque mes associés ont les compétences pour le rédiger.
+Lorsque j'ai rejoins la société (j'en parlerai plus tard), la société était déjà créée sous la formation d'une *société par actions simplifiées*. L' avantage principal de ce statut juridique est la *grande liberté* sur les règles définies dans le *pacte d’actionnaires*. L’inconvénient qui en découle est qu’il est plus difficile à mettre en place car il nécessite justement la *rédaction* d'un pacte d’actionnaire complet. Dans notre cas, ce statut est parfait puisque mes associés ont les compétences pour le rédiger.
 
 .Le logo d’iSignif
 image:logo.png[logo, 300]
 
 Lors de notre rencontre, Sacha et Adrien m’ont présenté leur idée. Séduis par l'idée, j’ai accepté de devenir associé et j’ai ainsi signé un *nouveau* pacte d’actionnaires. Nous redéfinissions ainsi les parts et les rôles des nouveaux associés:
 
-* Adrien ORION, cofondateur et directeur général, associé à hauteur de 31,5%
-* Sacha PARTENSKY, cofondateur et Président à hauteur de 41,5%
-* Alexandre ROUSSEAU, associé et directeur technique, associé à hauteur de 25%
-* Antoinne DELETTRE, associé et designer web, associé à hauteur de 2%
+* Adrien ORION: cofondateur, directeur général et associé
+* Sacha PARTENSKY: cofondateur, président et associé
+* Alexandre ROUSSEAU: directeur technique et associé
+* Antoinne DELETTRE: designer web et associé
 
 // J’ai choisi un rôle d'associé car c’est compatible avec mon statut de salarié chez GAC Technology.
 
 En échange de cette part dans la société, j'étais donc en charge de livrer un produit fonctionnel.
 
-=== Le projet
+==== Le besoin
 
 L'idée du projet est simplifier le *processus de signification*.
 
@@ -55,13 +59,15 @@ NOTE: La brochure commerciale est disponible dans les annexes.
 
 La grande problématique de notre activité est que la loi *interdit* toute forme de *publicité* a destination des huissiers. En se plaçant comme *apporteur d'affaires* nous sommes donc dans l’illégalité. Il est donc important de ne pas favoriser certains huissier plutôt que d’autres. Nous avons donc choisit un système qui répartit par ordre d’arrivée les demande de significations équitablement (_First-in, First-out_).
 
-Notre modèle économique réside sur l’idée de facturer les huissiers en fonction du nombre d’affaire qu’on leur apporte. Pour faire cela, nous avons eu plusieurs idées:
+Notre modèle économique réside sur l’idée de facturer les huissiers en fonction du nombre d’affaire qu’on leur apporte et aussi de facturer les avocats. Pour faire cela, nous avons eu plusieurs idées:
 
-* prendre une facturation mensuelle d’une somme fixée par nombre d’affaire apportés
-* demander un abonnement qui donne le droit d’accéder au réseau
+* facturer mensuellement les huissiers en fonction du nombre d’affaire apportées
+* demander un abonnement aux avocats qui donne le droit d’accéder au réseau
 * proposer un système de afin que les huissier pré-paye un nombre d’affaire qu’on va leur apporter
 
-Dans un premier temps, nous avons choisis d’utiliser le système de facturation mensuel. Je vous reparlerais de l’impact que cela a eu plus loin.
+Dans un premier temps, nous avons choisis d’utiliser le système de facturation mensuel pour les avocats et de facturer mensuellement les huissiers en fonction du nombre d’affaire apportées.
+
+NOTE: Je vous reparlerais de l’impact que cela a eu plus loin.
 
 === Réalisation du cahier des charges
 
@@ -69,17 +75,17 @@ Les principales contraintes de notre plateforme sont que les demandes doivent ê
 
 Nous avons donc rédigé un premier cahier des charges qui correspond à la version bêta qui sera proposée aux bêta testeurs. Cette version doit être fonctionnelle. Voici donc quelques unes de ces fonctionnalités:
 
-* *Estimation du coût d’un acte*: afin de pouvoir avoir une estimation du coût d’un acte. Étant le point d’entrée de l’application, cette page doit être le plus ergonomique possible.
-* *Gestion fine des permissions* en interdisant certaines fonctionnalités en fonction du rôle de l'utilisateur connecté.
+* *Estimation du coût d’un acte*: Permet un devis en un seul et unique formulaire.
+* *Gestion fine des permissions*: Restriction de certaines fonctionnalités en fonction du rôle de l'utilisateur connecté.
 * *__Workflow__ de la signification*: Nous devons garder une trace de toutes les étapes de signification afin de pouvoir dresser un historique. Chaque étapes possède une action spécifique qui permet de passer à celle d'après
 * *__Workflow__ d’annulation*: L'annulation d'acte doit être demandé par le correspondant et accepté par l'huissier sous certaines conditions.
 * *Création des factures*: sachant que notre produit possède un coût faible (environs deux euros), nous devons dresser des facture mensuelles qui regroupe plusieurs produits
 
 === Conceptualiser et modéliser les données
 
-Lors de la rencontre avec les cofondateurs, nous avions échangé à propos des fonctionnalités de l’application. A la fin de la réunion, ils m’ont remis plusieurs documents dont une ébauche de cahier des charges. A mon sens, la suite logique était de valider la conception d’un modèle de donnée. Ceci permet de valider la compréhension de logique métier et la faisabilité du projet. De plus, cette étape m’a permis d’*estimer le coût du projet* en terme de temps.
+Lors de la rencontre avec les cofondateurs, nous avions échangé à propos des fonctionnalités de l’application. A la fin de la réunion, ils m’ont remis plusieurs documents dont une ébauche de cahier des charges. A mon sens, la suite logique était de *valider la conception d’un modèle de donnée*. Ceci permet de valider ma compréhension de la logique métier et aussi de vérifier la faisabilité du projet. De plus, cette étape m’a permis de *quantifier* le coût du projet en terme de temps.
 
-J’ai donc choisi la *méthode Merise* que j’ai eu l’occasion de découvrir en cours à l’IT-Akademy. Bien que moins actuelle elle permet de réaliser un graphique compréhensible par des profils non-techniques.
+J’ai donc choisi la *méthode Merise* que j’ai eu l’occasion de découvrir en cours à l’IT-Akademy. Bien que moins actuelle, elle permet de réaliser un graphique compréhensible par des profils non-techniques.
 
 ==== Modélisation des utilisateurs
 
@@ -95,7 +101,7 @@ image:merise_users.png[merise_users, 400]
 
 Dans une base de données relationnelles, cela se matérialisera par une https://en.wikipedia.org/wiki/Single_Table_Inheritance[Single Table Inheritance]. C’est-à-dire qu’une table contiendra les deux types de données et qu’une colonne spécifiera le type d’utilisateur (`Bailiff` ou `Advocate`). Ce modèle d’héritage en architecture de base de données est assez controversé mais il convient bien à mon cas car les deux entités sont identiques.
 
-// ===== Les huissiers
+===== Les huissiers
 
 Contrairement à l’avocat, l’huissier a une relation supplémentaire avec une zone de compétence. Cette zone de compétence contient plusieurs villes matérialisées sous l’entité `zip_code`. Nous arrivons donc au résultat présenté sur la figure suivant:
 
@@ -111,6 +117,8 @@ image:merise_zoom.png[merise_zoom]
 
 ==== Conclusion
 
-Avec du recul, il s’est avéré que mon premier schéma était plutôt correcte. Nous avons simplement changé le schéma en cours de routes car nous nous sommes rendu compte qu'un acte pouvait être signifié sur plusieurs villes et donc par plusieurs huissiers.
+Il s’est avéré que mon premier schéma était plutôt correcte. Nous avons simplement changé le schéma en cours de routes car nous nous sommes rendu compte qu'un acte pouvait être signifié sur plusieurs villes et donc par plusieurs huissiers.
 
-Il est impossible d'estimer le temps que cette étape m'a fait gagner mais je peut affirmer quelle a été vraiment bénéfique au projet. Au delà du gain en terme de temps, cela m'a aussi permit de poser des bases saines lors de l'élaboration du produit.
+Il est impossible d'estimer le temps que cette étape m'a fait gagner mais je peut affirmer quelle a été *vraiment bénéfique* au projet. Au delà du gain en terme de temps, cela m'a aussi permit de poser des bases saines lors de l'élaboration du produit.
+
+Cependant, avec du recul, je pense que j'aurais du réduire le périmètre de fonctionnalités nécessaire pour la béta. J'ai donc du fournir une quantité de travail conséquente avant de voir le lancement du produit. C'est un risque que j'ai pris puisqu'on n'est jamais sûr que nôtre produit allais séduire des clients.

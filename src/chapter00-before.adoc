@@ -16,7 +16,7 @@ Passionné et autodidacte, mon implication personnelle m'a permis d'évoluer en 
 
 image:gac.svg[logo, 200]
 
- La base de données de Gac est donc importante. Elle constituée de plus de 200 tables dont la plus grosse contient plus de cent millions d'entrées. Cela est donc pour moi une formidable opportunité de me perfectionner sur la construction de requêtes SQL performantes et d'un code optimisé.
+La base de données de Gac est donc importante. Elle constituée de plus de 200 tables dont la plus grosse contient plus de cent millions d'entrées. Cela est donc pour moi une formidable opportunité de me perfectionner sur la construction de requêtes SQL performantes et d'un code optimisé.
 
 A dehors de mon travail je participe aussi à quelques projets projets *Open Source* comme:
 

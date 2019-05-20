@@ -7,6 +7,7 @@ MASTER_FILE = File.join __dir__, 'src', 'dossier-validation.adoc'
 OUTPUT_DIR = File.join __dir__, 'build'
 ANNEXES_DIR = File.join __dir__, 'annexes'
 THEMES_DIR = File.join __dir__, 'themes'
+FONTS_DIR = File.join __dir__, 'fonts'
 
 namespace :build do
   desc 'Build a PDF version'
@@ -18,7 +19,8 @@ namespace :build do
                              mkdirs: true,
                              attributes: {
                                'pdf-stylesdir' => THEMES_DIR,
-                               'pdf-style' => 'my'
+                               'pdf-style' => 'my',
+                               'pdf-fontsdir' => FONTS_DIR,
                              }
      pdf = CombinePDF.load File.join(OUTPUT_DIR, 'dossier-validation.pdf')
 

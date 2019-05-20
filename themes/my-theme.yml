@@ -1,26 +1,11 @@
 font:
   catalog:
-    # Noto Serif supports Latin, Latin-1 Supplement, Latin Extended-A, Greek, Cyrillic, Vietnamese & an assortment of symbols
-    Noto Serif:
-      normal: notoserif-regular-subset.ttf
-      bold: notoserif-bold-subset.ttf
-      italic: notoserif-italic-subset.ttf
-      bold_italic: notoserif-bold_italic-subset.ttf
-    # M+ 1mn supports ASCII and the circled numbers used for conums
-    M+ 1mn:
-      normal: mplus1mn-regular-ascii-conums.ttf
-      bold: mplus1mn-bold-ascii.ttf
-      italic: mplus1mn-italic-ascii.ttf
-      bold_italic: mplus1mn-bold_italic-ascii.ttf
-    # M+ 1p supports Latin, Latin-1 Supplement, Latin Extended, Greek, Cyrillic, Vietnamese, Japanese & an assortment of symbols
-    # It also provides arrows for ->, <-, => and <= replacements in case these glyphs are missing from font
-    M+ 1p Fallback:
-      normal: mplus1p-regular-fallback.ttf
-      bold: mplus1p-regular-fallback.ttf
-      italic: mplus1p-regular-fallback.ttf
-      bold_italic: mplus1p-regular-fallback.ttf
-  fallbacks:
-    - M+ 1p Fallback
+    Duospace:
+      normal: iAWriterDuospace-Regular.ttf
+      bold: iAWriterDuospace-Bold.ttf
+      italic: iAWriterDuospace-Italic.ttf
+      bold_italic: iAWriterDuospace-BoldItalic.ttf
+
 page:
   background_color: ffffff
   layout: portrait
@@ -38,7 +23,8 @@ base:
   # color as CMYK array (approximated)
   #font_color: [0, 0, 0, 0.92]
   #font_color: [0, 0, 0, 92%]
-  font_family: Noto Serif
+  font_family: Duospace
+  # font_family: Times-Roman
   # choose one of these font_size/line_height_length combinations
   #font_size: 14
   #line_height_length: 20
@@ -72,7 +58,7 @@ link:
 # literal is currently used for inline monospaced in prose and table cells
 literal:
   font_color: b12146
-  font_family: M+ 1mn
+  font_family: $base_font_family
 menu_caret_content: " <font size=\"1.15em\"><color rgb=\"b12146\">\u203a</color></font> "
 heading:
   align: left
@@ -152,7 +138,7 @@ admonition:
     font_style: bold
 blockquote:
   font_color: $base_font_color
-  font_size: $base_font_size_large
+  font_size: $base_font_size
   border_color: $base_border_color
   border_width: 5
   # FIXME disable negative padding bottom once margin collapsing is implemented
@@ -165,15 +151,15 @@ code:
   font_family: $literal_font_family
   font_size: ceil($base_font_size)
   padding: $code_font_size
-  line_height: 1.25
+  line_height: 1.1
   # line_gap is an experimental property to control how a background color is applied to an inline block element
   line_gap: 3.8
   background_color: f5f5f5
-  border_color: cccccc
-  border_radius: $base_border_radius
+  # border_color: cccccc
+  # border_radius: $base_border_radius
   border_width: 0.75
 conum:
-  font_family: M+ 1mn
+  font_family: Duospace
   font_color: $literal_font_color
   font_size: $base_font_size
   line_height: 4 / 3
@@ -230,7 +216,7 @@ table:
   cell_padding: 3
 toc:
   indent: $horizontal_rhythm
-  line_height: 1.4
+  line_height: 1.2
   dot_leader:
     #content: ". "
     font_color: a9a9a9

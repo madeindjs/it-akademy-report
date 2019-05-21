@@ -14,7 +14,7 @@ Le choix du serveur a beaucoup de conséquence pour l'entreprise. Plusieurs solu
 * Un *VPS* _(Virtual Private Serveur)_: Il s’agit d’un container placé sur un serveur. L’avantage est qu’à tout moment on peut déplacer le container sur un serveur plus puissant et ainsi s’adapter à une charge élevée. L’inconvénient est que le stockage est très cher.
 * Un fournisseur *PAAS* _(Product As A Service)_, le déploiement se fait instantanément sans tenir compte de la partie hardware. Le fournisseur réalise l’administration du serveur. En revanche le coût est plus élevé (à partir de 25 euros / mois)
 
-Pour mon application j’ai choisi le VPS qui me permet d’administrer mon serveur comme je le souhaite tout en réduisant le coût. Étant dans une phase de validation du concept, ce choix m’a permis de commencer avec un petit serveur à 3 euros / mois . Lors de la validation du concept, je pourrais basculer sur un serveur plus puissant très facilement.
+Pour mon application j’ai choisi le VPS qui me permet d’administrer mon serveur comme je le souhaite tout en réduisant le coût. Étant dans une phase de validation du concept, ce choix m’a permi de commencer avec un petit serveur à 3 euros / mois . Lors de la validation du concept, je pourrais basculer sur un serveur plus puissant très facilement.
 
 === Installation
 
@@ -153,7 +153,7 @@ Afin de connaître les vulnérabilité de mon installation, j’ai décidé de f
 
 NOTE: Le scan de vulnérabilité est illégal à moins que le serveur nous appartienne ou bien qu’une autorisation du propriétaire est donné. Dans mon cas, le serveur m’appartiens.
 
-Plusieurs types de scan sont possibles, j’ai choisis d’utiliser le plus complet, qui est aussi le plus long. J’ai donc obtenu le résultat que l’on peu voir sur la figure suivant (le rapport complet est disponible en annexe).
+Plusieurs types de scan sont possibles, J’ai choisi d’utiliser le plus complet, qui est aussi le plus long. J’ai donc obtenu le résultat que l’on peu voir sur la figure suivant (le rapport complet est disponible en annexe).
 
 .Capture d’écran du rapport de scan d’OpenVAS
 image:kali_openvas_report.png[kali_openvas_report]

@@ -14,7 +14,7 @@ Il s’agit de deux règles simples mais elles m’ont permit d’obtenir une co
 
 image:escalade-tu.jpg[La _charge_ apparaît dans l'interface d'administration de Stripe]
 
-J'ai aussi fait le choix de faire beaucoup de tests fonctionnels qui garantissent la gestion des droits d'accès aux pages de l'application. Par exemple, pour la page qui s’occupe d’afficher un utilisateur, j’ai choisis de coder quatre tests qui vont couvrir tous les cas:
+J'ai aussi fait le choix de faire beaucoup de tests fonctionnels qui garantissent la gestion des droits d'accès aux pages de l'application. Par exemple, pour la page qui s’occupe d’afficher un utilisateur, J’ai choisi de coder quatre tests qui vont couvrir tous les cas:
 
 .Test fonctionnel pour qu'un avocat puisse accéder à son profil
 [source, ruby]

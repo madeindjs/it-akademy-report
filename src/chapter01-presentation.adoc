@@ -7,7 +7,7 @@ En quête de challenge, je me suis inscrit sur le site https://cofondateur.fr[co
 - En tant que *directeur technique*, j’ai pour mission de faire des choix techniques cohérents afin d’assurer la pérennité de notre produit
 - En tant que *Délégué à la Protection des Données*, je suis chargé de veiller au respect des données et à la mise en conformité de notre outil.
 
-J’ai donc choisis de mettre en avant cette expérience dans mon dossier de validation car il met en exergue la construction d’un projet complet de A à Z et me permet d'avoir un regard critique sur celui-ci. J’ai fais le choix d’organiser mon mémoire de façon *chronologique*. C’est-à-dire:
+J’ai donc choisi de mettre en avant cette expérience dans mon dossier de validation car il met en exergue la construction d’un projet complet de A à Z et me permet d'avoir un regard critique sur celui-ci. J’ai fait le choix d’organiser mon mémoire de façon *chronologique*. C’est-à-dire:
 
 1. la planification du projet
 2. le développement
@@ -17,15 +17,15 @@ J’ai donc choisis de mettre en avant cette expérience dans mon dossier de val
 
 J'aborderai ainsi ma problématique:
 
-*Comment gérer un projet de tel envergure à coté d'une vie professionnel, personnelle et étudiante?*
+*Comment gérer un projet de telle envergure à coté d'une vie professionnelle, personnelle et étudiante?*
 
 === Le projet
 
 ==== La société
 
-Comme je le disait plus haut, j'ai participé à la création d'une entreprise avec les deux cofondateurs: Adrien ORION et Sacha PARTENSKY (étudiants en droit à l’université Lyon 3 Jean Moulin).
+Comme je le disais ci-dessus, j'ai participé à la création d'une entreprise avec les deux cofondateurs: Adrien ORION et Sacha PARTENSKY (étudiants en droit à l’université Lyon 3 Jean Moulin).
 
-Lorsque j'ai rejoins la société (j'en parlerai plus tard), la société était déjà créée sous la formation d'une *société par actions simplifiées*. L' avantage principal de ce statut juridique est la *grande liberté* sur les règles définies dans le *pacte d’actionnaires*. L’inconvénient qui en découle est qu’il est plus difficile à mettre en place car il nécessite justement la *rédaction* d'un pacte d’actionnaire complet. Dans notre cas, ce statut est parfait puisque mes associés ont les compétences pour le rédiger.
+Lorsque j'ai rejoint la société (j'en parlerai plus tard), cette dernière était déjà créée sous le statut d'une *société par actions simplifié*. L' avantage principal de ce statut juridique est une *grande liberté* sur les règles définies dans le *pacte d’actionnaires*. L’inconvénient qui en découle est qu’il est plus difficile à mettre en place car il nécessite justement la *rédaction* d'un pacte d’actionnaires complet. Dans notre cas, ce statut est parfait puisque mes associés ont les compétences pour le rédiger.
 
 .Le logo d’iSignif
 image:logo.png[logo, 300]
@@ -39,15 +39,15 @@ Lors de notre rencontre, Sacha et Adrien m’ont présenté leur idée. Séduis 
 
 // J’ai choisi un rôle d'associé car c’est compatible avec mon statut de salarié chez GAC Technology.
 
-En échange de cette part dans la société, j'étais donc en charge de livrer un produit fonctionnel.
+En échange de cette part dans la société, j'étais donc en charge de livrer un *produit fonctionnel*.
 
 ==== Le besoin
 
-L'idée du projet est simplifier le *processus de signification*.
+L'idée du projet est de simplifier le *processus de signification*.
 
 Réalisée par un huissier de justice, la signification a pour but de porter les actes judiciaires _(assignation en justice, jugement, sommation de payer, etc...)_ à la connaissance des intéressés. Toutefois, ces actes sont souvent adressés à plusieurs destinataires résidents dans des villes différentes. Ceci demande un effort chronophage pour les demandeurs de signification qui doivent contacter les huissiers compétents pour chaque adresse.
 
-iSignif à pour but de simplifier le processus de signification en centralisant les demandes via une plateforme qui redirige la demande vers un huissier compétent de notre réseau.
+iSignif a pour but de simplifier le processus de signification en centralisant les demandes via une plateforme qui redirige la demande vers un huissier compétent de notre réseau.
 
 .Un acte doit être notifié en main propre pour chaque destinataire, avec iSignif l'acte est centralisé
 // image:signification_before.png[signification_before, 500]
@@ -57,49 +57,49 @@ NOTE: La brochure commerciale est disponible dans les annexes.
 
 ==== Business plan
 
-La grande problématique de notre activité est que la loi *interdit* toute forme de *publicité* a destination des huissiers. En se plaçant comme *apporteur d'affaires* nous sommes donc dans l’illégalité. Il est donc important de ne pas favoriser certains huissier plutôt que d’autres. Nous avons donc choisit un système qui répartit par ordre d’arrivée les demande de significations équitablement (_First-in, First-out_).
+La grande problématique de notre activité est que la loi *interdit* toute forme de *publicité* à destination des huissiers. En privilégiant l'apport d'affaires à un huissier plutôt qu'à un autre nous serions dans l'illégalité *apporteur d'affaires* nous sommes donc hors la lois. Il est donc important de ne pas favoriser certains huissiers plutôt que d’autres. Nous avons donc choisi un système qui répartit par ordre d’arrivée les demandes de signification équitablement (_First-in, First-out_).
 
-Notre modèle économique réside sur l’idée de facturer les huissiers en fonction du nombre d’affaire qu’on leur apporte et aussi de facturer les avocats. Pour faire cela, nous avons eu plusieurs idées:
+Notre modèle économique réside sur l’idée de facturer les huissiers en fonction du nombre d’affaires que nous leurs apportons et aussi de facturer les avocats. Pour faire cela, nous avons eu plusieurs idées:
 
 * facturer mensuellement les huissiers en fonction du nombre d’affaire apportées
-* demander un abonnement aux avocats qui donne le droit d’accéder au réseau
-* proposer un système de afin que les huissier pré-paye un nombre d’affaire qu’on va leur apporter
+* demander aux avocats un abonnement qui donne l’accéder au réseau
+* proposer un système de pré-paiement d'affaire que iSignif va apporter à un huissier
 
-Dans un premier temps, nous avons choisis d’utiliser le système de facturation mensuel pour les avocats et de facturer mensuellement les huissiers en fonction du nombre d’affaire apportées.
+Dans un premier temps, nous avons choisi d’utiliser le système de facturation mensuel pour les avocats et de facturer mensuellement les huissiers en fonction du nombre d’affaires apportées.
 
-NOTE: Je vous reparlerais de l’impact que cela a eu plus loin.
+NOTE: Je vous reparlerai de l’impact que cela a eu plus loin.
 
 === Réalisation du cahier des charges
 
 Les principales contraintes de notre plateforme sont que les demandes doivent être accessibles à n’importe quel moment et sur tout type de support (ordinateur, smartphone, tablette, etc..). Il était donc naturel de se tourner vers une *application web* qui convient à ce besoin.
 
-Nous avons donc rédigé un premier cahier des charges qui correspond à la version bêta qui sera proposée aux bêta testeurs. Cette version doit être fonctionnelle. Voici donc quelques unes de ces fonctionnalités:
+Nous avons donc rédigé un premier cahier des charges qui correspond à la version bêta a été proposée aux bêta testeurs. Cette version devait être fonctionnelle. Voici donc quelques unes de ces fonctionnalités:
 
 * *Estimation du coût d’un acte*: Permet un devis en un seul et unique formulaire.
 * *Gestion fine des permissions*: Restriction de certaines fonctionnalités en fonction du rôle de l'utilisateur connecté.
-* *__Workflow__ de la signification*: Nous devons garder une trace de toutes les étapes de signification afin de pouvoir dresser un historique. Chaque étapes possède une action spécifique qui permet de passer à celle d'après
-* *__Workflow__ d’annulation*: L'annulation d'acte doit être demandé par le correspondant et accepté par l'huissier sous certaines conditions.
+* *__Workflow__ de la signification*: Nous devons garder une trace de toutes les étapes de signification afin de pouvoir dresser un historique. Chaque étape possède une action spécifique qui permet de passer à celle d'après
+* *__Workflow__ d’annulation*: L'annulation d'acte peut être demandée par le correspondant et acceptée par l'huissier lors de certaines étapes du _workflow_ de signification
 * *Création des factures*: sachant que notre produit possède un coût faible (environs deux euros), nous devons dresser des facture mensuelles qui regroupe plusieurs produits
 
 === Conceptualiser et modéliser les données
 
-Lors de la rencontre avec les cofondateurs, nous avions échangé à propos des fonctionnalités de l’application. A la fin de la réunion, ils m’ont remis plusieurs documents dont une ébauche de cahier des charges. A mon sens, la suite logique était de *valider la conception d’un modèle de donnée*. Ceci permet de valider ma compréhension de la logique métier et aussi de vérifier la faisabilité du projet. De plus, cette étape m’a permis de *quantifier* le coût du projet en terme de temps.
+Lors de la rencontre avec les cofondateurs, nous avions échangé à propos des fonctionnalités de l’application. A la fin de la réunion, ils m’ont remis plusieurs documents dont une ébauche de cahier des charges. A mon sens, la suite logique était de *valider la conception d’un modèle de données*. Ceci permet de valider ma compréhension de la logique métier et aussi de vérifier la faisabilité du projet. De plus, cette étape m’a permit de *quantifier* le coût du projet en terme de temps.
 
-J’ai donc choisi la *méthode Merise* que j’ai eu l’occasion de découvrir en cours à l’IT-Akademy. Bien que moins actuelle, elle permet de réaliser un graphique compréhensible par des profils non-techniques.
+J’ai donc choisi la *méthode Merise* que j’ai eu l’occasion de découvrir en cours à l’IT-Akademy. C'est une méthode d'analyse qui permet de retranscrire un besoin sous forme de diagramme de base de données. L'intérêt principal de cette méthode est que le diagramme produit est facilement compréhensible par des profils non-techniques.
 
 ==== Modélisation des utilisateurs
 
 Prenons par exemple la gestion des utilisateurs. Dans l’application il existe deux principaux types de comptes:
 
 * les *avocats* qui peuvent faire la demande de signification d’un acte
-* les *huissiers* qui peuvent signifier les demandes auxquelles ils sont affecté
+* les *huissiers* qui peuvent signifier les demandes auxquelles ils sont affectés
 
 Ces deux types de comptes possèdent les mêmes propriétés (nom, prénom, courriel, mot de passe). J’ai donc choisi de faire un héritage avec un modèle `User`. Ainsi, les deux modèles partagent les mêmes propriétés.
 
 .Représentation de l’héritage entre les huissiers et les avocats
 image:merise_users.png[merise_users, 400]
 
-Dans une base de données relationnelles, cela se matérialisera par une https://en.wikipedia.org/wiki/Single_Table_Inheritance[Single Table Inheritance]. C’est-à-dire qu’une table contiendra les deux types de données et qu’une colonne spécifiera le type d’utilisateur (`Bailiff` ou `Advocate`). Ce modèle d’héritage en architecture de base de données est assez controversé mais il convient bien à mon cas car les deux entités sont identiques.
+Dans une base de données relationnelles, cela se matérialisera par une https://en.wikipedia.org/wiki/Single_Table_Inheritance[Single Table Inheritance]. C’est-à-dire qu’une table contiendra les deux types de données et qu’une colonne spécifiera le type d’utilisateur (`Bailiff` ou `Advocate`). Ce modèle d’héritage en architecture de base de données est assez controversé mais il convient bien à mon cas car les deux entités sont vraiment identiques.
 
 ===== Les huissiers
 
@@ -110,15 +110,15 @@ image:merise_bailiffs.png[merise_bailiffs, 500]
 
 ==== Modélisation de l'acte
 
-J'ai ensuite crée une nouvelle entité `Act` qui représente un acte qui doit être signifié par un huissier. Cet acte possède un avocat qui fait la demande de signification et un huissier qui doit le signifier. J’ai donc obtenu le résultat final que l’on peut voir sur la suivante.
+J'ai ensuite créé une nouvelle entité `Act` qui représente un acte qui doit être signifié par un huissier. Cet acte possède un avocat qui fait la demande de signification et un huissier qui doit le signifier. J’ai donc obtenu le résultat final que l’on peut voir sur la figure ci-dessous:
 
 .Ébauche de la première version du diagramme Merise réalisé avec jMerise en mai 2018
 image:merise_zoom.png[merise_zoom]
 
 ==== Conclusion
 
-Il s’est avéré que mon premier schéma était plutôt correcte. Nous avons simplement changé le schéma en cours de routes car nous nous sommes rendu compte qu'un acte pouvait être signifié sur plusieurs villes et donc par plusieurs huissiers.
+Il s’est avéré que mon premier schéma était plutôt correct. Nous avons simplement changé le schéma en cours de route car nous nous sommes rendus compte qu'un acte pouvait être signifié sur plusieurs villes et donc par plusieurs huissiers.
 
-Il est impossible d'estimer le temps que cette étape m'a fait gagner mais je peut affirmer quelle a été *vraiment bénéfique* au projet. Au delà du gain en terme de temps, cela m'a aussi permit de poser des bases saines lors de l'élaboration du produit.
+Il est impossible d'estimer le temps que cette étape m'a fait gagner mais je peux affirmer qu'elle a été *vraiment bénéfique* au projet. Au delà du gain en terme de temps, cela m'a aussi permis de poser des bases saines lors de l'élaboration du produit.
 
-Cependant, avec du recul, je pense que j'aurais du réduire le périmètre de fonctionnalités nécessaire pour la béta. J'ai donc du fournir une quantité de travail conséquente avant de voir le lancement du produit. C'est un risque que j'ai pris puisqu'on n'est jamais sûr que nôtre produit allais séduire des clients.
+Cependant, avec du recul, je pense que j'aurais dû réduire le périmètre de fonctionnalités nécessaire pour la bêta. J'ai donc dû fournir une quantité de travail conséquente avant de voir le lancement du produit. C'est un risque que j'ai pris car nous n'étions pas sûr que nôtre produit allait séduire des clients.

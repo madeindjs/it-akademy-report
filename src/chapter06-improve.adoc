@@ -159,6 +159,7 @@ Ensuite, un `cron` récupère régulièrement mes sauvegarde en utilisant un out
 
 NOTE: Il s'est avéré bien plus tard qu'une sauvegarde nous a permit de retrouver les données supprimées par accident par un de mes associé. Il avait supprimé une catégorie d'acte qui avait provoqué la suppression de plus de trente actes avec toutes les données liées (messages, fichiers, etc..).
 
+[#improve_roles]
 === Gestion des rôles pour les utilisateurs
 
 Un commercial a rejoint notre équipe. La problématique est qu'il devait avoir accès aux données de ses clients afin de les aider mais nous ne voulions pas qu'il puisse supprimer ces données.

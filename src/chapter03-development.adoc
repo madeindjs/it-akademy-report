@@ -1,14 +1,14 @@
 [#chapter03-development]
 == Développement de la plateforme
 
-Étant le seul développeur _back-end_, il m’a fallut m’organiser afin d’optimiser au maximum mon temps. Dans cette partie je vais vous montrer comment j'ai pu rentabiliser au maximum mon temps afin d'être le plus productif.
+Étant le seul développeur _back-end_, il m’a fallu m’organiser afin d’optimiser au maximum mon temps. Dans cette partie je vais vous montrer comment j'ai pu rentabiliser au maximum mon temps afin d'être le plus productif.
 
 === Développement Dirigé par les Test
 
-Selon moi, une des façon d’optimiser son développement est d’assurer ses arrières afin d’éviter de corriger des bogues. Pour cela, ma solution est les tests unitaires. Les test unitaires sont du code qui permet de vérifier le comportement de certaines parties du code afin de vérifier qu’il n’y a pas de changements indésirables lors d’un développement. Afin de pérenniser l'application, je me suis imposé deux méthodologies:
+Selon moi, une des façon d’optimiser son développement est d’assurer ses arrières afin d’éviter de corriger des bogues. Pour cela, ma solution sont les tests unitaires. Les tests unitaires sont du code qui permet de vérifier le comportement de certaines parties du code afin de s'assurer qu’il n’y ait pas de changements indésirables lors d’un développement. Dans le but de pérenniser l'application, je me suis imposé deux méthodologies:
 
 * le _Test Driven Development_ (Développement Dirigé par les Test dans la langue de molière). Il s’agit de commencer par développer le test avant de développer la fonctionnalité.
-* couvrir d’un test chaque bogues relevé
+* couvrir d’un test chaque bogue relevé
 
 Il s’agit de deux règles simples mais elles m’ont permit d’obtenir une couverture de code de l’ordre de 90% en moyenne.
 
@@ -55,7 +55,11 @@ test 'should forbid show user for non-connected user' do
 end
 ----
 
-Cela peut sembler paranoïaque, mais cela m’assure qu’aucune régression n’est possible sur cette page. Vous aurez l’occasion de découvrir comment j’ai pu mettre des tests unitaires lors de la prochaine section et dans la section de l’élaboration de la fonctionnalité de suppression d’un utilisateur.
+Cela peut sembler paranoïaque, mais cela m’assure qu’aucune régression n’est possible sur cette page.
+
+Vous aurez l’occasion de découvrir comment j’ai pu mettre des tests unitaires lors de la prochaine section et dans la section de l’élaboration de la fonctionnalité de suppression d’un utilisateur.
+
+NOTE: Ces tests m'ont apporté une certaine serenitude lors de la refonte de la gestion des droits que vous aurez l'occasion de découvrir dans la section <<improve_roles>>
 
 // === Mise en place de l’environnement de développement
 //
@@ -68,7 +72,7 @@ Cela peut sembler paranoïaque, mais cela m’assure qu’aucune régression n�
 
 === Intégration du paiement avec Stripe
 
-J'ai voulu implémenter la fonctionnalité d'**accès restreint** au site uniquement si l'utilisateur bénéficie d'un **compte premium**. Le but final est que l’utilisateur doit souscrire un compte premium afin d'accéder à certaines pages.
+J'ai voulu implémenter la fonctionnalité d'**accès restreint** au site uniquement si l'utilisateur bénéficie d'un **compte premium**. Le but final est que l’utilisateur doive souscrire un compte premium afin d'accéder à certaines pages.
 
 Afin d'implémenter cette fonctionnalité, nous avons commencé par analyser le besoin. Le comportement attendu est le suivant:
 
@@ -76,7 +80,7 @@ Afin d'implémenter cette fonctionnalité, nous avons commencé par analyser le 
 2. une fois son _solde de jours premium_ épuisé, il reçoit un mail lui indiquant qu'il va falloir racheter des jours
 3. l'utilisateur met à jour son solde en effectuant un **paiement ponctuel** qui lui rajoute un mois à son solde premium où il souscrit un abonnement qui effectuera un **paiement automatique** au début de chaque mois
 
-Afin d'implémenter cela, j'ai rapidement fait le tour des solutions de paiement existantes (PayPal, BNP, etc..). Il s'est avéré que https://stripe.com[Stripe] était le meilleur compromis. Stripe est une société américaine qui a pour but de simplifier les paiements en ligne. Créée en 2010, Stripe pèse maintenant plus de 10 milliards! J'ai choisi Stripe car ses avantages sont:
+Afin d'implémenter cela, j'ai rapidement fait le tour des solutions de paiements existantes (PayPal, BNP, etc..). Il s'est avéré que https://stripe.com[Stripe] était le meilleur compromis. Stripe est une société américaine qui a pour but de simplifier les paiements en ligne. Créée en 2010, Stripe pèse maintenant plus de 10 milliards! J'ai choisi Stripe car ses avantages sont:
 
 - le client peut payer sans avoir un compte ouvert chez Stripe
 - les tarifs sont assez "raisonnables"
@@ -85,7 +89,7 @@ Afin d'implémenter cela, j'ai rapidement fait le tour des solutions de paiement
 
 De plus, Stripe va bien plus loin qu'une _simple_ solution de paiement puisqu'il propose tout un écosystème pour gérer des clients, des factures, des produits, etc...
 
-Dans cet section je vais donc retracer le développement de la fonctionnalité en essayant d'être le plus générique possible. Je précise aussi avant de commencer que ce n'est pas un article sponsorisé et je n'ai pas reçu d'argent de la part de Stripe (j'aurais bien voulu...).
+Dans cette section je vais donc retracer le développement de la fonctionnalité en essayant d'être le plus générique possible. Je précise aussi avant de commencer que ce n'est pas un article sponsorisé et je n'ai pas reçu d'argent de la part de Stripe (j'aurais bien voulu...).
 
 ==== Implémentation du mode premium
 
@@ -101,7 +105,7 @@ def up
 end
 ----
 
-J'ai ensuite crée une méthode `User#increment_premium` qui est appelée à chaque fois qu'un paiement est réceptionné. Celle-ci va simplement ajouter un mois à l'attribut `premium_until`. Sachant que c'est un point crucial de l'application (puisque cela touche à l'argent), j'ai crée des tests unitaires qui définissent le comportement attendu de cette fonction. J'ai donc couvert tous les cas possibles tous les cas possibles:
+J'ai ensuite créé une méthode `User#increment_premium` qui est appelée à chaque fois qu'un paiement est réceptionné. Celle-ci va simplement ajouter un mois à l'attribut `premium_until`. Sachant que c'est un point crucial de l'application (puisque cela touche à l'argent), j'ai créé des tests unitaires qui définissent le comportement attendu de cette fonction. J'ai donc couvert tous les cas possibles:
 
 - lorsque l'utilisateur possède déjà un solde de jours
 
@@ -140,14 +144,14 @@ end
 
 ==== Paiement ponctuel
 
-Une fois la logique de restriction des pages aux utilisateur premium, il est temps de connecter l'application à Stripe. J'ai donc évidement crée un compte chez Stripe qui donne ensuite accès à une clé d'API. Une fois ceci fait, l'intégration à l'application Rails est très facile car https://github.com/stripe/stripe-ruby/[Stripe propose une gemme]!
+Une fois la logique de restriction des pages aux utilisateurs premium, il est temps de connecter l'application à Stripe. J'ai donc évidement créé un compte chez Stripe qui donne ensuite accès à une clé d'API. Une fois ceci fait, l'intégration à l'application Rails est très facile car https://github.com/stripe/stripe-ruby/[Stripe propose une gemme]!
 
 Dans un premier temps, j'ai simplement mis en place un paiement ponctuel Stripe et appelé la méthode `User#increment_premium` si tout se passe bien. Dans le jargon de Stripe, un simple paiement est une _charge_. Sans trop rentrer dans le détails, j'ai ajouté créer un contrôleur `charges` qui contient deux actions:
 
 - `new` qui va simplement proposer un formulaire pour payer
 - `create` qui recevra la réponse de Stripe
 
-L'intégration avec l'API de Stripe se fait très facilement avec la gemmes qui gère les appels à l'API en utilisant des objets Ruby
+L'intégration avec l'API de Stripe se fait très facilement avec la gemme qui gère les appels à l'API en utilisant des objets Ruby
 
 Par exemple, pour enregistrer l'utilisateur chez Stripe, on va simplement utiliser `Stripe::Customer.create`. Cette méthode va faire une requête à l'API et s'occuper de faire toutes les vérifications pour nous (validité de carte, informations transmises, etc...).  `Stripe::Charge.create` va créer la _charge_ en la liant au _customer_ que nous passons en paramètre.
 
@@ -183,9 +187,9 @@ image:stripe_first_payment.png[]
 
 ==== Abonnement
 
-J'ai aussi implémenté une autre fonctionnalité un peu plus poussée avec Stripe: la gestion des *paiement récurent*. Le paiement récurent était indispensable afin de créer la notion d'abonnement. Cela permet à l'utilisateur peut ainsi souscrire un abonnement qui enclenchera un paiement automatique au début du mois. Dans le jargon de Stripe, cela s'appelle une https://stripe.com/docs/billing/subscriptions/products-and-plans[*subscriptions*].
+J'ai aussi implémenté une autre fonctionnalité un peu plus poussée avec Stripe: la gestion des *paiements récurents*. Le paiement récurent était indispensable afin de créer la *notion d'abonnement*. Cela permet à l'utilisateur de souscrire un abonnement qui enclenchera un paiement automatique au début du mois. Dans le langage de Stripe, cela s'appelle une https://stripe.com/docs/billing/subscriptions/products-and-plans[*subscriptions*].
 
-> Chaque plan est joint à un produit qui représente (...) le service offert aux clients. Les produits peuvent avoir plus d'un plan, reflétant les variations de prix et de durée - comme les prix mensuels et annuels à des taux différents. Il existe deux types de produits: les biens et les services. (...) qui sont destinés aux abonnements.
+> Chaque plan est joint à un produit qui représente (...) le service offert aux clients. Les produits peuvent avoir plus d'un plan, reflétant les variations de prix et de durée - comme les prix mensuels et annuels à des taux différents. Il existe deux types de produits: les biens et les services. (...) qui sont destinés aux abonnements. - Documentation Stripe
 
 J'ai donc commencé par créer notre _plan_ en utilisant https://github.com/stripe/stripe-ruby/[la gemme Stripe]. Voici un exemple avec la console Rails.
 
@@ -199,27 +203,29 @@ J'ai donc commencé par créer notre _plan_ en utilisant https://github.com/stri
   => #<Stripe::Plan:0x2ab3e0b46d24 id=premium-monthly> JSON: {
 ----
 
-Nous obtenons donc un belle instance Ruby correspondant à un _Plan_. Il faut juste noter l'``id`` et le noter dans le fichier `secret.yml`. Ensuite, j'ai crée un nouveau contrôleur nommé `subscriptions` avec deux méthodes:
+Nous obtenons donc une belle instance Ruby correspondant à un _Plan_. Il faut juste noter l'``id`` et le noter dans le fichier `secret.yml`. Ensuite, j'ai crée un nouveau contrôleur nommé `subscriptions` avec deux méthodes:
 
 - `new` qui va simplement proposer un formulaire pour payer
-- `create` qui recevra la réponse de Stripe
+- `create` qui reçois la réponse de Stripe
 
-L'implémentation du `SubscriptionsController` est quasiment identique au `ChargesController` sauf que nous la méthode `Stripe::Subscription.create`. Je passe donc l'implémentation.
+L'implémentation du `SubscriptionsController` est quasiment identique au `ChargesController` hormis que la méthode `Stripe::Subscription.create`. Je passe donc volontairement cette partie.
 
-La seule différence avec la création des _charges_, c'est qu'ici c'est Stripe qui nous enverra un signal lorsqu'il prélèvera l'utilisateur. Dans notre cas, le _workflow_ type est le suivant:
+La seule différence avec la création des paiement ponctuelsest que Stripe envoie un signal lorsqu'il prélève l'utilisateur. Dans mon cas, le _workflow_ type est le suivant:
 
 1. l’utilisateur effectue une demande d'abonnement
 2. Stripe crée un abonnement pour cette utilisateur
-3. lorsque l'abonnement est renouvelé (c-à-d. lorsque Stripe facture le client et qu'il est facturé de nouveau).
+3. lorsque l'abonnement est renouvelé (c'est-à-dire' lorsque Stripe facture le client et qu'il est facturé de nouveau).
 
-Stripe envoie une requête pour signaler que le paiement a été effectué par le biais du _hook_. Les  *Webhook* sont simplement des routes que nous mettons à disposition pour recevoir les requêtes de la part de Stripe. Une fois la route créée, nous devons communiquer l'URL à Stripe via l'interface d'administration de Stripe. J'ai choisi de ne recevoir que le signal `invoice.payment_succeeded` qui est envoyé lorsqu'une facture est payée.
+Stripe envoie une requête pour signaler que le paiement a été effectué par le biais du _hook_. Les  *Webhook* sont simplement des routes que nous mettons à disposition à Stripe pour recevoir leurs requêtes. Une fois la route créée, nous devons communiquer l'URL à Stripe via leurs interface d'administration.
+
+J'ai choisi de ne recevoir que les signaux `invoice.payment_succeeded` qui sont envoyé lorsqu'une facture est payée.
 
 .Formulaire de création d'un Webhook
 image:stripe_webhook.png[]
 
-Il suffit maintenant d'ajouter une méthode dans le contrôleur qui recevra  la requête de Stripe. C'est toujours compliqué de tester l'intégration d'un API donc j'ai simplement choisi de simuler une requête de la part de Stripe et de vérifier si notre contrôleur ajoute du crédit à l'utilisateur.
+Il suffit maintenant d'ajouter une méthode dans le contrôleur qui recevra  les requêtes de Stripe. C'est toujours compliqué de tester l'intégration d'une API donc j'ai simplement choisi de simuler une requête de la part de Stripe et de vérifier si notre contrôleur ajoute du crédit à l'utilisateur.
 
-pour cela,  j'ai simplement copié/collé les paramètres envoyés par Stripe via leur https://dashboard.stripe.com/test/webhooks/[interface de test des webhooks].
+pour cela,  j'ai copié/collé les paramètres envoyés par Stripe via leur https://dashboard.stripe.com/test/webhooks/[interface de test des webhooks].
 
 .Visualisation de la requête envoyée par Stripe
 image:stripe_webook_request.png[]

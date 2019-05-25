@@ -16,6 +16,9 @@
 
     i{color: darkgray;}
 
+    .reveal h2{border-bottom: solid 5px;border-top: solid 5px;}
+    /* .reveal h3{border-bottom: solid 2px} */
+
     .reveal ul { list-style-type: none; margin-left: 0;}
     .reveal ul li.bad:before {
       content: '- ';
@@ -34,7 +37,7 @@
   <div class="reveal">
     <div class="slides">
       <section>
-        <h1>Mémoire</h1>
+        <h1>Dossier de validation</h1>
         <p>Alexandre Rousseau <br> <a href="mailto:contact@rousseau-alexandre.fr">contact@rousseau-alexandre.fr</a> </p>
       </section>
       <section>
@@ -58,6 +61,11 @@
         </section>
 
         <section>
+          <h3>Gac Technology</h3>
+          <p>TODO</p>
+        </section>
+
+        <!-- <section>
           <p>A côté:</p>
           <ul>
             <li><strong>Associé</strong> chez <a href="https://isignif.fr/">iSignif SAS</a></li>
@@ -65,18 +73,15 @@
             <li><strong>Auteur</strong>  du livre <a href="https://github.com/madeindjs/api_on_rails">API on Rails 5</a> publié sur <a href="https://leanpub.com/apionrails5">LeanPub</a> <small>(traduit en russe et vendu en +10 exemplaires!)</small></li>
           </ul>
           <small>et d'autres choses sur <a href="https://github.com/madeindjs">github.com/madeindjs</a> et <a href="https://rubygems.org/profiles/madeindjs">rubygems.org</a></small>
-        </section>
-
-        <section>
-        </section>
+        </section> -->
 
       </section>
 
-      <!-- Présentation de iSignif -->
+      <!-- PRÉSENTATION DE ISIGNIF -->
       <section>
 
         <section>
-          <img src="src/img/logo.svg" height="200">
+          <h2><img src="src/img/logo.svg" height="200"></h2>
           <p>SAS - LegalTech - 2017 - 4 associés</p>
         </section>
 
@@ -94,10 +99,10 @@
         <section>
           <h3>Associés</h3>
           <ul>
-            <li> <strong>Sacha</strong> président <i>41.5%</i></li>
-            <li> <strong>Adrien</strong> directeur général <i>31.5%</i></li>
-            <li> <strong>Alexandre</strong> directeur Technique <i>25%</i></li>
-            <li> <strong>Antoine</strong> designer Web <i>2%</i></li>
+            <li> <strong>Sacha</strong> président</li>
+            <li> <strong>Adrien</strong> directeur général</li>
+            <li> <strong>Alexandre</strong> directeur technique </li>
+            <li> <strong>Antoine</strong> designer Web </li>
           </ul>
         </section>
 
@@ -122,30 +127,113 @@
           <p> <strong class="good">2€ / acte</strong> pour les huissiers</p>
         </section>
 
+      </section>
+
+      <!-- PLANIFICATION -->
+      <section>
+        <h2>Planification</h2>
+        <ul>
+          <li>Estimation</li>
+          <li>Choix des technologies</li>
+          <li>Méthode Kanban</li>
+          <li>Git</li>
+        </ul>
+      </section>
+
+      <!-- Merise -->
+      <section>
+        <section>
+          <h3>Estimation</h3>
+          <p><strong>MCD</strong> <i>(Modèle conceptuel des données)</i></p>
+          <ul>
+            <li><strong>compréhension</strong> de la logique métier</li>
+            <li><strong>validation</strong> du cahier des charges</li>
+            <li><strong>estimation</strong> de la charge de travail</li>
+          </ul>
+        </section>
 
         <section>
-          <h2>Stack</h2>
-          <img src="src/img/mariadb.svg" alt="" height="200">
-          <img src="src/img/ubuntu.svg" alt="" height="200">
-          <img src="src/img/rails.svg" alt="" height="200">
-          <img src="src/img/vuejs.svg" alt="" height="200">
+          <img src="src/img/merise_bailiffs.png" height="100%">
+        </section>
+      </section>
+
+      <!-- Choix des technologies -->
+      <section>
+        <h3>Technologies</h3>
+        <img src="src/img/mariadb.svg" alt="" height="200">
+        <img src="src/img/ubuntu.svg" alt="" height="200">
+        <img src="src/img/rails.svg" alt="" height="200">
+        <img src="src/img/vuejs.svg" alt="" height="200">
+      </section>
+
+      <!-- kanban -->
+      <section>
+
+        <section>
+          <h3>Découpage des tâches</h3>
+          <p>Méthode <strong>Kanban</strong> avec <a href="https://trello.com">Trello</a>. </p>
+          <p>Tâches <strong>indivisibles</strong> et <strong>rapides</strong>.</p>
+          <img src="src/img/trello_task.png" alt="">
+          <!-- <p>A faire > en cours > terminé</p> -->
+        </section>
+
+        <section>
+          <h4>Workflow Kanban - 2018</h4>
+          <p>Utilisé pour sortir un <strong>MVP</strong><small>[1]</small>.</p>
+          <img src="src/img/trello.png" alt="">
+          <small>[1] Minimum Viable Product</small>
+        </section>
+
+        <section>
+          <h4>Workflow Kanban - 2019</h4>
+          <p>Utilisé afin de <strong>communiquer</strong> les évolutions.</p>
+          <img src="src/img/trello_now.png" alt="">
         </section>
 
       </section>
 
-
+      <!-- Git -->
       <section>
-
         <section>
-          <h2>Développement</h2>
+          <h3>Git</h3>
+          <img src="src/img/git.png" alt="">
           <ul>
-            <li>Intégration Stripe</li>
+            <li class="good">Travailler à plusieurs</li>
+            <li class="good">Séparer les développement</li>
+            <li class="bad">Complexe pour un novice</li>
           </ul>
         </section>
 
+        <section>
+          <h4>Git-Flow</h4>
+          <!-- <p>Organisation du travail avec Git</p> -->
+          <img src="src/img/git-flow.png" alt="">
+          <ul>
+              <li class="good">Organisation mise en production</li>
+              <!-- <li class="good">Séparer les développement</li> -->
+              <!-- <li class="bad">Complexe pour un novice</li> -->
+            </ul>
+        </section>
+
+      </section>
+
+      <!-- DÉVELOPPEMENT DE LA PLATEFORME -->
+      <section>
+
+        <h2>Développement</h2>
+        <ul>
+          <li>Développement Dirigé par les Test</li>
+          <li>Intégration avec Stripe</li>
+        </ul>
+      </section>
+
+      <!-- Stripe -->
+      <section>
 
         <section>
-          <img src="src/img/stripe.svg" alt="">
+          <h3>
+            <img src="src/img/stripe.svg" alt="">
+          </h3>
           <ul>
             <li class="good">API très pratique</li>
             <li class="good">Gestion clients, factures, relances</li>
@@ -154,17 +242,14 @@
           <img src="src/img/stripe_customers.png" alt="">
         </section>
 
-
-
         <section>
-          <h3>Stripe - Abonnement</h3>
+          <h4>Stripe - Abonnement</h4>
           <ol>
             <li>Création d'un produit</li>
             <li>Intégration application</li>
             <li>Webhook</li>
           </ol>
         </section>
-
 
         <section>
           <p>Création d'un produit en Ruby</p>
@@ -186,13 +271,13 @@
         <section>
           <p><strong>Front</strong>, intégration d'un bouton</p>
           <pre><code data-trim data-noescape class="html">
-            < script
+            script
               src="https://checkout.stripe.com/checkout.js"
-              data-key="my_public_stripe_token"  >
+              data-key="my_public_stripe_token"
           </code></pre>
 
 
-          <p><strong>Back</strong>, communication avec Stripe Stripe</p>
+          <p><strong>Back</strong>, communication avec Stripe</p>
           <pre><code data-trim data-noescape class="ruby">
             # subscriptions_controller.rb
             def create
@@ -211,7 +296,7 @@
         </section>
 
         <section>
-          <h3>Facturation</h3>
+          <h4>Facturation</h4>
           <ol>
             <li><strong style="color: green">ISIGNIF</strong> Ouverture d'une <i>Invoice</i></li>
             <li><strong style="color: green">ISIGNIF</strong> Affectation <i>InvoiceItem</i> à un <i>Customer</i></li>
@@ -239,72 +324,7 @@
 
       </section>
 
-
-      <!-- Planification -->
-      <section>
-
-        <section>
-          <h2>Planification</h2>
-          <ul>
-            <li>Estimation</li>
-            <li>Méthode Kanban</li>
-            <li>Git-Flow</li>
-          </ul>
-        </section>
-
-        <section>
-          <h3>Estimation du temps</h3>
-          <p><strong>MCD</strong> <i>(Modèle conceptuel des données)</i></p>
-          <ul>
-            <li><strong>compréhension</strong> de la logique métier</li>
-            <li><strong>validation</strong> du cahier des charges</li>
-            <li><strong>estimation</strong> de la charge de travail</li>
-          </ul>
-        </section>
-
-        <section>
-          <img src="src/img/merise_bailiffs.png" height="100%">
-        </section>
-
-
-        <section>
-          <h3>Découpage des tâches</h3>
-          <p>Méthode <strong>Kanban</strong> avec <a href="https://trello.com">Trello</a>. Tâches <strong>indivisibles</strong> et <strong>rapides</strong>.</p>
-          <img src="src/img/trello_task.png" alt="">
-          <!-- <p>A faire > en cours > terminé</p> -->
-        </section>
-
-        <section>
-          <h3>Workflow Kanban rapide</h3>
-          <p>Utilisé pour sortir un MVP rapidement.</p>
-          <img src="src/img/trello.png" alt="">
-        </section>
-
-        <section>
-          <h3>Workflow Kanban complet</h3>
-          <p>Utilisé afin de tester et communiquer les évolutions.</p>
-          <img src="src/img/trello_now.png" alt="">
-        </section>
-
-        <section>
-          <h3>Git-Flow</h3>
-          <p>Organisation du travail avec Git</p>
-          <img src="src/img/git-flow.png" alt="">
-        </section>
-
-
-      </section>
-
-      <!-- Développement de la plateforme -->
-      <section>
-
-        <h2>Développement</h2>
-        <ul>
-          <li>Développement Dirigé par les Test</li>
-          <li>Intégration avec Stripe</li>
-        </ul>
-      </section>
-
+      <!-- Test Driven Development -->
       <section>
 
         <section>
@@ -312,13 +332,13 @@
           <img src="src/img/escalade-tu.jpg" alt="">
         </section>
 
-        <section>
+        <!-- <section>
           <h4>Objectifs</h4>
           <p>
             <input type="checkbox" checked> Test Driven Development</br>
             <input type="checkbox" checked> Découverte d'un bug
           </p>
-        </section>
+        </section> -->
 
         <section>
           <h4>Tests unitaires</h4>
@@ -343,15 +363,14 @@
           <h4>Tests fonctionnels</h4>
           <pre><code data-trim data-noescape class="ruby">
             test 'should show for connected user' do
-              login(@advocate)
-              get advocate_url(@advocate)
+              login(@bob)
+              get advocate_url(@bob)
               assert_response :success
-              assert_select 'h2', 'Actions'
             end
 
             test 'should forbid show user for other user' do
-              login(users(:one_other_advocate))
-              get advocate_url(@advocate)
+              login(@alice)
+              get advocate_url(@bob)
               assert_response :forbidden
             end
           </code></pre>
@@ -375,7 +394,6 @@
           </ul>
         </section>
       </section>
-
 
     </div>
   </div>

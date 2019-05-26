@@ -20,8 +20,8 @@ J'ai aussi fait le choix de faire beaucoup de tests fonctionnels qui garantissen
 [source, ruby]
 ----
 test 'should show for connected user' do
-  login(@advocate)
-  get advocate_url(@advocate)
+  login(@bob)
+  get advocate_url(@bob)
   assert_response :success
 end
 ----
@@ -30,8 +30,8 @@ end
 [source, ruby]
 ----
 test 'should show for admin' do
-  login(users(:super_user))
-  get advocate_url(@advocate)
+  login(@admin)
+  get advocate_url(@bob)
   assert_response :success
 end
 ----
@@ -40,8 +40,8 @@ end
 [source, ruby]
 ----
 test 'should forbid show user for other user' do
-  login(users(:one_other_advocate))
-  get advocate_url(@advocate)
+  login(@alice)
+  get advocate_url(@bob)
   assert_response :forbidden
 end
 ----
@@ -50,7 +50,7 @@ end
 [source, ruby]
 ----
 test 'should forbid show user for non-connected user' do
-  get advocate_url(@advocate)
+  get advocate_url(@bob)
   assert_response :forbidden
 end
 ----
@@ -216,12 +216,12 @@ La seule différence avec la création des paiement ponctuelsest que Stripe envo
 2. Stripe crée un abonnement pour cette utilisateur
 3. lorsque l'abonnement est renouvelé (c'est-à-dire' lorsque Stripe facture le client et qu'il est facturé de nouveau).
 
-Stripe envoie une requête pour signaler que le paiement a été effectué par le biais du _hook_. Les  *Webhook* sont simplement des routes que nous mettons à disposition à Stripe pour recevoir leurs requêtes. Une fois la route créée, nous devons communiquer l'URL à Stripe via leurs interface d'administration.
+Stripe envoie une requête pour signaler que le paiement a été effectué par le biais du _hook_. Les  *Webhook* sont simplement des routes que nous mettons à disposition afin que Stripe nous envoie des requêtes. Une fois la route créée, nous devons le point d'entrée créer, nous devons le communiquer à Stripe via leurs interface d'administration.
 
 J'ai choisi de ne recevoir que les signaux `invoice.payment_succeeded` qui sont envoyé lorsqu'une facture est payée.
 
 .Formulaire de création d'un Webhook
-image:stripe_webhook.png[]
+image:stripe_webhook.png[stripe_webhook, 200]
 
 Il suffit maintenant d'ajouter une méthode dans le contrôleur qui recevra  les requêtes de Stripe. C'est toujours compliqué de tester l'intégration d'une API donc j'ai simplement choisi de simuler une requête de la part de Stripe et de vérifier si notre contrôleur ajoute du crédit à l'utilisateur.
 
@@ -232,7 +232,7 @@ image:stripe_webook_request.png[]
 
 Une fois la requête copiée, je l'ai transformée en `Hash` Ruby en ne gardant que les paramètres qui m'intéressent.
 
-.Hash contenant des donné représentant un appel API de Stripe
+.Hash contenant des données représentant un appel API de Stripe
 [source, ruby]
 ----
 STRIPE_INVOICE_SUCCEEDED_PARAMS = {
@@ -243,7 +243,7 @@ STRIPE_INVOICE_SUCCEEDED_PARAMS = {
 }.freeze
 ----
 
-Et ensuite, j'envoie une requête `POST` et je vérifier que notre utilisateur est incrémenté.
+Pour finir, j’envoie une requête `POST` et je vérifie que le crédit de l'utilisateur est incrémenté.
 
 .Test de simulation d'une requête Stripe
 [source, ruby]
@@ -257,7 +257,9 @@ test 'Stripe hook should add premium days to the given user' do
 end
 ----
 
-Et voilà. L'implémentation qui n'est pas très compliqué. On récupère l'utilisateur à l'aide du _token customer_ on ajoute du crédit à l'utilisateur.
+Le test est maintenant complet.
+
+L'implémentation, quant à elle, n'est pas très compliquée. J récupère l'utilisateur à l'aide du _token customer_ et je rajoute du crédit à l'utilisateur.
 
 .Action du contrôleur permettant de créditer le compte d'un utilisateur
 [source, ruby]
@@ -273,13 +275,13 @@ end
 
 === Utilisation de l'API Stripe
 
-Jusqu'ici je vous ai montré comment j'ai intégré une plateforme de paiement assez "classique". Mais Stripe ne s'arrête pas là et il propose tout un *éco-système* pour gérer les paiements. J'ai fais le choix de l'utiliser car cela me permets de me concentrer uniquement sur le business. Dans cette section je vais vous montrer comment j'ai utilisé la puissance de Stripe afin de déléguer toutes les tâches de paiement à Stripe.
+Jusqu'ici je vous ai montré comment j'ai intégré une plateforme de paiement assez "classique". Mais Stripe ne s'arrête pas là et il propose tout un *éco-système* pour gérer les paiements. J'ai fait le choix de l'utiliser car cela me permet de me concentrer uniquement sur mon business. Dans cette section je vais vous montrer comment j'ai utilisé les fonctionnalités de Stripe afin de déléguer toutes les tâches de paiement et même de facturation.
 
-Dans le jargon de Stripe, une *facture* (_invoice_) est un document qui énumère les services vendus (_invoice_item_) ainsi que la quantité, le prix et les taxes. Les factures peuvent être créées à partir du tableau de bord et de l'API.
+Dans le langage de Stripe, une *facture* (_invoice_) est un document qui énumère les services vendus (_invoice_item_) ainsi que la quantité, le prix et les taxes. Les factures peuvent être créées à partir du tableau de bord mais aussi via l'API.
 
-Ainsi, il suffit d'ouvrir une facture et lorsqu'on ajoutera un produit, Stripe tentera de finaliser, d'envoyer et de payer les factures automatiquement via le _workflow_ de recouvrement automatique.
+Ainsi, il suffit d'ouvrir une facture et, lorsque l'on ajoutera un produit, Stripe tentera de finaliser, d'envoyer et de payer les factures via le _workflow_ de recouvrement automatique.
 
-Ainsi, lorsqu'une signification est finalisée (c'est à dire signifié par l'huissier), je fais un appel à un service `InvoiceService` qui va s'occuper de facturer la signification _(le code est volontairement simplifié)_:
+Ainsi, lorsque une signification est finalisée (c'est à dire signifié par l'huissier), je fais un appel à un service `InvoiceService` qui va s'occuper de facturer la signification _(le code est volontairement simplifié)_:
 
 .Méthode responsable de la facturation
 [source, ruby]
@@ -291,17 +293,26 @@ def invoice! signification
 end
 ----
 
-En faisant cela, un appel à l'API de Stripe est effectué pour lui spécifier que l'huissier vient d'acheter une signification et qu'il faut lui facturer sur la facturer que nous venons de créer. Nous pouvons retrouver cette facture dans le _dashboard_ de Stripe:
+En faisant cela, un appel à l'API de Stripe est effectué pour lui spécifier que l'huissier vient d'acheter une signification et qui lui  sera facturé sur la facture que nous venons de créer. Nous pouvons retrouver cette facture dans le _dashboard_ de Stripe:
 
 .Formulaire de création d'un Webhook
 image:stripe_invoice.png[]
 
-Suivant la configuration du compte, Stripe va s'occuper de générer une facture PDF, contacter le client, le relancer et le prélever. Vous pouvez retrouver dans les annexes un exemple de facture générée par Stripe. Pour moi cette fonctionnalité est très importante car elle réduit très largement la *responsabilité* de mon application. La facturation n'est pas mon *cœeur* de métier et cela me permet de me concentrer uniquement sur le processus de la signification.
+Suivant la configuration du compte, Stripe va s'occuper de
+
+1. générer une facture PDF
+2. contacter le client
+3. le relancer
+3. le prélever
+
+NOTE: Vous pouvez retrouver dans les annexes un exemple de facture générée par Stripe.
+
+Pour moi cette fonctionnalité est très importante car elle réduit très largement la *responsabilité* de mon application. La facturation n'est pas mon *cœur* de métier et cela me permet de me concentrer uniquement sur le processus de la signification.
 
 === Conclusion
 
-Dans cette section je vous ai montré qu'il était très facile de mettre en place un système de paiement récurrent avec Stripe. La documentation quasi parfaite et leur gemme m'a vraiment simplifié la tâche. J'ai même pu mettre en place des tests qui me protège de certaines régressions.
+Dans ce chapitre je vous ai montré la façon dont j'ai mis en place un système de paiement récurrent avec Stripe. Leur excellente documentation et leur gemme m'ont vraiment simplifié la tâche. J'ai même pu mettre en place des tests qui me protègent de certaines régressions.
 
-Les fonctionnalités de Stripe ne s'arrêtent pas la car il m'a permis de mettre en place un système de facturation (avec la génération de belles factures PDF), de remboursement ou encore de gestion de litiges.
+// Les fonctionnalités de Stripe ne s'arrêtent pas la car il m'a permis de mettre en place un système de facturation (avec la génération de belles factures PDF), de remboursement ou encore de gestion de litiges.
 
-Toutes ses fonctionnalités m'ont permis de me concentrer sur la valeur ajoutée de notre produit et non pas sur la facturation des clients.
+Toutes ces fonctionnalités m'ont permis de me concentrer sur la valeur ajoutée de notre produit et non pas sur la facturation des clients.

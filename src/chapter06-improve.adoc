@@ -142,16 +142,9 @@ Voici donc une partie de mon script sur le listing suivant:
 # ...
 # je realise un dump de toute la BDD mariadb
 mysqldump --all-databases  > $sqldump_filename
-
-# je copie tous mes environnements d'un coup
-for website in ${websites[*]}
-do
-  cp -r "/var/www/${website}/shared/{config,public,storage}" "${website}/shared/"
-done
-# ...
-
+cp -r "/var/www/isignif/shared/{config,public,storage}" "${website}/shared/"
 # je cree une archive et je la chiffre avec gpg
-tar -czvf -  "$folder_save" | gpg --encrypt --recipient contact@rousseau-alexandre.fr -o "$folder_save.tar.gz.gpg" --always-trust
+tar -czvf -  "$folder_save" | gpg --encrypt --recipient contact@rousseau-alexandre.fr -o "$folder_save.tar.gz.gpg"
 # ...
 ----
 

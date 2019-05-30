@@ -3,26 +3,36 @@
 
 Étant dans une startup, mon travail ne s'est pas cantonné à du développement logiciel mais aussi à l'administration d'un serveur Linux. Dans ce chapitre je vais retracer certaines actions que j'ai effectué afin d'installer et de sécuriser mon serveur.
 
-Néanmoins, mon travail au seins de iSignif ne se résume pas à celle -ci car je m'occupe aussi de la maintenant de celui-ci.
+Néanmoins, mon travail au seins de iSignif va encore plus loins car je m'occupe aussi de la maintenant de celui-ci.
 
 === Choix du serveur
 
-Le choix du serveur a beaucoup de conséquence pour l'entreprise. Plusieurs solutions existent:
+Le choix du serveur a beaucoup de conséquence pour l'entreprise car cela a des conséquences sur la *scalabilité*: c'est-à-dire la capacité d'un produit à s'adapter à une forte demande.
+
+Plusieurs solutions existent:
 
 * Le serveur *mutualisé*: Il s’agit d’un serveur que l’on partage avec d’autres client afin de réduire le coût. L’inconvénient est que nous n’avons pas le choix sur les librairies installées ni sur les logiciels.
-* Le serveur *dédié*: L’avantage est le contrôle total sur le serveur mais l’inconvénient est que ce n’est pas évolutif. Si on veut augmenter les performances, il faut passer sur un autre serveur dédie.
+* Le serveur *dédié*: L’avantage est le contrôle total sur le serveur mais l’inconvénient est que ce n’est pas évolutif. Si nous voulons augmenter les performances, il faut passer sur un autre serveur dédié.
 * Un *VPS* _(Virtual Private Serveur)_: Il s’agit d’un container placé sur un serveur. L’avantage est qu’à tout moment on peut déplacer le container sur un serveur plus puissant et ainsi s’adapter à une charge élevée. L’inconvénient est que le stockage est très cher.
 * Un fournisseur *PAAS* _(Product As A Service)_, le déploiement se fait instantanément sans tenir compte de la partie hardware. Le fournisseur réalise l’administration du serveur. En revanche le coût est plus élevé (à partir de 25 euros / mois)
 
-Pour mon application j’ai choisi le VPS qui me permet d’administrer mon serveur comme je le souhaite tout en réduisant le coût. Étant dans une phase de validation du concept, ce choix m’a permi de commencer avec un petit serveur à 3 euros / mois . Lors de la validation du concept, je pourrais basculer sur un serveur plus puissant très facilement.
+Pour mon application j’ai choisi le VPS qui me permet *d’administrer* mon serveur comme je le souhaite tout en réduisant le coût.
+
+Étant dans une phase de validation du concept, ce choix m’a permi de commencer avec un petit serveur à 3 euros / mois . En cas de forte actvité, je pourrai basculer sur un serveur plus puissant très facilement.
+
+NOTE: Jen'ai pas encore eu besoin d'augmenter la capaicté de mon VPS pour le moment car il suffit pour le moment.
 
 === Installation
 
 ==== Serveur
 
-OVH donne les choix entre plusieurs OS et plusieurs distributions. Mon choix s’est porté sur *Ubuntu 18.04 server*. Une fois le serveur mis en place, la première étape est de sécuriser dès le début l’utilisation. J’ai donc créé un utilisateur spécifique qui me servira uniquement le déploiement de l’application.
+OVH donne les choix entre plusieurs OS et plusieurs distributions. L'utilisation de Ruby on Rails m'impose l'utilisation d'un serveur GNU/Linux et j'ai choisi la distribution Ubuntu. Mon choix s’est donc porté sur *Ubuntu 18.04 server*.
 
-Je le rajoute dans les `sudoers` (Groupes d’utilisateur possédants les droits administrateur) uniquement afin de simplifier la construction de l’environnement de production.
+Ubuntu, développé par Canonical, est exremement réputé. La version 18.04 est une _Long Term Support_ (LTS), cela signifie que cette version recevra des mises à jour de sécurité jusqu'à avril 2023.
+
+Une fois le serveur mis en place, la première étape était de sécuriser l’utilisation. J’ai donc créé un utilisateur spécifique qui me sert uniquement le déploiement de l’application.
+
+Je l'ai rajouté dans les `sudoers` (Groupes d’utilisateur possédants les droits administrateur) afin de simplifier la construction de l’environnement de production.
 
 .Création d'un utilisateur spécifique sur le serveur
 [source,bash]
@@ -32,20 +42,29 @@ $ passwd isignif
 $ sudo addgroup isignif sudo
 ----
 
-Une fois l’utilisateur crée, j’ai crée une clé SSH pour me connecter sans mot de passe et j’ai désactivé la possibilité de se connecter au compte `root` via SSH. Ainsi il est est impossible de réaliser une attaque par tentative de bibliothèque de mot de passe (_bruteforce_).
+Le protocole utilisé pour se connecter au serveur est le *protocole SSH* (Secure SHell). Ce protocole étant le point d'entrée doit être au maxiumum sécurisé. J'ai donc fait le choix de générer une *clé SSH*.
 
-Concernant les paquets à installer, tout est déjà présent dans les repertoires officiels de Ubuntu. J'ai donc choisis d'installer:
+La clé SSH permet de se connecter au serveur *sans mot de passe*. J'ai ensuité désactivé la possibilité de se connecter au compte en utilisant un mot de passe. Ainsi il est est impossible de réaliser une attaque de type _bruteforce_.
 
-- `apache2` pour le serveur web
-- `nodejs` pour la minification des fichiers JavaScript
-- `git` pour la mise en production
-- `mariadb-server libmariadb-dev`
+NOTE: Une attaque par _bruteforce_ consiste à tenter des milliers de combinaisons d'utilisateur et de mot de passe jusqu'à ce qu'un combinaison fonctionne.
 
-Je n'ai pas installé le paquet `ruby`. J’ai choisi d’utiliser *Ruby Version Manager* (RVM) . RVM possède l’avantage de pouvoir installer exactement la version de Ruby souhaitée. Mais surtout, RVM permet de cloisonner les gemmes (librairies Ruby) à l’utilisateur courant et non à l’administrateur `root`. Ceci permet de réduire les risques d’escalade de droits.
+==== Serveur HTTP
+
+J'ai donc choisi d'installer *Apache HTTP Server* pour le serveur web car c'est le serveur HTTP le plus populaire du World Wide Web. Afin de 
+
+Je n'ai pas installé le paquet `ruby` directement, j’ai choisi d’utiliser *Ruby Version Manager* (RVM) . RVM permet d'installer exactement la version de Ruby souhaitée. Mais surtout, RVM permet de *cloisonner* les gemmes (librairies Ruby) à l’utilisateur courant et non à l’administrateur. Ceci permet de réduire les risques d’ *Élévation des privilèges*.
+
+> Une élévation des privilèges est un mécanisme permettant à un utilisateur d'obtenir des privilèges supérieurs à ceux qu'il a normalement. - Wikipédia
+
+Il font donc éviter à tout prix l'élevation des privilège car un utilisateur qui arrive à gagner un accès au serveur pourrait effectuer des mauvaise action ayant de plus grands impacts.
 
 ==== Base de donné
 
-Concernant la SGBD _(Système de Gestion de Base de Données)_, Ruby on Rails ne pose pas de contrainte particulière. J’ai donc choisi MariaDB. Une fois installé, je lance directement le script de sécurisation de l’installation:
+Concernant la SGBD _(Système de Gestion de Base de Données)_, Ruby on Rails ne pose pas de contrainte particulière. J'ai donc choisi *MariaDB* comme système de gestion de base de données car c'est un logiciel libre et qu'il est dans les dépots officiels d'Ubuntu.
+
+NOTE: MariaDB est un fork de MySQL qui est réputé comme plus performant et plus libre que ce dernier.
+
+MariaDB propose un script de sécurisation de l’installation:
 
 .Script de sécurisation d'un serveur MariaDB
 [source,bash]
@@ -55,11 +74,11 @@ $ mysql_secure_installation
 
 Ce script permet de:
 
-* mettre un mot de passe pour l’utilisateur `root` (Administrateur)
-* supprimer les utilisateur anonymes
+* mettre un *mot de passe* pour l’utilisateur `root` (Administrateur)
+* supprimer les *utilisateurs anonymes*
 * désactiver la possibilité aux utilisateur `root` de pouvoir se connecter
 
-Toujours dans un soucis de gestion fine des droits, j’ai choisi de créer un utilisateur MariaDB spécifique à l’application. Cela permet
+Toujours dans un soucis de gestion fine des droits, j’ai choisi de créer un utilisateur MariaDB spécifique à l’application. Cela permet de *limiter* l'accès à un utilisateur à une base de données spécifique.
 
 .Création d'une base de données et d'un utilisateur spécifique
 [source,sql]
@@ -72,22 +91,46 @@ MariaDB > GRANT ALL PRIVILEGES ON isignif . * TO 'isignif'@'localhost';
 
 === Sécurité
 
-Aujourd’hui, la sécurité informatique est un enjeu majeur. D’autant plus pour iSignif qui manipules des données sensibles. Il faut un certains temps pour bâtir une réputation et une fuite de données peut suffire à la ruiner (Mars 2017, Facebook à perdu 37 milliards de dollars suite à la révélation de la fuite des données de plus de 50 millions de leurs utilisateurs https://www.lci.fr/high-tech/affaire-cambridge-analytica-quel-est-ce-scandale-qui-plonge-facebook-dans-la-crise-mark-zuckerberg-2082228.html[selon LCI]].
+Aujourd’hui, la sécurité informatique est un enjeu majeur. D’autant plus pour iSignif qui manipule des données sensibles. Il faut un certains temps pour bâtir une réputation et une fuite de données peut suffire à la ruiner
+
+NOTE: Mars 2017, Facebook à perdu 37 milliards de dollars suite à la révélation de la fuite des données de plus de 50 millions de leurs utilisateurs https://www.lci.fr/high-tech/affaire-cambridge-analytica-quel-est-ce-scandale-qui-plonge-facebook-dans-la-crise-mark-zuckerberg-2082228.html[selon LCI]].
 
 ==== Sécurité de l’application
 
-Dans un premier temps, la sécurité passe par l’application. L’application doit être robuste et imperméables aux attaques les plus connues. Heureusement, Ruby on Rails étant un framework éprouvé, il prévient des failles de sécurité les plus connues (pour peu qu’on respecte sa façon de coder).
+C'est bien connu, le point de le plus faible d'une chaine réside dans le maillon le plus faible. Cette annalogie, appliquée à un produit SAAS, signifierais que le maillon le plus faible est l'application web. L’application doit être *imperméable* aux attaques les plus connues.
 
-Par exemple, le *Cross-site Scripting* permet d'envoyer un formulaire provenant d’un autre site vers le nôtre. Rails utilise un jeton qu’il place sur tous les formulaires et il peut identifier les formulaires qui lui sont propre.
+En respectant les conventions de Ruby on Rails, nous somme protégés des failles de sécurité les plus connues. Je vais donc en passer quelques une en revue.
 
-L’*injection SQL* consiste à injecter du code SQL (utilisé pour envoyer des requêtes sur la base de données). Comme le montre la figure suivante, les injection SQL sont très faciles. Heureusement, Rails échappe par défaut tous les paramètres envoyés par l’utilisateur.
+===== Cross-site Scripting
+
+Le *Cross-site Scripting* consiste à envoyer un formulaire d’un site vers un autre. Ainsi, un formulaire d'un site A pourrait demanazder une action sur un site B en profitant que sur l'utilisateur est déjà connecté ur le site B.
+
+Rails empêche cela en utilisant un jeton qu’il place sur tous les formulaires. Il peut ainsi identifier les formulaires qui lui sont propre et ceux qui ne lui sont pas.
+
+===== Injection SQL
+
+L’*injection SQL* consiste à injecter du code SQL dans l'application. Le code SQL est utilisé pour envoyer des requêtes sur la base de données et il permet donc de modifier des utilisateurs ou encore de récupérer des informations. Elles peuvent donc avoir de grandes conséquences.
+
+Comme le montre la figure suivante, les injections SQL sont très faciles.
 
 .Une tentative d’injection SQL sur un formulaire de contact
 image:sql_injection.png[sql_injection, 250]
 
-L'**injection de code JavaScript** permet d’exécuter du code JavaScript sur le navigateur du client. Cette faille est simplissime, par exemple, un petit malin peut créer un utilisateur contenant du code JavaScript comme nom de famille `<script>alert('Pwned')</script>`. Alors sur chaque page ou son nom sera affiché, le code sera exécuté. Heureusement, Rails nous protège directement de cela en échappant les caractères.
+Ruby on Rails utilise un outil qui nous empêche de manipuler du code SQL et il previent donc le développeur d'erreurs permetant l'injection du code SQL.
 
-En continuant sur les failles classiques, je peux évoquer l'**attaque par force brute**. Il s’agit de tenter de se connecter plusieurs fois en utilisant un login et un dictionnaire de mots de passe. Dans mon cas, j’ai utilisé la bibliothèque https://github.com/binarylogic/authlogic[Authlogic] qui stocke le nombre de tentative de connections échouées dans la base de données. Ainsi, une fois 3 tentatives dépassées, le compte est bloqué et il n’est plus possible de se connecter avec le login.
+===== Cross-Site Scripting (XSS)
+
+L'une des vulnérabilités de sécurité les plus répandues et les plus dévastatrices dans les applications Web est *XSS*. Cette attaque malveillante injecte du code exécutable côté client: du JavaScript.
+
+Cette faille est simplissime, par exemple, un petit malin peut créer un utilisateur se nommant `<script>alert('Pwned')</script>`. Alors sur chaque page ou son nom sera affiché, le code sera exécuté.
+
+Rails, par défaut, échape implicitement tout les charctères. C'est-à-dire que les charactères contenant du code seront annulés.  
+
+===== Attaque par force brute
+
+Comme je le disait plus haut, une attaque par _bruteforce_ consiste à tenter des milliers de combinaisons d'utilisateur et de mot de passe jusqu'à ce qu'un combinaison fonctionne. Ainsi, un pirate pourrait tentent de se connecter des milliers de fois en utilisant un login et un dictionnaire de mots de passe.
+
+Dans mon cas, j’ai utilisé la bibliothèque https://github.com/binarylogic/authlogic[Authlogic] qui stocke le nombre de tentatives de connections échouées dans la base de données. Ainsi, une fois 3 tentatives dépassées, le compte est bloqué et il n’est plus possible de se connecter avec le login.
 
 ===== Les failles les plus récentes
 

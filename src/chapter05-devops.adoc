@@ -18,17 +18,15 @@ Plusieurs solutions existent:
 
 Pour mon application j’ai choisi le VPS qui me permet *d’administrer* mon serveur comme je le souhaite tout en réduisant le coût.
 
-Étant dans une phase de validation du concept, ce choix m’a permi de commencer avec un petit serveur à 3 euros / mois . En cas de forte actvité, je pourrai basculer sur un serveur plus puissant très facilement.
+Étant dans une phase de validation du concept, ce choix m’a permis de commencer avec un petit serveur à 3 euros / mois . En cas de forte activité, je pourrai basculer sur un serveur plus puissant très facilement.
 
-NOTE: Jen'ai pas encore eu besoin d'augmenter la capaicté de mon VPS pour le moment car il suffit pour le moment.
+NOTE: Je n'ai pas encore eu besoin d'augmenter la capacité de mon VPS pour le moment car il suffit pour le moment.
 
-=== Installation
-
-==== Serveur
+=== Installation et sécurisation du serveur
 
 OVH donne les choix entre plusieurs OS et plusieurs distributions. L'utilisation de Ruby on Rails m'impose l'utilisation d'un serveur GNU/Linux et j'ai choisi la distribution Ubuntu. Mon choix s’est donc porté sur *Ubuntu 18.04 server*.
 
-Ubuntu, développé par Canonical, est exremement réputé. La version 18.04 est une _Long Term Support_ (LTS), cela signifie que cette version recevra des mises à jour de sécurité jusqu'à avril 2023.
+Ubuntu, développé par Canonical, est extrêmement réputé. La version 18.04 est une _Long Term Support_ (LTS), cela signifie que cette version recevra des mises à jour de sécurité jusqu'à avril 2023.
 
 Une fois le serveur mis en place, la première étape était de sécuriser l’utilisation. J’ai donc créé un utilisateur spécifique qui me sert uniquement le déploiement de l’application.
 
@@ -42,21 +40,55 @@ $ passwd isignif
 $ sudo addgroup isignif sudo
 ----
 
-Le protocole utilisé pour se connecter au serveur est le *protocole SSH* (Secure SHell). Ce protocole étant le point d'entrée doit être au maxiumum sécurisé. J'ai donc fait le choix de générer une *clé SSH*.
 
-La clé SSH permet de se connecter au serveur *sans mot de passe*. J'ai ensuité désactivé la possibilité de se connecter au compte en utilisant un mot de passe. Ainsi il est est impossible de réaliser une attaque de type _bruteforce_.
+==== Protocole SSH
+
+Le protocole utilisé pour se connecter au serveur est le *protocole SSH* (Secure SHell). Ce protocole est le point d'entrée au serveur et il permet donc de contrôler le serveur à distance. Il doit donc être au maximum sécurisé. Dans cette section je vais retracer comme je l'ai sécurisé.
+
+En regardant les logs d’un serveur, on peut remarquer une quantité importante de tentatives de connexion SSH. Dans mon cas il était de l'ordre de *cinquante mille tentatives en trois jours*. Ceci est du au fait que beaucoup de hackers ont mis au point des scripts qui tentent de se connecter en utilisant des *dictionnaires de mots de passe*.
+
+===== Clé SSH
+
+Le protocole SSH utilise par défaut un mot de passe. Le mot de passe est une sécurité faible puisqu'il peut fuiter. J'ai donc fait le choix de générer une *clé SSH*.
+
+La clé SSH permet de se connecter au serveur *sans mot de passe* en utilisant simplement un fichier qui contient la *clé*. Cette clé est elle-même *chiffrée* ce qui implique donc que le hacker doit posséder le fichier et connaître le mot de passe de chiffrement de celle-ci.
+
+J'ai donc mis en place ce système d'authentification et j'ai ensuite désactivé la possibilité de se connecter au compte en utilisant un mot de passe. Ainsi il est est impossible de réaliser une attaque de type _bruteforce_.
 
 NOTE: Une attaque par _bruteforce_ consiste à tenter des milliers de combinaisons d'utilisateur et de mot de passe jusqu'à ce qu'un combinaison fonctionne.
 
+===== Liste noire
+
+De la même manière que pour les appels téléphonique, il est possible de gérer une liste noire des adresses IP malveillantes. Il existe donc un outil nommé https://www.fail2ban.org/wiki/index.php/Main_Page[Fail2ban]. Fail2ban est un petit utilitaire écrit en Python qui analyse les logs du serveur et met sur liste noir les adresses IP qui ont tentés de se connecter plusieurs fois avec un mot de passe erroné.
+
+[#serveur_http]
 ==== Serveur HTTP
 
-J'ai donc choisi d'installer *Apache HTTP Server* pour le serveur web car c'est le serveur HTTP le plus populaire du World Wide Web. Afin de 
+J'ai donc choisi d'installer *Apache HTTP Server* pour le serveur web car c'est le serveur HTTP le plus populaire du World Wide Web. Afin de
 
-Je n'ai pas installé le paquet `ruby` directement, j’ai choisi d’utiliser *Ruby Version Manager* (RVM) . RVM permet d'installer exactement la version de Ruby souhaitée. Mais surtout, RVM permet de *cloisonner* les gemmes (librairies Ruby) à l’utilisateur courant et non à l’administrateur. Ceci permet de réduire les risques d’ *Élévation des privilèges*.
+Je n'ai pas installé le paquet `ruby` directement, j’ai choisi d’utiliser *Ruby Version Manager* (RVM). RVM permet d'installer exactement la version de Ruby souhaitée. Mais surtout, RVM permet de *cloisonner* les gemmes (librairies Ruby) à l’utilisateur courant et non à l’administrateur. Ceci permet de réduire les risques d’ *Élévation des privilèges*.
 
 > Une élévation des privilèges est un mécanisme permettant à un utilisateur d'obtenir des privilèges supérieurs à ceux qu'il a normalement. - Wikipédia
 
-Il font donc éviter à tout prix l'élevation des privilège car un utilisateur qui arrive à gagner un accès au serveur pourrait effectuer des mauvaise action ayant de plus grands impacts.
+Il font donc éviter à tout prix l’élévation des privilège car un utilisateur qui arrive à gagner un accès au serveur pourrait effectuer des mauvaise action ayant de plus grands impacts.
+
+===== Utilisation du protocole HTTPS
+
+Le https://fr.wikipedia.org/wiki/HyperText_Transfer_Protocol_Secure[protocole HTTPS] permet de chiffrer les communications entre le client et le serveur. Cela garanti que les informations qui transitent ne peuvent pas être lues par un attaquant qui voit les paquets réseau transiter. Ainsi, nous protégeons les identifiants qui transitent lorsqu’un utilisateur est connecté.
+
+Auparavant, il fallait payer une entreprise qui garantissait la validité des certificats de chiffrement. L’activer se fait désormais très facilement grâce à https://letsencrypt.org/[Let’s encrypt] qui est totalement gratuit!
+
+J’ai donc pu l’installer très facilement avec https://certbot.eff.org/[Certbot], un outil qui génère le certificat pour nous et s’occupe même de mettre la configuration Apache à jour.
+
+.Installation d'un nouveau certificat HTTP pour Apache
+[source,bash]
+----
+$ sudo certbot --apache
+----
+
+C’est donc un petit geste mais celui-ci à des répercutions sur la confiance accordée par nos utilisateur et même sur le référencement.
+
+NOTE: Google a annoncé en août 2014 que le protocole HTTPS serait pris en compte dans l’algorithme de positionnement.
 
 ==== Base de donné
 
@@ -88,26 +120,23 @@ MariaDB > CREATE USER 'isignif'@'localhost' IDENTIFIED BY '****';
 MariaDB > GRANT ALL PRIVILEGES ON isignif . * TO 'isignif'@'localhost';
 ----
 
-
-=== Sécurité
+=== Sécurité de l’application
 
 Aujourd’hui, la sécurité informatique est un enjeu majeur. D’autant plus pour iSignif qui manipule des données sensibles. Il faut un certains temps pour bâtir une réputation et une fuite de données peut suffire à la ruiner
 
 NOTE: Mars 2017, Facebook à perdu 37 milliards de dollars suite à la révélation de la fuite des données de plus de 50 millions de leurs utilisateurs https://www.lci.fr/high-tech/affaire-cambridge-analytica-quel-est-ce-scandale-qui-plonge-facebook-dans-la-crise-mark-zuckerberg-2082228.html[selon LCI]].
 
-==== Sécurité de l’application
-
 C'est bien connu, le point de le plus faible d'une chaine réside dans le maillon le plus faible. Cette annalogie, appliquée à un produit SAAS, signifierais que le maillon le plus faible est l'application web. L’application doit être *imperméable* aux attaques les plus connues.
 
 En respectant les conventions de Ruby on Rails, nous somme protégés des failles de sécurité les plus connues. Je vais donc en passer quelques une en revue.
 
-===== Cross-site Scripting
+==== Cross-site Scripting
 
 Le *Cross-site Scripting* consiste à envoyer un formulaire d’un site vers un autre. Ainsi, un formulaire d'un site A pourrait demanazder une action sur un site B en profitant que sur l'utilisateur est déjà connecté ur le site B.
 
 Rails empêche cela en utilisant un jeton qu’il place sur tous les formulaires. Il peut ainsi identifier les formulaires qui lui sont propre et ceux qui ne lui sont pas.
 
-===== Injection SQL
+==== Injection SQL
 
 L’*injection SQL* consiste à injecter du code SQL dans l'application. Le code SQL est utilisé pour envoyer des requêtes sur la base de données et il permet donc de modifier des utilisateurs ou encore de récupérer des informations. Elles peuvent donc avoir de grandes conséquences.
 
@@ -118,25 +147,25 @@ image:sql_injection.png[sql_injection, 250]
 
 Ruby on Rails utilise un outil qui nous empêche de manipuler du code SQL et il previent donc le développeur d'erreurs permetant l'injection du code SQL.
 
-===== Cross-Site Scripting (XSS)
+==== Cross-Site Scripting (XSS)
 
 L'une des vulnérabilités de sécurité les plus répandues et les plus dévastatrices dans les applications Web est *XSS*. Cette attaque malveillante injecte du code exécutable côté client: du JavaScript.
 
 Cette faille est simplissime, par exemple, un petit malin peut créer un utilisateur se nommant `<script>alert('Pwned')</script>`. Alors sur chaque page ou son nom sera affiché, le code sera exécuté.
 
-Rails, par défaut, échape implicitement tout les charctères. C'est-à-dire que les charactères contenant du code seront annulés.  
+Rails, par défaut, échape implicitement tout les charctères. C'est-à-dire que les charactères contenant du code seront annulés.
 
-===== Attaque par force brute
+==== Attaque par force brute
 
 Comme je le disait plus haut, une attaque par _bruteforce_ consiste à tenter des milliers de combinaisons d'utilisateur et de mot de passe jusqu'à ce qu'un combinaison fonctionne. Ainsi, un pirate pourrait tentent de se connecter des milliers de fois en utilisant un login et un dictionnaire de mots de passe.
 
 Dans mon cas, j’ai utilisé la bibliothèque https://github.com/binarylogic/authlogic[Authlogic] qui stocke le nombre de tentatives de connections échouées dans la base de données. Ainsi, une fois 3 tentatives dépassées, le compte est bloqué et il n’est plus possible de se connecter avec le login.
 
-===== Les failles les plus récentes
+==== Les failles les plus récentes
 
-Des failles de sécurités sont découvertes tous les jours. Heureusement pour nous, une organisation les répertories. Ces vulnérabilités sont identifiées par un identifiant CVE (Common Vulnerabilities and Exposures).
+Des failles de sécurités sont découvertes tous les jours. Heureusement pour nous, une organisation les répertorie. Ces vulnérabilités sont identifiées par un identifiant CVE (Common Vulnerabilities and Exposures).
 
-https://github.com/rubysec/ruby-advisory-db[Ruby Advisory Database] est une base de données communautaire qui s’appuie sur ces CVE. Elle répertorie les bibliothèques Ruby vulnérables à ces CVE. Des outils existent pour vérifier automatiquement que notre application n’utilise pas un bibliothèque vulnérable: https://github.com/rubysec/bundler-audit[Bundler Audit]. Cette gemme s’utilise très facilement:
+https://github.com/rubysec/ruby-advisory-db[Ruby Advisory Database] est une base de données *communautaire* qui s’appuie sur ces CVE. Elle répertorie les bibliothèques Ruby vulnérables à ces CVE. Des outils existent pour vérifier automatiquement que notre application n’utilise pas une bibliothèque vulnérable: https://github.com/rubysec/bundler-audit[Bundler Audit]. Cette gemme s’utilise très facilement:
 
 .Exemple d'utilisation de Bundler Audit
 [source,bash]
@@ -153,15 +182,15 @@ Solution: upgrade to ~> 2.3.18, ~> 3.1.12, >= 3.2.13
 
 ==== Audit de sécurité
 
-Dans cette section, je vais vous détailler comment j'ai réalisé un audit complet de mon serveur moi-même en faisant des tests d'intrusion.
+Dans cette section, je vais vous détailler comment j'ai réalisé un audit complet de mon serveur en faisant des tests d'intrusion.
 
 ===== Vérifier les ports ouverts
 
-La première étape pour un hacker est la *reconnaissance de la cible*. Cette étape consiste à obtenir le maximum d’informations sur la victime. Nous devons donc cacher le plus d’informations possible à propos de notre serveur.
+La première étape pour un hacker est la *reconnaissance de la cible*. Cette étape consiste à obtenir le -*maximum d’informations* sur la victime. Nous devons donc cacher le plus d’informations possibles à propos de notre serveur.
 
-Une des information facile à obtenir pour un hacker est les port ouverts sur le serveur. Les ports sont en quelques sortent des portes ouvertes sur le réseaux. Donc, dans un premier temps, j’ai simplement effectué un scan des ports sur mon serveur.
+Une des information facile à obtenir pour un hacker sont les *ports ouverts* sur le serveur. Les ports sont en quelques sortes des portes ouvertes sur le réseau. Dans un premier temps, j’ai simplement effectué un scan des ports sur mon serveur.
 
-NOTE: Malgré sur ce qu’on peut entendre, le scan de port est tout à fait légal car il permet simplement de récupérer des informations publiques.
+NOTE: Malgré ce que nous pouvons entendre, le scan de port est tout à fait légal car il s'agit simplement d'un moyen automatisé de récupérer des informations publiques.
 
 .Exemple d'utilisation de NMAP pour vérifier les ports ouverts
 [source,bash]
@@ -187,60 +216,41 @@ On voit donc que beaucoup d’informations ressortent du scan comme:
 
 * l’utilisation d’OpenSSH port 22 avec la version du logiciel
 * l’utilisation d’Apache HTTPD port 22 / 443  avec la version du logiciel
+* le système d'exploitation du serveur ainsi que sa version
 
-NMAP nous fournis aussi le numéro de la version des logiciels utilisés. Cela peut servir à trouver des vulnérabilités. Je vous montrerai comment j’ai masqué certains de ses informations plus loin.
+NMAP nous fournit aussi le numéro de la version des logiciels utilisés. Cela peut servir à trouver des vulnérabilités. Je vous montrerai comment j’ai masqué certaines de ces informations plus loin.
 
 ===== Réalisation d’un scan de vulnérabilité
 
-Afin de connaître les vulnérabilité de mon installation, j’ai décidé de faire un scan de vulnérabilité en utilisant https://www.metasploit.com/[Metasploit]. Metasploit Framework est un logiciel écrit en Ruby permettant le développement et l’utilisation d’exploit. Les exploits sont des vulnérabilités qui permettent d’exécuter du code sur une machine distante. J'ai aussi utilisé et http://www.openvas.org/[OpenVAS], un scanner de vulnérabilités libre issu du fork de Nessus. OpenVAS s’appuie sur les https://cve.mitre.org/[CVE (Common Vulnerabilities and Exposures)]. Il s’agit d’une base de données des vulnérabilités connues.
+Afin de connaître les vulnérabilité de mon installation, j’ai décidé de faire un *scan de vulnérabilité*. Le scan de vulnérabilité s'appuie sur les informations extraites précédemment pour déduire les *vulnérabilités* du serveur.
 
-NOTE: Le scan de vulnérabilité est illégal à moins que le serveur nous appartienne ou bien qu’une autorisation du propriétaire est donné. Dans mon cas, le serveur m’appartiens.
+Pour faire cela, j'ai utilisé http://www.openvas.org/[OpenVAS],  un scanner de vulnérabilités libre issu du fork de Nessus. OpenVAS s’appuie sur les https://cve.mitre.org/[CVE (Common Vulnerabilities and Exposures)], une base de données communautaire des vulnérabilités connues.
 
-Plusieurs types de scan sont possibles, J’ai choisi d’utiliser le plus complet, qui est aussi le plus long. J’ai donc obtenu le résultat que l’on peu voir sur la figure suivant (le rapport complet est disponible en annexe).
+NOTE: Le scan de vulnérabilité est illégal à moins que le serveur nous appartienne ou bien qu’une autorisation du propriétaire soit donné. Dans mon cas, le serveur m’appartien.
+
+Plusieurs types de scan sont possibles, J’ai choisi d’utiliser le plus complet, qui est aussi le plus long. J’ai donc obtenu le résultat que l’on peut voir sur la figure suivant (le rapport complet est disponible en annexe).
 
 .Capture d’écran du rapport de scan d’OpenVAS
 image:kali_openvas_report.png[kali_openvas_report]
 
-On peut voir que globalement mon serveur possède peu de vulnérabilités. Ceci est sûrement du au fait que je met à jours les paquets quotidiennement et que donc, les logiciels sont à jours.
+On peut voir que mon serveur possède peu de vulnérabilités. Ceci est sûrement dû au fait que je mets à jour les paquets quotidiennement et que donc, j'applique les correctifs de sécurités.
 
-==== Sécurité du serveur
+// ==== Sécurité du serveur
+//
+// Sécuriser un serveur est un travail à part entière qui nécessite beaucoup de compétences. Absolument personne ne peut se narguer d’être invulnérable aux tentatives d’attaques. Je n’ai pas la prétention d’être un expert en sécurité. Il s’agit donc ici de mettre en places les protections de base.
 
-Sécuriser un serveur est un travail à part entière qui nécessite beaucoup compétences. De plus, absolument personne ne peut se narguer d’être invulnérable aux tentatives d’attaques. Je n’ai pas la prétention d’être un expert en sécurité donc il s’agit ici de mettre en places les protections de base.
 
-===== Utilisation du protocole HTTPS
 
-Le https://fr.wikipedia.org/wiki/HyperText_Transfer_Protocol_Secure[protocole HTTPS] permet de chiffrer les communications entre le client et le serveur. Cela garantie que les informations qui transitent ne peuvent pas être lues par un attaquant. Ainsi, on protège les identifiants qui transite lorsqu’un utilisateur connecté.
+// ===== Groupe sudo
+//
+// Comme je l’ai évoqué plus haut, j’ai déjà créé un utilisateur spécifique pour l’application que j’ai rajouté dans le groupe des `sudoers`. Une des actions qui peut être mise en place facilement est de supprimer cet utilisateur du groupe `sudo`. Ceci permet d’éviter l’*élévation des privilèges* (voir définition plus haut dans la section <<serveur_http>>).
+//
 
-Auparavant, il fallait souvent payer une entreprise qui garantissait la validité de la clé de chiffrement. L’activer se fait désormais très facilement grâce à https://letsencrypt.org/[Let’s encrypt] qui est totalement gratuit!
-
-J’ai donc pu l’installer très facilement avec https://certbot.eff.org/[Certbot], un outil qui génère le certificat pour nous et s’occupe même de mettre la configuration Apache à jour.
-
-.Instalation d'un nouveau certificat HTTP pour Apache
-[source,bash]
-----
-$ sudo certbot --apache
-----
-
-C’est donc un petit geste mais celui-ci à des répercutions sur la confiances accordée par nos utilisateur et même sur le référencement. Google à d’ailleurs annoncé en août 2014 que le protocole HTTPS serait pris en compte dans l’algorithme de positionnement.
-
-===== Groupe sudo
-
-Comme je l’ai évoqué plus haut, j’ai déjà crée un utilisateur spécifique pour l’application que j’ai rajouté dans le groupe des `sudoers`. Une des actions qui peut être mis en place facilement est de supprimer cet utilisateur du groupe `sudo`. Ceci permet d’éviter l’élévation des privilèges. Un des premier objectif d’un hacker va être de vouloir obtenir des privilèges plus élevé afin de pouvoir effectuer des actions ayant de plus grandes conséquences.
-
-===== Modifier le port par défaut
-
-En regardant les logs d’un serveur, on peut remarquer une quantité importante de tentative de connexion SSH (Le protocole qui permet de se connecter à distance à un ordinateur). Ceci est du au fait que beaucoup de hacker ont mis au point des scripts qui tentent de se connecter en utilisant des dictionnaires de mots de passe.
-
-Par défaut, le port utilisé est le port 22.
-
-===== Blacklister les tentatives de connexions
-
-Comme je l’expliquait plus haut, beaucoup de hacker tentent de se connecter au serveur via la protocole SSH. De la même manière que pour les appels téléphonique, il est possible de bloquer ces tentatives.
-
-https://www.fail2ban.org/wiki/index.php/Main_Page[Fail2ban] est un petit utilitaire écrit en Python qui va s’occuper d’analyser les logs du serveur. Il va donc mettre sur liste noir les adresses IP qui ont tenté de se connecter plusieurs fois avec un mot de passe erroné.
 
 === Conclusion
 
-Administrer un serveur Linux est un métier à par entière. Je n'estime pas avoir fait tout le travail d'un administrateur système. Entre autre, je n'ai pas utilisé de logiciel de monitoring du serveur Linux et je ne suis donc pas en mesure d'annoncer un temps de disponibilité de l'application. En revanche, je pense que je peux affirmer que j'ai appliqué les pratiques de base dans la sécurisation d'un serveur Linux.
+Administrer un serveur Linux est un métier à par entière. Je n'estime pas avoir fait tout le travail d'un administrateur système mais je pense que je peux affirmer que j'ai appliqué les pratiques de base dans la sécurisation d'un serveur Linux.
 
-Étant un Linuxien convaincu, cette expérience m'a permis de monter en compétence sur l'administration et la gestion d'un serveur sous Linux. Même si ce n'est pas le cœur de métier de développeur, ce sont réellement des compétences utilise au développeur.
+Entre autre, je n'ai pas utilisé de logiciel de monitoring du serveur Linux et je ne suis donc pas en mesure d'annoncer un temps de disponibilité de l'application.
+
+Étant un Linuxien convaincu, cette expérience m'a permis de *monter en compétence* sur l'administration et la gestion d'un serveur sous Linux. Même si ce n'est pas le cœur de métier de développeur, ce sont réellement des compétences utiles au développeur.

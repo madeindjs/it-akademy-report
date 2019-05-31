@@ -1,16 +1,16 @@
 [#chapter07-marketing]
 == Promotion du produit
 
-Dans ce chapitre je vais évoquer comment j'ai amélioré notre référencement (malgré que ce n'étais pas nôtre priorité) et comment nous avons utilisé les réseaux sociaux afin de promouvoir notre produit. Enfin comment je terminerai par la réalisation d'une campagne de courriel et terminerai par dresser un bilan.
+Dans ce chapitre je vais évoquer comment j'ai amélioré notre référencement et comment nous avons utilisé les réseaux sociaux afin de promouvoir notre produit. Je terminerai par la présentation de réalisation d'une campagne de courriel et dresserait un bilan.
 
 === Référencement
 
-Le SEO n'a pas été une de nos plus grande préoccupation. Notre cible principale sont les avocats que nous voulons accompagner et *fidéliser* dans l'utilisation de notre plateforme. Nous avons donc privilégié une expansion contrôlée.
+Le référencement n'a pas été une de nos plus grande préoccupation. Notre cible principale sont les avocats que nous voulons accompagner et *fidéliser* dans l'utilisation de notre plateforme. Nous avons donc privilégié une *expansion contrôlée*.
 
-Bien évidement, cela ne pas ma empêché de faire le minimum recommandé par Google comme utiliser des balises adaptés (comme `<article>` au lieu de `<div>`). Nous incluons aussi des attributs respectant les normes d'accessibilités.
+Bien évidement, cela ne m'a pas empêché de faire le minimum recommandé par Google comme utiliser des balises adaptées (comme `<article>` au lieu de `<div>`). Nous incluons aussi des attributs respectant les normes d'accessibilités.
 
 [source, html]
-.les balises images inclut des textes alternatifs pour les mal-voyants
+.les balises images inclues des textes alternatifs pour les mal-voyants
 ----
 <img alt="Le logo d'iSignif" src="isignif.png" />
 ----
@@ -20,7 +20,7 @@ Une bonne optimisation consiste aussi à maintenir des performances acceptables 
 J'ai donc fait des efforts au niveau de la mise en cache des images et des feuilles de style via la configuration du serveur Apache:
 
 [source, xml]
-.Configuration Apache de la mise en cache des images et des feuilles de style
+.Configuration Apache pour la mise en cache des images et des feuilles de style
 ----
 <Location /assets  />
   <IfModule mod_header.c>
@@ -33,16 +33,16 @@ J'ai donc fait des efforts au niveau de la mise en cache des images et des feuil
 </Location>
 ----
 
-On peut facilement constater cette amélioration en ouvrant l'inspecteur des requêtes HTTP avec le navigateur qui affiche la mention _cached_.
+Nous pouvons peut facilement constater cette amélioration en ouvrant l'inspecteur des requêtes HTTP avec le navigateur qui affiche la mention _cached_.
 
 .Les images sont mises en cache par le navigateur
 image:seo_cache_asset.png[]
 
-J'ai aussi mis en place une compression des fichiers textes par Apache qui permet de *réduire la bande passante*:
+J'ai aussi mis en place une compression des fichiers textes par Apache qui permet de *réduire la consommation de la bande passante*:
 
 
 [source, xml]
-.Configuration Apache de la compression des fichiers textes
+.Configuration Apache pour la compression des fichiers textes
 ----
 <IfModule mod_deflate.c>
   SetOutputFilter DEFLATE
@@ -52,7 +52,7 @@ J'ai aussi mis en place une compression des fichiers textes par Apache qui perme
 </IfModule>
 ----
 
-Pour terminer j'ai le protocole HTTP2 qui apporte de nombreuses améliorations comme, entre autre, optimiser le nombre de requêtes TCP faites et réduire la taille des en-têtes des requêtes HTTP.
+Pour terminer j'ai mis en place le protocole HTTP2 qui apporte de nombreuses améliorations comme, entre autre, optimiser le nombre de requêtes TCP effectuées et réduire la taille des en-têtes des requêtes HTTP.
 
 Et voilà. Afin de valider ses éléments, j'ai utilisé l'outil PageSpeed Insights de Google qui m'a attribué un excellent résultat:
 
@@ -61,25 +61,25 @@ image:speedinsight.png[]
 
 === Utilisation de LinkedIn
 
-LinkedIn est un puissant réseau social à destination des professionnel. Très utilisé dans le milieu du droit, c'est un bon moyen de se faire connaître et de communiquer avec sa cible.
+LinkedIn est un puissant réseau social à destination des professionnels. Très utilisé dans le milieu du droit, c'est un bon moyen de se faire connaître et de communiquer avec sa cible.
 
-Initialement, nous voulions utiliser leur campagne de publicité afin de proposer afin de toucher directement notre potentielle clientèle. Nous avions analysé que nous devions cibler les avocats résidents dans de grandes villes, utilisant déjà certains produits issue de LegalTech, et ayant entre 25 et 35 ans car ce sont ceux les plus à l'aise avec l'informatique.
+Initialement, nous voulions utiliser leur fonctionnalité de campagne de publicité afin de proposer afin de toucher directement notre potentielle clientèle. Nous avions analysé que nous devions cibler les avocats résidents dans de grandes villes, utilisant déjà certains produits issus de LegalTech, et ayant entre 25 et 35 ans car ce sont ceux les plus à l'aise avec l'informatique.
 
-Malheureusement, notre budget ne nous a pas permis de le faire mais nous avons tout de même alimenté une page de société avec des articles récurrents, clairs et concis:
+Malheureusement, notre budget ne nous a pas permis de le faire. Nous avons tout de même alimenté une page de société avec des articles récurrents, clairs et concis:
 
-.Capture d'écran du résultat du scan de l'outil PageSpeed Insights de Google
+.Capture d'écran d'un post que nous avons publié sur LinkedIN
 image:linkedin_post.png[]
 
-Même si c'est difficilement mesurable, cela nous a permit de nous faire une *petite renommée* dans le milieu.
+Même si c'est difficilement mesurable, cela nous a permis de nous faire une *petite renommée* dans le milieu.
 
 === Création d’une campagne d'__emailing__
 
-Afin de communiquer autour de notre application, nous avons choisit d'utiliser https://mailchimp.com/[mailchimp], une solution SAAS qui propose un service de mailing facile et permet d'avoir un retour comme:
+Afin de communiquer autour de notre application, nous avons choisi d'utiliser https://mailchimp.com/[mailchimp], une solution SAAS qui propose un service de mailing facile et permet d'avoir un retour comme:
 
 - le taux d'ouverture de mails
-- le taux d'ouverture du lien du mail
+- le taux d'ouverture du lien contenu dans le mail
 
-Cet outil permet aussi de proposer un lien de désinscription à la newsletter que l'utilisateur peut utiliser afin de ne plus recevoir de mail. Cette fonctionnalité est très importante car la lois nous oblige à donner un moyen de se désinscrire.
+Cet outil permet aussi de proposer un *lien de désinscription* à la newsletter que l'utilisateur peut utiliser afin de ne plus recevoir de mail. Cette fonctionnalité est très importante car la loi l'oblige.
 
 Mon associé, Sacha Partensky, a ainsi sélectionné un peu plus de mille destinataires que nous avons découpé en quatre campagnes de courriel afin d'adapter le contenu du mail au fur et à mesure.
 
@@ -88,7 +88,7 @@ Une fois ces campagnes réalisées, Mailchimp propose un tableau de bord récapi
 .Capture d'écran du tableau de bord des campagnes effectuées sur Mailchimp
 image:mailchimp_dashboard.png[]
 
-En analysant un peu ces résultats, on se rend compte que nous sommes bien situé comparé au secteur des campagnes de mailing à destination de service professionnels:
+En analysant un peu ces résultats, nous nous rendons compte que nous sommes bien situé comparé au secteur des campagnes de mailing à destination de service professionnels:
 
 .Statistiques moyennes des campagnes d'emailing des clients de Mailchimp comparé à iSignif (source: https://mailchimp.com/resources/email-marketing-benchmarks/)
 |===
@@ -104,12 +104,14 @@ En analysant un peu ces résultats, on se rend compte que nous sommes bien situ�
 
 |===
 
-En revanche, en terme de business, ces campagnes n'ont pas eu beaucoup de retombées puisque nous n'avons pas eu de nouvelles inscriptions sur notre plateforme.
+En revanche, en terme de business, ces campagnes n'ont *pas eu beaucoup de retombées* puisque nous n'avons pas eu de nouvelles inscriptions sur notre plateforme.
 
 
 === Conclusion
 
-Avec du recul je pense que, pour notre activité, il vaut mieux privilégier une approche ciblée
+Avec du recul je pense que, pour notre activité, il vaut mieux privilégier une *approche ciblée*.
+
+Un approche globale dans le but de toucher tout le monde provoquerai une expansion incontrôlée et peut donc avoir des effets désastreux si le produit n'est pas prêt à recevoir autant d'activité.
 
 Le marketing est une activité indispensable lorsqu'on souhaite faire connaître notre produit.
 // TODO

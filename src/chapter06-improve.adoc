@@ -1,52 +1,50 @@
 [#chapter06-improve]
 == Pérennisation de l’application
 
-Il est capital de maintenir une certaine qualité de nos services. Ainsi dans ce chapitre je vais évoquer les actions que j'ai effectué afin de mettre l'action en conformités avec les lois autour de la régulation des données. Je vais aussi parler de certaines actions que nous avons mené afin d'améliorer notre application.
+Il est capital de maintenir une certaine qualité des services. Ainsi dans ce chapitre je vais évoquer les actions que j'ai effectuées afin de mettre l'application en conformité avec les lois autour de la régulation des données. Je vais aussi parler de certaines actions que nous avons menées afin d'améliorer notre application.
 
 === RGPD
 
-2018 fut l’année de la mise en place du Règlement général sur la protection des données (RGPD). Entrée en vigueur le 25 mai, ce texte réglementaire européen couvre, entre autres, le traitement des données personnelles, c'est à dire toutes les données qui permettent d’identifier quelqu’un.
+2018 fut l’année de la mise en place du règlement général sur la protection des données (RGPD). Entré en vigueur le 25 mai 2018, ce texte réglementaire européen couvre, entre autres, le traitement des données personnelles, c'est à dire toutes les données qui permettent d’identifier quelqu’un.
 
-La réglementation impose qu’il y ait un https://www.cnil.fr/fr/devenir-delegue-la-protection-des-donnees[Délégué à la Protection des Données]. La https://www.cnil.fr/[La Commission nationale de l’informatique et des Libertés (CNIL)] précise que le délégué doit s'assurer que la société respecte bien la réglementation applicable à leur protection. J’ai donc choisit de me porter volontaire pour ce rôle (Voir annexe "Désignation d'un délégué à la protection des données")
+La réglementation impose qu’il y ait un https://www.cnil.fr/fr/devenir-delegue-la-protection-des-donnees[Délégué à la Protection des Données]. La https://www.cnil.fr/[Commission nationale de l’informatique et des Libertés (CNIL)] précise que le délégué doit s'assurer que la société respecte bien la réglementation applicable à leur protection. J’ai donc choisi de me porter volontaire pour ce rôle (Voir annexe "Désignation d'un délégué à la protection des données")
 
-En me renseignant, j'ai donc noté que les principales nouveautés qu’apporte la RGPD sont:
+En me renseignant, j'ai donc noté que les principales nouveautés qu’apportent la RGPD sont:
 
-* le droit à l’oubli
-* le droit à la portabilité des données
-* le droit à l’opposition de toute opération marketing
-* le droit à la rectification des données de l’utilisateur
-* le droit d’accès à toutes les données de l’utilisateur
+* le droit à l’*oubli*
+* le droit à la *portabilité des données*
+* le droit à l’*opposition* de toute opération marketing
+* le droit à la *rectification* des données de l’utilisateur
+* le droit d’*accès* à toutes les données de l’utilisateur
 
-Dans mon cas, les principales obligations qui m’incombent sont que l'utilisateur doit pouvoir:
+Dans mon cas, les principales obligations qui m’incombent sont que l'utilisateur puisse:
 
 * effacer toutes ses données
 * rectifier ses données
 * exporter ses données
 
-==== Le droit à la portabilité et à l'accès des données de l’utilisateur
+==== Le droit à la portabilité et à l'accès des données
 
 Afin d'avoir un format normalisé et simple, j'ai choisi d'utiliser le format JSON et plus particulièrement la spécification https://jsonapi.org/[JSON:API] qui impose une structure du JSON.
 
-En utilisant la https://github.com/Netflix/fast_jsonapi[librairie de serialization des données de Netflix], j'ai ainsi convertis le modèle `User` au format JSON en incluant toutes ses liaisons. Ainsi, en un clic, l'utilisateur peut obtenir toutes ses données en incluant ses actes, ses messages et les significations qu'il a effectué.
-
-==== Le droit à la rectification des données de l’utilisateur
-
-Concernant la rectification des données, je n'ai pas eu besoin d'implémenter une fonctionnalité spéciale.
+En utilisant la https://github.com/Netflix/fast_jsonapi[librairie de serialization des données de Netflix], j'ai ainsi converti le modèle `User` au format JSON en incluant toutes ses liaisons. Ainsi, en un clic, l'utilisateur peut obtenir toutes ses données en incluant ses actes, ses messages et les significations qu'il a effectué.
 
 ==== Le droit à l’oubli
 
 Le droit à l'oubli est l'une des plus grosse fonctionnalité demandée par la CNIL. https://gdpr-info.eu/art-17-gdpr/[L’article 17 de la RGPD] nous oblige à implémenter une fonctionnalité qui doit permettre à l’utilisateur d’effacer toutes ses données rapidement. La ou cela se complique, c’est que la RGPD nous oblige aussi à demander la suppression des données chez des fournisseurs tiers (comme Stripe dans mon cas).
 
+NOTE: La fonctionnalité ne doit pas forcément entraîner un traitement automatisé, il peut simplement faire la demande qui sera effectué manuellement.
+
 La difficulté de cette fonctionnalité est de supprimer les données liées à l’utilisateur sans impacter les données qui sont liées aux autres utilisateurs. Concrètement, cela signifie que lorsqu’un huissier de justice décide de supprimer son compte, il faut:
 
-* supprimer son compte et ses données (logique)
+* supprimer son compte et ses données
 * supprimer toutes ses factures
 * supprimer les significations qu’il a effectué
 * supprimer ses données chez Stripe
 
-Cependant je ne peux pas supprimer les significations puisqu’elles doivent être conservée pour l’avocat qui a demandé la signification de son acte. C’est pour cela que j’ai préféré l’*anonymisation* des données.
+Cependant je ne peux pas supprimer les significations puisque le demandeur veut pouvoir les conserver. C’est pour cela que j’ai préféré l’*anonymisation* des données.
 
-Étant un fan du _Test Driven Development_. J’ai donc commencé par construire le test.
+Étant un fan du _Test Driven Development_, j’ai commencé par construire les tests.
 
 [source, ruby]
 .test/models/bailiff_test.rb
@@ -54,15 +52,14 @@ Cependant je ne peux pas supprimer les significations puisqu’elles doivent êt
 test 'should anonymize and not destroy record' do
   old_user = @bailiff.as_json
 
-  # on verifie que l'huissier n'est pas supprime en base
+  # on vérifie que l'huissier n'est pas supprime en base
   assert_no_difference('Bailiff.count') { @bailiff.destroy }
 
-  # on verifie que tous les champs suivants on ete modifies
-  %i[email firstname lastname siret company_name town zip_code address_2 address_1].each do |field|
+  # on vérifie que tous les champs suivants on ete modifies
+  %i[email firstname lastname ....].each do |field|
     assert_not_equal old_user[field], @bailiff.send(field)
   end
 
-  # et pour terminer, un champ 'deleted' a dut etre passe a 'true'
   assert @bailiff.deleted
 end
 ----
@@ -88,7 +85,7 @@ end
 
 Et voilà, la mise en conformité est faite. L’huissier ou l’avocat pourra supprimer son compte et les données seront conservées. En revanche, il sera impossible de retrouver l’utilisateur correspondant à ces données.
 
-En plus de cela, j'ai aussi utilisé l'API de Stripe en faisant un appel à leur API pour supprimer leur données lors de la suppression mais je ne le détaillerai pas ici.
+En plus de cela, j'ai aussi utilisé l'API de Stripe pour supprimer les données de nos utilisateur dans la base de données de Stripe lors de la suppression. Je ne le détaillerai pas la mise en place ici.
 
 
 === Déploiement continu
@@ -123,15 +120,12 @@ Cette approche m'a permis de faire des mise à jour de l'application plusieurs f
 
 === Sauvegarde Automatique du serveur
 
-En terme de sauvegarde il existe plusieurs stratégies. Pour ma part, les conditions étaient d’avoir des sauvegardes quotidiennes et automatiques. J’ai donc fait le choix de créer moi-même un script `bash` de sauvegarde de mon serveur en incluant:
-
-* la basse de donnée MariaDB
-* les données _uploadés_ par les utilisateurs
+En terme de sauvegarde il existe plusieurs stratégies. Pour ma part, les conditions étaient d’avoir des sauvegardes qui inclue les donnée de MariaDB et les fichiers téléchargés sur le serveur par les utilisateurs.
 
 De mon point de vue, la sauvegarde automatique doit être:
 
-* *régulière* , j’ai donc utilisé une `crontab` qui est un utilitaire sous Linux qui permet de lancer des commandes à intervalles définis
-* *chiffrée* , j’ai donc utilisé http://www.gnupg.org/[GNUPG] qui est un outil de chiffrement asymétrique (Méthode de chiffrement utilisant une paire de clés pour le cryptage). Ainsi, lorsque je chiffre une archive avec ma clé publique, seul mon PC distant peu l’ouvrir.
+* *régulière et automatique*: j’ai donc utilisé une `crontab` qui est un utilitaire sous Linux qui permet de lancer des commandes à intervalles définis
+* *chiffrée*: j’ai donc utilisé http://www.gnupg.org/[GNUPG] qui est un outil de chiffrement asymétrique (Méthode de chiffrement utilisant une paire de clés pour le cryptage). Ainsi, lorsque je chiffre une archive avec ma clé publique, seul mon PC distant peu l’ouvrir.
 
 Voici donc une partie de mon script sur le listing suivant:
 
@@ -140,22 +134,22 @@ Voici donc une partie de mon script sur le listing suivant:
 ----
 #!/bin/bash
 # ...
-# je realise un dump de toute la BDD mariadb
+# je réalise un dump de toute la BDD mariadb
 mysqldump --all-databases  > $sqldump_filename
 cp -r "/var/www/isignif/shared/{config,public,storage}" "${website}/shared/"
-# je cree une archive et je la chiffre avec gpg
+# je crée une archive et je la chiffre avec GPG
 tar -czvf -  "$folder_save" | gpg --encrypt --recipient contact@rousseau-alexandre.fr -o "$folder_save.tar.gz.gpg"
 # ...
 ----
 
 Ensuite, un `cron` récupère régulièrement mes sauvegarde en utilisant un outil appelé https://fr.wikipedia.org/wiki/Rsync[Rsync].
 
-NOTE: Il s'est avéré bien plus tard qu'une sauvegarde nous a permit de retrouver les données supprimées par accident par un de mes associé. Il avait supprimé une catégorie d'acte qui avait provoqué la suppression de plus de trente actes avec toutes les données liées (messages, fichiers, etc..).
+NOTE: Il s'est avéré bien plus tard qu'une sauvegarde nous a permis de retrouver les données supprimées par accident par un de mes associé. Il avait supprimé une catégorie d'acte qui avait provoqué la suppression de plus de trente actes avec toutes les données liées (messages, fichiers, etc..).
 
 [#improve_roles]
 === Gestion des rôles pour les utilisateurs
 
-Un commercial a rejoint notre équipe. La problématique est qu'il devait avoir accès aux données de ses clients afin de les aider mais nous ne voulions pas qu'il puisse supprimer ces données.
+Un commercial a rejoint notre équipe. Cela a mené à une  problématique car il devait avoir accès aux données de ses clients afin de les aider mais nous ne voulions pas qu'il puisse les modifier.
 
 J'ai  donc choisis de définir des rôles afin de limiter les actions possibles sur l'application. Voici la liste des rôles que j'ai défini:
 
@@ -170,9 +164,6 @@ J'ai ainsi choisi d'utiliser la libraire https://github.com/varvet/pundit[Pundit
 .app/policies/act_family_policy.rb
 ----
 class ActFamilyPolicy < ApplicationPolicy
-  def index?
-    logged? && (@user.support? || @user.god?)
-  end
 
   def show?
     logged? && (@user.support? || @user.god?)
@@ -185,13 +176,13 @@ class ActFamilyPolicy < ApplicationPolicy
   # ...
 ----
 
-Cette _policie_ définis que:
+Cette _policie_ définit que:
 
-- seul les utilisateurs de type `support` ou `god` peuvent consulter les `ActFamily`
-- seul les utilisateurs de type `god` peuvent supprimer les `ActFamily`
+- seuls les utilisateurs de type `support` ou `god` peuvent consulter les `ActFamily`
+- seuls les utilisateurs de type `god` peuvent supprimer les `ActFamily`
 
 
-En faisant cela je m'assure de restreindre les "accès dangereux" aux utilisateur qui en on vraiment besoin.
+En faisant cela je m'assure de restreindre les "accès dangereux" aux utilisateurs qui en ont vraiment besoin.
 
 === Suivis des améliorations
 
@@ -201,7 +192,7 @@ Afin de suivre les amélioration des fonctionnalités, je met à jour un fichier
 - les nouveautés
 - les corrections
 
-Ce fichier, versionné avec le code source de l'application, permet à mes associé de savoir en temps réel et de communiquer autour des modifications faite sur l'application.
+Ce fichier, versionné avec le code source de l'application, permet à mes associés de savoir en temps réel et de communiquer autour des modifications effectuées sur l'application.
 
 .Capture d'écran des notes de version sur isignif.fr
 image:changelog.png[]
@@ -213,4 +204,4 @@ L'amélioration du produit est une étape importante car elle permet de *fiabili
 
 Si j'avais omis cette étape en privilégiant le développement d'une nouvelle fonctionnalité, nous aurions été décrédibilisé lors de notre première perte des données. Je peux donc affirmer que cette étape a été une *étape clé* de iSignif.
 
-Je regrette simplement de ne pas avoir mis en place un serveur d'intégration continue qui lance les test unitaires et scanne le code. En effet, cette étape est faite manuellement et, comme je l'ai expliqué plus haut, une action manuelle laisse place à l'erreur.
+Je regrette simplement de ne pas avoir mis en place un *serveur d'intégration continue* qui lance les tests unitaires et scanne le code. En effet, cette étape est manuelle et, comme je l'ai expliqué plus haut, une action manuelle laisse place à l'erreur.

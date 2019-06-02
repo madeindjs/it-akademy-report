@@ -53,7 +53,7 @@
         <section>
           <h2>A propos de moi</h2>
           <p><a href="http://rousseau-alexandre.fr">rousseau-alexandre.fr</a></p>
-          <p>Développeur <strong>passionné</strong> autodidacte. Travaille actuellement chez <a href="https://www.gac-technology.com/">Gac Technology</a></p>
+          <p>Développeur <strong>reconverti</strong>. Travaille actuellement chez <a href="https://www.gac-technology.com/">Gac Technology</a></p>
         </section>
 
         <section>
@@ -368,7 +368,6 @@
             <li>gain de temps</li>
             <li>limitation des régressions</li>
             <li>factorisation plus facile</li>
-            <li><a href="https://www.ideematic.com/actualites/2017/10/garantir-la-maitrise-du-code-ruby-avec-les-tests-unitaires-rspec/">et bien d'autres...</a></li>
           </ul>
         </section>
 
@@ -408,9 +407,6 @@
         <section>
           <pre><code data-trim data-noescape class="ruby">
             class ActFamilyPolicy < ApplicationPolicy
-              def index?
-                logged? && (@user.support? || @user.god?)
-              end
 
               def show?
                 logged? && (@user.support? || @user.god?)
@@ -429,7 +425,26 @@
 
       <section>
         <section>
-          <h3>RGPD</h3>
+          <h3><strong>R</strong>èglement <strong>G</strong>énéral sur la <strong>P</strong>rotection des <strong>D</strong>onnées</h3>
+          <img src="src/img/rgpd.png" height="300px">
+          <p><strong>effacer</strong>, <strong>modifier</strong> et <strong>exporter</strong>  les données</li></p>
+        </section>
+
+        <section>
+          <p><strong>anonymisation</strong> des données et <strong>suppression</strong> chez Stripe.</p>
+          <pre><code data-trim data-noescape class="ruby">
+            # app/models/user.rb
+            def destroy
+              if customer = Stripe::Customer.retrieve(stripe_token)
+                  customer.delete
+              end
+
+              update_attributes!(
+                firstname: Faker::Name.first_name,
+                siret: Faker::Company.french_siret_number,
+              )
+            end
+          </code></pre>
         </section>
       </section>
 
@@ -437,25 +452,26 @@
         <section>
           <h3>Sauvegardes</h3>
 
-          <ul>
-            <li><strong>chifrée</strong> avec GnuPGP</li>
-            <li><strong>automatisée</strong> avec bash</li>
-            <li><strong>régulière</strong> avec CRONTAB</li>
-          </ul>
-
-        </section>
-
-        <section>
+          <p><strong>automatisée</strong> avec bash</p>
           <pre><code data-trim data-noescape class="bash">
-            #!/bin/bash
-            # ...
             mysqldump --all-databases  > $sqldump_filename
             cp -r /var/www/isignif/shared/{config,public,storage} isignif/shared/
+          </code></pre>
+          <p><strong>chifrée</strong> avec GnuPGP</p>
+          <pre><code data-trim data-noescape class="bash">
             tar -czvf "$folder_save" | \
               gpg --encrypt --recipient contact@rousseau-alexandre.fr \
                   -o "$folder_save.tar.gz.gpg"
           </code></pre>
+          <p><strong>régulière</strong> avec CRONTAB</p>
+          <pre><code data-trim data-noescape class="bash">
+            # m h  dom mon dow   command
+            0 1    *   *   *   /bin/bash /home/isignif/backup_server.sh
+          </code></pre>
+
         </section>
+
+
       </section>
 
       <section>

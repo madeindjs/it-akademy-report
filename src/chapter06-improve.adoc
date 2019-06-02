@@ -20,7 +20,6 @@ En me renseignant, j'ai donc noté que les principales nouveautés qu’apporten
 Dans mon cas, les principales obligations qui m’incombent sont que l'utilisateur puisse:
 
 * effacer toutes ses données
-* rectifier ses données
 * exporter ses données
 
 ==== Le droit à la portabilité et à l'accès des données
@@ -71,6 +70,11 @@ J’ai donc simplement surchargé la méthode `User#destroy` et utilisé la libr
 ----
 def destroy
   # ...
+  #
+  if customer = Stripe::Customer.retrieve(stripe_token)
+      customer.delete
+  end
+
   update_attributes(
     email: new_email,
     firstname: Faker::Name.first_name,

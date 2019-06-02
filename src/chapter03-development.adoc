@@ -303,7 +303,7 @@ Suivant la configuration du compte, Stripe va s'occuper de
 1. générer une facture PDF
 2. contacter le client
 3. le relancer
-3. le prélever
+4. le prélever
 
 NOTE: Vous pouvez retrouver dans les annexes un exemple de facture générée par Stripe.
 

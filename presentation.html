@@ -272,24 +272,17 @@
           <h3>
             <img src="src/img/stripe.svg" alt="">
           </h3>
+          <p><strong>Souscription</strong> à la plateforme et <strong>facturation</strong> des huissiers</p>
           <ul>
             <li class="good">API très pratique</li>
             <li class="good">Gestion clients, factures, relances</li>
             <li class="bad">1,4% + 0,25€ par transaction</li>
           </ul>
-          <img src="src/img/stripe_customers.png" alt="">
+          <!-- <img src="src/img/stripe_customers.png" alt=""> -->
         </section>
 
         <section>
-          <h4>Stripe - Abonnement</h4>
-          <ol>
-            <li>Création d'un produit</li>
-            <li>Intégration application</li>
-            <li>Webhook</li>
-          </ol>
-        </section>
-
-        <section>
+          <h4>Souscription à la plateforme</h4>
           <p>Création d'un produit en Ruby</p>
           <pre><code data-trim data-noescape class="ruby">
             # send API request to create product
@@ -436,10 +429,36 @@
       <section>
         <h2>Pérénisation</h2>
         <ol>
-          <li>Refonte des rôles</li>
           <li>RGPD</li>
+          <li>Refonte des rôles</li>
           <li>Sauvegardes automatisées</li>
         </ol>
+      </section>
+
+      <section>
+        <section>
+          <h3><strong>R</strong>èglement <strong>G</strong>énéral sur la <strong>P</strong>rotection des <strong>D</strong>onnées</h3>
+          <img src="src/img/rgpd.png" height="300px">
+          <p><strong>effacer</strong>, modifier et exporter les données</li>
+          </p>
+        </section>
+
+        <section>
+          <p><strong>anonymisation</strong> des données et <strong>suppression</strong> chez Stripe.</p>
+          <pre><code data-trim data-noescape class="ruby">
+            # app/models/user.rb
+            def destroy
+              if customer = Stripe::Customer.retrieve(stripe_token)
+                  customer.delete
+              end
+
+              update_attributes!(
+                firstname: Faker::Name.first_name,
+                siret: Faker::Company.french_siret_number,
+              )
+            end
+          </code></pre>
+        </section>
       </section>
 
       <section>
@@ -474,34 +493,6 @@
         </section>
       </section>
 
-
-
-      <section>
-        <section>
-          <h3><strong>R</strong>èglement <strong>G</strong>énéral sur la <strong>P</strong>rotection des <strong>D</strong>onnées</h3>
-          <img src="src/img/rgpd.png" height="300px">
-          <p><strong>effacer</strong>, <strong>modifier</strong> et <strong>exporter</strong> les données</li>
-          </p>
-        </section>
-
-        <section>
-          <p><strong>anonymisation</strong> des données et <strong>suppression</strong> chez Stripe.</p>
-          <pre><code data-trim data-noescape class="ruby">
-            # app/models/user.rb
-            def destroy
-              if customer = Stripe::Customer.retrieve(stripe_token)
-                  customer.delete
-              end
-
-              update_attributes!(
-                firstname: Faker::Name.first_name,
-                siret: Faker::Company.french_siret_number,
-              )
-            end
-          </code></pre>
-        </section>
-      </section>
-
       <section>
         <section>
           <h3>Sauvegardes</h3>
@@ -522,10 +513,7 @@
             # m h  dom mon dow   command
             0 1    *   *   *   /bin/bash /home/isignif/backup_server.sh
           </code></pre>
-
         </section>
-
-
       </section>
 
       <section>

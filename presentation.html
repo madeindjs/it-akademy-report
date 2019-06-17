@@ -22,13 +22,29 @@
       color: darkgray;
     }
 
-    /*
-    .reveal {font-family: mono;}
+    p.todo {
+      color: darkgray;
+      font-family: monospace;
+    }
+
+    p.todo:before {
+      content: '# TODO:';
+      color: darkgray;
+      font-family: monospace;
+    }
+
+
+    .reveal {
+      font-family: mono;
+    }
+
     .reveal h1,
     .reveal h2,
     .reveal h3,
-    .reveal h4{font-family: mono;}
-    */
+    .reveal h4 {
+      font-family: monospace;
+    }
+
     .reveal h2 {
       border-bottom: solid 5px;
       border-top: solid 5px;
@@ -37,6 +53,11 @@
     .reveal ul {
       list-style-type: none;
       margin-left: 0;
+    }
+
+    .reveal ul li:before {
+      content: '- ';
+      color: darkgray;
     }
 
     .reveal ul li.bad:before {
@@ -67,14 +88,14 @@
       </section>
       <section>
         <h2>Sommaire</h2>
-        <ol>
+        <ul>
           <!-- <li>A propos de moi</li> -->
           <li>Présentation de iSignif</li>
           <li>Planification</li>
           <li>Développement</li>
           <li>Pérenisation</li>
           <li>Conclusion</li>
-        </ol>
+        </ul>
       </section>
 
 
@@ -150,18 +171,18 @@
       <!-- PLANIFICATION -->
       <section>
         <h2>Planification</h2>
-        <ol>
+        <ul>
           <li>Estimation</li>
           <li>Choix des technologies</li>
           <li>Méthode Kanban</li>
           <li>Git</li>
-        </ol>
+        </ul>
       </section>
 
       <!-- Merise -->
       <section>
+        <h3>Planification / Estimation</h3>
         <section>
-          <h3>Estimation</h3>
           <p><strong>MCD</strong> <i>(Modèle conceptuel des données)</i></p>
           <ul>
             <li><strong>compréhension</strong> de la logique métier</li>
@@ -177,18 +198,10 @@
 
       <!-- Choix des technologies -->
       <section>
+        <h3>Planification / Technologies</h3>
         <section>
-          <h3>Technologies</h3>
-          <ul>
-            <li>Technologies</li>
-            <li>Serveur</li>
-          </ul>
-        </section>
-
-        <section>
-          <h4>Technologies</h4>
           <img src="src/img/mariadb.svg" alt="" height="200">
-          <img src="src/img/ubuntu.svg" alt="" height="200">
+          <!-- <img src="src/img/ubuntu.svg" alt="" height="200"> -->
           <img src="src/img/rails.svg" alt="" height="200">
           <img src="src/img/vuejs.svg" alt="" height="200">
         </section>
@@ -207,9 +220,8 @@
 
       <!-- kanban -->
       <section>
-
+        <h3>Planification / Kanban</h3>
         <section>
-          <h3>Découpage des tâches</h3>
           <p>Méthode <strong>Kanban</strong> avec <a href="https://trello.com">Trello</a>. </p>
           <p>Tâches <strong>indivisibles</strong> et <strong>rapides</strong>.</p>
           <img src="src/img/trello_task.png" alt="">
@@ -218,14 +230,13 @@
 
         <section>
           <h4>Workflow Kanban - 2018</h4>
-          <p>Utilisé pour sortir un <strong>MVP</strong><small>[1]</small>.</p>
+          <!-- <p>Utilisé pour sortir un <strong>MVP</strong><small>[1]</small>.</p> -->
           <img src="src/img/trello.png" alt="">
-          <small>[1] Minimum Viable Product</small>
         </section>
 
         <section>
           <h4>Workflow Kanban - 2019</h4>
-          <p>Utilisé afin de <strong>communiquer</strong> les évolutions.</p>
+          <!-- <p>Utilisé afin de <strong>communiquer</strong> les évolutions.</p> -->
           <img src="src/img/trello_now.png" alt="">
         </section>
 
@@ -233,8 +244,8 @@
 
       <!-- Git -->
       <section>
+        <h3>Planification / Git</h3>
         <section>
-          <h3>Git</h3>
           <img src="src/img/git.png" alt="">
           <ul>
             <li class="good">Travailler à plusieurs</li>
@@ -259,19 +270,17 @@
       <!-- DÉVELOPPEMENT DE LA PLATEFORME -->
       <section>
         <h2>Développement</h2>
-        <ol>
+        <ul>
           <li>Intégration avec Stripe</li>
           <li>Développement Dirigé par les Test</li>
-        </ol>
+        </ul>
       </section>
 
       <!-- Stripe -->
       <section>
-
+        <h3>Développement / Stripe</h3>
         <section>
-          <h3>
-            <img src="src/img/stripe.svg" alt="">
-          </h3>
+          <img src="src/img/stripe.svg" alt="">
           <p><strong>Souscription</strong> à la plateforme et <strong>facturation</strong> des huissiers</p>
           <ul>
             <li class="good">API très pratique</li>
@@ -328,12 +337,12 @@
 
         <section>
           <h4>Facturation</h4>
-          <ol>
+          <ul>
             <li><strong style="color: green">ISIGNIF</strong> Ouverture d'une <i>Invoice</i></li>
             <li><strong style="color: green">ISIGNIF</strong> Affectation <i>InvoiceItem</i> à un <i>Customer</i></li>
             <li><strong style="color: blue">STRIPE</strong> Conversion de l' <i>Invoice</i> en PDF</li>
             <li><strong style="color: blue">STRIPE</strong> Collecte / Relance du <i>Customer</i> </li>
-          </ol>
+          </ul>
 
         </section>
 
@@ -358,8 +367,8 @@
       <!-- Test Driven Development -->
       <section>
 
+        <h3>Développement / TDD</h3>
         <section>
-          <h3>Développement Dirigé par les Test</h3>
           <img src="src/img/escalade-tu.jpg" alt="">
         </section>
 
@@ -409,35 +418,30 @@
 
         <section>
           <h4>Avantages</h4>
+          <p><strong>306</strong> tests, <strong>22</strong> secondes et <strong>93%</strong> de code coverage</p>
           <ul>
             <li>gain de temps</li>
             <li>limitation des régressions</li>
             <li>factorisation plus facile</li>
           </ul>
-          <p><strong>306</strong> tests, <strong>22</strong> secondes et <strong>93%</strong> de <i>code coverage</i></p>
+          <p class="todo">tests E2E et test Mutant</p>
         </section>
 
-        <section>
-          <h4>Aller plus loin</h4>
-          <ul>
-            <li>tests d'intégration E2E avec <a href="https://github.com/cucumber/cucumber-ruby">Cucumber</a></li>
-            <li>mutation testing avec <a href="https://github.com/mbj/mutant">Mutant</a></li>
-          </ul>
-        </section>
       </section>
 
       <section>
         <h2>Pérénisation</h2>
-        <ol>
+        <ul>
           <li>RGPD</li>
           <li>Refonte des rôles</li>
           <li>Sauvegardes automatisées</li>
-        </ol>
+        </ul>
       </section>
 
       <section>
+        <h3>Pérénisation / RGPD</h3>
         <section>
-          <h3><strong>R</strong>èglement <strong>G</strong>énéral sur la <strong>P</strong>rotection des <strong>D</strong>onnées</h3>
+          <!-- <p><strong>R</strong>èglement <strong>G</strong>énéral sur la <strong>P</strong>rotection des <strong>D</strong>onnées</p> -->
           <img src="src/img/rgpd.png" height="300px">
           <p><strong>effacer</strong>, modifier et exporter les données</li>
           </p>
@@ -448,9 +452,8 @@
           <pre><code data-trim data-noescape class="ruby">
             # app/models/user.rb
             def destroy
-              if customer = Stripe::Customer.retrieve(stripe_token)
-                  customer.delete
-              end
+              customer = Stripe::Customer.retrieve(stripe_token)
+              customer.delete unless customer.nil?
 
               update_attributes!(
                 firstname: Faker::Name.first_name,
@@ -462,30 +465,45 @@
       </section>
 
       <section>
+        <h3>Pérénisation / Policies</h3>
         <section>
-          <h3>Refonte de rôles</h3>
           <img src="src/img/shit.png" height="300">
         </section>
 
         <section>
-          <ul>
-            <li><strong>user</strong>: utilisateur classique</li>
-            <li><strong>support</strong>: accès en <strong>lecture</strong> aux entités des autres</li>
-            <li><strong>admin</strong> accès en <strong>écriture</strong> aux entités des autres</li>
-            <li><strong>god</strong>: peut tout faire</li>
-          </ul>
+          <table>
+            <tr>
+              <th>user</th>
+              <td>utilisateur classique</td>
+            </tr>
+            <tr>
+              <th>support</th>
+              <td><strong>lecture</strong> partout</td>
+            </tr>
+            <tr>
+              <th>admin</th>
+              <td><strong>écriture</strong> <i>presque</i> partout</td>
+            </tr>
+            <tr>
+              <th>god</th>
+              <td><strong>écriture</strong> <i><s>presque</s></i> partout</td>
+            </tr>
+          </table>
         </section>
+
 
         <section>
           <pre><code data-trim data-noescape class="ruby">
             class ActFamilyPolicy < ApplicationPolicy
 
               def show?
-                logged? && (@user.support? || @user.god?)
+                return false if @user.nil?
+                @user.support? or @user.god?
               end
 
               def destroy?
-                logged? && @user.god?
+                return false if @user.nil?
+                @user.god?
               end
 
               # ...
@@ -494,36 +512,48 @@
       </section>
 
       <section>
-        <section>
-          <h3>Sauvegardes</h3>
+        <h3>Pérénisation / Sauvegardes</h3>
 
-          <p><strong>automatisée</strong> avec bash</p>
-          <pre><code data-trim data-noescape class="bash">
-            mysqldump --all-databases  > $sqldump_filename
-            cp -r /var/www/isignif/shared/{config,public,storage} isignif/shared/
-          </code></pre>
-          <p><strong>chifrée</strong> avec GnuPGP</p>
-          <pre><code data-trim data-noescape class="bash">
-            tar -czvf "$folder_save" | \
-              gpg --encrypt --recipient contact@rousseau-alexandre.fr \
-                  -o "$folder_save.tar.gz.gpg"
-          </code></pre>
-          <p><strong>régulière</strong> avec CRONTAB</p>
-          <pre><code data-trim data-noescape class="bash">
-            # m h  dom mon dow   command
-            0 1    *   *   *   /bin/bash /home/isignif/backup_server.sh
-          </code></pre>
+        <p><strong>automatisée</strong> avec bash</p>
+        <pre><code data-trim data-noescape class="bash">
+          mysqldump --all-databases  > $sqldump_filename
+          cp -r /var/www/isignif/shared/{config,public,storage} isignif/shared/
+        </code></pre>
+        <p><strong>chifrée</strong> avec GnuPGP</p>
+        <pre><code data-trim data-noescape class="bash">
+          tar -czvf "$folder_save" | \
+            gpg --encrypt --recipient contact@rousseau-alexandre.fr \
+                -o "$folder_save.tar.gz.gpg"
+        </code></pre>
+        <p><strong>régulière</strong> avec CRONTAB</p>
+        <pre><code data-trim data-noescape class="bash">
+          # m h  dom mon dow   command
+          0 1    *   *   *   /bin/bash /home/isignif/backup_server.sh
+        </code></pre>
+      </section>
+
+      <section>
+        <h2>Conclusion</h2>
+        <section>
+          <h3>Perspectives de iSignif</h3>
+          <ul>
+            <li>ouverture API & <strong>partenariats</strong></li>
+            <li><strong>découplement</strong> Front / Back</li>
+            <li><strong>open-source</strong> pour réseaux fermés</li>
+          </ul>
+        </section>
+        <section>
+          <h3>Retours d'experience</h3>
+          <ul>
+            <li>MVP trop <strong>ambitieux</strong>: 1000h, rentable?</li>
+            <li>incroyable <strong>experience</strong></li>
+            <li>retombées professionnelles</li>
+          </ul>
         </section>
       </section>
 
       <section>
-        <section>
-          <h2>Conclusion</h2>
-        </section>
-
-        <section>
-          <p>Merci!</p>
-        </section>
+        <p>Merci!</p>
       </section>
 
     </div>

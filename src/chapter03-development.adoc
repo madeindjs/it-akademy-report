@@ -187,7 +187,7 @@ image:stripe_first_payment.png[]
 
 ==== Abonnement
 
-J'ai aussi implémenté une autre fonctionnalité un peu plus poussée avec Stripe: la gestion des *paiements récurents*. Le paiement récurent était indispensable afin de créer la *notion d'abonnement*. Cela permet à l'utilisateur de souscrire un abonnement qui enclenchera un paiement automatique au début du mois. Dans le langage de Stripe, cela s'appelle une https://stripe.com/docs/billing/subscriptions/products-and-plans[*subscriptions*].
+J'ai aussi implémenté une autre fonctionnalité un peu plus poussée avec Stripe: la gestion des *paiements récurent*. Le paiement récurent était indispensable afin de créer la *notion d'abonnement*. Cela permet à l'utilisateur de souscrire un abonnement qui enclenchera un paiement automatique au début du mois. Dans le langage de Stripe, cela s'appelle une https://stripe.com/docs/billing/subscriptions/products-and-plans[*subscriptions*].
 
 > Chaque plan est joint à un produit qui représente (...) le service offert aux clients. Les produits peuvent avoir plus d'un plan, reflétant les variations de prix et de durée - comme les prix mensuels et annuels à des taux différents. Il existe deux types de produits: les biens et les services. (...) qui sont destinés aux abonnements. - Documentation Stripe
 

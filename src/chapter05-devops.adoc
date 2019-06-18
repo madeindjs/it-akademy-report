@@ -132,7 +132,7 @@ En respectant les conventions de Ruby on Rails, nous somme protégés des faille
 
 ==== Cross-site Scripting
 
-Le *Cross-site Scripting* consiste à envoyer un formulaire d’un site vers un autre. Ainsi, un formulaire d'un site A pourrait demanazder une action sur un site B en profitant que sur l'utilisateur est déjà connecté ur le site B.
+Le *Cross-site Scripting* consiste à envoyer un formulaire d’un site vers un autre. Ainsi, un formulaire d'un site A pourrait demander une action sur un site B en profitant que sur l'utilisateur est déjà connecté ur le site B.
 
 Rails empêche cela en utilisant un jeton qu’il place sur tous les formulaires. Il peut ainsi identifier les formulaires qui lui sont propre et ceux qui ne lui sont pas.
 
@@ -145,7 +145,7 @@ Comme le montre la figure suivante, les injections SQL sont très faciles.
 .Une tentative d’injection SQL sur un formulaire de contact
 image:sql_injection.png[sql_injection, 250]
 
-Ruby on Rails utilise un outil qui nous empêche de manipuler du code SQL et il previent donc le développeur d'erreurs permetant l'injection du code SQL.
+Ruby on Rails utilise un outil qui nous empêche de manipuler du code SQL et il prévient donc le développeur d'erreurs permettant l'injection du code SQL.
 
 ==== Cross-Site Scripting (XSS)
 
@@ -153,7 +153,7 @@ L'une des vulnérabilités de sécurité les plus répandues et les plus dévast
 
 Cette faille est simplissime, par exemple, un petit malin peut créer un utilisateur se nommant `<script>alert('Pwned')</script>`. Alors sur chaque page ou son nom sera affiché, le code sera exécuté.
 
-Rails, par défaut, échape implicitement tout les charctères. C'est-à-dire que les charactères contenant du code seront annulés.
+Rails, par défaut, échappe implicitement tout les caractères. C'est-à-dire que les caractères contenant du code seront annulés.
 
 ==== Attaque par force brute
 
@@ -226,7 +226,7 @@ Afin de connaître les vulnérabilité de mon installation, j’ai décidé de f
 
 Pour faire cela, j'ai utilisé http://www.openvas.org/[OpenVAS],  un scanner de vulnérabilités libre issu du fork de Nessus. OpenVAS s’appuie sur les https://cve.mitre.org/[CVE (Common Vulnerabilities and Exposures)], une base de données communautaire des vulnérabilités connues.
 
-NOTE: Le scan de vulnérabilité est illégal à moins que le serveur nous appartienne ou bien qu’une autorisation du propriétaire soit donné. Dans mon cas, le serveur m’appartien.
+NOTE: Le scan de vulnérabilité est illégal à moins que le serveur nous appartienne ou bien qu’une autorisation du propriétaire soit donné. Dans mon cas, le serveur m'appartiens.
 
 Plusieurs types de scan sont possibles, J’ai choisi d’utiliser le plus complet, qui est aussi le plus long. J’ai donc obtenu le résultat que l’on peut voir sur la figure suivant (le rapport complet est disponible en annexe).
 

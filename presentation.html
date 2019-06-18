@@ -93,7 +93,7 @@
           <li>Présentation de iSignif</li>
           <li>Planification</li>
           <li>Développement</li>
-          <li>Pérenisation</li>
+          <li>Pérennisation</li>
           <li>Conclusion</li>
         </ul>
       </section>
@@ -105,7 +105,7 @@
         <section>
           <h2>A propos de moi</h2>
           <p><a href="http://rousseau-alexandre.fr">rousseau-alexandre.fr</a></p>
-          <p>Développeur <strong>reconverti</strong>. Travaille actuellement chez <a href="https://www.gac-technology.com/">Gac Technology</a></p>
+          <p>Développeur <strong>passionné</strong>. Travaille actuellement chez <a href="https://www.gac-technology.com/">Gac Technology</a></p>
         </section>
 
         <section>
@@ -281,32 +281,23 @@
         <h3>Développement / Stripe</h3>
         <section>
           <img src="src/img/stripe.svg" alt="">
-          <p><strong>Souscription</strong> à la plateforme et <strong>facturation</strong> des huissiers</p>
           <ul>
             <li class="good">API très pratique</li>
             <li class="good">Gestion clients, factures, relances</li>
             <li class="bad">1,4% + 0,25€ par transaction</li>
           </ul>
           <!-- <img src="src/img/stripe_customers.png" alt=""> -->
+          <p><strong>Souscription</strong> à la plateforme et <strong>facturation</strong> des huissiers</p>
         </section>
 
         <section>
           <h4>Souscription à la plateforme</h4>
-          <p>Création d'un produit en Ruby</p>
           <pre><code data-trim data-noescape class="ruby">
-            # send API request to create product
-            product = Stripe::Product.create(
-              name: 'Abonnement compte premium',
-              type: 'service'
-            )
-            # send API request to create plan
             Stripe::Plan.create(
-              id:       'premium-monthly'
-              interval: :month, amount:  8000,
-              currency: :eur,   product: product.id,
-            )
+              product: Stripe::Product.create(name: 'Abonnement compte premium'),
+              amount:  800
           </code></pre>
-        </section>
+        <!-- </section>
 
         <section>
           <p><strong>Front</strong>, intégration d'un bouton</p>
@@ -314,23 +305,19 @@
             script
               src="https://checkout.stripe.com/checkout.js"
               data-key="my_public_stripe_token"
-          </code></pre>
+          </code></pre> -->
 
 
-          <p><strong>Back</strong>, communication avec Stripe</p>
+          <p>gestion <strong>webhook</strong> de Stripe</p>
           <pre><code data-trim data-noescape class="ruby">
             # subscriptions_controller.rb
             def create
-              Stripe::Subscription.create(
-                # ...
-              ) rescue Stripe::CardError
+              Stripe::Subscription.create(..) rescue Stripe::CardError
             end
 
             # hooks_controller.rb
             def stripe
-              if params[:type] == 'invoice.payment_succeeded'
-                # ...
-              end
+              do_thing if params[:type] == 'invoice.payment_succeeded'
             end
           </code></pre>
         </section>
@@ -346,7 +333,7 @@
 
         </section>
 
-        <section>
+        <!-- <section>
           <p>Création d'un <i>InvoiceItem</i></p>
 
           <pre><code data-trim data-noescape class="ruby">
@@ -356,7 +343,7 @@
               @signification.update! invoiced: true
             end
           </code></pre>
-        </section>
+        </section> -->
 
         <section>
           <img src="src/img/isignif_pay_web.png">
@@ -418,19 +405,19 @@
 
         <section>
           <h4>Avantages</h4>
-          <p><strong>306</strong> tests, <strong>22</strong> secondes et <strong>93%</strong> de code coverage</p>
           <ul>
             <li>gain de temps</li>
             <li>limitation des régressions</li>
             <li>factorisation plus facile</li>
           </ul>
+          <p><strong>306</strong> tests, <strong>22</strong> secondes et <strong>93%</strong> de code coverage</p>
           <p class="todo">tests E2E et test Mutant</p>
         </section>
 
       </section>
 
       <section>
-        <h2>Pérénisation</h2>
+        <h2>Pérennisation</h2>
         <ul>
           <li>RGPD</li>
           <li>Refonte des rôles</li>
@@ -439,7 +426,7 @@
       </section>
 
       <section>
-        <h3>Pérénisation / RGPD</h3>
+        <h3>Pérennisation / RGPD</h3>
         <section>
           <!-- <p><strong>R</strong>èglement <strong>G</strong>énéral sur la <strong>P</strong>rotection des <strong>D</strong>onnées</p> -->
           <img src="src/img/rgpd.png" height="300px">
@@ -465,7 +452,7 @@
       </section>
 
       <section>
-        <h3>Pérénisation / Policies</h3>
+        <h3>Pérennisation / Policies</h3>
         <section>
           <img src="src/img/shit.png" height="300">
         </section>
@@ -512,24 +499,14 @@
       </section>
 
       <section>
-        <h3>Pérénisation / Sauvegardes</h3>
+        <h3>Pérennisation / Sauvegardes</h3>
 
-        <p><strong>automatisée</strong> avec bash</p>
-        <pre><code data-trim data-noescape class="bash">
-          mysqldump --all-databases  > $sqldump_filename
-          cp -r /var/www/isignif/shared/{config,public,storage} isignif/shared/
-        </code></pre>
-        <p><strong>chifrée</strong> avec GnuPGP</p>
-        <pre><code data-trim data-noescape class="bash">
-          tar -czvf "$folder_save" | \
-            gpg --encrypt --recipient contact@rousseau-alexandre.fr \
-                -o "$folder_save.tar.gz.gpg"
-        </code></pre>
-        <p><strong>régulière</strong> avec CRONTAB</p>
-        <pre><code data-trim data-noescape class="bash">
-          # m h  dom mon dow   command
-          0 1    *   *   *   /bin/bash /home/isignif/backup_server.sh
-        </code></pre>
+        <ul>
+          <li><strong>automatisée</strong> avec bash</li>
+          <li><strong>chiffrée</strong> avec GnuPGP</li>
+          <li><strong>régulière</strong> avec CRONTAB</li>
+        </ul>
+        <p class="todo">Incrémentielle</p>
       </section>
 
       <section>

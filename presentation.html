@@ -90,7 +90,7 @@
         <h2>Sommaire</h2>
         <ul>
           <!-- <li>A propos de moi</li> -->
-          <li>Présentation de iSignif</li>
+          <li>Présentation</li>
           <li>Planification</li>
           <li>Développement</li>
           <li>Pérennisation</li>
@@ -104,7 +104,7 @@
 
         <section>
           <h2>A propos de moi</h2>
-          <p><a href="http://rousseau-alexandre.fr">rousseau-alexandre.fr</a></p>
+          <p><a href="https://rousseau-alexandre.fr">rousseau-alexandre.fr</a></p>
           <p>Développeur <strong>passionné</strong>. Travaille actuellement chez <a href="https://www.gac-technology.com/">Gac Technology</a></p>
         </section>
 
@@ -169,7 +169,7 @@
       </section>
 
       <!-- PLANIFICATION -->
-      <section>
+      <!-- <section>
         <h2>Planification</h2>
         <ul>
           <li>Estimation</li>
@@ -177,7 +177,7 @@
           <li>Méthode Kanban</li>
           <li>Git</li>
         </ul>
-      </section>
+      </section> -->
 
       <!-- Merise -->
       <section>
@@ -244,37 +244,27 @@
 
       <!-- Git -->
       <section>
-        <h3>Planification / Git</h3>
-        <section>
-          <img src="src/img/git.png" alt="">
-          <ul>
-            <li class="good">Travailler à plusieurs</li>
-            <li class="good">Séparer les développement</li>
-            <li class="bad">Complexe pour un novice</li>
-          </ul>
-        </section>
+        <h3>Planification / Git-Flow</h3>
 
-        <section>
-          <h4>Git-Flow</h4>
-          <!-- <p>Organisation du travail avec Git</p> -->
-          <img src="src/img/git-flow.png" alt="">
-          <ul>
-            <li class="good">Organisation mise en production</li>
-            <!-- <li class="good">Séparer les développement</li> -->
-            <!-- <li class="bad">Complexe pour un novice</li> -->
-          </ul>
-        </section>
+        <!-- <p>Organisation du travail avec Git</p> -->
+        <img src="src/img/git-flow.png" alt="">
+        <ul>
+          <li class="good">Organisation mise en production</li>
+          <!-- <li class="good">Séparer les développement</li> -->
+          <!-- <li class="bad">Complexe pour un novice</li> -->
+        </ul>
 
       </section>
 
       <!-- DÉVELOPPEMENT DE LA PLATEFORME -->
-      <section>
+      <!-- <section>
         <h2>Développement</h2>
         <ul>
           <li>Intégration avec Stripe</li>
           <li>Développement Dirigé par les Test</li>
+          <li>Sécurité</li>
         </ul>
-      </section>
+      </section> -->
 
       <!-- Stripe -->
       <section>
@@ -432,6 +422,15 @@
           <h3>Sécurité de l'application</h3>
 
           <section>
+            <h4>Rails ♥</h4>
+            <ul>
+              <li><s>XSS</s>: HTML échappé par ERB</li>
+              <li><s>injection SQL</s>: protégée par Active Record</li>
+              <li><s>CRSF</s>: jeton sur TOUS les formulaires</li>
+            </ul>
+          </section>
+
+          <section>
             <h4>bundler audit</h4>
             <pre><code data-trim data-noescape class="bash">
                 $ bundle audit
@@ -453,9 +452,7 @@
               </code></pre>
               <pre><code data-trim data-noescape class="ruby">
                 # app/controllers/act_files_controller.rb
-                def create
-                  @act_file = ActFile.new
-                  @act_file.<mark>files.attach</mark> params[:act_file][:files]
+                @act_file.<mark>files.attach</mark> params[:files]
               </code></pre>
               <ul>
                 <li class="good">suivis par Rails <i>(~4K contributeurs)</i></li>
@@ -463,14 +460,7 @@
               </ul>
           </section>
 
-          <section>
-              <h4>Rails ♥</h4>
-              <ul>
-                <li><s>XSS</s>: HTML échappé par ERB</li>
-                <li><s>injection SQL</s>: protégée par Active Record</li>
-                <li><s>CRSF</s>: jeton sur TOUS les formulaires</li>
-              </ul>
-            </section>
+          
       </section>
 
       <section>

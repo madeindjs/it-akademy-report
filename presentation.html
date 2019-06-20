@@ -25,6 +25,7 @@
     p.todo {
       color: darkgray;
       font-family: monospace;
+      font-size: 1.5rem;
     }
 
     p.todo:before {
@@ -43,11 +44,18 @@
     .reveal h3,
     .reveal h4 {
       font-family: monospace;
+      font-weight: normal;
+    }
+
+    .reveal h3 {
+      text-align: right;
+      font-size: 2rem;
+      border-bottom: dashed 2px;
+      color: darkgray;
     }
 
     .reveal h2 {
-      border-bottom: solid 5px;
-      border-top: solid 5px;
+      color: darkgrey;
     }
 
     .reveal ul {
@@ -109,7 +117,7 @@
         </section>
 
         <section>
-          <h3><img src="src/img/gac.svg" height="200"></h3>
+          <img src="src/img/gac.svg" height="200">
           <img src="src/img/gac_clients.png" height="300">
         </section>
 
@@ -118,15 +126,15 @@
       <!-- PRÉSENTATION DE ISIGNIF -->
       <section>
 
+        <h3>Présentation projet</h3>
+
         <section>
-          <h2 style="display: none">Présentation</h2>
           <img src="src/img/logo.svg" height="200">
           <p>SAS - LegalTech - 2017 - 4 associés</p>
         </section>
 
         <section>
-          <h3>SAS</h3>
-          <p><strong>S</strong>ociété par <strong>A</strong>ctions <strong>S</strong>implifiée</p>
+          <h4><strong>S</strong>ociété par <strong>A</strong>ctions <strong>S</strong>implifiée</h4>
           <ul>
             <li class="good">statut de <del>salarié</del> associé </li>
             <li class="bad"><del>salaire</del> dividende</li>
@@ -135,6 +143,7 @@
           </ul>
         </section>
 
+        <!--
         <section>
           <h3>Associés</h3>
           <ul>
@@ -144,9 +153,10 @@
             <li><strong>Antoine</strong> designer Web </li>
           </ul>
         </section>
+        -->
 
         <section>
-          <h3>Mon rôle</h3>
+          <h4>Mon rôle</h4>
           <ul>
             <li><strong>associé</strong> décisions stratégiques</li>
             <li><strong>directeur technique</strong> choix techniques & dév.</li>
@@ -155,7 +165,7 @@
         </section>
 
         <section>
-          <h3>Principe</h3>
+          <h4>Principe</h4>
           <p>Simplifier le processus de <strong>signification</strong></p>
           <img src="src/img/signification_after_before.png" alt="">
         </section>
@@ -169,7 +179,7 @@
       </section>
 
       <!-- PLANIFICATION -->
-      <!-- <section>
+      <section>
         <h2>Planification</h2>
         <ul>
           <li>Estimation</li>
@@ -177,7 +187,7 @@
           <li>Méthode Kanban</li>
           <li>Git</li>
         </ul>
-      </section> -->
+      </section>
 
       <!-- Merise -->
       <section>
@@ -246,25 +256,26 @@
       <section>
         <h3>Planification / Git-Flow</h3>
 
+        <section>
+            <img src="src/img/git-flow.png" alt="">
+            <ul>
+              <li class="good">Organisation mise en production</li>
+              <!-- <li class="good">Séparer les développement</li> -->
+              <!-- <li class="bad">Complexe pour un novice</li> -->
+            </ul>
+        </section>
         <!-- <p>Organisation du travail avec Git</p> -->
-        <img src="src/img/git-flow.png" alt="">
-        <ul>
-          <li class="good">Organisation mise en production</li>
-          <!-- <li class="good">Séparer les développement</li> -->
-          <!-- <li class="bad">Complexe pour un novice</li> -->
-        </ul>
-
       </section>
 
       <!-- DÉVELOPPEMENT DE LA PLATEFORME -->
-      <!-- <section>
+      <section>
         <h2>Développement</h2>
         <ul>
           <li>Intégration avec Stripe</li>
           <li>Développement Dirigé par les Test</li>
           <li>Sécurité</li>
         </ul>
-      </section> -->
+      </section>
 
       <!-- Stripe -->
       <section>
@@ -320,7 +331,6 @@
             <li><strong style="color: blue">STRIPE</strong> Conversion de l' <i>Invoice</i> en PDF</li>
             <li><strong style="color: blue">STRIPE</strong> Collecte / Relance du <i>Customer</i> </li>
           </ul>
-
         </section>
 
         <!-- <section>
@@ -360,18 +370,11 @@
         <section>
           <h4>Tests unitaires</h4>
           <pre><code data-trim data-noescape class="ruby">
-            # tests/models/advocate_test.rb
-            test 'should anonymize and not destroy record' do
-              old_user = @advocate.as_json
-              assert_no_difference('Advocate.count') do
-                @advocate.destroy
-              end
-
-              %i[email firstname lastname siret ...].each do |field|
-                assert_not_equal old_user[field], @advocate.send(field)
-              end
-
-              assert @advocate.deleted
+            # test/models/user_test.rb
+            test 'should set correct premium_until for new premium user' do
+              user = User.new
+              user.increment_premium
+              assert_equal (Date.today + 1.month), user.premium_until
             end
           </code></pre>
         </section>
@@ -467,34 +470,51 @@
         <h2>Pérennisation</h2>
         <ul>
           <li>RGPD</li>
-          <li>Refonte des rôles</li>
           <li>Sauvegardes automatisées</li>
+          <li>Refonte des rôles</li>
         </ul>
       </section>
 
       <section>
         <h3>Pérennisation / RGPD</h3>
 
-        <p><strong>anonymisation</strong> des données et <strong>suppression</strong> chez Stripe.</p>
-        <pre><code data-trim data-noescape class="ruby">
-          # app/models/user.rb
-          def destroy
-            customer = Stripe::Customer.retrieve(stripe_token)
-            customer.delete unless customer.nil?
+        <section>
+          <p><strong>anonymisation</strong> des données et <strong>suppression</strong> chez Stripe.</p>
+          <pre><code data-trim data-noescape class="ruby">
+            # app/models/user.rb
+            def destroy
+              customer = Stripe::Customer.retrieve(stripe_token)
+              customer.delete unless customer.nil?
+  
+              update_attributes!(
+                firstname: Faker::Name.first_name,
+                siret: Faker::Company.french_siret_number,
+              )
+            end
+          </code></pre>
+        </section>
+      </section>
 
-            update_attributes!(
-              firstname: Faker::Name.first_name,
-              siret: Faker::Company.french_siret_number,
-            )
-          end
-        </code></pre>
+      <section>
+        <h3>Pérennisation / Sauvegardes</h3>
+
+        <section>
+          <img src="src/img/shit.png" height="300">
+        </section>
+
+        <section>
+          <ul>
+            <li><strong>automatisée</strong> avec bash</li>
+            <li><strong>chiffrée</strong> avec GnuPGP</li>
+            <li><strong>régulière</strong> avec CRONTAB</li>
+          </ul>
+          <p class="todo">Incrémentielle</p>
+        </section>
       </section>
 
       <section>
         <h3>Pérennisation / Policies</h3>
-        <section>
-          <img src="src/img/shit.png" height="300">
-        </section>
+        
 
         <section>
 
@@ -505,38 +525,24 @@
                   # ...
             </code></pre>
 
-          <table style="font-family: mono">
-            <tr>
-              <td></td>
-              <th>owner</th>
-              <th>other</th>
-              <th>danger</th>
-            </tr>
-            <tr>
-              <td>user</td>
-              <td><strong>rw</strong>-</td>
-              <td><i>---</i></td>
-              <td><i>---</i></td>
-            </tr>
-            <tr>
-              <td>support</td>
-              <td>rw-</td>
-              <td><strong>r</strong>--</td>
-              <td><strong>r</strong>--</td>
-            </tr>
-            <tr>
-              <td>admin</td>
-              <td>rw-</td>
-              <td>r<strong>w</strong>-</td>
-              <td>r--</td>
-            </tr>
-            <tr>
-              <td>god</td>
-              <td>rw-</td>
-              <td>rw-</td>
-              <td>r<strong>w</strong>-</td>
-            </tr>
-          </table>
+            <table>
+              <tr>
+                <th>user</th>
+                <td>utilisateur classique</td>
+              </tr>
+              <tr>
+                <th>support</th>
+                <td><strong>lecture</strong> partout</td>
+              </tr>
+              <tr>
+                <th>admin</th>
+                <td><strong>écriture</strong> <i>presque</i> partout</td>
+              </tr>
+              <tr>
+                <th>god</th>
+                <td><strong>écriture</strong> <i><s>presque</s></i> partout</td>
+              </tr>
+            </table>
         </section>
 
         <!-- <section>
@@ -586,16 +592,6 @@
         </section>
       </section>
 
-      <section>
-        <h3>Pérennisation / Sauvegardes</h3>
-
-        <ul>
-          <li><strong>automatisée</strong> avec bash</li>
-          <li><strong>chiffrée</strong> avec GnuPGP</li>
-          <li><strong>régulière</strong> avec CRONTAB</li>
-        </ul>
-        <p class="todo">Incrémentielle</p>
-      </section>
 
       <section>
         <h2>Conclusion</h2>
@@ -612,7 +608,8 @@
           <ul>
             <li>MVP trop <strong>ambitieux</strong>: 1000h, rentable?</li>
             <li>incroyable <strong>experience</strong></li>
-            <li>enrichissement professionnel</li>
+            <li><strong>enrichissement</strong> personnel / professionnel</li>
+            <li>sortir de sa zone de confort </li>
           </ul>
         </section>
       </section>

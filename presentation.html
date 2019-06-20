@@ -18,7 +18,7 @@
       color: lightgray
     }
 
-    i {
+    i, s {
       color: darkgray;
     }
 
@@ -404,16 +404,73 @@
         </section>
 
         <section>
+          <h4>Règles</h4>
+          <ol>
+            <li>Test Driven Development (<strong>TDD</strong>)</li>
+            <li>Tests fonctionnels <strong>paranoïaques</strong></li>
+            <li>Test d'une <strong>régression</strong></li>
+          </ol>
+          <!-- <p>gain de temps, limitation des régressions et factorisation facile</p> -->
+          <p>+<strong>300</strong> tests en <strong>20</strong> secondes pour <strong>93%</strong> de coverage</p>
+          <!-- <p class="todo">tests E2E et test Mutant</p> -->
+        </section>
+
+        <!-- <section>
           <h4>Avantages</h4>
           <ul>
             <li>gain de temps</li>
             <li>limitation des régressions</li>
             <li>factorisation plus facile</li>
           </ul>
-          <p><strong>306</strong> tests, <strong>22</strong> secondes et <strong>93%</strong> de code coverage</p>
-          <p class="todo">tests E2E et test Mutant</p>
-        </section>
+          
+        </section> -->
 
+      </section>
+
+      <!-- sécurité -->
+      <section>
+          <h3>Sécurité de l'application</h3>
+
+          <section>
+            <h4>bundler audit</h4>
+            <pre><code data-trim data-noescape class="bash">
+                $ bundle audit
+                Name: actionpack
+                Version: 3.2.10
+                Advisory: OSVDB-91452
+                Criticality: Medium
+                Title: XSS vulnerability in sanitize_css in Action Pack
+                Solution: upgrade to ~> 2.3.18, ~> 3.1.12, >= 3.2.13
+            </code></pre>
+          </section>
+
+          <section>
+              <h4>Active Storage</h4>
+              <pre><code data-trim data-noescape class="ruby">
+                # app/models/act_file.rb
+                class ActFile < ApplicationRecord
+                  has_many_attached :files, dependent: :purge
+              </code></pre>
+              <pre><code data-trim data-noescape class="ruby">
+                # app/controllers/act_files_controller.rb
+                def create
+                  @act_file = ActFile.new
+                  @act_file.<mark>files.attach</mark> params[:act_file][:files]
+              </code></pre>
+              <ul>
+                <li class="good">suivis par Rails <i>(~4K contributeurs)</i></li>
+                <li class="good">stockage cloud <i>(Amazon, Microsoft, Google)</i></li>
+              </ul>
+          </section>
+
+          <section>
+              <h4>Rails ♥</h4>
+              <ul>
+                <li><s>XSS</s>: HTML échappé par ERB</li>
+                <li><s>injection SQL</s>: protégée par Active Record</li>
+                <li><s>CRSF</s>: jeton sur TOUS les formulaires</li>
+              </ul>
+            </section>
       </section>
 
       <section>
@@ -427,28 +484,20 @@
 
       <section>
         <h3>Pérennisation / RGPD</h3>
-        <section>
-          <!-- <p><strong>R</strong>èglement <strong>G</strong>énéral sur la <strong>P</strong>rotection des <strong>D</strong>onnées</p> -->
-          <img src="src/img/rgpd.png" height="300px">
-          <p><strong>effacer</strong>, modifier et exporter les données</li>
-          </p>
-        </section>
 
-        <section>
-          <p><strong>anonymisation</strong> des données et <strong>suppression</strong> chez Stripe.</p>
-          <pre><code data-trim data-noescape class="ruby">
-            # app/models/user.rb
-            def destroy
-              customer = Stripe::Customer.retrieve(stripe_token)
-              customer.delete unless customer.nil?
+        <p><strong>anonymisation</strong> des données et <strong>suppression</strong> chez Stripe.</p>
+        <pre><code data-trim data-noescape class="ruby">
+          # app/models/user.rb
+          def destroy
+            customer = Stripe::Customer.retrieve(stripe_token)
+            customer.delete unless customer.nil?
 
-              update_attributes!(
-                firstname: Faker::Name.first_name,
-                siret: Faker::Company.french_siret_number,
-              )
-            end
-          </code></pre>
-        </section>
+            update_attributes!(
+              firstname: Faker::Name.first_name,
+              siret: Faker::Company.french_siret_number,
+            )
+          end
+        </code></pre>
       </section>
 
       <section>
@@ -458,6 +507,49 @@
         </section>
 
         <section>
+
+            <pre><code data-trim data-noescape class="ruby">
+                # app/models/user.rb
+                class User < ApplicationRecord
+                  enum role: %i[user support admin god]
+                  # ...
+            </code></pre>
+
+          <table style="font-family: mono">
+            <tr>
+              <td></td>
+              <th>owner</th>
+              <th>other</th>
+              <th>danger</th>
+            </tr>
+            <tr>
+              <td>user</td>
+              <td><strong>rw</strong>-</td>
+              <td><i>---</i></td>
+              <td><i>---</i></td>
+            </tr>
+            <tr>
+              <td>support</td>
+              <td>rw-</td>
+              <td><strong>r</strong>--</td>
+              <td><strong>r</strong>--</td>
+            </tr>
+            <tr>
+              <td>admin</td>
+              <td>rw-</td>
+              <td>r<strong>w</strong>-</td>
+              <td>r--</td>
+            </tr>
+            <tr>
+              <td>god</td>
+              <td>rw-</td>
+              <td>rw-</td>
+              <td>r<strong>w</strong>-</td>
+            </tr>
+          </table>
+        </section>
+
+        <!-- <section>
           <table>
             <tr>
               <th>user</th>
@@ -476,25 +568,31 @@
               <td><strong>écriture</strong> <i><s>presque</s></i> partout</td>
             </tr>
           </table>
-        </section>
+        </section> -->
 
 
         <section>
           <pre><code data-trim data-noescape class="ruby">
+            # app/policies/act_family_policy.rb
             class ActFamilyPolicy < ApplicationPolicy
-
               def show?
-                return false if @user.nil?
-                @user.support? or @user.god?
+                @user&.support? or @user&.god?
               end
 
               def destroy?
-                return false if @user.nil?
-                @user.god?
+                @user&.god?
               end
-
               # ...
           </code></pre>
+          <pre><code data-trim data-noescape class="ruby">
+            # app/controllers/act_families_controller.rb
+            class ActFamilyPolicy < ApplicationPolicy
+              def index
+                authorize ActFamily
+                # ...
+          </code></pre>
+
+          
         </section>
       </section>
 

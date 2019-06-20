@@ -126,13 +126,13 @@ Aujourd’hui, la sécurité informatique est un enjeu majeur. D’autant plus p
 
 NOTE: Mars 2017, Facebook à perdu 37 milliards de dollars suite à la révélation de la fuite des données de plus de 50 millions de leurs utilisateurs https://www.lci.fr/high-tech/affaire-cambridge-analytica-quel-est-ce-scandale-qui-plonge-facebook-dans-la-crise-mark-zuckerberg-2082228.html[selon LCI]].
 
-C'est bien connu, le point de le plus faible d'une chaine réside dans le maillon le plus faible. Cette annalogie, appliquée à un produit SAAS, signifierais que le maillon le plus faible est l'application web. L’application doit être *imperméable* aux attaques les plus connues.
+C'est bien connu, le point de le plus faible d'une chaîne réside dans le maillon le plus faible. Cette analogie, appliquée à un produit SAAS, signifierais que le maillon le plus faible est l'application web. L’application doit être *imperméable* aux attaques les plus connues.
 
 En respectant les conventions de Ruby on Rails, nous somme protégés des failles de sécurité les plus connues. Je vais donc en passer quelques une en revue.
 
-==== Cross-site Scripting
+==== Cross-site request forgery
 
-Le *Cross-site Scripting* consiste à envoyer un formulaire d’un site vers un autre. Ainsi, un formulaire d'un site A pourrait demander une action sur un site B en profitant que sur l'utilisateur est déjà connecté ur le site B.
+Le *Cross-site request forgery* consiste à envoyer un formulaire d’un site vers un autre. Ainsi, un formulaire d'un site A pourrait demander une action sur un site B en profitant que sur l'utilisateur est déjà connecté ur le site B.
 
 Rails empêche cela en utilisant un jeton qu’il place sur tous les formulaires. Il peut ainsi identifier les formulaires qui lui sont propre et ceux qui ne lui sont pas.
 

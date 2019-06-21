@@ -7,16 +7,29 @@ Afin de clôturer ce mémoire, je vais dresser un bilan de mon expérience au se
 
 // TODO
 
-=== L’organisation
 
-Je pense que le plus gros risque dans un projet personnel d'une telle ampleur est l'*épuisement*. Cet épuisement risque de mener à une démotivation et peut mener à l'abandon du projet.
+=== Perspectives de iSignif
 
-Afin d'éviter cette démotivation, j'ai fait en sorte de prendre un maximum de plaisir dans les fonctionnalités que je développais. Mon but principal n'était pas de servir un business mais bien de me faire plaisir.
+Nous avons déjà réussi à rendre notre projet viable puisque, comme je l'ai montré plus haut,  nous générons quelques bénéfice.
 
-Ma plus grande difficulté à été de gérer les retours utilisateurs rapidement à côté de mon statut de salarié chez Gac Technology. Ayant un travail à côté, il faut vraiment *savoir s’organiser*.
+Nous recherchons donc à développer notre activité en réalisant des partenariats avec d'autres LegalTech. C'est le cas de l'entreprise "V pour Verdict", spécialisé dans le recours collectifs et cherchant à automatiser leurs significations. Nous allons donc très prochainement ouvrir une API documentée permetant de signifier un document.
+
+La construction de cette API nous mène aussi à une réflection de notre interface. En effet, c'est l'opportunité de créer une interface _Single Page Application_ qui sera plus fluide.
+
+De plus, nous réfléchissons à rendre notre outil Open-Source afin de rassurer nos clients sur nos traitement et aussi proposer notre application aux grands groupes qui souhaite utiliser notre application avec leur propre réseau d'huissiers.
 
 
-=== Les apports
+=== Retour d'experience
+
+Avec un peu de recul, je sais que j'ai commis quelques erreurs. Cette section a donc pour but d'être une auto-critique de mon expérience.
+
+Tout d'abord, je pense que j'ai fournie une première version trop complète. Dans l'entreprenariat, une citation connue est:
+
+> Fake it until you make it.
+
+Cette phrase, qui peut se traduire par "Fais semblant tant que tu ne l'as pas réalisé.". Elle s'illustre parfaitement par l'exemple de la création de la société Dropbox (fournisseur de stockage dans le cloud) qui est née suite à la création d'une vidéo promotionnelle simulée avec deux machines virtuelles. Dropbox a crée son produit une fois qu'il avait testé la validité de son idée sans développement.
+
+Ainsi j'ai pris trop de risque car nous n'avions pas confronté notre idée sur "le terrain".
 
 
 Les apports professionnels d’une telle expérience sont évidents. Au delà de mettre en avant une expérience professionnelle de plus, j'ai pu expérimenter des technologies au sein d'un projet personnel. Ces expérimentation m'ont permis de mettre en place des choses dans mon travail en tant que développeur.
@@ -25,21 +38,7 @@ Cela a aussi été l’occasion d'avoir des responsabilités sur un projet d'une
 
 Personnellement iSignif m'a permis de *sortir de ma zone de confort* et de découvrir l’*entrepreneuriat* sans prendre trop de risque puisqu'il n'y avait pas d'enjeu financer.
 
-// Ensuite, cette expérience à été pour moi l’opportunité de découvrir un autre rôle au sein d’un société.
-=== Critique de mon expérience
 
-Avec un peu de recul, je sais que j'ai commis quelques erreurs. Cette section a donc pour but d'être une auto-critique de mon expérience.
+Dans une perspective optimiste, je souhaite continuer de suivre le projet tout en déléguant une partie de plus en plus importante à des développeur externe. Je me concentrerai donc uniquement sur les choix stratégiques de l'entreprise.
 
-Tout d'abord, je pense que j'ai fournie une première version trop complète. Dans l'entreprenariat, une citation connue est:
-
-> Fake it until you make it. ()
-
-Cette phrase, qui peut se traduire par "Fais semblant tant que tu ne l'as pas réalisé.". Elle s'illustre parfaitement par l'exemple de la création de la société Dropbox (fournisseur de stockage dans le cloud) qui est née suite à la création d'une vidéo promotionnelle simulée avec deux machines virtuelles. Dropbox a crée son produit une fois qu'il avait testé la validité de son idée sans développement.
-
-Ainsi j'ai pris trop de risque car nous n'avions pas confronté notre idée sur "le terrain".
-
-=== Perspectives
-
-Dans une perspective optimiste, je pense que je vais continuer de suivre le projet tout en déléguant une partie de plus en plus importante à des développeur externe. Je me concentrerai donc uniquement sur les choix stratégiques de l'entreprise.
-
-// Dans une perspective pessimiste, c'est à dire le cas ou l'entreprise ne trouve pas de client, je pense que je me permettrait d'expérimenter de nouvelles technologies et de marquer un tournant dans l'application
+Dans une perspective pessimiste, c'est à dire le cas ou l'entreprise ne trouve pas de client, je pense que je me permettrait d'expérimenter de nouvelles technologies et de marquer un tournant dans l'application

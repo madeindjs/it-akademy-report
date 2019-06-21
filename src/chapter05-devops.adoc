@@ -122,7 +122,7 @@ MariaDB > GRANT ALL PRIVILEGES ON isignif . * TO 'isignif'@'localhost';
 
 === Sécurité de l’application
 
-Aujourd’hui, la sécurité informatique est un enjeu majeur. D’autant plus pour iSignif qui manipule des données sensibles. Il faut un certains temps pour bâtir une réputation et une fuite de données peut suffire à la ruiner
+aujourd'hui, la sécurité informatique est un enjeu majeur. D’autant plus pour iSignif qui manipule des données sensibles. Il faut un certains temps pour bâtir une réputation et une fuite de données peut suffire à la ruiner
 
 NOTE: Mars 2017, Facebook à perdu 37 milliards de dollars suite à la révélation de la fuite des données de plus de 50 millions de leurs utilisateurs https://www.lci.fr/high-tech/affaire-cambridge-analytica-quel-est-ce-scandale-qui-plonge-facebook-dans-la-crise-mark-zuckerberg-2082228.html[selon LCI]].
 

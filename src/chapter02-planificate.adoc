@@ -7,22 +7,11 @@ La planification est une étape importante car elle permet de tracer l'évolutio
 
 Afin de *valider certaines étapes* du développement du produit, nous organisons des *réunions d'avancement*. Elles nous permettent aussi de communiquer autour de l’avancée de la société.
 
-Ces réunions d’avancements ont lieu *physiquement*. Elles ne sont pas périodiquement fixées, nous en organisons à la demande, lorsqu’un des associé en ressent le besoin. Nous avons fait une réunion par mois environ qui dure une heure ou deux. Afin d’être plus efficace, nous définissons un but à l’avance.
+Ces réunions d’avancements ont lieu *physiquement*. Elles ne sont pas périodiquement fixées, nous en organisons à la demande, lorsqu'on des associé en ressent le besoin. Nous avons fait une réunion par mois environ qui dure une heure ou deux. Afin d’être plus efficace, nous définissons un but à l’avance.
 
 Par exemple, nous avons fait une réunion en mai 2018 afin de valider mon avancement sur l'application. A ce moment là, j’avais travaillé en totale autonomie sur l’élaboration d’une *première ébauche* fonctionnelle. J’ai donc effectué une démonstration. Cette réunion a permis de *renforcer la confiance* que mes associés m’avaient alors accordée mais aussi de collecter des premières critiques.
 
 Début juin 2018, nous avons signé le *pacte des associés*. Deux spécialistes de  https://www.beelys.org/[Beelys], incubateur lyonnais, étaient présents afin de nous apporter des renseignement sur le fonctionnement des levées de fond. A la suite de cette réunion, nous avons fait le choix de *ne pas faire de levée de fond* car elle s’accompagne d’une vente des parts de l’entreprise.
-
-//  Début juin 2018, nous avons signé le *pacte des associés*. Deux spécialistes de  https://www.beelys.org/[Beelys], incubateur lyonnais, étaient présent afin de nous apporter des renseignement sur le fonctionnement des levées de fond. A la suite de cette réunion, nous avons fait le choix de *ne pas faire de levée de fond* car elle s’accorde d’une vente de part de l’entreprise. Sachant que nous n’avions pas besoin immédiatement de fonds, nous préférions garder les parts de l’entreprise et les vendre une fois que la société posséderait une certaine notoriété.
-
-// Le septembre 2018, le produit était presque prêt pour le lancement en bêta. Nous avons donc fait cette réunion avec l’huissier bêta-testeur. Cette huissier avait pu tester le produit d'un  de nos concurrent et c'était don un avantage concurrentiel énorme. Cela a permit de **collecter des retours utilisateur** et de les intégrer à notre application. Nous avons aussi put valider notre produit et apporter quelques petites corrections avant le lancement.
-//
-// Le novembre 2018, notre produit était prêt pour le lancement en bêta. Nous étions conscient que le lancement était un moment crucial pour notre société. Les mauvais retours se propagent vite et nous n’avions pas le droit à l’erreur. Nous avons donc choisit de tester notre produit sur quelques simulations entre nous afin de valider toutes les fonctionnalités. Nous avons déniché quelques bogues mineurs et analyser quelques fonctionnalités clefs manquantes. Nous avons donc pris la *décision de retarder* le déploiement de notre produit afin d’améliorer la qualité.
-//
-// Le lancement c'est fait en mars 2019. Ce retard s'explique par l'**intégration de Stripe** (que j'évoquerai plus loin dans ce mémoire). Nous avons donc limité ce lancements uniquement aux huissiers. Nous avons donc effectué 67 significations et généré presque 70 euros.
-
-
-
 
 === Méthode Kanban
 

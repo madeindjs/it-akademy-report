@@ -59,7 +59,7 @@ Cela peut sembler paranoïaque, mais cela m’assure qu’aucune régression n�
 
 Vous aurez l’occasion de découvrir comment j’ai pu mettre des tests unitaires lors de la prochaine section et dans la section de l’élaboration de la fonctionnalité de suppression d’un utilisateur.
 
-NOTE: Ces tests m'ont apporté une certaine serenitude lors de la refonte de la gestion des droits que vous aurez l'occasion de découvrir dans la section <<improve_roles>>
+NOTE: Ces tests m'ont apporté une certaine sérénité lors de la refonte de la gestion des droits que vous aurez l'occasion de découvrir dans la section <<improve_roles>>
 
 // === Mise en place de l’environnement de développement
 //
@@ -131,7 +131,7 @@ test 'should set correct premium_until for never premium user' do
 end
 ----
 
-- vérifie que l'on ajoute un mois à partir d’aujourd’hui pour un utilisateur qui vient de réactiver son compte après une inactivité
+- vérifie que l'on ajoute un mois à partir d’aujourd'hui pour un utilisateur qui vient de réactiver son compte après une inactivité
 
 [source, ruby]
 ----
@@ -210,7 +210,7 @@ Nous obtenons donc une belle instance Ruby correspondant à un _Plan_. Il faut j
 
 L'implémentation du `SubscriptionsController` est quasiment identique au `ChargesController` hormis que la méthode `Stripe::Subscription.create`. Je passe donc volontairement cette partie.
 
-La seule différence avec la création des paiement ponctuelsest que Stripe envoie un signal lorsqu'il prélève l'utilisateur. Dans mon cas, le _workflow_ type est le suivant:
+La seule différence avec la création des paiement ponctuels est que Stripe envoie un signal lorsqu'on prélève l'utilisateur. Dans mon cas, le _workflow_ type est le suivant:
 
 1. l’utilisateur effectue une demande d'abonnement
 2. Stripe crée un abonnement pour cette utilisateur
@@ -218,7 +218,7 @@ La seule différence avec la création des paiement ponctuelsest que Stripe envo
 
 Stripe envoie une requête pour signaler que le paiement a été effectué par le biais du _hook_. Les  *Webhook* sont simplement des routes que nous mettons à disposition afin que Stripe nous envoie des requêtes. Une fois la route créée, nous devons le point d'entrée créer, nous devons le communiquer à Stripe via leurs interface d'administration.
 
-J'ai choisi de ne recevoir que les signaux `invoice.payment_succeeded` qui sont envoyé lorsqu'une facture est payée.
+J'ai choisi de ne recevoir que les signaux `invoice.payment_succeeded` qui sont envoyé lorsqu’une facture est payée.
 
 .Formulaire de création d'un Webhook
 image:stripe_webhook.png[stripe_webhook, 200]

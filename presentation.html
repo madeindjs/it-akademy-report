@@ -467,18 +467,15 @@
           <section>
             <h4>Rails ♥</h4>
             <ul>
+              <li>Top 10 <strong>OWASP proof</strong></li>
               <li>
-                Protège des failles
-                <small>XSS, injection SQL, CRSF, etc..</small>
-              </li>
-              <li>
-                Très suivi
+                constante <strong>évolution</strong>
                 <small>
-                  GitHub, Airbnb, Twitch, Soundcloud, Shopify, Hulu...
+                  GitHub, Airbnb, Twitch, Soundcloud,...
                 </small>
               </li>
               <li>
-                3.8K contributeurs
+                3.8K <strong>contributeurs</strong>
                 <small>
                   = Symfony <small>1.9K</small> + ZF <small>0.7K</small> +
                   Laravel <small>0.5K</small> + Cake <small>0.5K</small>
@@ -573,14 +570,7 @@
           <h3>Pérennisation / Policies</h3>
 
           <section>
-            <pre><code data-trim data-noescape class="ruby">
-                # app/models/user.rb
-                class User < ApplicationRecord
-                  enum role: %i[user support admin god]
-                  # ...
-            </code></pre>
-
-            <table>
+            <!-- <table>
               <tr>
                 <th>user</th>
                 <td>utilisateur classique</td>
@@ -599,50 +589,22 @@
                   <strong>écriture</strong> <i><s>presque</s></i> partout
                 </td>
               </tr>
-            </table>
-          </section>
+            </table> -->
 
-          <!-- <section>
-          <table>
-            <tr>
-              <th>user</th>
-              <td>utilisateur classique</td>
-            </tr>
-            <tr>
-              <th>support</th>
-              <td><strong>lecture</strong> partout</td>
-            </tr>
-            <tr>
-              <th>admin</th>
-              <td><strong>écriture</strong> <i>presque</i> partout</td>
-            </tr>
-            <tr>
-              <th>god</th>
-              <td><strong>écriture</strong> <i><s>presque</s></i> partout</td>
-            </tr>
-          </table>
-        </section> -->
-
-          <section>
             <pre><code data-trim data-noescape class="ruby">
-            # app/policies/act_family_policy.rb
-            class ActFamilyPolicy < ApplicationPolicy
-              def show?
-                @user&.support? or @user&.god?
-              end
-
-              def destroy?
-                @user&.god?
-              end
-              # ...
-          </code></pre>
+                # app/models/user.rb
+                class User < ApplicationRecord
+                  enum role: %i[user support admin god]
+                  # ...
+            </code></pre>
             <pre><code data-trim data-noescape class="ruby">
-            # app/controllers/act_families_controller.rb
-            class ActFamilyPolicy < ApplicationPolicy
-              def index
-                authorize ActFamily
+              # app/policies/act_family_policy.rb
+              class ActFamilyPolicy < ApplicationPolicy
+                def destroy?
+                  @user&.god?
+                end
                 # ...
-          </code></pre>
+            </code></pre>
           </section>
         </section>
 
@@ -659,10 +621,18 @@
           <section>
             <h3>Retours d'experience</h3>
             <ul>
-              <li>MVP trop <strong>ambitieux</strong>: 1000h, rentable?</li>
-              <li>incroyable <strong>experience</strong></li>
-              <li><strong>enrichissement</strong> personnel / professionnel</li>
-              <li>sortir de sa zone de confort</li>
+              <li class="bad">
+                MVP trop <strong>ambitieux</strong>
+                <i>"Fake it until you make it."</i>
+              </li>
+              <li class="bad">1000h, <strong>rentable?</strong></li>
+              <li class="good">
+                découverte de l’<strong>entrepreneuriat</strong>
+              </li>
+              <li class="good">apprendre à dire <strong>non</strong></li>
+              <li class="good">
+                sortir de sa <strong>zone de confort</strong>
+              </li>
             </ul>
           </section>
         </section>

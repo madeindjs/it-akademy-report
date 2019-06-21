@@ -1,149 +1,167 @@
 <html>
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/css/reveal.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.7.0/css/theme/white.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/atom-one-light.min.css"
+    />
+    <meta charset="utf-8" />
+    <style>
+      strong {
+        color: GoldenRod;
+      }
 
-<head>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/css/reveal.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.7.0/css/theme/white.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/atom-one-light.min.css">
-  <meta charset="utf-8">
-  <style>
-    strong {
-      color: GoldenRod;
-    }
+      mark {
+        background-color: GoldenRod;
+      }
 
-    mark {
-      background-color: GoldenRod;
-    }
+      del {
+        color: lightgray;
+      }
 
-    del {
-      color: lightgray
-    }
+      i,
+      s,
+      small {
+        color: darkgray;
+      }
 
-    i, s {
-      color: darkgray;
-    }
+      p.todo {
+        color: darkgray;
+        font-family: monospace;
+        font-size: 1.5rem;
+      }
 
-    p.todo {
-      color: darkgray;
-      font-family: monospace;
-      font-size: 1.5rem;
-    }
+      p.todo:before {
+        content: "# TODO:";
+        color: darkgray;
+        font-family: monospace;
+      }
 
-    p.todo:before {
-      content: '# TODO:';
-      color: darkgray;
-      font-family: monospace;
-    }
+      .reveal {
+        /* font-family: mono; */
+      }
 
+      .reveal h1,
+      .reveal h2,
+      .reveal h3,
+      .reveal h4 {
+        font-family: monospace;
+        font-weight: normal;
+      }
 
-    .reveal {
-      /* font-family: mono; */
-    }
+      .reveal h3 {
+        text-align: right;
+        font-size: 2rem;
+        border-bottom: dashed 2px;
+        color: darkgray;
+      }
 
-    .reveal h1,
-    .reveal h2,
-    .reveal h3,
-    .reveal h4 {
-      font-family: monospace;
-      font-weight: normal;
-    }
+      .reveal h2 {
+        color: darkgrey;
+      }
 
-    .reveal h3 {
-      text-align: right;
-      font-size: 2rem;
-      border-bottom: dashed 2px;
-      color: darkgray;
-    }
+      .reveal ul {
+        list-style-type: none;
+        margin-left: 0;
+      }
 
-    .reveal h2 {
-      color: darkgrey;
-    }
+      .reveal ul li:before {
+        content: "- ";
+        color: darkgray;
+      }
 
-    .reveal ul {
-      list-style-type: none;
-      margin-left: 0;
-    }
+      .reveal ul li.bad:before {
+        content: "- ";
+        color: red;
+        font-weight: bold;
+      }
 
-    .reveal ul li:before {
-      content: '- ';
-      color: darkgray;
-    }
+      .reveal ul li.good:before {
+        content: "+ ";
+        color: green;
+        font-weight: bold;
+      }
 
-    .reveal ul li.bad:before {
-      content: '- ';
-      color: red;
-      font-weight: bold;
-    }
+      .reveal section img {
+        border: none;
+        box-shadow: none;
+      }
+    </style>
+  </head>
 
-    .reveal ul li.good:before {
-      content: '+ ';
-      color: green;
-      font-weight: bold;
-    }
-
-    .reveal section img {
-      border: none;
-      box-shadow: none;
-    }
-  </style>
-</head>
-
-<body>
-  <div class="reveal">
-    <div class="slides">
-      <section>
-        <h1>Dossier de validation</h1>
-        <p>Alexandre Rousseau <br> <a href="mailto:contact@rousseau-alexandre.fr">contact@rousseau-alexandre.fr</a> </p>
-      </section>
-      <section>
-        <h2>Sommaire</h2>
-        <ul>
-          <!-- <li>A propos de moi</li> -->
-          <li>Présentation</li>
-          <li>Planification</li>
-          <li>Développement</li>
-          <li>Pérennisation</li>
-          <li>Conclusion</li>
-        </ul>
-      </section>
-
-
-      <!-- A propos de moi -->
-      <section>
-
+  <body>
+    <div class="reveal">
+      <div class="slides">
         <section>
-          <h2>A propos de moi</h2>
-          <p><a href="https://rousseau-alexandre.fr">rousseau-alexandre.fr</a></p>
-          <p>Développeur <strong>passionné</strong>. Travaille actuellement chez <a href="https://www.gac-technology.com/">Gac Technology</a></p>
+          <h1>Dossier de validation</h1>
+          <p>
+            Alexandre Rousseau <br />
+            <a href="mailto:contact@rousseau-alexandre.fr"
+              >contact@rousseau-alexandre.fr</a
+            >
+          </p>
         </section>
-
         <section>
-          <img src="src/img/gac.svg" height="200">
-          <img src="src/img/gac_clients.png" height="300">
-        </section>
-
-      </section>
-
-      <!-- PRÉSENTATION DE ISIGNIF -->
-      <section>
-
-        <h3>Présentation projet</h3>
-
-        <section>
-          <img src="src/img/logo.svg" height="200">
-          <p>SAS - LegalTech - 2017 - 4 associés</p>
-        </section>
-
-        <section>
-          <h4><strong>S</strong>ociété par <strong>A</strong>ctions <strong>S</strong>implifiée</h4>
+          <h2>Sommaire</h2>
           <ul>
-            <li class="good">statut de <del>salarié</del> associé </li>
-            <li class="bad"><del>salaire</del> dividende</li>
-            <li class="good">souplesse sur les règles</li>
-            <li class="bad">pacte d'actionnaire</li>
+            <!-- <li>A propos de moi</li> -->
+            <li>Présentation</li>
+            <li>Planification</li>
+            <li>Développement</li>
+            <li>Pérennisation</li>
+            <li>Conclusion</li>
           </ul>
         </section>
 
-        <!--
+        <!-- A propos de moi -->
+        <section>
+          <section>
+            <h2>A propos de moi</h2>
+            <p>
+              <a href="https://rousseau-alexandre.fr">rousseau-alexandre.fr</a>
+            </p>
+            <p>
+              Développeur <strong>passionné</strong>. Travaille actuellement
+              chez <a href="https://www.gac-technology.com/">Gac Technology</a>
+            </p>
+          </section>
+
+          <section>
+            <img src="src/img/gac.svg" height="200" />
+            <img src="src/img/gac_clients.png" height="300" />
+          </section>
+        </section>
+
+        <!-- PRÉSENTATION DE ISIGNIF -->
+        <section>
+          <h3>Présentation projet</h3>
+
+          <section>
+            <img src="src/img/logo.svg" height="200" />
+            <p>SAS - LegalTech - 2017 - 4 associés</p>
+          </section>
+
+          <section>
+            <h4>
+              <strong>S</strong>ociété par <strong>A</strong>ctions
+              <strong>S</strong>implifiée
+            </h4>
+            <ul>
+              <li class="good">statut de <del>salarié</del> associé</li>
+              <li class="bad"><del>salaire</del> dividende</li>
+              <li class="good">souplesse sur les règles</li>
+              <li class="bad">pacte d'actionnaire</li>
+            </ul>
+          </section>
+
+          <!--
         <section>
           <h3>Associés</h3>
           <ul>
@@ -155,150 +173,161 @@
         </section>
         -->
 
+          <section>
+            <h4>Mon rôle</h4>
+            <ul>
+              <li><strong>associé</strong> décisions stratégiques</li>
+              <li>
+                <strong>directeur technique</strong> choix techniques & dév.
+              </li>
+              <li><strong>dpo</strong> mise en conformité RGPD</li>
+            </ul>
+          </section>
+
+          <section>
+            <h4>Principe</h4>
+            <p>Simplifier le processus de <strong>signification</strong></p>
+            <img src="src/img/signification_after_before.png" alt="" />
+          </section>
+
+          <section>
+            <img src="src/img/workflow_money.png" alt="" />
+            <p><strong class="good">8€ / mois</strong> pour les avocats</p>
+            <p><strong class="good">2€ / acte</strong> pour les huissiers</p>
+          </section>
+        </section>
+
+        <!-- PLANIFICATION -->
         <section>
-          <h4>Mon rôle</h4>
+          <h2>Planification</h2>
           <ul>
-            <li><strong>associé</strong> décisions stratégiques</li>
-            <li><strong>directeur technique</strong> choix techniques & dév.</li>
-            <li><strong>dpo</strong> mise en conformité RGPD</li>
+            <li>Estimation</li>
+            <li>Choix des technologies</li>
+            <li>Méthode Kanban</li>
+            <li>Git</li>
           </ul>
         </section>
 
+        <!-- Merise -->
         <section>
-          <h4>Principe</h4>
-          <p>Simplifier le processus de <strong>signification</strong></p>
-          <img src="src/img/signification_after_before.png" alt="">
+          <h3>Planification / Estimation</h3>
+          <section>
+            <p><strong>MCD</strong> <i>(Modèle conceptuel des données)</i></p>
+            <ul>
+              <li><strong>compréhension</strong> de la logique métier</li>
+              <li><strong>validation</strong> du cahier des charges</li>
+              <li><strong>estimation</strong> de la charge de travail</li>
+            </ul>
+          </section>
+
+          <section>
+            <img src="src/img/merise_bailiffs.png" height="100%" />
+          </section>
         </section>
 
+        <!-- Choix des technologies -->
         <section>
-          <img src="src/img/workflow_money.png" alt="">
-          <p> <strong class="good">8€ / mois</strong> pour les avocats</p>
-          <p> <strong class="good">2€ / acte</strong> pour les huissiers</p>
+          <h3>Planification / Technologies</h3>
+          <section>
+            <img src="src/img/mariadb.svg" alt="" height="200" />
+            <!-- <img src="src/img/ubuntu.svg" alt="" height="200"> -->
+            <img src="src/img/rails.svg" alt="" height="200" />
+            <img src="src/img/vuejs.svg" alt="" height="200" />
+          </section>
+
+          <section>
+            <h4>Serveur</h4>
+            <p>
+              <strong>V</strong>irtual <strong>P</strong>rivate
+              <strong>S</strong>erveur chez <strong>OVH</strong>
+            </p>
+            <ul>
+              <li class="good">2,99 € / mois</li>
+              <li class="good">Ubuntu 18.04 LTS <small>2024</small></li>
+              <li class="good">Liberté</li>
+              <li class="bad">Compétence Linux</li>
+            </ul>
+          </section>
         </section>
 
-      </section>
-
-      <!-- PLANIFICATION -->
-      <section>
-        <h2>Planification</h2>
-        <ul>
-          <li>Estimation</li>
-          <li>Choix des technologies</li>
-          <li>Méthode Kanban</li>
-          <li>Git</li>
-        </ul>
-      </section>
-
-      <!-- Merise -->
-      <section>
-        <h3>Planification / Estimation</h3>
+        <!-- kanban -->
         <section>
-          <p><strong>MCD</strong> <i>(Modèle conceptuel des données)</i></p>
-          <ul>
-            <li><strong>compréhension</strong> de la logique métier</li>
-            <li><strong>validation</strong> du cahier des charges</li>
-            <li><strong>estimation</strong> de la charge de travail</li>
-          </ul>
+          <h3>Planification / Kanban</h3>
+          <section>
+            <p>
+              Méthode <strong>Kanban</strong> avec
+              <a href="https://trello.com">Trello</a>.
+            </p>
+            <p>
+              Tâches <strong>indivisibles</strong> et <strong>rapides</strong>.
+            </p>
+            <img src="src/img/trello_task.png" alt="" />
+            <!-- <p>A faire > en cours > terminé</p> -->
+          </section>
+
+          <section>
+            <h4>Workflow Kanban - 2018</h4>
+            <!-- <p>Utilisé pour sortir un <strong>MVP</strong><small>[1]</small>.</p> -->
+            <img src="src/img/trello.png" alt="" />
+          </section>
+
+          <section>
+            <h4>Workflow Kanban - 2019</h4>
+            <!-- <p>Utilisé afin de <strong>communiquer</strong> les évolutions.</p> -->
+            <img src="src/img/trello_now.png" alt="" />
+          </section>
         </section>
 
+        <!-- Git -->
         <section>
-          <img src="src/img/merise_bailiffs.png" height="100%">
-        </section>
-      </section>
+          <h3>Planification / Git-Flow</h3>
 
-      <!-- Choix des technologies -->
-      <section>
-        <h3>Planification / Technologies</h3>
-        <section>
-          <img src="src/img/mariadb.svg" alt="" height="200">
-          <!-- <img src="src/img/ubuntu.svg" alt="" height="200"> -->
-          <img src="src/img/rails.svg" alt="" height="200">
-          <img src="src/img/vuejs.svg" alt="" height="200">
-        </section>
-
-        <section>
-          <h4>Serveur</h4>
-          <p><strong>V</strong>irtual <strong>P</strong>rivate <strong>S</strong>erveur chez <strong>OVH</strong></p>
-          <ul>
-            <li class="good">2,99 € / mois</li>
-            <li class="good">Ubuntu 18.04 LTS <small>2024</small></li>
-            <li class="good">Liberté</li>
-            <li class="bad">Compétence Linux</li>
-          </ul>
-        </section>
-      </section>
-
-      <!-- kanban -->
-      <section>
-        <h3>Planification / Kanban</h3>
-        <section>
-          <p>Méthode <strong>Kanban</strong> avec <a href="https://trello.com">Trello</a>. </p>
-          <p>Tâches <strong>indivisibles</strong> et <strong>rapides</strong>.</p>
-          <img src="src/img/trello_task.png" alt="">
-          <!-- <p>A faire > en cours > terminé</p> -->
-        </section>
-
-        <section>
-          <h4>Workflow Kanban - 2018</h4>
-          <!-- <p>Utilisé pour sortir un <strong>MVP</strong><small>[1]</small>.</p> -->
-          <img src="src/img/trello.png" alt="">
-        </section>
-
-        <section>
-          <h4>Workflow Kanban - 2019</h4>
-          <!-- <p>Utilisé afin de <strong>communiquer</strong> les évolutions.</p> -->
-          <img src="src/img/trello_now.png" alt="">
-        </section>
-
-      </section>
-
-      <!-- Git -->
-      <section>
-        <h3>Planification / Git-Flow</h3>
-
-        <section>
-            <img src="src/img/git-flow.png" alt="">
+          <section>
+            <img src="src/img/git-flow.png" alt="" />
             <ul>
               <li class="good">Organisation mise en production</li>
               <!-- <li class="good">Séparer les développement</li> -->
               <!-- <li class="bad">Complexe pour un novice</li> -->
             </ul>
+          </section>
+          <!-- <p>Organisation du travail avec Git</p> -->
         </section>
-        <!-- <p>Organisation du travail avec Git</p> -->
-      </section>
 
-      <!-- DÉVELOPPEMENT DE LA PLATEFORME -->
-      <section>
-        <h2>Développement</h2>
-        <ul>
-          <li>Intégration avec Stripe</li>
-          <li>Développement Dirigé par les Test</li>
-          <li>Sécurité</li>
-        </ul>
-      </section>
-
-      <!-- Stripe -->
-      <section>
-        <h3>Développement / Stripe</h3>
+        <!-- DÉVELOPPEMENT DE LA PLATEFORME -->
         <section>
-          <img src="src/img/stripe.svg" alt="">
+          <h2>Développement</h2>
           <ul>
-            <li class="good">API très pratique</li>
-            <li class="good">Gestion clients, factures, relances</li>
-            <li class="bad">1,4% + 0,25€ par transaction</li>
+            <li>Intégration avec Stripe</li>
+            <li>Développement Dirigé par les Test</li>
+            <li>Sécurité</li>
           </ul>
-          <!-- <img src="src/img/stripe_customers.png" alt=""> -->
-          <p><strong>Souscription</strong> à la plateforme et <strong>facturation</strong> des huissiers</p>
         </section>
 
+        <!-- Stripe -->
         <section>
-          <h4>Souscription à la plateforme</h4>
-          <pre><code data-trim data-noescape class="ruby">
+          <h3>Développement / Stripe</h3>
+          <section>
+            <img src="src/img/stripe.svg" alt="" />
+            <ul>
+              <li class="good">API très pratique</li>
+              <li class="good">Gestion clients, factures, relances</li>
+              <li class="bad">1,4% + 0,25€ par transaction</li>
+            </ul>
+            <!-- <img src="src/img/stripe_customers.png" alt=""> -->
+            <p>
+              <strong>Souscription</strong> à la plateforme et
+              <strong>facturation</strong> des huissiers
+            </p>
+          </section>
+
+          <section>
+            <h4>Souscription à la plateforme</h4>
+            <pre><code data-trim data-noescape class="ruby">
             Stripe::Plan.create(
               product: Stripe::Product.create(name: 'Abonnement compte premium'),
               amount:  800
           </code></pre>
-        <!-- </section>
+            <!-- </section>
 
         <section>
           <p><strong>Front</strong>, intégration d'un bouton</p>
@@ -308,9 +337,8 @@
               data-key="my_public_stripe_token"
           </code></pre> -->
 
-
-          <p>gestion <strong>webhook</strong> de Stripe</p>
-          <pre><code data-trim data-noescape class="ruby">
+            <p>gestion <strong>webhook</strong> de Stripe</p>
+            <pre><code data-trim data-noescape class="ruby">
             # subscriptions_controller.rb
             def create
               Stripe::Subscription.create(..) rescue Stripe::CardError
@@ -321,19 +349,31 @@
               do_thing if params[:type] == 'invoice.payment_succeeded'
             end
           </code></pre>
-        </section>
+          </section>
 
-        <section>
-          <h4>Facturation</h4>
-          <ul>
-            <li><strong style="color: green">ISIGNIF</strong> Ouverture d'une <i>Invoice</i></li>
-            <li><strong style="color: green">ISIGNIF</strong> Affectation <i>InvoiceItem</i> à un <i>Customer</i></li>
-            <li><strong style="color: blue">STRIPE</strong> Conversion de l' <i>Invoice</i> en PDF</li>
-            <li><strong style="color: blue">STRIPE</strong> Collecte / Relance du <i>Customer</i> </li>
-          </ul>
-        </section>
+          <section>
+            <h4>Facturation</h4>
+            <ul>
+              <li>
+                <strong style="color: green">ISIGNIF</strong> Ouverture d'une
+                <i>Invoice</i>
+              </li>
+              <li>
+                <strong style="color: green">ISIGNIF</strong> Affectation
+                <i>InvoiceItem</i> à un <i>Customer</i>
+              </li>
+              <li>
+                <strong style="color: blue">STRIPE</strong> Conversion de l'
+                <i>Invoice</i> en PDF
+              </li>
+              <li>
+                <strong style="color: blue">STRIPE</strong> Collecte / Relance
+                du <i>Customer</i>
+              </li>
+            </ul>
+          </section>
 
-        <!-- <section>
+          <!-- <section>
           <p>Création d'un <i>InvoiceItem</i></p>
 
           <pre><code data-trim data-noescape class="ruby">
@@ -345,21 +385,19 @@
           </code></pre>
         </section> -->
 
-        <section>
-          <img src="src/img/isignif_pay_web.png">
+          <section>
+            <img src="src/img/isignif_pay_web.png" />
+          </section>
         </section>
 
-      </section>
-
-      <!-- Test Driven Development -->
-      <section>
-
-        <h3>Développement / TDD</h3>
+        <!-- Test Driven Development -->
         <section>
-          <img src="src/img/escalade-tu.jpg" alt="">
-        </section>
+          <h3>Développement / TDD</h3>
+          <section>
+            <img src="src/img/escalade-tu.jpg" alt="" />
+          </section>
 
-        <!-- <section>
+          <!-- <section>
           <h4>Objectifs</h4>
           <p>
             <input type="checkbox" checked> Test Driven Development</br>
@@ -367,9 +405,9 @@
           </p>
         </section> -->
 
-        <section>
-          <h4>Tests unitaires</h4>
-          <pre><code data-trim data-noescape class="ruby">
+          <section>
+            <h4>Tests unitaires</h4>
+            <pre><code data-trim data-noescape class="ruby">
             # test/models/user_test.rb
             test 'should set correct premium_until for new premium user' do
               user = User.new
@@ -377,11 +415,11 @@
               assert_equal (Date.today + 1.month), user.premium_until
             end
           </code></pre>
-        </section>
+          </section>
 
-        <section>
-          <h4>Tests fonctionnels</h4>
-          <pre><code data-trim data-noescape class="ruby">
+          <section>
+            <h4>Tests fonctionnels</h4>
+            <pre><code data-trim data-noescape class="ruby">
             test 'should show for connected user' do
               login(@bob)
               get advocate_url(@bob)
@@ -394,42 +432,58 @@
               assert_response :forbidden
             end
           </code></pre>
-        </section>
+          </section>
 
-        <section>
-          <h4>Règles</h4>
-          <ol>
-            <li>Test Driven Development (<strong>TDD</strong>)</li>
-            <li>Tests fonctionnels <strong>paranoïaques</strong></li>
-            <li>Test d'une <strong>régression</strong></li>
-          </ol>
-          <!-- <p>gain de temps, limitation des régressions et factorisation facile</p> -->
-          <p>+<strong>300</strong> tests en <strong>20</strong> secondes pour <strong>93%</strong> de coverage</p>
-          <!-- <p class="todo">tests E2E et test Mutant</p> -->
-        </section>
+          <section>
+            <h4>Règles</h4>
+            <ol>
+              <li>Test Driven Development (<strong>TDD</strong>)</li>
+              <li>Tests fonctionnels <strong>paranoïaques</strong></li>
+              <li>Test d'une <strong>régression</strong></li>
+            </ol>
+            <!-- <p>gain de temps, limitation des régressions et factorisation facile</p> -->
+            <p>
+              +<strong>300</strong> tests en <strong>20</strong> secondes pour
+              <strong>93%</strong> de coverage
+            </p>
+            <!-- <p class="todo">tests E2E et test Mutant</p> -->
+          </section>
 
-        <!-- <section>
+          <!-- <section>
           <h4>Avantages</h4>
           <ul>
             <li>gain de temps</li>
             <li>limitation des régressions</li>
             <li>factorisation plus facile</li>
           </ul>
-          
+
         </section> -->
+        </section>
 
-      </section>
-
-      <!-- sécurité -->
-      <section>
+        <!-- sécurité -->
+        <section>
           <h3>Sécurité de l'application</h3>
 
           <section>
             <h4>Rails ♥</h4>
             <ul>
-              <li><s>XSS</s>: HTML échappé par ERB</li>
-              <li><s>injection SQL</s>: protégée par Active Record</li>
-              <li><s>CRSF</s>: jeton sur TOUS les formulaires</li>
+              <li>
+                Protège des failles
+                <small>XSS, injection SQL, CRSF, etc..</small>
+              </li>
+              <li>
+                Très suivi
+                <small>
+                  GitHub, Airbnb, Twitch, Soundcloud, Shopify, Hulu...
+                </small>
+              </li>
+              <li>
+                3.8K contributeurs
+                <small>
+                  = Symfony <small>1.9K</small> + ZF <small>0.7K</small> +
+                  Laravel <small>0.5K</small> + Cake <small>0.5K</small>
+                </small>
+              </li>
             </ul>
           </section>
 
@@ -447,77 +501,78 @@
           </section>
 
           <section>
-              <h4>Active Storage</h4>
-              <pre><code data-trim data-noescape class="ruby">
+            <h4>Active Storage</h4>
+            <pre><code data-trim data-noescape class="ruby">
                 # app/models/act_file.rb
                 class ActFile < ApplicationRecord
                   has_many_attached :files, dependent: :purge
               </code></pre>
-              <pre><code data-trim data-noescape class="ruby">
+            <pre><code data-trim data-noescape class="ruby">
                 # app/controllers/act_files_controller.rb
                 @act_file.<mark>files.attach</mark> params[:files]
               </code></pre>
-              <ul>
-                <li class="good">suivis par Rails <i>(~4K contributeurs)</i></li>
-                <li class="good">stockage cloud <i>(Amazon, Microsoft, Google)</i></li>
-              </ul>
+            <ul>
+              <li class="good">suivis par Rails</li>
+              <li class="good">
+                stockage cloud <small>(Amazon, Microsoft, Google)</small>
+              </li>
+            </ul>
           </section>
-
-          
-      </section>
-
-      <section>
-        <h2>Pérennisation</h2>
-        <ul>
-          <li>RGPD</li>
-          <li>Sauvegardes automatisées</li>
-          <li>Refonte des rôles</li>
-        </ul>
-      </section>
-
-      <section>
-        <h3>Pérennisation / RGPD</h3>
+        </section>
 
         <section>
-          <p><strong>anonymisation</strong> des données et <strong>suppression</strong> chez Stripe.</p>
-          <pre><code data-trim data-noescape class="ruby">
+          <h2>Pérennisation</h2>
+          <ul>
+            <li>RGPD</li>
+            <li>Sauvegardes automatisées</li>
+            <li>Refonte des rôles</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Pérennisation / RGPD</h3>
+
+          <section>
+            <p>
+              <strong>anonymisation</strong> des données et
+              <strong>suppression</strong> chez Stripe.
+            </p>
+            <pre><code data-trim data-noescape class="ruby">
             # app/models/user.rb
             def destroy
               customer = Stripe::Customer.retrieve(stripe_token)
               customer.delete unless customer.nil?
-  
+
               update_attributes!(
                 firstname: Faker::Name.first_name,
                 siret: Faker::Company.french_siret_number,
               )
             end
           </code></pre>
-        </section>
-      </section>
-
-      <section>
-        <h3>Pérennisation / Sauvegardes</h3>
-
-        <section>
-          <img src="src/img/shit.png" height="300">
+          </section>
         </section>
 
         <section>
-          <ul>
-            <li><strong>automatisée</strong> avec bash</li>
-            <li><strong>chiffrée</strong> avec GnuPGP</li>
-            <li><strong>régulière</strong> avec CRONTAB</li>
-          </ul>
-          <p class="todo">Incrémentielle</p>
-        </section>
-      </section>
+          <h3>Pérennisation / Sauvegardes</h3>
 
-      <section>
-        <h3>Pérennisation / Policies</h3>
-        
+          <section>
+            <img src="src/img/shit.png" height="300" />
+          </section>
+
+          <section>
+            <ul>
+              <li><strong>automatisée</strong> avec bash</li>
+              <li><strong>chiffrée</strong> avec GnuPGP</li>
+              <li><strong>régulière</strong> avec CRONTAB</li>
+            </ul>
+            <p class="todo">Incrémentielle</p>
+          </section>
+        </section>
 
         <section>
+          <h3>Pérennisation / Policies</h3>
 
+          <section>
             <pre><code data-trim data-noescape class="ruby">
                 # app/models/user.rb
                 class User < ApplicationRecord
@@ -540,12 +595,14 @@
               </tr>
               <tr>
                 <th>god</th>
-                <td><strong>écriture</strong> <i><s>presque</s></i> partout</td>
+                <td>
+                  <strong>écriture</strong> <i><s>presque</s></i> partout
+                </td>
               </tr>
             </table>
-        </section>
+          </section>
 
-        <!-- <section>
+          <!-- <section>
           <table>
             <tr>
               <th>user</th>
@@ -566,9 +623,8 @@
           </table>
         </section> -->
 
-
-        <section>
-          <pre><code data-trim data-noescape class="ruby">
+          <section>
+            <pre><code data-trim data-noescape class="ruby">
             # app/policies/act_family_policy.rb
             class ActFamilyPolicy < ApplicationPolicy
               def show?
@@ -580,62 +636,60 @@
               end
               # ...
           </code></pre>
-          <pre><code data-trim data-noescape class="ruby">
+            <pre><code data-trim data-noescape class="ruby">
             # app/controllers/act_families_controller.rb
             class ActFamilyPolicy < ApplicationPolicy
               def index
                 authorize ActFamily
                 # ...
           </code></pre>
-
-          
+          </section>
         </section>
-      </section>
 
-
-      <section>
-        <h2>Conclusion</h2>
         <section>
-          <h3>Perspectives de iSignif</h3>
-          <ul>
-            <li>ouverture API & <strong>partenariats</strong></li>
-            <li><strong>découplement</strong> Front / Back</li>
-            <li><strong>open-source</strong> pour réseaux fermés</li>
-          </ul>
+          <h2>Conclusion</h2>
+          <section>
+            <h3>Perspectives de iSignif</h3>
+            <ul>
+              <li>ouverture API & <strong>partenariats</strong></li>
+              <li><strong>découplement</strong> Front / Back</li>
+              <li><strong>open-source</strong> pour réseaux fermés</li>
+            </ul>
+          </section>
+          <section>
+            <h3>Retours d'experience</h3>
+            <ul>
+              <li>MVP trop <strong>ambitieux</strong>: 1000h, rentable?</li>
+              <li>incroyable <strong>experience</strong></li>
+              <li><strong>enrichissement</strong> personnel / professionnel</li>
+              <li>sortir de sa zone de confort</li>
+            </ul>
+          </section>
         </section>
+
         <section>
-          <h3>Retours d'experience</h3>
-          <ul>
-            <li>MVP trop <strong>ambitieux</strong>: 1000h, rentable?</li>
-            <li>incroyable <strong>experience</strong></li>
-            <li><strong>enrichissement</strong> personnel / professionnel</li>
-            <li>sortir de sa zone de confort </li>
-          </ul>
+          <p>Merci!</p>
         </section>
-      </section>
-
-      <section>
-        <p>Merci!</p>
-      </section>
-
+      </div>
     </div>
-  </div>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.7.0/js/reveal.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.7.0/lib/js/head.min.js"></script>
-  <script>
-    Reveal.initialize({
-      slideNumber: true,
-      history: true,
-      // More info https://github.com/hakimel/reveal.js#dependencies
-      dependencies: [{
-        src: 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.7.0/plugin/highlight/highlight.min.js',
-        async: true,
-        callback: function() {
-          hljs.initHighlightingOnLoad();
-        }
-      }, ]
-    });
-  </script>
-</body>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.7.0/js/reveal.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.7.0/lib/js/head.min.js"></script>
+    <script>
+      Reveal.initialize({
+        slideNumber: true,
+        history: true,
+        // More info https://github.com/hakimel/reveal.js#dependencies
+        dependencies: [
+          {
+            src:
+              "https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.7.0/plugin/highlight/highlight.min.js",
+            async: true,
+            callback: function() {
+              hljs.initHighlightingOnLoad();
+            }
+          }
+        ]
+      });
+    </script>
+  </body>
 </html>

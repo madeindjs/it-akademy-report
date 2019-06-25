@@ -420,18 +420,39 @@
           <section>
             <h4>Tests fonctionnels</h4>
             <pre><code data-trim data-noescape class="ruby">
-            test 'should show for connected user' do
-              login(@bob)
-              get advocate_url(@bob)
-              assert_response :success
-            end
+              test 'should show for connected user' do
+                login(@bob)
+                get advocate_url(@bob)
+                assert_response :success
 
-            test 'should forbid show user for other user' do
-              login(@alice)
-              get advocate_url(@bob)
-              assert_response :forbidden
-            end
-          </code></pre>
+                assert_select 'h2', text: 'Actions'
+                assert_select 'table.acts', count: 2
+              end
+
+              test 'should forbid show user for other user' do
+                login(@alice)
+                get advocate_url(@bob)
+                assert_response :forbidden
+              end
+            </code></pre>
+          </section>
+
+          <section>
+            <h4>Tests fonctionnels avancés</h4>
+            <pre><code data-trim data-noescape class="ruby">
+                test 'should create act_file with API' do
+                  assert_difference('ActFile.count') do
+                    post act_files_url, params: { ... }, headers: { ... }
+                  end
+
+                  assert_response :created
+
+                  # expect advocate receive mail
+                  mail = ActionMailer::Base.deliveries.last
+                  assert_not_nil mail
+                  assert_equal @advocate.email, mail[:to]
+                end
+              </code></pre>
           </section>
 
           <section>

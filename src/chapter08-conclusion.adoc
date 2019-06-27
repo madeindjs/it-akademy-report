@@ -12,7 +12,7 @@ Afin de clôturer ce mémoire, je vais dresser un bilan de mon expérience au se
 
 Nous avons déjà réussi à rendre notre projet viable puisque, comme je l'ai montré plus haut,  nous générons quelques bénéfice.
 
-Nous recherchons donc à développer notre activité en réalisant des partenariats avec d'autres LegalTech. C'est le cas de l'entreprise "V pour Verdict", spécialisé dans le recours collectifs et cherchant à automatiser leurs significations. Nous allons donc très prochainement ouvrir une API documentée permetant de signifier un document.
+Nous recherchons donc à développer notre activité en réalisant des partenariats avec d'autres LegalTech. C'est le cas de l'entreprise "V pour Verdict", spécialisé dans le recours collectifs et cherchant à automatiser leurs significations. Nous allons donc très prochainement ouvrir une API documentée permettant de signifier un document.
 
 La construction de cette API nous mène aussi à une réflection de notre interface. En effet, c'est l'opportunité de créer une interface _Single Page Application_ qui sera plus fluide.
 

@@ -1,9 +1,9 @@
 [#chapter05-devops]
 == Mise en production
 
-Étant dans une startup, mon travail ne s'est pas cantonné à du développement logiciel mais aussi à l'administration d'un serveur Linux. Dans ce chapitre je vais retracer certaines actions que j'ai effectué afin d'installer et de sécuriser mon serveur.
+Étant dans une startup, mon travail ne s'est pas cantonné à du développement logiciel mais aussi à l'administration d'un serveur Linux. Dans ce chapitre je vais retracer certaines actions que j'ai effectuées afin d'installer et de sécuriser mon serveur.
 
-Néanmoins, mon travail au seins de iSignif va encore plus loins car je m'occupe aussi de la maintenant de celui-ci.
+Néanmoins, mon travail au sein de iSignif va encore plus loin car je m'occupe aussi de la maintenance de celui-ci.
 
 === Choix du serveur
 
@@ -20,7 +20,7 @@ Pour mon application j’ai choisi le VPS qui me permet *d’administrer* mon se
 
 Étant dans une phase de validation du concept, ce choix m’a permis de commencer avec un petit serveur à 3 euros / mois . En cas de forte activité, je pourrai basculer sur un serveur plus puissant très facilement.
 
-NOTE: Je n'ai pas encore eu besoin d'augmenter la capacité de mon VPS pour le moment car il suffit pour le moment.
+NOTE: Je n'ai pas encore eu besoin d'augmenter la capacité de mon VPS car il suffit pour le moment.
 
 === Installation et sécurisation du serveur
 
@@ -28,7 +28,7 @@ OVH donne les choix entre plusieurs OS et plusieurs distributions. L'utilisation
 
 Ubuntu, développé par Canonical, est extrêmement réputé. La version 18.04 est une _Long Term Support_ (LTS), cela signifie que cette version recevra des mises à jour de sécurité jusqu'à avril 2023.
 
-Une fois le serveur mis en place, la première étape était de sécuriser l’utilisation. J’ai donc créé un utilisateur spécifique qui me sert uniquement le déploiement de l’application.
+Une fois le serveur mis en place, la première étape était de sécuriser l’utilisation. J’ai donc créé un utilisateur spécifique qui me sert uniquement pour le déploiement de l’application.
 
 Je l'ai rajouté dans les `sudoers` (Groupes d’utilisateur possédants les droits administrateur) afin de simplifier la construction de l’environnement de production.
 
@@ -43,7 +43,7 @@ $ sudo addgroup isignif sudo
 
 ==== Protocole SSH
 
-Le protocole utilisé pour se connecter au serveur est le *protocole SSH* (Secure SHell). Ce protocole est le point d'entrée au serveur et il permet donc de contrôler le serveur à distance. Il doit donc être au maximum sécurisé. Dans cette section je vais retracer comme je l'ai sécurisé.
+Le protocole utilisé pour se connecter au serveur est le *protocole SSH* (Secure SHell). Ce protocole est le point d'entrée au serveur et il permet donc de contrôler le serveur à distance. Il doit donc être au maximum sécurisé. Dans cette section je vais retracer comment je l'ai sécurisé.
 
 En regardant les logs d’un serveur, on peut remarquer une quantité importante de tentatives de connexion SSH. Dans mon cas il était de l'ordre de *cinquante mille tentatives en trois jours*. Ceci est du au fait que beaucoup de hackers ont mis au point des scripts qui tentent de se connecter en utilisant des *dictionnaires de mots de passe*.
 
@@ -55,11 +55,11 @@ La clé SSH permet de se connecter au serveur *sans mot de passe* en utilisant s
 
 J'ai donc mis en place ce système d'authentification et j'ai ensuite désactivé la possibilité de se connecter au compte en utilisant un mot de passe. Ainsi il est est impossible de réaliser une attaque de type _bruteforce_.
 
-NOTE: Une attaque par _bruteforce_ consiste à tenter des milliers de combinaisons d'utilisateur et de mot de passe jusqu'à ce qu'un combinaison fonctionne.
+NOTE: Une attaque par _bruteforce_ consiste à tenter des milliers de combinaisons d'utilisateurs et de mots de passe jusqu'à ce qu'une combinaison fonctionne.
 
 ===== Liste noire
 
-De la même manière que pour les appels téléphonique, il est possible de gérer une liste noire des adresses IP malveillantes. Il existe donc un outil nommé https://www.fail2ban.org/wiki/index.php/Main_Page[Fail2ban]. Fail2ban est un petit utilitaire écrit en Python qui analyse les logs du serveur et met sur liste noir les adresses IP qui ont tentés de se connecter plusieurs fois avec un mot de passe erroné.
+De la même manière que pour les appels téléphonique, il est possible de gérer une liste noire des adresses IP malveillantes. Il existe donc un outil nommé https://www.fail2ban.org/wiki/index.php/Main_Page[Fail2ban]. Fail2ban est un petit utilitaire écrit en Python qui analyse les logs du serveur et met sur liste noir les adresses IP qui ont tenté de se connecter plusieurs fois avec un mot de passe erroné.
 
 [#serveur_http]
 ==== Serveur HTTP
@@ -110,7 +110,7 @@ Ce script permet de:
 * supprimer les *utilisateurs anonymes*
 * désactiver la possibilité aux utilisateur `root` de pouvoir se connecter
 
-Toujours dans un soucis de gestion fine des droits, j’ai choisi de créer un utilisateur MariaDB spécifique à l’application. Cela permet de *limiter* l'accès à un utilisateur à une base de données spécifique.
+Toujours dans un souci de gestion fine des droits, j’ai choisi de créer un utilisateur MariaDB spécifique à l’application. Cela permet de *limiter* l'accès à un utilisateur à une base de données spécifique.
 
 .Création d'une base de données et d'un utilisateur spécifique
 [source,sql]
@@ -122,17 +122,17 @@ MariaDB > GRANT ALL PRIVILEGES ON isignif . * TO 'isignif'@'localhost';
 
 === Sécurité de l’application
 
-aujourd'hui, la sécurité informatique est un enjeu majeur. D’autant plus pour iSignif qui manipule des données sensibles. Il faut un certains temps pour bâtir une réputation et une fuite de données peut suffire à la ruiner
+aujourd'hui, la sécurité informatique est un enjeu majeur. D’autant plus pour iSignif qui manipule des données sensibles. Il faut un certains temps pour bâtir une réputation et une fuite de données peut suffir à la ruiner
 
-NOTE: Mars 2017, Facebook à perdu 37 milliards de dollars suite à la révélation de la fuite des données de plus de 50 millions de leurs utilisateurs https://www.lci.fr/high-tech/affaire-cambridge-analytica-quel-est-ce-scandale-qui-plonge-facebook-dans-la-crise-mark-zuckerberg-2082228.html[selon LCI]].
+NOTE: Mars 2017, Facebook a perdu 37 milliards de dollars suite à la révélation de la fuite des données de plus de 50 millions de leurs utilisateurs https://www.lci.fr/high-tech/affaire-cambridge-analytica-quel-est-ce-scandale-qui-plonge-facebook-dans-la-crise-mark-zuckerberg-2082228.html[selon LCI]].
 
-C'est bien connu, le point de le plus faible d'une chaîne réside dans le maillon le plus faible. Cette analogie, appliquée à un produit SAAS, signifierais que le maillon le plus faible est l'application web. L’application doit être *imperméable* aux attaques les plus connues.
+C'est bien connu, le point de le plus faible d'une chaîne réside dans le maillon le plus faible. Cette analogie, appliquée à un produit SAAS, signifierait que le maillon le plus faible est l'application web. L’application doit être *imperméable* aux attaques les plus connues.
 
 En respectant les conventions de Ruby on Rails, nous somme protégés des failles de sécurité les plus connues. Je vais donc en passer quelques une en revue.
 
 ==== Cross-site request forgery
 
-Le *Cross-site request forgery* consiste à envoyer un formulaire d’un site vers un autre. Ainsi, un formulaire d'un site A pourrait demander une action sur un site B en profitant que sur l'utilisateur est déjà connecté ur le site B.
+Le *Cross-site request forgery* consiste à envoyer un formulaire d’un site vers un autre. Ainsi, un formulaire d'un site A pourrait demander une action sur un site B en profitant de l'authentification de l'utilisateur sur le site B.
 
 Rails empêche cela en utilisant un jeton qu’il place sur tous les formulaires. Il peut ainsi identifier les formulaires qui lui sont propre et ceux qui ne lui sont pas.
 
@@ -151,13 +151,13 @@ Ruby on Rails utilise un outil qui nous empêche de manipuler du code SQL et il 
 
 L'une des vulnérabilités de sécurité les plus répandues et les plus dévastatrices dans les applications Web est *XSS*. Cette attaque malveillante injecte du code exécutable côté client: du JavaScript.
 
-Cette faille est simplissime, par exemple, un petit malin peut créer un utilisateur se nommant `<script>alert('Pwned')</script>`. Alors sur chaque page ou son nom sera affiché, le code sera exécuté.
+Cette faille est simplissime, par exemple, un petit malin peut créer un utilisateur se nommant `<script>alert('Pwned')</script>`. Alors sur chaque page où son nom sera affiché, le code sera exécuté.
 
 Rails, par défaut, échappe implicitement tout les caractères. C'est-à-dire que les caractères contenant du code seront annulés.
 
 ==== Attaque par force brute
 
-Comme je le disait plus haut, une attaque par _bruteforce_ consiste à tenter des milliers de combinaisons d'utilisateur et de mot de passe jusqu'à ce qu'un combinaison fonctionne. Ainsi, un pirate pourrait tentent de se connecter des milliers de fois en utilisant un login et un dictionnaire de mots de passe.
+Comme je le disais plus haut, une attaque par _bruteforce_ consiste à tenter des milliers de combinaisons d'utilisateur et de mot de passe jusqu'à ce qu'une combinaison fonctionne. Ainsi, un pirate pourrait tentait de se connecter des milliers de fois en utilisant un login et un dictionnaire de mots de passe.
 
 Dans mon cas, j’ai utilisé la bibliothèque https://github.com/binarylogic/authlogic[Authlogic] qui stocke le nombre de tentatives de connections échouées dans la base de données. Ainsi, une fois 3 tentatives dépassées, le compte est bloqué et il n’est plus possible de se connecter avec le login.
 
@@ -226,14 +226,14 @@ Afin de connaître les vulnérabilité de mon installation, j’ai décidé de f
 
 Pour faire cela, j'ai utilisé http://www.openvas.org/[OpenVAS],  un scanner de vulnérabilités libre issu du fork de Nessus. OpenVAS s’appuie sur les https://cve.mitre.org/[CVE (Common Vulnerabilities and Exposures)], une base de données communautaire des vulnérabilités connues.
 
-NOTE: Le scan de vulnérabilité est illégal à moins que le serveur nous appartienne ou bien qu’une autorisation du propriétaire soit donné. Dans mon cas, le serveur m'appartiens.
+NOTE: Le scan de vulnérabilité est illégal à moins que le serveur nous appartienne ou bien qu’une autorisation du propriétaire soit donnée. Dans mon cas, le serveur m'appartient.
 
-Plusieurs types de scan sont possibles, J’ai choisi d’utiliser le plus complet, qui est aussi le plus long. J’ai donc obtenu le résultat que l’on peut voir sur la figure suivant (le rapport complet est disponible en annexe).
+Plusieurs types de scans sont possibles. J’ai choisi d’utiliser le plus complet, qui est aussi le plus long. J’ai donc obtenu le résultat que l’on peut voir sur la figure suivante (le rapport complet est disponible en annexe).
 
 .Capture d’écran du rapport de scan d’OpenVAS
 image:kali_openvas_report.png[kali_openvas_report]
 
-On peut voir que mon serveur possède peu de vulnérabilités. Ceci est sûrement dû au fait que je mets à jour les paquets quotidiennement et que donc, j'applique les correctifs de sécurités.
+On peut voir que mon serveur possède peu de vulnérabilités. Ceci est sûrement dû au fait que je mets à jour les paquets quotidiennement et que donc j'applique les correctifs de sécurité.
 
 // ==== Sécurité du serveur
 //
@@ -249,8 +249,8 @@ On peut voir que mon serveur possède peu de vulnérabilités. Ceci est sûremen
 
 === Conclusion
 
-Administrer un serveur Linux est un métier à par entière. Je n'estime pas avoir fait tout le travail d'un administrateur système mais je pense que je peux affirmer que j'ai appliqué les pratiques de base dans la sécurisation d'un serveur Linux.
+Administrer un serveur Linux est un métier à part entière. Je n'estime pas avoir fait tout le travail d'un administrateur système mais je pense que je peux affirmer que j'ai appliqué les pratiques de base dans la sécurisation d'un serveur Linux.
 
-Entre autre, je n'ai pas utilisé de logiciel de monitoring du serveur Linux et je ne suis donc pas en mesure d'annoncer un temps de disponibilité de l'application.
+Entre autres, je n'ai pas utilisé de logiciel de monitoring du serveur Linux et je ne suis donc pas en mesure d'annoncer un temps de disponibilité de l'application.
 
-Étant un Linuxien convaincu, cette expérience m'a permis de *monter en compétence* sur l'administration et la gestion d'un serveur sous Linux. Même si ce n'est pas le cœur de métier de développeur, ce sont réellement des compétences utiles au développeur.
+Étant un Linuxien convaincu, cette expérience m'a permis de *monter en compétence* sur l'administration et la gestion d'un serveur sous Linux. Même si ce n'est pas le cœur de métier de développeur, ce sont réellement des compétences utiles au métier de développeur.

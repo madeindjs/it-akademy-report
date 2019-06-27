@@ -26,19 +26,19 @@ Dans mon cas, les principales obligations qui m’incombent sont que l'utilisate
 
 Afin d'avoir un format normalisé et simple, j'ai choisi d'utiliser le format JSON et plus particulièrement la spécification https://jsonapi.org/[JSON:API] qui impose une structure du JSON.
 
-En utilisant la https://github.com/Netflix/fast_jsonapi[librairie de serialization des données de Netflix], j'ai ainsi converti le modèle `User` au format JSON en incluant toutes ses liaisons. Ainsi, en un clic, l'utilisateur peut obtenir toutes ses données en incluant ses actes, ses messages et les significations qu'il a effectué.
+En utilisant la https://github.com/Netflix/fast_jsonapi[librairie de serialization des données de Netflix], j'ai ainsi converti le modèle `User` au format JSON en incluant toutes ses liaisons. Ainsi, en un clic, l'utilisateur peut obtenir toutes ses données en incluant ses actes, ses messages et les significations qu'il a effectuées.
 
 ==== Le droit à l’oubli
 
 Le droit à l'oubli est l'une des plus grosse fonctionnalité demandée par la CNIL. https://gdpr-info.eu/art-17-gdpr/[L’article 17 de la RGPD] nous oblige à implémenter une fonctionnalité qui doit permettre à l’utilisateur d’effacer toutes ses données rapidement. La ou cela se complique, c’est que la RGPD nous oblige aussi à demander la suppression des données chez des fournisseurs tiers (comme Stripe dans mon cas).
 
-NOTE: La fonctionnalité ne doit pas forcément entraîner un traitement automatisé, il peut simplement faire la demande qui sera effectué manuellement.
+NOTE: La fonctionnalité ne doit pas forcément entraîner un traitement automatisé, il peut simplement faire la demande qui sera effectuée manuellement.
 
 La difficulté de cette fonctionnalité est de supprimer les données liées à l’utilisateur sans impacter les données qui sont liées aux autres utilisateurs. Concrètement, cela signifie que lorsqu’un huissier de justice décide de supprimer son compte, il faut:
 
 * supprimer son compte et ses données
 * supprimer toutes ses factures
-* supprimer les significations qu’il a effectué
+* supprimer les significations qu’il a effectuées
 * supprimer ses données chez Stripe
 
 Cependant je ne peux pas supprimer les significations puisque le demandeur veut pouvoir les conserver. C’est pour cela que j’ai préféré l’*anonymisation* des données.
@@ -89,7 +89,7 @@ end
 
 Et voilà, la mise en conformité est faite. L’huissier ou l’avocat pourra supprimer son compte et les données seront conservées. En revanche, il sera impossible de retrouver l’utilisateur correspondant à ces données.
 
-En plus de cela, j'ai aussi utilisé l'API de Stripe pour supprimer les données de nos utilisateur dans la base de données de Stripe lors de la suppression. Je ne le détaillerai pas la mise en place ici.
+En plus de cela, j'ai aussi utilisé l'API de Stripe pour supprimer les données de nos utilisateur dans la base de données de Stripe lors de la suppression. Je ne détaillerai pas la mise en place ici.
 
 
 === Déploiement continu
@@ -104,7 +104,7 @@ J’ai donc utilisé la librairie https://capistranorb.com[Capistrano]. Il s'agi
 
 * *Cloner* le répertoire Git afin de récupérer la dernière version du code source
 * Lancer les *migrations* sur la base de données
-* *Minifier* , c'est à dire concaténer les fichiers texte en un seul afin de réduire le nombre de requête HTTP et d’améliorer la vitesse de chargement] les fichiers JavaScript et CSS
+* *Minifier* , c'est à dire concaténer les fichiers texte en un seul afin de réduire le nombre de requêtes HTTP et d’améliorer la vitesse de chargement] les fichiers JavaScript et CSS
 * Faire des liens symboliques sur les documents que les utilisateurs ont envoyés sur le serveur
 
 La librairie se met en place très facilement, voici un extrait de ma configuration
@@ -120,15 +120,15 @@ append :linked_dirs, 'public/uploads'
 
 Une fois la librairie mise en place, il suffit d'utiliser la commande `cap production deploy` qui va s'occuper de mettre à jour l'application sur le serveur.
 
-Cette approche m'a permis de faire des mise à jour de l'application plusieurs fois par semaines.
+Cette approche m'a permis de faire des mises à jour de l'application plusieurs fois par semaine.
 
 === Sauvegarde Automatique du serveur
 
-En terme de sauvegarde il existe plusieurs stratégies. Pour ma part, les conditions étaient d’avoir des sauvegardes qui inclue les donnée de MariaDB et les fichiers téléchargés sur le serveur par les utilisateurs.
+En terme de sauvegarde il existe plusieurs stratégies. Pour ma part, les conditions étaient d’avoir des sauvegardes qui incluent les données de MariaDB et les fichiers téléchargés sur le serveur par les utilisateurs.
 
-De mon point de vue, la sauvegarde automatique doit être:
+De mon point de vue, la sauvegarde doit être:
 
-* *régulière et automatique*: j’ai donc utilisé une `crontab` qui est un utilitaire sous Linux qui permet de lancer des commandes à intervalles définis
+* *régulière et automatique*: j’ai donc utilisé une `crontab` qui est un utilitaire sous Linux qui permet de lancer des commandes à intervalles définies
 * *chiffrée*: j’ai donc utilisé http://www.gnupg.org/[GNUPG] qui est un outil de chiffrement asymétrique (Méthode de chiffrement utilisant une paire de clés pour le cryptage). Ainsi, lorsque je chiffre une archive avec ma clé publique, seul mon PC distant peu l’ouvrir.
 
 Voici donc une partie de mon script sur le listing suivant:
@@ -146,7 +146,7 @@ tar -czvf -  "$folder_save" | gpg --encrypt --recipient contact@rousseau-alexand
 # ...
 ----
 
-Ensuite, un `cron` récupère régulièrement mes sauvegarde en utilisant un outil appelé https://fr.wikipedia.org/wiki/Rsync[Rsync].
+Ensuite, un `cron` récupère régulièrement mes sauvegardes en utilisant un outil appelé https://fr.wikipedia.org/wiki/Rsync[Rsync].
 
 NOTE: Il s'est avéré bien plus tard qu'une sauvegarde nous a permis de retrouver les données supprimées par accident par un de mes associé. Il avait supprimé une catégorie d'acte qui avait provoqué la suppression de plus de trente actes avec toutes les données liées (messages, fichiers, etc..).
 
@@ -155,7 +155,7 @@ NOTE: Il s'est avéré bien plus tard qu'une sauvegarde nous a permis de retrouv
 
 Un commercial a rejoint notre équipe. Cela a mené à une  problématique car il devait avoir accès aux données de ses clients afin de les aider mais nous ne voulions pas qu'il puisse les modifier.
 
-J'ai  donc choisis de définir des rôles afin de limiter les actions possibles sur l'application. Voici la liste des rôles que j'ai défini:
+J'ai  donc choisit de définir des rôles afin de limiter les actions possibles sur l'application. Voici la liste des rôles que j'ai défini:
 
 - `user`: utilisateur classique
 - `support`: a accès aux entités des autres utilisateurs (actes, messagerie, etc..) et à leurs tableaux de bord
@@ -196,7 +196,7 @@ Afin de suivre les amélioration des fonctionnalités, je met à jour un fichier
 - les nouveautés
 - les corrections
 
-Ce fichier, versionné avec le code source de l'application, permet à mes associés de savoir en temps réel et de communiquer autour des modifications effectuées sur l'application.
+Ce fichier, versionné avec le code source de l'application, permet à mes associés de communiquer autour des modifications effectuées sur l'application.
 
 .Capture d'écran des notes de version sur isignif.fr
 image:changelog.png[]
@@ -206,6 +206,6 @@ image:changelog.png[]
 
 L'amélioration du produit est une étape importante car elle permet de *fiabiliser* le produit. Cette fiabilisation fidélise le client qui est rassuré par cette qualité.
 
-Si j'avais omis cette étape en privilégiant le développement d'une nouvelle fonctionnalité, nous aurions été décrédibilisé lors de notre première perte des données. Je peux donc affirmer que cette étape a été une *étape clé* de iSignif.
+Si j'avais omis cette étape en privilégiant le développement d'une nouvelle fonctionnalité, nous aurions été décrédibilisés lors de notre première perte des données. Je peux donc affirmer que cette étape a été une *étape clé* de iSignif.
 
-Je regrette simplement de ne pas avoir mis en place un *serveur d'intégration continue* qui lance les tests unitaires et scanne le code. En effet, cette étape est manuelle et, comme je l'ai expliqué plus haut, une action manuelle laisse place à l'erreur.
+Je regrette simplement de ne pas avoir mis en place un *serveur d'intégration continu* qui lance les tests unitaires et scanne le code. En effet, cette étape est manuelle et, comme je l'ai expliqué plus haut, une action manuelle laisse place à l'erreur.

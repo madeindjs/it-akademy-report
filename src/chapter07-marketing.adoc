@@ -33,7 +33,7 @@ J'ai donc fait des efforts au niveau de la mise en cache des images et des feuil
 </Location>
 ----
 
-Nous pouvons peut facilement constater cette amélioration en ouvrant l'inspecteur des requêtes HTTP avec le navigateur qui affiche la mention _cached_.
+Nous pouvons facilement constater cette amélioration en ouvrant l'inspecteur des requêtes HTTP avec le navigateur qui affiche la mention _cached_.
 
 .Les images sont mises en cache par le navigateur
 image:seo_cache_asset.png[]
@@ -52,9 +52,9 @@ J'ai aussi mis en place une compression des fichiers textes par Apache qui perme
 </IfModule>
 ----
 
-Pour terminer j'ai mis en place le protocole HTTP2 qui apporte de nombreuses améliorations comme, entre autre, optimiser le nombre de requêtes TCP effectuées et réduire la taille des en-têtes des requêtes HTTP.
+Pour terminer j'ai mis en place le protocole HTTP2 qui apporte de nombreuses améliorations comme, entre autres, optimiser le nombre de requêtes TCP effectuées et réduire la taille des en-têtes des requêtes HTTP.
 
-Et voilà. Afin de valider ses éléments, j'ai utilisé l'outil PageSpeed Insights de Google qui m'a attribué un excellent résultat:
+Et voilà. Afin de valider ces éléments, j'ai utilisé l'outil PageSpeed Insights de Google qui m'a attribué un excellent résultat:
 
 .Capture d'écran du résultat du scan de l'outil PageSpeed Insights de Google
 image:speedinsight.png[]
@@ -81,14 +81,14 @@ Afin de communiquer autour de notre application, nous avons choisi d'utiliser ht
 
 Cet outil permet aussi de proposer un *lien de désinscription* à la newsletter que l'utilisateur peut utiliser afin de ne plus recevoir de mail. Cette fonctionnalité est très importante car la loi l'oblige.
 
-Mon associé, Sacha Partensky, a ainsi sélectionné un peu plus de mille destinataires que nous avons découpé en quatre campagnes de courriel afin d'adapter le contenu du mail au fur et à mesure.
+Mon associé, Sacha Partensky, a ainsi sélectionné un peu plus de mille destinataires que nous avons découpés en quatre campagnes de courriel afin d'adapter le contenu du mail au fur et à mesure.
 
 Une fois ces campagnes réalisées, Mailchimp propose un tableau de bord récapitulant les résultats:
 
 .Capture d'écran du tableau de bord des campagnes effectuées sur Mailchimp
 image:mailchimp_dashboard.png[]
 
-En analysant un peu ces résultats, nous nous rendons compte que nous sommes bien situé comparé au secteur des campagnes de mailing à destination de service professionnels:
+En analysant un peu ces résultats, nous nous rendons compte que nous sommes bien situés comparé au secteur des campagnes de mailing à destination de service professionnels:
 
 .Statistiques moyennes des campagnes d'emailing des clients de Mailchimp comparé à iSignif (source: https://mailchimp.com/resources/email-marketing-benchmarks/)
 |===
@@ -111,7 +111,7 @@ En revanche, en terme de business, ces campagnes n'ont *pas eu beaucoup de retom
 
 Avec du recul je pense que, pour notre activité, il vaut mieux privilégier une *approche ciblée*.
 
-Un approche globale dans le but de toucher tout le monde provoquerai une expansion incontrôlée et peut donc avoir des effets désastreux si le produit n'est pas prêt à recevoir autant d'activité.
+Un approche globale dans le but de toucher tout le monde provoquerait une expansion incontrôlée et peut donc avoir des effets désastreux si le produit n'est pas prêt à recevoir autant d'activité.
 
 Le marketing est une activité indispensable lorsqu'on souhaite faire connaître notre produit.
 // TODO

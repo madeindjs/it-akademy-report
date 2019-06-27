@@ -1,13 +1,13 @@
 [#chapter02-planificate.adoc]
 == Planifier la réalisation du projet
 
-La planification est une étape importante car elle permet de tracer l'évolution du produit. En temps que développeur principal, elle est indispensable afin de voir son propre avancement dans un projet d'une grande envergure. La planification permet de garder le cap et de ne pas me décourager dans un projet d'une telle envergure.
+La planification est une étape importante car elle permet de tracer l'évolution du produit. En tant que développeur principal, elle est indispensable afin de voir son propre avancement dans un projet d'une grande envergure. La planification permet de garder le cap et de ne pas me décourager dans un projet d'une telle envergure.
 
 === Réunions d’avancements
 
 Afin de *valider certaines étapes* du développement du produit, nous organisons des *réunions d'avancement*. Elles nous permettent aussi de communiquer autour de l’avancée de la société.
 
-Ces réunions d’avancements ont lieu *physiquement*. Elles ne sont pas périodiquement fixées, nous en organisons à la demande, lorsqu'on des associé en ressent le besoin. Nous avons fait une réunion par mois environ qui dure une heure ou deux. Afin d’être plus efficace, nous définissons un but à l’avance.
+Ces réunions d’avancements ont lieu *physiquement*. Elles ne sont pas périodiquement fixées, nous en organisons à la demande, lorsqu'on des associé en ressent le besoin. Nous avons fait une réunion par mois environ qui dure une heure ou deux. Afin d’être plus efficaces, nous définissons un but à l’avance.
 
 Par exemple, nous avons fait une réunion en mai 2018 afin de valider mon avancement sur l'application. A ce moment là, j’avais travaillé en totale autonomie sur l’élaboration d’une *première ébauche* fonctionnelle. J’ai donc effectué une démonstration. Cette réunion a permis de *renforcer la confiance* que mes associés m’avaient alors accordée mais aussi de collecter des premières critiques.
 
@@ -78,7 +78,7 @@ Les nouvelles applications utilisent des interfaces utilisateurs de plus en plus
 
 J’ai néanmoins mis en place _Vue.JS_ (une librairie JavaScript) pour certaines pages qui demandent plus d’interactions. J’ai choisi Vue.JS au détriment de React ou Angular car c’est le plus simple à mettre en place pour des applications non orienté API.
 
-Comme framework CSS, j'ai choisi d'utiliser le standard: Twitter Bootsrtap. Il permet de faire des pages _responsives_, c'est à dire des pages qui s'adaptent très bien sur des écrans plus petits telles qu'on le vois sur mobile.
+Comme framework CSS, j'ai choisi d'utiliser le standard: Twitter Bootsrtap. Il permet de faire des pages _responsives_, c'est à dire des pages qui s'adaptent très bien sur des écrans plus petits telles qu'on le voit sur mobile.
 
 Pour terminer, afin d'organiser un mieux mon code CSS, j'ai utilisé le transpilateur SASS qui est proposé par défaut avec Ruby on Rails.
 
@@ -88,19 +88,18 @@ Pour terminer, afin d'organiser un mieux mon code CSS, j'ai utilisé le transpil
 
 ==== Git
 
-Git est un logiciel développé par Linux Torvals (fondateur de Linux) qui permet de *versionner* un projet.
+Git est un logiciel développé par Linux Torvalds (fondateur de Linux) qui permet de *versionner* un projet.
 
 Le visionnement permet de revenir en arrière si besoin mais pas que. Il permet aussi de travailler sur des *espaces séparés*: les branches. Ainsi, il est possible de développer une fonctionnalité sans être impacté par les développement réalisés par les autres développeur. Cela rend la collaboration beaucoup plus facile.
 
-Git est aujourd'hui presque un standard dans le développement de logiciel. Je l'ai donc naturellement choisit.
+Git est aujourd'hui presque un standard dans le développement de logiciel. Je l'ai donc naturellement choisi.
 
 ==== Git-Flow
 
 Afin d'encadrer l'utilisation de Git, j'ai mis en place la méthodologie *Git Flow*.
 
 
-
-Git Flow impose une convention de travail avec Git comme par exemple ne nommage des branches. Les branches ont ainsi un but bien spécifique. Elle sont aussi déversées (action réalisée lorsqu'on applique toutes les modifications d'une branche dans une autre) dans des branches définies à l'avance.
+Git Flow impose une convention de travail avec Git comme par exemple le nommage des branches. Les branches ont ainsi un but bien spécifique. Elle sont aussi déversées (action réalisée lorsqu'on applique toutes les modifications d'une branche dans une autre) dans des branches définies à l'avance.
 
 .Schéma du _workflow_ de Git Flow.
 image:git-flow.png[git-flow]
@@ -115,10 +114,10 @@ Le schéma ci-dessus résume le fonctionnement de Git-Flow. On retrouve:
 
 Cette méthodologie permet ainsi de travailler à plusieurs sans se gêner puisque chaque développeur peut travailler indépendamment sur une branche `feature` séparée.
 
-NOTE: De plus, ceci me permet de faire des mise en production régulièrement mais j’en parlerai plus en détails dans la section "déploiement".
+NOTE: De plus, ceci me permet de faire des mises en production régulièrement mais j’en parlerai plus en détails dans la section "déploiement".
 
 === Conclusion
 
 Avec du recul, je sais que j'ai commis l'erreur de ne pas avoir choisi une architecture API. Il s’est avéré par la suite qu’un éditeur de progiciel était intéressé pour connecter notre produit à leur solution déjà implantée dans le milieu du droit. De plus, le besoin s’est fait sentir de rendre notre application de plus en plus _Single Page_. On aurait ainsi pu découpler notre application en une partie _back_ et _front_.
 
-Malgré ces erreurs, notre méthodologie s'est révélée très efficace. Elle nous a permis de communiquer et de tester nos évolutions. Notre méthodologie n'a d’ailleurs pas beaucoup évoluée dans le temps.
+Malgré ces erreurs, notre méthodologie s'est révélée très efficace. Elle nous a permis de communiquer et de tester nos évolutions. Notre méthodologie n'a d’ailleurs pas beaucoup évolué dans le temps.

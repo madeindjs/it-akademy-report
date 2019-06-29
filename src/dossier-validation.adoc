@@ -8,6 +8,7 @@ Alexandre Rousseau <contact@rousseau-alexandre.fr>
 :copyright: CC-BY-SA 4.0
 :lang: fr-FR
 :author: Alexandre Rousseau
+:front-cover-image: image:couverture.pdf[]
 
 include::chapter00-before.adoc[]
 

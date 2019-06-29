@@ -24,7 +24,7 @@ namespace :build do
                              }
      pdf = CombinePDF.load File.join(OUTPUT_DIR, 'dossier-validation.pdf')
 
-     Dir.glob(File.join(ANNEXES_DIR, '*.pdf')).each do |f|
+     Dir.glob(File.join(ANNEXES_DIR, '*.pdf')).sort.each do |f|
        pdf << CombinePDF.load(f)
      end
 

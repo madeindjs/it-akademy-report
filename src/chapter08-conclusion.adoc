@@ -3,10 +3,21 @@
 
 Afin de clôturer ce mémoire, je vais dresser un bilan de mon expérience au sein d'iSignif.
 
+=== Formation 
+
+// Dans ta conclusion générale, il faudrait mettre en avant que ces 2 années en formation, en alternance, en travail personnel t'ont permis d'acquérir les compétences du développeur full stack. Car c'est l'objet de ton dossier de validation ainsi que de la soutenance.
+
+Mon cursus de formation à l'IT-Akademy m'a permis d'acquérir des compétences diverses que j'ai put retranscrire dans mes projets professionnels et personnels. Par exemple je pourrais citer la création d'un modèle conceptuel de données avec jMerise, la gestion d'un projet ou encore l'expérimentation de plusieurs technologies web.
+
+
 === Quelques chiffres
 
-// TODO
+Les débuts de iSignif sont assez prometteurs. Depuis le lancement de la béta en février 2019 nous avons une petite communauté de 60 utilisateurs. Nous totalisons actuellement plus de 400 signification pour un total de 450€ facturé.
 
+De plus nous enregistrons plus de 129 actes sur le dernier moi:
+
+.Capture d'écran du tableau de bord de iSignif
+image:isignif_dashboard.png[]
 
 === Perspectives de iSignif
 
@@ -36,6 +47,5 @@ Les apports professionnels d’une telle expérience sont évidents. Au delà de
 Cela a aussi été l’occasion d'avoir des responsabilités sur un projet d'une certaine envergure qui donne un tout autre sens au métier de développeur. J'ai ainsi pris conscience qu'une fonctionnalité doit servir en terme de *business*.
 
 Personnellement iSignif m'a permis de *sortir de ma zone de confort* et de découvrir l’*entrepreneuriat* sans prendre trop de risques puisqu'il n'y avait pas d'enjeu financer.
-
 
 Dans une perspective à long terme, je souhaite continuer de suivre le projet tout en déléguant une partie de plus en plus importante à des développeurs externes. Je me concentrerai donc uniquement sur les choix stratégiques de l'entreprise.

@@ -100,16 +100,11 @@
     <div class="reveal">
       <div class="slides">
         <section>
-          <h1>Dossier de validation</h1>
-          <p>
-            Alexandre Rousseau <br />
-            <a href="mailto:contact@rousseau-alexandre.fr"
-              >contact@rousseau-alexandre.fr</a
-            >
-          </p>
+          <p><strong>Comment fonder et pérenniser une LegalTech?</strong></p>
+          <hr>
+          <p><a href="mailto:contact@rousseau-alexandre.fr">contact@rousseau-alexandre.fr</a></p>
         </section>
         <section>
-          <h2>Sommaire</h2>
           <ul>
             <!-- <li>A propos de moi</li> -->
             <li>Présentation</li>
@@ -192,8 +187,8 @@
 
           <section>
             <img src="src/img/workflow_money.png" alt="" />
-            <p><strong class="good">8€ / mois</strong> pour les avocats</p>
-            <p><strong class="good">2€ / acte</strong> pour les huissiers</p>
+            <p><strong>8€ / mois</strong> pour les avocats</p>
+            <p><strong>2€ / acte</strong> pour les huissiers</p>
           </section>
         </section>
 
@@ -243,8 +238,8 @@
             </p>
             <ul>
               <li class="good">2,99 € / mois</li>
-              <li class="good">Ubuntu 18.04 LTS <small>2024</small></li>
               <li class="good">Liberté</li>
+              <li class="good"><span style="color: blue">Fra</span><span style="color: lightgray">nç</span><span style="color: red">ais</span></li>
               <li class="bad">Compétence Linux</li>
             </ul>
           </section>
@@ -321,7 +316,7 @@
           </section>
 
           <section>
-            <h4>Souscription à la plateforme</h4>
+            <p><strong>Souscription</strong> à la plateforme</p>
             <pre><code data-trim data-noescape class="ruby">
             Stripe::Plan.create(
               product: Stripe::Product.create(name: 'Abonnement compte premium'),
@@ -337,13 +332,8 @@
               data-key="my_public_stripe_token"
           </code></pre> -->
 
-            <p>gestion <strong>webhook</strong> de Stripe</p>
+            <p><strong>webhook</strong> pour Stripe</p>
             <pre><code data-trim data-noescape class="ruby">
-            # subscriptions_controller.rb
-            def create
-              Stripe::Subscription.create(..) rescue Stripe::CardError
-            end
-
             # hooks_controller.rb
             def stripe
               do_thing if params[:type] == 'invoice.payment_succeeded'
@@ -363,12 +353,11 @@
                 <i>InvoiceItem</i> à un <i>Customer</i>
               </li>
               <li>
-                <strong style="color: blue">STRIPE</strong> Conversion de l'
-                <i>Invoice</i> en PDF
+                <strong style="color: blue">STRIPE</strong> Envoie l'<i>Invoice</i>
               </li>
               <li>
                 <strong style="color: blue">STRIPE</strong> Collecte / Relance
-                du <i>Customer</i>
+                le <i>Customer</i>
               </li>
             </ul>
           </section>
@@ -520,14 +509,14 @@
 
           <section>
             <h4>Active Storage</h4>
-            <pre><code data-trim data-noescape class="ruby">
+            <!-- <pre><code data-trim data-noescape class="ruby">
                 # app/models/act_file.rb
                 class ActFile < ApplicationRecord
                   has_many_attached :files, dependent: :purge
-              </code></pre>
+              </code></pre> -->
             <pre><code data-trim data-noescape class="ruby">
                 # app/controllers/act_files_controller.rb
-                @act_file.<mark>files.attach</mark> params[:files]
+                @act_file.files.attach params[:files]
               </code></pre>
             <ul>
               <li class="good">suivis par Rails</li>
@@ -551,10 +540,10 @@
           <h3>Pérennisation / RGPD</h3>
 
           <section>
-            <p>
-              <strong>anonymisation</strong> des données et
-              <strong>suppression</strong> chez Stripe.
-            </p>
+            <ul>
+              <li><strong>anonymisation</strong> des données</li>
+              <li><strong>suppression</strong> chez Stripe</li>
+            </ul>
             <pre><code data-trim data-noescape class="ruby">
             # app/models/user.rb
             def destroy
@@ -621,6 +610,7 @@
             <pre><code data-trim data-noescape class="ruby">
               # app/policies/act_family_policy.rb
               class ActFamilyPolicy < ApplicationPolicy
+
                 def destroy?
                   @user&.god?
                 end
@@ -667,7 +657,7 @@
         </section>
 
         <section>
-          <p>Merci!</p>
+          <p><strong>merci</strong></p>
         </section>
       </div>
     </div>
